@@ -29,5 +29,7 @@ dependencies {
 
     implementation project(':tools')
 
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 }

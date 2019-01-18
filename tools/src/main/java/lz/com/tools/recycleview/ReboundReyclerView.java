@@ -242,7 +242,8 @@ public class ReboundReyclerView extends RecyclerView {
                 mLayoutParams.height = animatedValue;
                 mRefreshHeader.setLayoutParams(mLayoutParams);
                 FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRefreshHeader.getChildAt(0).getLayoutParams();
-                layoutParams.setMargins(0, animatedValue - mRefreshViewHeight, 0, 0);
+//                layoutParams.setMargins(0, animatedValue - mRefreshViewHeight, 0, 0);
+                layoutParams.setMargins(0, 0, 0, 0);
                 mRefreshHeader.getChildAt(0).setLayoutParams(layoutParams);
 
             }
