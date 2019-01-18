@@ -1,6 +1,8 @@
 package lz.com.kit;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
@@ -47,7 +49,13 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseRecycleAdapter adapter, View view, int position) {
-                startActivity(new Intent(MainActivity.this, mAdapter.getData().get(position).calssName));
+                Intent mIntent = new Intent(MainActivity.this, mAdapter.getData().get(position).calssName);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    mIntent.putExtra("type", RecyclerViewActivity.EXPLODE_CODE);
+                    startActivity(mIntent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+                } else {
+                    startActivity(mIntent);
+                }
             }
         });
 

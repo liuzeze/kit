@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<lz.com.kit.AspectRatioFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:padding="10dp">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:background="#ff0000"
+        android:elevation="3dp"
         android:gravity="center"
-        android:text="dhgasjgdhjaksgh" />
+        android:text="dhgasjgdhjaksgh"
+        android:textColor="#ffff" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</lz.com.kit.AspectRatioFrameLayout>

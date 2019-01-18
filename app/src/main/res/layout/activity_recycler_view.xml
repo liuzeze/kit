@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<lz.com.tools.recycleview.ReboundReyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recyclevie"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#ff0"
-        android:elevation="1dp"
-        android:gravity="center"
-        android:text="RecyclerViewActivity" />
+</lz.com.tools.recycleview.ReboundReyclerView>
 
-
-    <lz.com.tools.recycleview.ReboundReyclerView
-        android:id="@+id/recyclevie"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
-
-    </lz.com.tools.recycleview.ReboundReyclerView>
-
-</LinearLayout>

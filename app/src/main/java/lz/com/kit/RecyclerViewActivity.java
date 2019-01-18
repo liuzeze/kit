@@ -1,38 +1,78 @@
 package lz.com.kit;
 
+import android.graphics.Outline;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.transition.Explode;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewOutlineProvider;
+import android.view.Window;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import lz.com.tools.recycleview.CustomerItemDecoration;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.SwipeMenuItem;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 
 public class RecyclerViewActivity extends AppCompatActivity {
+    public static final int EXPLODE_CODE = 1;
+    public static final int EXPLODE_XML = 2;
+    public static final int SLIDE_CODE = 3;
+    public static final int SLIDE_XML = 4;
 
-    @BindView(R.id.tv_title)
-    TextView tvTitle;
+
+
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Transition transition = null;
+        switch (getIntent().getIntExtra("type", -1)) {
+            case EXPLODE_CODE:
+                transition = new Explode();
+                transition.setDuration(1000);
+                transition.setInterpolator(new DecelerateInterpolator());
+                break;
+         /*   case EXPLODE_XML:
+                transition = TransitionInflater.from(this).inflateTransition(R.transition.simple_explode);
+                break;*/
+            case SLIDE_CODE:
+                transition = new Slide();
+                ((Slide) transition).setSlideEdge(Gravity.RIGHT);
+                transition.setDuration(1000);
+                transition.setInterpolator(new DecelerateInterpolator());
+                break;
+           /* case SLIDE_XML:
+                transition = TransitionInflater.from(this).inflateTransition(R.transition.simple_slide);
+                break;*/
+        }
+        if (transition != null) {
+            getWindow().setEnterTransition(transition);
+            getWindow().setExitTransition(transition);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
 
-
-        tvTitle.getBackground().setAlpha(0);
-
+        recyclevie.addItemDecoration(new CustomerItemDecoration().setDividerHeight(10));
         ArrayList<String> strings = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             strings.add("位置+" + i);
         }
         BaseRecycleAdapter<String, BaseViewHolder> adapter = new BaseRecycleAdapter<String, BaseViewHolder>(R.layout.item_text_list) {
@@ -41,8 +81,16 @@ public class RecyclerViewActivity extends AppCompatActivity {
             protected void onBindView(BaseViewHolder holder, String item) {
                 holder.setText(R.id.tv_1, item);
                 holder.addOnClickListener(R.id.tv_1);
+                holder.getView(R.id.tv_1).setClipToOutline(true);
+                holder.getView(R.id.tv_1).setOutlineProvider(new ViewOutlineProvider() {
+                    @Override
+                    public void getOutline(View view, Outline outline) {
+                        outline.setOval(0, 0, view.getWidth(), view.getHeight());
+                    }
+                });
             }
         };
+        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
         adapter.bindToRecyclerView(recyclevie);
         adapter.setNewData(strings);
 
@@ -105,8 +153,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         recyclevie.setScrollAlphaChangeListener(new ReboundReyclerView.ScrollAlphaChangeListener() {
             @Override
             public void onAlphaChange(int alpha, int scrollDyCounter) {
-                tvTitle.getBackground().setAlpha(alpha);
-                System.out.println("滑动距离" + scrollDyCounter);
+                System.out.println("透明度变换" + alpha);
             }
 
             @Override
@@ -142,12 +189,15 @@ public class RecyclerViewActivity extends AppCompatActivity {
         recyclevie.setOnRefreshListener(new ReboundReyclerView.OnRefreshListener() {
             @Override
             public void onRefreshing(int offset) {
-                tvTitle.postDelayed(new Runnable() {
+
+                new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        SystemClock.sleep(2000);
                         recyclevie.closeRefresh();
+
                     }
-                }, 2000);
+                });
             }
         });
         recyclevie.setOnUpScrollListener(new ReboundReyclerView.OnUpScrollListener() {
@@ -161,7 +211,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }
