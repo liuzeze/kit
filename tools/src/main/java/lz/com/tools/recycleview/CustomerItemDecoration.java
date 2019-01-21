@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
+import androidx.annotation.ColorInt;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CustomerItemDecoration extends RecyclerView.ItemDecoration {
 
-    private Drawable mDivider = new ColorDrawable(Color.parseColor("#ebebeb"));     //分割线Drawable
+    private  @ColorInt int mColor =Color.parseColor("#ebebeb");     //分割线Drawable
     private float mDividerHeight = 0.5f;  //分割线高度
 
     private int mPaddingLeft = 0;
@@ -33,7 +34,7 @@ public class CustomerItemDecoration extends RecyclerView.ItemDecoration {
      */
     public CustomerItemDecoration() {
         paint = new Paint();
-        paint.setColor(Color.parseColor("#ebebeb"));
+        paint.setColor(mColor);
     }
 
 
@@ -43,16 +44,14 @@ public class CustomerItemDecoration extends RecyclerView.ItemDecoration {
         super.getItemOffsets(outRect, view, parent, state);
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager != null) {
-            if (layoutManager instanceof LinearLayoutManager) {
-
+            if (layoutManager instanceof GridLayoutManager) {
+                outRect.set((int) mDividerHeight, (int) mDividerHeight, (int) mDividerHeight, (int) mDividerHeight);
+            } else if (layoutManager instanceof LinearLayoutManager) {
                 if (gravity == LinearLayoutManager.VERTICAL) {
                     outRect.set(0, 0, 0, (int) mDividerHeight);
                 } else {
                     outRect.set(0, 0, (int) mDividerHeight, 0);
                 }
-            } else if (layoutManager instanceof GridLayoutManager) {
-                outRect.set((int) mDividerHeight, (int) mDividerHeight, (int) mDividerHeight, (int) mDividerHeight);
-
             }
         }
     }
@@ -61,7 +60,26 @@ public class CustomerItemDecoration extends RecyclerView.ItemDecoration {
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager != null) {
-            if (layoutManager instanceof LinearLayoutManager) {
+            if (layoutManager instanceof GridLayoutManager) {
+                paint.setColor(mColor);
+
+                int left = mPaddingLeft == 0 ? parent.getPaddingLeft() : mPaddingLeft;
+                int right = parent.getWidth() - (mPaddingRight == 0 ? parent.getPaddingRight() : mPaddingRight);
+
+                int childCount = parent.getChildCount();
+                for (int i = 0; i < childCount - 1; i++) {
+                    View child = parent.getChildAt(i);
+
+                    RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+
+                    int top = child.getBottom() + params.bottomMargin;
+                    float bottom = top + mDividerHeight * 2;
+                    c.drawRect(left, top, right, bottom, paint);
+
+                    c.drawRect(child.getRight(), child.getTop(), child.getRight() + mDividerHeight, child.getBottom(), paint);
+                    c.drawRect(child.getLeft() - mDividerHeight, child.getTop(), child.getLeft(), child.getBottom(), paint);
+                }
+            } else if (layoutManager instanceof LinearLayoutManager) {
 
                 int left = mPaddingLeft == 0 ? parent.getPaddingLeft() : mPaddingLeft;
                 int right = parent.getWidth() - (mPaddingRight == 0 ? parent.getPaddingRight() : mPaddingRight);
@@ -81,15 +99,14 @@ public class CustomerItemDecoration extends RecyclerView.ItemDecoration {
                     }
 
                 }
-            } else if (layoutManager instanceof GridLayoutManager) {
-
             }
         }
 
     }
 
-    public CustomerItemDecoration setDivider(Drawable divider) {
-        mDivider = divider;
+
+    public CustomerItemDecoration setDividerColor(@ColorInt int color) {
+        mColor = color;
         return this;
     }
 
@@ -97,6 +114,7 @@ public class CustomerItemDecoration extends RecyclerView.ItemDecoration {
         mDividerHeight = dividerHeight;
         return this;
     }
+
 
     public CustomerItemDecoration setPaddingLeft(int paddingLeft) {
         mPaddingLeft = paddingLeft;

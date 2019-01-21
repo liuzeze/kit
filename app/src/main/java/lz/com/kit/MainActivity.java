@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(BaseRecycleAdapter adapter, View view, int position) {
                 Intent mIntent = new Intent(MainActivity.this, mAdapter.getData().get(position).calssName);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    mIntent.putExtra("type", RecyclerViewActivity.EXPLODE_CODE);
+                    mIntent.putExtra("type", RecyclerViewActivity.SLIDE_CODE);
                     startActivity(mIntent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                 } else {
                     startActivity(mIntent);

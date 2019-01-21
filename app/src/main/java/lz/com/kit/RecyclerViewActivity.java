@@ -1,5 +1,6 @@
 package lz.com.kit;
 
+import android.graphics.Color;
 import android.graphics.Outline;
 import android.os.Build;
 import android.os.Bundle;
@@ -54,7 +55,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
             case SLIDE_CODE:
                 transition = new Slide();
                 ((Slide) transition).setSlideEdge(Gravity.RIGHT);
-                transition.setDuration(1000);
+                transition.setDuration(300);
                 transition.setInterpolator(new DecelerateInterpolator());
                 break;
            /* case SLIDE_XML:
@@ -69,8 +70,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
+        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
 
-        recyclevie.addItemDecoration(new CustomerItemDecoration().setDividerHeight(10));
+        recyclevie.addItemDecoration(new CustomerItemDecoration().setDividerHeight(10).setDividerColor(Color.TRANSPARENT));
         ArrayList<String> strings = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             strings.add("位置+" + i);
@@ -90,7 +92,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 });
             }
         };
-        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
         adapter.bindToRecyclerView(recyclevie);
         adapter.setNewData(strings);
 
