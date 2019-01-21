@@ -2,19 +2,25 @@ package lz.com.kit;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
 import java.util.ArrayList;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
+import lz.com.tools.recycleview.decoration.Divider;
+import lz.com.tools.recycleview.decoration.DividerBuilder;
+import lz.com.tools.recycleview.decoration.DividerItemDecoration;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         recyclevie.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclevie.addItemDecoration(new DividerItemDecoration(this) {
+            @Nullable
+            @Override
+            public Divider getDivider(RecyclerView parent, int itemPosition) {
+                return new DividerBuilder()
+                        .setLeftSideLine(true, Color.TRANSPARENT, 10, 0, 0)
+                        .setTopSideLine(true, Color.TRANSPARENT, 10, 0, 0)
+                        .setRightSideLine(true, Color.TRANSPARENT, 10, 0, 0)
+                        .setBottomSideLine(true, Color.TRANSPARENT, 10, 0, 0)
+                        .create();
+            }
+        });
         mAdapter.bindToRecyclerView(recyclevie);
         mAdapter.setNewData(strings);
         mAdapter.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {

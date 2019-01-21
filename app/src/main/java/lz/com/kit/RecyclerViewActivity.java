@@ -31,7 +31,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
     public static final int SLIDE_XML = 4;
 
 
-
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
 
@@ -185,15 +184,13 @@ public class RecyclerViewActivity extends AppCompatActivity {
         recyclevie.setOnRefreshListener(new ReboundReyclerView.OnRefreshListener() {
             @Override
             public void onRefreshing(int offset) {
-
-                new Thread(new Runnable() {
+                recyclevie.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        SystemClock.sleep(2000);
                         recyclevie.closeRefresh();
 
                     }
-                });
+                }, 2000);
             }
         });
         recyclevie.setOnUpScrollListener(new ReboundReyclerView.OnUpScrollListener() {

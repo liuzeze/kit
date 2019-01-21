@@ -5,10 +5,10 @@
     android:id="@+id/tv_1"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:background="#ff0000"
+    android:background="#cccccc"
     android:elevation="3dp"
     android:gravity="center"
     android:text="dhgasjgdhjaksgh"
-    android:textColor="#ffff" />
+    android:textColor="#111111" />
 
 
