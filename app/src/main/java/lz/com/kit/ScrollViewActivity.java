@@ -31,7 +31,7 @@ public class ScrollViewActivity extends AppCompatActivity {
         switch (getIntent().getIntExtra("type", -1)) {
             case EXPLODE_CODE:
                 transition = new Explode();
-                transition.setDuration(1000);
+                transition.setDuration(300);
                 transition.setInterpolator(new DecelerateInterpolator());
                 break;
          /*   case EXPLODE_XML:
@@ -40,7 +40,7 @@ public class ScrollViewActivity extends AppCompatActivity {
             case SLIDE_CODE:
                 transition = new Slide();
                 ((Slide) transition).setSlideEdge(Gravity.RIGHT);
-                transition.setDuration(1000);
+                transition.setDuration(300);
                 transition.setInterpolator(new DecelerateInterpolator());
                 break;
            /* case SLIDE_XML:

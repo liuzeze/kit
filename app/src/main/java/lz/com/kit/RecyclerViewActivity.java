@@ -1,18 +1,14 @@
 package lz.com.kit;
 
-import android.graphics.Color;
 import android.graphics.Outline;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.transition.Explode;
 import android.transition.Slide;
 import android.transition.Transition;
-import android.transition.TransitionInflater;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewOutlineProvider;
-import android.view.Window;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,10 +16,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import lz.com.tools.recycleview.CustomerItemDecoration;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.SwipeMenuItem;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
@@ -70,9 +65,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
-        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
+        recyclevie.setLayoutManager(new LinearLayoutManager(this));
 
-        recyclevie.addItemDecoration(new CustomerItemDecoration().setDividerHeight(10).setDividerColor(Color.TRANSPARENT));
+        recyclevie.addItemDecoration(new CustomerItemDecoration(this));
         ArrayList<String> strings = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             strings.add("位置+" + i);
