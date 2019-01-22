@@ -5,4 +5,42 @@
         <attr name="ios" format="boolean" />
         <attr name="leftSwipe" format="boolean" />
     </declare-styleable>
+
+
+    <declare-styleable name="intervalSelectionView">
+        <!-- 基线颜色 -->
+        <attr name="backLineColor" format="color" />
+        <!-- 连接线颜色 -->
+        <attr name="connectLineColor" format="color" />
+
+        <!-- 圆形图片 -->
+        <attr name="circleImg" format="integer" />
+        <!-- 起点终点是否重合 -->
+        <attr name="isCoincide" format="boolean" />
+
+        <!-- 开始文字颜色 -->
+        <attr name="startValueColor" format="color" />
+        <!-- 终点文字颜色 -->
+        <attr name="endValueColor" format="color" />
+        <!-- 结果值文字颜色 -->
+        <attr name="resultValueColor" format="color" />
+        <!-- 是否显示结果值，默认显示。 -->
+        <attr name="isShowResult" format="boolean" />
+        <!-- 是否保留整形 -->
+        <attr name="isInteger" format="boolean" />
+        <!-- 保留精度，默认为2。 -->
+        <attr name="valuePrecision" format="integer" />
+        <!-- 起始值 -->
+        <attr name="startValue" format="float" />
+        <!-- 结束值 -->
+        <attr name="endValue" format="float" />
+        <!-- 左侧单位 -->
+        <attr name="leftUnit" format="string|reference" />
+        <!-- 右侧单位 -->
+        <attr name="rightUnit" format="string|reference" />
+        <attr name="titleText" format="string|reference" />
+        <attr name="titleTextSize" format="integer" />
+        <attr name="titleTextColor" format="color" />
+    </declare-styleable>
+
 </resources>

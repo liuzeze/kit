@@ -1,4 +1,4 @@
-package lz.com.kit;
+package lz.com.kit.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import lz.com.kit.R;
 import lz.com.tools.refresh.BaseRefrashHeader;
 import lz.com.tools.refresh.RefreshState;
 

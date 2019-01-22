@@ -3,13 +3,8 @@ package lz.com.kit;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.os.Bundle;
-import android.transition.Explode;
-import android.transition.Slide;
-import android.transition.Transition;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewOutlineProvider;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import lz.com.kit.view.SimpleRefreshLayout;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.swipe.SwipeMenuItem;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
@@ -27,10 +23,6 @@ import lz.com.tools.recycleview.decoration.sticky.StickyDecoration;
 import lz.com.tools.recycleview.decoration.sticky.listener.GroupListener;
 
 public class RecyclerViewActivity extends AppCompatActivity {
-    public static final int EXPLODE_CODE = 1;
-    public static final int EXPLODE_XML = 2;
-    public static final int SLIDE_CODE = 3;
-    public static final int SLIDE_XML = 4;
 
 
     @BindView(R.id.recyclevie)
@@ -39,33 +31,11 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Transition transition = null;
-        switch (getIntent().getIntExtra("type", -1)) {
-            case EXPLODE_CODE:
-                transition = new Explode();
-                transition.setDuration(1000);
-                transition.setInterpolator(new DecelerateInterpolator());
-                break;
-         /*   case EXPLODE_XML:
-                transition = TransitionInflater.from(this).inflateTransition(R.transition.simple_explode);
-                break;*/
-            case SLIDE_CODE:
-                transition = new Slide();
-                ((Slide) transition).setSlideEdge(Gravity.RIGHT);
-                transition.setDuration(300);
-                transition.setInterpolator(new DecelerateInterpolator());
-                break;
-           /* case SLIDE_XML:
-                transition = TransitionInflater.from(this).inflateTransition(R.transition.simple_slide);
-                break;*/
-        }
-        if (transition != null) {
-            getWindow().setEnterTransition(transition);
-            getWindow().setExitTransition(transition);
-        }
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
+
         ButterKnife.bind(this);
         recyclevie.setLayoutManager(new LinearLayoutManager(this));
 //        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
@@ -73,7 +43,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         recyclevie.addItemDecoration(StickyDecoration.Builder.init(new GroupListener() {
             @Override
             public String getGroupName(int position) {
-                return (position) % 4 == 0? "位置" + position : null;
+                return (position) % 4 == 0 ? "位置" + position : null;
             }
         })
                 .setHeaderCount(1)
@@ -103,9 +73,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
         mAdapter.setNewData(strings);
 
         TextView header = new TextView(this);
-        header.setText("头部空间头部空\n间头部空间头部空间头\n部空间头部空间头部空间\n头部空间头部空间头部空\n间头部空间头部空间头\n部空间头部空间头部空间\n头部空间");
+        header.setText("\n\n\n封装Adapter ,可以添加Header Footer  加载更对\n 下拉刷新,可以在列表任意位置显示刷新布局" +
+                " \n  空布局 侧滑删除 分割线  悬浮吸顶   列表滑动标题渐变   仿ios越界回弹\n\n\n");
         mAdapter.addHeaderView(header);
-
 
 
         recyclevie.setEnableRefrash(true);

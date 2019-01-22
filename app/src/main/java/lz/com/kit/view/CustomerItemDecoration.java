@@ -1,4 +1,4 @@
-package lz.com.kit;
+package lz.com.kit.view;
 
 
 import android.content.Context;

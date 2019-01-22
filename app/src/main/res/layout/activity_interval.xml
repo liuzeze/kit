@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".IntervalActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="区间选择控件" />
+
+    <lz.com.tools.IntervalSelectionView
+        android:id="@+id/isv_condition_second"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:backLineColor="#ebebeb"
+        app:connectLineColor="#ffce2b"
+        app:endValueColor="#282828"
+        app:isInteger="true"
+        app:isShowResult="true"
+        app:resultValueColor="#f5bf0a"
+        app:rightUnit="㎡"
+        app:startValueColor="#282828"
+        app:titleText="面积"
+        app:titleTextColor="#282828"
+        app:titleTextSize="18" />
+</LinearLayout>

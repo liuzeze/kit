@@ -1,22 +1,14 @@
 package lz.com.kit;
 
 import android.os.Bundle;
-import android.transition.Explode;
-import android.transition.Slide;
-import android.transition.Transition;
-import android.view.Gravity;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import lz.com.kit.view.SimpleRefreshLayout;
 import lz.com.tools.ReboundScrollView;
 
-import static lz.com.kit.RecyclerViewActivity.EXPLODE_CODE;
-import static lz.com.kit.RecyclerViewActivity.SLIDE_CODE;
-
-public class ScrollViewActivity extends AppCompatActivity {
+public class ScrollViewActivity extends BaseActivity {
 
     @BindView(R.id.tv_title)
     TextView tvTitle;
@@ -27,30 +19,6 @@ public class ScrollViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Transition transition = null;
-        switch (getIntent().getIntExtra("type", -1)) {
-            case EXPLODE_CODE:
-                transition = new Explode();
-                transition.setDuration(300);
-                transition.setInterpolator(new DecelerateInterpolator());
-                break;
-         /*   case EXPLODE_XML:
-                transition = TransitionInflater.from(this).inflateTransition(R.transition.simple_explode);
-                break;*/
-            case SLIDE_CODE:
-                transition = new Slide();
-                ((Slide) transition).setSlideEdge(Gravity.RIGHT);
-                transition.setDuration(300);
-                transition.setInterpolator(new DecelerateInterpolator());
-                break;
-           /* case SLIDE_XML:
-                transition = TransitionInflater.from(this).inflateTransition(R.transition.simple_slide);
-                break;*/
-        }
-        if (transition != null) {
-            getWindow().setEnterTransition(transition);
-            getWindow().setExitTransition(transition);
-        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroll_view);
@@ -74,7 +42,6 @@ public class ScrollViewActivity extends AppCompatActivity {
             @Override
             public void onAlphaChange(int alpha, int scrollDyCounter) {
                 tvTitle.getBackground().setAlpha(alpha);
-                System.out.println(alpha+"========滑动距离" + scrollDyCounter);
             }
 
             @Override

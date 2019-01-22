@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import lz.com.kit.bean.ActivityBean;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<ActivityBean> strings = new ArrayList<>();
         strings.add(new ActivityBean().setName("ScrollView").setCalssName(ScrollViewActivity.class));
         strings.add(new ActivityBean().setName("RecyclerView").setCalssName(RecyclerViewActivity.class));
+        strings.add(new ActivityBean().setName("IntervalActivity").setCalssName(IntervalActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(BaseRecycleAdapter adapter, View view, int position) {
                 Intent mIntent = new Intent(MainActivity.this, mAdapter.getData().get(position).calssName);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    mIntent.putExtra("type", RecyclerViewActivity.SLIDE_CODE);
+                    mIntent.putExtra("type", BaseActivity.SLIDE_CODE);
                     startActivity(mIntent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                 } else {
                     startActivity(mIntent);
