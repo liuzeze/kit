@@ -1,4 +1,4 @@
-package lz.com.tools.recycleview;
+package lz.com.tools.recycleview.swipe;
 
 /**
  * -----------作者----------日期----------变更内容-----

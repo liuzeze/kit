@@ -8,8 +8,8 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import lz.com.tools.recycleview.BaseRefrashHeader;
-import lz.com.tools.recycleview.RefreshState;
+import lz.com.tools.refresh.BaseRefrashHeader;
+import lz.com.tools.refresh.RefreshState;
 
 
 /**

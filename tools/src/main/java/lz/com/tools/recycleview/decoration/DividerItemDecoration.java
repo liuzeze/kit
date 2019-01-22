@@ -10,7 +10,7 @@ import android.view.View;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import lz.com.tools.Dp2Px;
+import lz.com.tools.util.Dp2Px;
 
 public abstract class DividerItemDecoration extends RecyclerView.ItemDecoration {
 

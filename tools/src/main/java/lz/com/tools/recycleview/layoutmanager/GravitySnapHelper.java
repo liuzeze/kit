@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package lz.com.tools.recycleview;
+package lz.com.tools.recycleview.layoutmanager;
 
 
 import android.view.View;

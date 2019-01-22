@@ -1,8 +1,7 @@
-package lz.com.tools.recycleview;
+package lz.com.tools.refresh;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;

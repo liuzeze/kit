@@ -1,9 +1,9 @@
-package lz.com.tools.recycleview;
+package lz.com.tools.refresh;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
-import lz.com.tools.recycleview.BaseRefrashHeader;
-import lz.com.tools.recycleview.RefreshState;
+import lz.com.tools.refresh.BaseRefrashHeader;
+import lz.com.tools.refresh.RefreshState;
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY;
 import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;

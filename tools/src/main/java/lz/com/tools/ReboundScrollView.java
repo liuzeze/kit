@@ -14,9 +14,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ScrollView;
 
-import lz.com.tools.recycleview.BaseRefrashHeader;
-import lz.com.tools.recycleview.ReboundReyclerView;
-import lz.com.tools.recycleview.RefreshState;
+import lz.com.tools.refresh.BaseRefrashHeader;
+import lz.com.tools.refresh.RefreshState;
 
 /**
  * -----------作者----------日期----------变更内容-----
@@ -26,7 +25,7 @@ public class ReboundScrollView extends ScrollView {
 
     private static final String TAG = "ReboundScrollView";
 
-    private static final float MOVE_DELAY = 0.3f;
+    private   float MOVE_FACTOR = 0.3f;
     private static final int ANIM_TIME = 300;
 
     public interface MyScrollListener {
@@ -203,7 +202,7 @@ public class ReboundScrollView extends ScrollView {
                         || (canPullUp && deltaY < 0) || (canPullUp && canPullDown);
 
                 if (shouldMove) {
-                    int offset = (int) (deltaY * MOVE_DELAY);
+                    int offset = (int) (deltaY * MOVE_FACTOR);
                     if (isEnableRefrash) {
                         if ((canPullDown && deltaY > 0)) {
                             //随着手指的移动而移动布局
@@ -258,6 +257,10 @@ public class ReboundScrollView extends ScrollView {
         return childView.getHeight() <= getHeight() + getScrollY();
     }
 
+    public ReboundScrollView setMOVE_FACTOR(float MOVE_FACTOR) {
+        this.MOVE_FACTOR = MOVE_FACTOR;
+        return this;
+    }
 
     public ReboundScrollView setEnableRefrash(boolean enableRefrash) {
         isEnableRefrash = enableRefrash;

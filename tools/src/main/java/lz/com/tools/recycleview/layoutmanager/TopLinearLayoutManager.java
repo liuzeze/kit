@@ -1,4 +1,4 @@
-package lz.com.tools.recycleview;
+package lz.com.tools.recycleview.layoutmanager;
 
 import android.content.Context;
 

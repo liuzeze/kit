@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import lz.com.tools.R;
-import lz.com.tools.recycleview.SwipeMenuItem;
-import lz.com.tools.recycleview.SwipeMenuLayout;
+import lz.com.tools.recycleview.swipe.SwipeMenuItem;
+import lz.com.tools.recycleview.swipe.SwipeMenuLayout;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;

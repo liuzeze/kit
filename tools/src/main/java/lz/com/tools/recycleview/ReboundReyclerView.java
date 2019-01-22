@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.recyclerview.widget.RecyclerView;
+import lz.com.tools.refresh.BaseRefrashHeader;
+import lz.com.tools.refresh.RefreshState;
 
 
 /**
@@ -21,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ReboundReyclerView extends RecyclerView {
 
     //移动百分比
-    private static final float MOVE_FACTOR = 0.5f;
+    private   float MOVE_FACTOR = 0.5f;
 
     //松开手指后, 界面回到正常位置需要的动画时间
     private static final int ANIM_TIME = 300;
@@ -281,6 +283,10 @@ public class ReboundReyclerView extends RecyclerView {
 
     }
 
+    public ReboundReyclerView setMOVE_FACTOR(float MOVE_FACTOR) {
+        this.MOVE_FACTOR = MOVE_FACTOR;
+        return this;
+    }
 
     private int scrollDyCounter = 0;
 

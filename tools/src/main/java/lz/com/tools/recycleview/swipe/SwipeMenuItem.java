@@ -1,4 +1,4 @@
-package lz.com.tools.recycleview;
+package lz.com.tools.recycleview.swipe;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
