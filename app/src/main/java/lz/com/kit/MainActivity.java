@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     ReboundReyclerView recyclevie;
     private BaseRecycleAdapter<ActivityBean, BaseViewHolder> mAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         strings.add(new ActivityBean().setName("ScrollView").setCalssName(ScrollViewActivity.class));
         strings.add(new ActivityBean().setName("RecyclerView").setCalssName(RecyclerViewActivity.class));
         strings.add(new ActivityBean().setName("IntervalActivity").setCalssName(IntervalActivity.class));
+        strings.add(new ActivityBean().setName("SingleChecked").setCalssName(SingleSelectActivity.class));
+        strings.add(new ActivityBean().setName("MultiCheckedActivity").setCalssName(MultiCheckedActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 

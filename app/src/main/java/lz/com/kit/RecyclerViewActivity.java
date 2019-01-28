@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import lz.com.kit.view.SimpleRefreshLayout;
 import lz.com.tools.recycleview.ReboundReyclerView;
+import lz.com.tools.recycleview.layoutmanager.LzLinearLayoutManager;
 import lz.com.tools.recycleview.swipe.SwipeMenuItem;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
@@ -37,7 +38,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view);
 
         ButterKnife.bind(this);
-        recyclevie.setLayoutManager(new LinearLayoutManager(this));
+        recyclevie.setLayoutManager(new LzLinearLayoutManager(this));
 //        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
 
         recyclevie.addItemDecoration(StickyDecoration.Builder.init(new GroupListener() {

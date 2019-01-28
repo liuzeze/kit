@@ -44,7 +44,11 @@ public class PagerLayoutManager extends LinearLayoutManager {
 
     @Override
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
-        super.onLayoutChildren(recycler, state);
+        try {
+            super.onLayoutChildren(recycler, state);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 //
     }
 

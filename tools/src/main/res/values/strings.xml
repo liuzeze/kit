@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">tools</string>
+
+    <item type="id" name="tag_single_checked"></item>
+
+    <item type="id" name="tag_multi_checked"></item>
 </resources>

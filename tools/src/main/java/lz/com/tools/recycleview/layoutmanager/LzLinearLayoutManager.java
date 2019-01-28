@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
  * -----------作者----------日期----------变更内容-----
  * -          刘泽      2018-12-20       recycleview定位position
  */
-public class TopLinearLayoutManager extends LinearLayoutManager {
+public class LzLinearLayoutManager extends LinearLayoutManager {
     private boolean isScrollEnabled = true;
 
-    public TopLinearLayoutManager(Context context) {
+    public LzLinearLayoutManager(Context context) {
         super(context);
     }
 
@@ -57,4 +57,12 @@ public class TopLinearLayoutManager extends LinearLayoutManager {
         }
     }
 
+    @Override
+    public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+        try {
+            super.onLayoutChildren(recycler, state);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

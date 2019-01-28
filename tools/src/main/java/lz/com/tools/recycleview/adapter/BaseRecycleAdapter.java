@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import lz.com.tools.R;
+import lz.com.tools.recycleview.checked.CheckHelper;
 import lz.com.tools.recycleview.swipe.SwipeMenuItem;
 import lz.com.tools.recycleview.swipe.SwipeMenuLayout;
 
@@ -66,6 +67,8 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
     private boolean mIsUseEmpty;
     private boolean mLoadMoreEnable;
     private boolean mNextLoadEnable;
+    private CheckHelper mCheckHelper;
+
 
     public BaseRecycleAdapter<T, K> setSwipeMenuItem(SwipeMenuItem swipeMenuItem) {
         mSwipeMenuItem = swipeMenuItem;
@@ -234,6 +237,12 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
                 if (mOnItemClickListener != null) {
                     mOnItemClickListener.onItemClick(BaseRecycleAdapter.this, v, baseViewHolder.getLayoutPosition() - getHeaderLayoutCount());
                 }
+                if (mEnableItemChecked) {
+                    if (mCheckHelper != null) {
+                        int position = baseViewHolder.getLayoutPosition() - getHeaderLayoutCount();
+                        mCheckHelper.onSelect(baseViewHolder, getItem(position),position);
+                    }
+                }
             }
         });
         if (getOnItemLongClickListener() != null) {
@@ -260,6 +269,11 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
                 mLoadMoreView.convert(holder);
                 break;
             default:
+                if (mEnableItemChecked) {
+                    if (mCheckHelper != null) {
+                        mCheckHelper.isChecked(holder, getItem(position - getHeaderLayoutCount()),position - getHeaderLayoutCount());
+                    }
+                }
                 onBindView(holder, getItem(position - getHeaderLayoutCount()));
                 break;
         }
@@ -920,5 +934,13 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
         return mData;
     }
 
+    /*==========================单选多选==================================*/
+
+    private boolean mEnableItemChecked = false;
+
+    public void setCheckHelper(CheckHelper helper) {
+        mEnableItemChecked = true;
+        mCheckHelper = helper;
+    }
 
 }
