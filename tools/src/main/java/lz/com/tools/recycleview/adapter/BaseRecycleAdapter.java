@@ -240,7 +240,7 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
                 if (mEnableItemChecked) {
                     if (mCheckHelper != null) {
                         int position = baseViewHolder.getLayoutPosition() - getHeaderLayoutCount();
-                        mCheckHelper.onSelect(baseViewHolder, getItem(position),position);
+                        mCheckHelper.onSelect(baseViewHolder, getItem(position), position);
                     }
                 }
             }
@@ -271,7 +271,7 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
             default:
                 if (mEnableItemChecked) {
                     if (mCheckHelper != null) {
-                        mCheckHelper.isChecked(holder, getItem(position - getHeaderLayoutCount()),position - getHeaderLayoutCount());
+                        mCheckHelper.isChecked(holder, getItem(position - getHeaderLayoutCount()), position - getHeaderLayoutCount());
                     }
                 }
                 onBindView(holder, getItem(position - getHeaderLayoutCount()));
@@ -941,6 +941,14 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
     public void setCheckHelper(CheckHelper helper) {
         mEnableItemChecked = true;
         mCheckHelper = helper;
+    }
+
+    public void openChecked() {
+        mEnableItemChecked = true;
+    }
+
+    public void closeChecked() {
+        mEnableItemChecked = false;
     }
 
 }
