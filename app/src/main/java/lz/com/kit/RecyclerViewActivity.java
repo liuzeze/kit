@@ -48,7 +48,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
             }
         })
                 .setHeaderCount(1)
-                .setDivideHeight(1)
+                .setDivideHeight(10)
                 .setDivideColor(Color.RED)
                 .build());
         ArrayList<String> strings = new ArrayList<>();

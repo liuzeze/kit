@@ -22,6 +22,7 @@ public class ScrollViewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroll_view);
         ButterKnife.bind(this);
+        tvTitle.getBackground().setAlpha(1);
 
         reboundScroll.setEnableRefrash(true);
         reboundScroll.setRefreshView(refresh);
