@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public abstract class CheckHelper<T extends Object> {
     protected ArrayList<T> checkedList = new ArrayList<>();
+    protected ArrayList<T> unCancelLIst = new ArrayList<>();
 
     protected OnCheckedListener mOnCheckedListener;
 
-    public abstract void onSelect(RecyclerView.ViewHolder holder, T obj,int position);
+    public abstract void onSelect(RecyclerView.Adapter adapter, RecyclerView.ViewHolder holder, T obj, int position);
 
     public abstract void isChecked(RecyclerView.ViewHolder holder, T obj,int position);
 
@@ -24,5 +25,9 @@ public abstract class CheckHelper<T extends Object> {
         void onChecked(V holder, D obj);
 
         void onUnChecked(V holder, D obj);
+    }
+
+    public ArrayList<T> getCheckedList() {
+        return checkedList;
     }
 }

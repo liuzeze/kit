@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MultiCheckedActivity"></activity>
+        <activity android:name=".MultiUnCancelCheckedActivity"></activity>
+        <activity android:name=".SingleUnCancelCheckedActivity"></activity>
         <activity android:name=".SingleSelectActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

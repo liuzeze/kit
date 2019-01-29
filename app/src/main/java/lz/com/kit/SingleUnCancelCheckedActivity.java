@@ -14,10 +14,10 @@ import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.checked.CheckHelper;
-import lz.com.tools.recycleview.checked.MultiCheckedHelper;
-import lz.com.tools.recycleview.checked.SingleCheckedHelper;
+import lz.com.tools.recycleview.checked.MultiUnCancelCheckedHelper;
+import lz.com.tools.recycleview.checked.SingleUnCancelCheckedHelper;
 
-public class MultiCheckedActivity extends AppCompatActivity {
+public class SingleUnCancelCheckedActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
@@ -55,8 +55,8 @@ public class MultiCheckedActivity extends AppCompatActivity {
     }
 
 
-    private MultiCheckedHelper createHelper() {
-        MultiCheckedHelper<SelectBean> mCheckHelper = new MultiCheckedHelper<>();
+    private SingleUnCancelCheckedHelper createHelper() {
+        SingleUnCancelCheckedHelper<SelectBean> mCheckHelper = new SingleUnCancelCheckedHelper<>();
         mCheckHelper.setOnCheckedListener(
                 new CheckHelper.OnCheckedListener<SelectBean, BaseViewHolder>() {
 
@@ -64,19 +64,23 @@ public class MultiCheckedActivity extends AppCompatActivity {
                     public void onChecked(BaseViewHolder holder, SelectBean obj) {
                         holder.itemView.setBackgroundColor(0xFF73E0E4); //蓝色
                         holder.setChecked(R.id.checkbox, true);
+                        System.out.println("liuze====================onChecked");
+
                     }
 
                     @Override
                     public void onUnChecked(BaseViewHolder holder, SelectBean obj) {
                         holder.itemView.setBackgroundColor(0xFFFFFFFF);  //白色
                         holder.setChecked(R.id.checkbox, false);
-
+                        System.out.println("liuze============onUnChecked");
                     }
 
                 });
 
         //添加默认选中数据
-        mCheckHelper.setDefaultItem(mStrings.get(0));
+        SelectBean selectBean = new SelectBean();
+        selectBean.name = "不限+";
+        mCheckHelper.setUnCancelItem(selectBean);
         return mCheckHelper;
     }
 }

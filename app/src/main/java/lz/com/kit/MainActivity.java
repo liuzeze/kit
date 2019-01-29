@@ -43,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
         strings.add(new ActivityBean().setName("IntervalActivity").setCalssName(IntervalActivity.class));
         strings.add(new ActivityBean().setName("SingleChecked").setCalssName(SingleSelectActivity.class));
         strings.add(new ActivityBean().setName("MultiCheckedActivity").setCalssName(MultiCheckedActivity.class));
+        strings.add(new ActivityBean().setName("MultiUnCancelCheckedActivity").setCalssName(MultiUnCancelCheckedActivity.class));
+        strings.add(new ActivityBean().setName("SingleUnCancelCheckedActivity").setCalssName(SingleUnCancelCheckedActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 
             @Override
             protected void onBindView(BaseViewHolder holder, ActivityBean item) {
                 holder.setText(R.id.tv_1, item.name);
-//                holder.addOnClickListener(R.id.tv_1);
             }
         };
         recyclevie.setLayoutManager(new GridLayoutManager(this, 3));
