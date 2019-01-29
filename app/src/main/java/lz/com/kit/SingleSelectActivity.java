@@ -1,8 +1,10 @@
 package lz.com.kit;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import butterknife.BindView;
@@ -18,13 +20,15 @@ public class SingleSelectActivity extends BaseActivity {
 
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
     private BaseRecycleAdapter<SelectBean, BaseViewHolder> mAdapter;
     private ArrayList<SelectBean> mStrings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_select);
+        setContentView(R.layout.activity_checked);
         ButterKnife.bind(this);
 
         recyclevie.setLayoutManager(new LinearLayoutManager(this));
@@ -65,14 +69,24 @@ public class SingleSelectActivity extends BaseActivity {
                     public void onUnChecked(BaseViewHolder holder, SelectBean obj) {
                         holder.itemView.setBackgroundColor(0xFFFFFFFF);  //白色
                         holder.setChecked(R.id.checkbox, false);
+
+                    }
+
+                    @Override
+                    public void onSelectitem(List<SelectBean> itemLists) {
+                        tvTitle.setText("");
+                        ArrayList<SelectBean> checkedList = mCheckHelper.getCheckedList();
+                        for (SelectBean selectBean : checkedList) {
+                            tvTitle.append(selectBean.name);
+                        }
                     }
 
                 });
         //设置不能取消
-//        mCheckHelper.setCanCancel(false);
+        mCheckHelper.setCanCancel(false);
 
         //添加默认选中数据
-//        mCheckHelper.setDefaultItem(mStrings.get(1));
+        mCheckHelper.setDefaultItem(mStrings.get(0));
         return mCheckHelper;
     }
 }

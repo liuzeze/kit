@@ -1,5 +1,8 @@
 package lz.com.tools.recycleview.checked;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -7,38 +10,40 @@ import androidx.recyclerview.widget.RecyclerView;
  * -          刘泽      2019-01-28       创建class
  */
 public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
-    private RecyclerView.ViewHolder preHolder;
     private boolean isCanCancel = true;
 
     @Override
     public void onSelect(RecyclerView.Adapter adapter, RecyclerView.ViewHolder holder, T obj, int position) {
         if (mOnCheckedListener != null) {
-            if (checkedList.contains(obj)) {
+            if (checkedList.containsKey(obj)) {
                 //已选的
                 if (isCanCancel) {
                     mOnCheckedListener.onUnChecked(holder, obj);
                     checkedList.clear();
-                    preHolder = null;
                 }
             } else {
                 //没有选的
-                checkedList.clear();
-                checkedList.add(obj);
-
-                if (preHolder != null) {
-                    mOnCheckedListener.onUnChecked(preHolder, obj);
+                for (Map.Entry<T, RecyclerView.ViewHolder> entry : checkedList.entrySet()) {
+                    if (entry.getValue() != null) {
+                        mOnCheckedListener.onUnChecked(entry.getValue(), obj);
+                    }
+                    break;
                 }
-                preHolder = holder;
+                checkedList.clear();
+                checkedList.put(obj, holder);
+
                 mOnCheckedListener.onChecked(holder, obj);
             }
+
+            mOnCheckedListener.onSelectitem(getCheckedList());
         }
     }
 
     @Override
     public void isChecked(RecyclerView.ViewHolder holder, T obj, int position) {
         if (mOnCheckedListener != null) {
-            if (checkedList.contains(obj)) {
-                preHolder = holder;
+            if (checkedList.containsKey(obj)) {
+                checkedList.put(obj, holder);
                 mOnCheckedListener.onChecked(holder, obj);
             } else {
                 mOnCheckedListener.onUnChecked(holder, obj);
@@ -53,10 +58,9 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
 
     public void setDefaultItem(T obj) {
         checkedList.clear();
-        checkedList.add(obj);
-    }
-
-    public T getObj() {
-        return checkedList.size() > 0 ? checkedList.get(0) : null;
+        checkedList.put(obj, null);
+        if (mOnCheckedListener != null) {
+            mOnCheckedListener.onSelectitem(getCheckedList());
+        }
     }
 }

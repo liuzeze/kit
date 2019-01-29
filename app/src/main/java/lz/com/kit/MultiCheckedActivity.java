@@ -1,6 +1,7 @@
 package lz.com.kit;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,19 +16,20 @@ import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.checked.CheckHelper;
 import lz.com.tools.recycleview.checked.MultiCheckedHelper;
-import lz.com.tools.recycleview.checked.SingleCheckedHelper;
 
 public class MultiCheckedActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
     private List<SelectBean> mStrings;
     private BaseRecycleAdapter<SelectBean, BaseViewHolder> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_multi_checked);
+        setContentView(R.layout.activity_checked);
         ButterKnife.bind(this);
         recyclevie.setLayoutManager(new LinearLayoutManager(this));
         mStrings = new ArrayList<>();
@@ -36,9 +38,6 @@ public class MultiCheckedActivity extends AppCompatActivity {
             selectBean.name = "位置+" + i;
             mStrings.add(selectBean);
         }
-        SelectBean selectBean = new SelectBean();
-        selectBean.name = "不限+";
-        mStrings.add(0, selectBean);
         mAdapter = new BaseRecycleAdapter<SelectBean, BaseViewHolder>(R.layout.item_text_checked) {
 
             @Override
@@ -71,6 +70,14 @@ public class MultiCheckedActivity extends AppCompatActivity {
                         holder.itemView.setBackgroundColor(0xFFFFFFFF);  //白色
                         holder.setChecked(R.id.checkbox, false);
 
+                    }
+                    @Override
+                    public void onSelectitem(List<SelectBean> itemLists) {
+                        tvTitle.setText("");
+                        ArrayList<SelectBean> checkedList = mCheckHelper.getCheckedList();
+                        for (SelectBean selectBean : checkedList) {
+                            tvTitle.append(selectBean.name);
+                        }
                     }
 
                 });

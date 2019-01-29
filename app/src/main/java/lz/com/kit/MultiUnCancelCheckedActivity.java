@@ -1,6 +1,7 @@
 package lz.com.kit;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,20 +15,21 @@ import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.checked.CheckHelper;
-import lz.com.tools.recycleview.checked.MultiCheckedHelper;
 import lz.com.tools.recycleview.checked.MultiUnCancelCheckedHelper;
 
 public class MultiUnCancelCheckedActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
     private List<SelectBean> mStrings;
     private BaseRecycleAdapter<SelectBean, BaseViewHolder> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_multi_checked);
+        setContentView(R.layout.activity_checked);
         ButterKnife.bind(this);
         recyclevie.setLayoutManager(new LinearLayoutManager(this));
         mStrings = new ArrayList<>();
@@ -64,7 +66,6 @@ public class MultiUnCancelCheckedActivity extends AppCompatActivity {
                     public void onChecked(BaseViewHolder holder, SelectBean obj) {
                         holder.itemView.setBackgroundColor(0xFF73E0E4); //蓝色
                         holder.setChecked(R.id.checkbox, true);
-                        System.out.println("liuze====================onChecked");
 
                     }
 
@@ -72,7 +73,16 @@ public class MultiUnCancelCheckedActivity extends AppCompatActivity {
                     public void onUnChecked(BaseViewHolder holder, SelectBean obj) {
                         holder.itemView.setBackgroundColor(0xFFFFFFFF);  //白色
                         holder.setChecked(R.id.checkbox, false);
-                        System.out.println("liuze============onUnChecked");
+
+                    }
+
+                    @Override
+                    public void onSelectitem(List<SelectBean> itemLists) {
+                        tvTitle.setText("");
+                        ArrayList<SelectBean> checkedList = mCheckHelper.getCheckedList();
+                        for (SelectBean selectBean : checkedList) {
+                            tvTitle.append(selectBean.name);
+                        }
                     }
 
                 });

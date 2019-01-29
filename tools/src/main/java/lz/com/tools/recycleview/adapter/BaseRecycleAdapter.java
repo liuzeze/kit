@@ -240,7 +240,7 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
                 if (mEnableItemChecked) {
                     if (mCheckHelper != null) {
                         int position = baseViewHolder.getLayoutPosition() - getHeaderLayoutCount();
-                        mCheckHelper.onSelect(BaseRecycleAdapter.this,baseViewHolder, getItem(position), position);
+                        mCheckHelper.onSelect(BaseRecycleAdapter.this, baseViewHolder, getItem(position), position);
                     }
                 }
             }
@@ -951,4 +951,7 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
         mEnableItemChecked = false;
     }
 
+    public boolean isEnableItemChecked() {
+        return mEnableItemChecked;
+    }
 }
