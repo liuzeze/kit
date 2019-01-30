@@ -23,7 +23,7 @@ import lz.com.tools.refresh.RefreshState;
 public class ReboundReyclerView extends RecyclerView {
 
     //移动百分比
-    private   float MOVE_FACTOR = 0.5f;
+    private float MOVE_FACTOR = 0.5f;
 
     //松开手指后, 界面回到正常位置需要的动画时间
     private static final int ANIM_TIME = 300;
@@ -66,134 +66,136 @@ public class ReboundReyclerView extends RecyclerView {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+        if (mRefreshHeader != null) {
 
-        int action = ev.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                //判断是否可以下拉 上拉
-                mCanPullDown = !canScrollVertically(-1);
-                mCanPullUp = !canScrollVertically(1);
-                //记录按下时的Y值
-                startY = ev.getY();
-                break;
-            case MotionEvent.ACTION_UP:
-                //如果没有移动布局， 则跳过执行
-                if (isMoved) {
-
-                    if (isEnableRefrash) {
-                        final int height = mLayoutParams.height;
-                        if (height < mRefreshViewHeight) {
-                            closeRefresh();
-                        } else {
-                            if (mRefreshState != RefreshState.RefreshReleased) {
-                                mRefreshHeader.onStateChanged(mRefreshHeader, mRefreshState, RefreshState.RefreshReleased);
-                                mRefreshState = RefreshState.RefreshReleased;
-                            }
-                        }
-                        ValueAnimator valueAnimator = ValueAnimator.ofInt(height, height > mRefreshViewHeight ? mRefreshViewHeight : 0);
-                        valueAnimator.setDuration(ANIM_TIME);
-                        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                            @Override
-                            public void onAnimationUpdate(ValueAnimator animation) {
-                                int animatedValue = (int) animation.getAnimatedValue();
-                                mLayoutParams.height = animatedValue;
-                                mRefreshHeader.setLayoutParams(mLayoutParams);
-                                FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRefreshHeader.getChildAt(0).getLayoutParams();
-                                layoutParams.setMargins(0, animatedValue - mRefreshViewHeight, 0, 0);
-                                mRefreshHeader.getChildAt(0).setLayoutParams(layoutParams);
-
-                            }
-                        });
-                        valueAnimator.addListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                super.onAnimationEnd(animation);
-                                if (mOnRefreshListener != null && height > mRefreshViewHeight) {
-                                    mOnRefreshListener.onRefreshing(mRefreshViewHeight);
-                                }
-                            }
-                        });
-                        valueAnimator.start();
-                    } else {
-                        final float translationY = getTranslationY();
-                        // 开启动画
-                        animate().translationY(0)
-                                .setListener(new AnimatorListenerAdapter() {
-                                    @Override
-                                    public void onAnimationEnd(Animator animation) {
-                                        super.onAnimationEnd(animation);
-                                        if ((translationY < 0)) {
-                                            if (mOnUpScrollListener != null) {
-                                                mOnUpScrollListener.onUpScroll((int) translationY);
-                                            }
-                                        }
-                                    }
-                                }).setDuration(ANIM_TIME).start();
-
-
-                    }
-
-
-                    //将标志位设回false
-                    mCanPullDown = false;
-                    mCanPullUp = false;
-                    isMoved = false;
-                }
-                break;
-            case MotionEvent.ACTION_MOVE:
-
-                //在移动的过程中， 也没有滚动到可以下拉的程度
-                if (!mCanPullDown && !mCanPullUp) {
-                    startY = ev.getY();
+            int action = ev.getAction();
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    //判断是否可以下拉 上拉
                     mCanPullDown = !canScrollVertically(-1);
                     mCanPullUp = !canScrollVertically(1);
+                    //记录按下时的Y值
+                    startY = ev.getY();
                     break;
-                }
-                //计算手指移动的距离
-                float nowY = ev.getY();
-                int deltaY = (int) (nowY - startY);
+                case MotionEvent.ACTION_UP:
+                    //如果没有移动布局， 则跳过执行
+                    if (isMoved) {
 
-                //是否应该移动布局
-                boolean shouldMove =
-                        //可以下拉， 并且手指向下移动
-                        (mCanPullDown && deltaY > 0)
-                                //可以上拉， 并且手指向上移动
-                                || (mCanPullUp && deltaY < 0)
-                                //既可以上拉也可以下拉（这种情况出现在ScrollView包裹的控件比ScrollView还小）
-                                || (mCanPullUp && mCanPullDown);
-                if (shouldMove) {
-                    //计算偏移量
-                    int offset = (int) (deltaY * MOVE_FACTOR);
-                    //随着手指的移动而移动布局
-                    if (isEnableRefrash) {
-                        //随着手指的移动而移动布局
-                        mLayoutParams.height = offset;
-                        mRefreshHeader.setLayoutParams(mLayoutParams);
-                        if (mRefreshState != RefreshState.PullDownToRefresh) {
-                            mRefreshHeader.onStateChanged(mRefreshHeader, mRefreshState, RefreshState.PullDownToRefresh);
-                            mRefreshState = RefreshState.PullDownToRefresh;
+                        if (isEnableRefrash) {
+                            final int height = mLayoutParams.height;
+                            if (height < mRefreshViewHeight) {
+                                closeRefresh();
+                            } else {
+                                if (mRefreshState != RefreshState.RefreshReleased) {
+                                    mRefreshHeader.onStateChanged(mRefreshHeader, mRefreshState, RefreshState.RefreshReleased);
+                                    mRefreshState = RefreshState.RefreshReleased;
+                                }
+                            }
+                            ValueAnimator valueAnimator = ValueAnimator.ofInt(height, height > mRefreshViewHeight ? mRefreshViewHeight : 0);
+                            valueAnimator.setDuration(ANIM_TIME);
+                            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                                @Override
+                                public void onAnimationUpdate(ValueAnimator animation) {
+                                    int animatedValue = (int) animation.getAnimatedValue();
+                                    mLayoutParams.height = animatedValue;
+                                    mRefreshHeader.setLayoutParams(mLayoutParams);
+                                    FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRefreshHeader.getChildAt(0).getLayoutParams();
+                                    layoutParams.setMargins(0, animatedValue - mRefreshViewHeight, 0, 0);
+                                    mRefreshHeader.getChildAt(0).setLayoutParams(layoutParams);
+
+                                }
+                            });
+                            valueAnimator.addListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    super.onAnimationEnd(animation);
+                                    if (mOnRefreshListener != null && height > mRefreshViewHeight) {
+                                        mOnRefreshListener.onRefreshing(mRefreshViewHeight);
+                                    }
+                                }
+                            });
+                            valueAnimator.start();
+                        } else {
+                            final float translationY = getTranslationY();
+                            // 开启动画
+                            animate().translationY(0)
+                                    .setListener(new AnimatorListenerAdapter() {
+                                        @Override
+                                        public void onAnimationEnd(Animator animation) {
+                                            super.onAnimationEnd(animation);
+                                            if ((translationY < 0)) {
+                                                if (mOnUpScrollListener != null) {
+                                                    mOnUpScrollListener.onUpScroll((int) translationY);
+                                                }
+                                            }
+                                        }
+                                    }).setDuration(ANIM_TIME).start();
+
+
                         }
-                        mRefreshHeader.onMoving(true, (float) offset / (float) mRefreshViewHeight, offset, mRefreshViewHeight, offset);
-                        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRefreshHeader.getChildAt(0).getLayoutParams();
-                        layoutParams.setMargins(0, offset - mRefreshViewHeight, 0, 0);
-                        mRefreshHeader.getChildAt(0).setLayoutParams(layoutParams);
 
-                    } else {
-                        setTranslationY(offset);
-                        if ((mCanPullUp && deltaY < 0)) {
-                            if (mOnUpScrollListener != null) {
-                                mOnUpScrollListener.onUpMoveScroll(offset);
+
+                        //将标志位设回false
+                        mCanPullDown = false;
+                        mCanPullUp = false;
+                        isMoved = false;
+                    }
+                    break;
+                case MotionEvent.ACTION_MOVE:
+
+                    //在移动的过程中， 也没有滚动到可以下拉的程度
+                    if (!mCanPullDown && !mCanPullUp) {
+                        startY = ev.getY();
+                        mCanPullDown = !canScrollVertically(-1);
+                        mCanPullUp = !canScrollVertically(1);
+                        break;
+                    }
+                    //计算手指移动的距离
+                    float nowY = ev.getY();
+                    int deltaY = (int) (nowY - startY);
+
+                    //是否应该移动布局
+                    boolean shouldMove =
+                            //可以下拉， 并且手指向下移动
+                            (mCanPullDown && deltaY > 0)
+                                    //可以上拉， 并且手指向上移动
+                                    || (mCanPullUp && deltaY < 0)
+                                    //既可以上拉也可以下拉（这种情况出现在ScrollView包裹的控件比ScrollView还小）
+                                    || (mCanPullUp && mCanPullDown);
+                    if (shouldMove) {
+                        //计算偏移量
+                        int offset = (int) (deltaY * MOVE_FACTOR);
+                        //随着手指的移动而移动布局
+                        if (isEnableRefrash) {
+                            //随着手指的移动而移动布局
+                            mLayoutParams.height = offset;
+                            mRefreshHeader.setLayoutParams(mLayoutParams);
+                            if (mRefreshState != RefreshState.PullDownToRefresh) {
+                                mRefreshHeader.onStateChanged(mRefreshHeader, mRefreshState, RefreshState.PullDownToRefresh);
+                                mRefreshState = RefreshState.PullDownToRefresh;
+                            }
+                            mRefreshHeader.onMoving(true, (float) offset / (float) mRefreshViewHeight, offset, mRefreshViewHeight, offset);
+                            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRefreshHeader.getChildAt(0).getLayoutParams();
+                            layoutParams.setMargins(0, offset - mRefreshViewHeight, 0, 0);
+                            mRefreshHeader.getChildAt(0).setLayoutParams(layoutParams);
+
+                        } else {
+                            setTranslationY(offset);
+                            if ((mCanPullUp && deltaY < 0)) {
+                                if (mOnUpScrollListener != null) {
+                                    mOnUpScrollListener.onUpMoveScroll(offset);
+                                }
                             }
                         }
+
+                        //记录移动了布局
+                        isMoved = true;
+
                     }
-
-                    //记录移动了布局
-                    isMoved = true;
-
-                }
-                break;
-            default:
-                break;
+                    break;
+                default:
+                    break;
+            }
         }
         return isMoved || super.onTouchEvent(ev);
     }

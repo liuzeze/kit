@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +24,7 @@ import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.decoration.sticky.StickyDecoration;
 import lz.com.tools.recycleview.decoration.sticky.listener.GroupListener;
 
-public class RecyclerViewActivity extends AppCompatActivity {
+public class RecyclerViewActivity extends BaseActivity {
 
 
     @BindView(R.id.recyclevie)
@@ -38,8 +39,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view);
 
         ButterKnife.bind(this);
-        recyclevie.setLayoutManager(new LzLinearLayoutManager(this));
-//        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
+//        recyclevie.setLayoutManager(new LzLinearLayoutManager(this));
+        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
 
         recyclevie.addItemDecoration(StickyDecoration.Builder.init(new GroupListener() {
             @Override
@@ -146,7 +147,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
         mAdapter.setOnLoadMoreListener(new BaseRecycleAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                ArrayList<String> strings = new ArrayList<>();
+                mAdapter.loadMoreEnd();
+               /* ArrayList<String> strings = new ArrayList<>();
                 for (int i = 0; i < 10; i++) {
                     strings.add("加载更多+" + (mAdapter.getData().size() + i));
                 }
@@ -161,7 +163,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
                 } else {
                     mAdapter.loadMoreComplete();
-                }
+                }*/
             }
         }, recyclevie);
 //        adapter.disableLoadMoreIfNotFullPage(recyclevie);

@@ -98,6 +98,8 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
                 if (isFirstLineInGroup(position, spanCount)) {
                     //为悬浮view预留空间
                     outRect.top = mGroupHeight;
+                    System.out.println("位置=GridLayoutManager==="+position);
+
                 } else {
                     //为分割线预留空间
                     outRect.top = mDivideHeight;
@@ -109,6 +111,8 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
             if (!isHeader(position)) {
                 if (isFirstInGroup(position)) {
                     //为悬浮view预留空间
+                    System.out.println("位置=------==="+position);
+
                     outRect.top = mGroupHeight;
                 } else {
                     //为分割线预留空间
@@ -179,16 +183,17 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
         } else if (realPosition == 0) {
             return true;
         }
-        if (position <= 0) {
+        return true;
+       /* if (position <= 0) {
             return true;
         } else {
             int posFirstInGroup = getFirstInGroupWithCash(position);
-            if (position - posFirstInGroup < spanCount) {
+            if (realPosition - posFirstInGroup < spanCount) {
                 return true;
             } else {
                 return false;
             }
-        }
+        }*/
     }
 
     /**
