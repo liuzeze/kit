@@ -1,6 +1,6 @@
 package lz.com.kit.bean;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * -----------作者----------日期----------变更内容-----
@@ -8,14 +8,14 @@ import android.app.Activity;
  */
 public class ActivityBean {
     public String name = "";
-    public Class<? extends Activity> calssName;
+    public Class<? extends AppCompatActivity> calssName;
 
     public ActivityBean setName(String name) {
         this.name = name;
         return this;
     }
 
-    public ActivityBean setCalssName(Class<? extends Activity> calssName) {
+    public ActivityBean setCalssName(Class<? extends AppCompatActivity> calssName) {
         this.calssName = calssName;
         return this;
     }

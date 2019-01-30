@@ -6,6 +6,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +32,9 @@ public class SingleSelectActivity extends BaseActivity {
         setContentView(R.layout.activity_checked);
         ButterKnife.bind(this);
 
-        recyclevie.setLayoutManager(new LinearLayoutManager(this));
+
+//        recyclevie.setLayoutManager(new LinearLayoutManager(this));
+        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
         mStrings = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             SelectBean selectBean = new SelectBean();

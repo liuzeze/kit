@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +32,8 @@ public class MultiCheckedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checked);
         ButterKnife.bind(this);
-        recyclevie.setLayoutManager(new LinearLayoutManager(this));
+//        recyclevie.setLayoutManager(new LinearLayoutManager(this));
+        recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
         mStrings = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             SelectBean selectBean = new SelectBean();
@@ -71,6 +73,7 @@ public class MultiCheckedActivity extends AppCompatActivity {
                         holder.setChecked(R.id.checkbox, false);
 
                     }
+
                     @Override
                     public void onSelectitem(List<SelectBean> itemLists) {
                         tvTitle.setText("");
