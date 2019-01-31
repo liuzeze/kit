@@ -13,6 +13,7 @@
         <activity android:name=".MultiCheckedActivity"></activity>
         <activity android:name=".MultiUnCancelCheckedActivity"></activity>
         <activity android:name=".SingleUnCancelCheckedActivity"></activity>
+        <activity android:name=".PageRecyclerViewActivity"></activity>
         <activity android:name=".SingleSelectActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

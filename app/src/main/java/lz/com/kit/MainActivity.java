@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         strings.add(new ActivityBean().setName("MultiCheckedActivity").setCalssName(MultiCheckedActivity.class));
         strings.add(new ActivityBean().setName("MultiUnCancelCheckedActivity").setCalssName(MultiUnCancelCheckedActivity.class));
         strings.add(new ActivityBean().setName("SingleUnCancelCheckedActivity").setCalssName(SingleUnCancelCheckedActivity.class));
+        strings.add(new ActivityBean().setName("PageRecyclerViewActivity").setCalssName(PageRecyclerViewActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 

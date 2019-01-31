@@ -147,8 +147,7 @@ public class RecyclerViewActivity extends BaseActivity {
         mAdapter.setOnLoadMoreListener(new BaseRecycleAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                mAdapter.loadMoreEnd();
-               /* ArrayList<String> strings = new ArrayList<>();
+                ArrayList<String> strings = new ArrayList<>();
                 for (int i = 0; i < 10; i++) {
                     strings.add("加载更多+" + (mAdapter.getData().size() + i));
                 }
@@ -163,7 +162,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
                 } else {
                     mAdapter.loadMoreComplete();
-                }*/
+                }
             }
         }, recyclevie);
 //        adapter.disableLoadMoreIfNotFullPage(recyclevie);
