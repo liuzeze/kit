@@ -1,6 +1,13 @@
 # kit
 工作中用到的 一些控件效果 总结
 
+### 1.RecyclerView  适配器的 代码简化,添加header  footer  条目点击监听(参照码个蛋封装方式)
+### 2.RecyclerView 粘性头部
+### 3.Recyclerview 滑动距离监听
+### 4.列表分割线   (linear  gird)
+### 5.列表的单选多选
+### 6.自定义seekbar控件
+
 
 <table align="center">
     <tr align="center">
