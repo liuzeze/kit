@@ -358,6 +358,8 @@ public class SwipeMenuLayout extends ViewGroup {
 /*                    if (!mScroller.isFinished()) {
                         mScroller.abortAnimation();
                     }*/
+                    if (gap < 10)
+                        return super.dispatchTouchEvent(ev);
                     scrollBy((int) (gap), 0);//滑动使用scrollBy
                     //越界修正
                     if (isLeftSwipe) {//左滑
