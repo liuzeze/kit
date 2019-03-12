@@ -9,6 +9,7 @@ import android.view.animation.DecelerateInterpolator;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import butterknife.ButterKnife;
 
 /**
  * -----------作者----------日期----------变更内容-----
@@ -47,5 +48,6 @@ public class BaseActivity extends AppCompatActivity {
             getWindow().setExitTransition(transition);
         }
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
     }
 }

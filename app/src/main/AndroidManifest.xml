@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lz.com.kit">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -10,10 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MultiCheckedActivity"></activity>
-        <activity android:name=".MultiUnCancelCheckedActivity"></activity>
-        <activity android:name=".SingleUnCancelCheckedActivity"></activity>
-        <activity android:name=".PageRecyclerViewActivity"></activity>
+        <activity android:name=".PermissionActivity"></activity>
+        <activity android:name=".MultiCheckedActivity" />
+        <activity android:name=".MultiUnCancelCheckedActivity" />
+        <activity android:name=".SingleUnCancelCheckedActivity" />
+        <activity android:name=".PageRecyclerViewActivity" />
         <activity android:name=".SingleSelectActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
