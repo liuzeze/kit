@@ -48,6 +48,5 @@ public class BaseActivity extends AppCompatActivity {
             getWindow().setExitTransition(transition);
         }
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
     }
 }
