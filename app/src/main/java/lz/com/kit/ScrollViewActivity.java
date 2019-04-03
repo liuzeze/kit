@@ -6,7 +6,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lz.com.kit.view.SimpleRefreshLayout;
-import lz.com.tools.ReboundScrollView;
+import lz.com.tools.widget.ReboundScrollView;
 
 public class ScrollViewActivity extends BaseActivity {
 

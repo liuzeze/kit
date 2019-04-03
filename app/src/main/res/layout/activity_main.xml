@@ -8,12 +8,21 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ioc 注入" />
 
     <lz.com.tools.recycleview.ReboundReyclerView
         android:id="@+id/recyclevie"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-
+    <fragment
+        android:id="@+id/exfragment"
+        android:name="lz.com.kit.ExampleFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

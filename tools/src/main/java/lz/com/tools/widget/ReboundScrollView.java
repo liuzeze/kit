@@ -1,4 +1,4 @@
-package lz.com.tools;
+package lz.com.tools.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

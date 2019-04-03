@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lz.com.kit.bean.ActivityBean;
+import lz.com.tools.inject.InjectView;
+import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.OnClick;
+import lz.com.tools.inject.OnLongClick;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
@@ -23,18 +28,29 @@ import lz.com.tools.recycleview.decoration.Divider;
 import lz.com.tools.recycleview.decoration.DividerBuilder;
 import lz.com.tools.recycleview.decoration.DividerItemDecoration;
 
-public class MainActivity extends AppCompatActivity {
+
+@LayoutId(R.layout.activity_main)
+public class MainActivity extends BaseActivity {
 
 
-    @BindView(R.id.recyclevie)
+    @InjectView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
     private BaseRecycleAdapter<ActivityBean, BaseViewHolder> mAdapter;
 
+    @OnClick(R.id.btn)
+    public void onShow(View view) {
+        Toast.makeText(this, "onclick", Toast.LENGTH_SHORT).show();
+    }
+
+    @OnLongClick(R.id.btn)
+    public boolean onLongShow(View view) {
+        Toast.makeText(this, "onlongclick", Toast.LENGTH_SHORT).show();
+        return false;
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    public void init() {
+        super.init();
 
 
         ArrayList<ActivityBean> strings = new ArrayList<>();

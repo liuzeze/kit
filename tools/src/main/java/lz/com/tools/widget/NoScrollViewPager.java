@@ -1,4 +1,4 @@
-package lz.com.tools;
+package lz.com.tools.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

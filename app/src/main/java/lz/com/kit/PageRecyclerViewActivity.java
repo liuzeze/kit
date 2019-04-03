@@ -42,7 +42,7 @@ public class PageRecyclerViewActivity extends BaseActivity {
         setContentView(R.layout.activity_recycler_view);
 
         ButterKnife.bind(this);
-        mLzLinearLayoutManager = new PagerLayoutManager(this,RecyclerView.VERTICAL);
+        mLzLinearLayoutManager = new PagerLayoutManager(this, RecyclerView.VERTICAL);
         recyclevie.setLayoutManager(mLzLinearLayoutManager);
 
 
@@ -55,6 +55,7 @@ public class PageRecyclerViewActivity extends BaseActivity {
             @Override
             protected void onBindView(BaseViewHolder holder, String item) {
                 holder.setText(R.id.tv_1, item);
+                holder.setGone(R.id.checkbox, false);
 
             }
         };

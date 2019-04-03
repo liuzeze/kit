@@ -2,10 +2,9 @@ package lz.com.kit;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import lz.com.tools.IntervalSelectionView;
+import lz.com.tools.widget.IntervalSelectionView;
 
 public class IntervalActivity extends BaseActivity {
 

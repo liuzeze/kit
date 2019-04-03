@@ -1,4 +1,4 @@
-package lz.com.tools;
+package lz.com.tools.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -19,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import lz.com.tools.R;
 import lz.com.tools.util.Dp2Px;
 
 /**

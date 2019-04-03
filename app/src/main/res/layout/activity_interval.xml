@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="区间选择控件" />
 
-    <lz.com.tools.IntervalSelectionView
+    <lz.com.tools.widget.IntervalSelectionView
         android:id="@+id/isv_condition_second"
         android:layout_width="match_parent"
         android:layout_height="120dp"

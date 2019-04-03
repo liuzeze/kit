@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <lz.com.tools.ReboundScrollView
+    <lz.com.tools.widget.ReboundScrollView
         android:id="@+id/reboundScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -125,6 +125,6 @@
 
 
         </LinearLayout>
-    </lz.com.tools.ReboundScrollView>
+    </lz.com.tools.widget.ReboundScrollView>
 
 </LinearLayout>
