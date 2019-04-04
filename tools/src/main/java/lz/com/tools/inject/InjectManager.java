@@ -9,8 +9,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import androidx.fragment.app.Fragment;
-
 /**
  * -----------作者----------日期----------变更内容-----
  * -          刘泽      2019-04-03       创建class
@@ -23,20 +21,20 @@ public class InjectManager {
      *
      * @param target
      */
-    public static int getLayoutId(Fragment target) {
-        Class<? extends Fragment> aClass = target.getClass();
+    public static int getLayoutId(Object target) {
+        Class<?> aClass = target.getClass();
         LayoutId layoutId = aClass.getDeclaredAnnotation(LayoutId.class);
         if (layoutId != null)
             return layoutId.value();
         return -1;
     }
 
-    public static void inject(Fragment target, View inflate) {
+    public static void inject(Object target, View inflate) {
         initInjectFragmetnField(inflate, target);
         initInjectFragmentEvent(target, inflate);
     }
 
-    private static void initInjectFragmetnField(View view, Fragment target) {
+    private static void initInjectFragmetnField(View view, Object target) {
         Field[] declaredFields = target.getClass().getDeclaredFields();
         for (Field field : declaredFields) {
             InjectView annotation = field.getAnnotation(InjectView.class);
@@ -65,7 +63,7 @@ public class InjectManager {
         initInjectEvent(target, aClass);
     }
 
-    private static void initInjectFragmentEvent(Fragment target, View view) {
+    private static void initInjectFragmentEvent(Object target, View view) {
         Method[] declaredMethods = target.getClass().getDeclaredMethods();
         for (Method method : declaredMethods) {
             Annotation[] annotations = method.getAnnotations();
