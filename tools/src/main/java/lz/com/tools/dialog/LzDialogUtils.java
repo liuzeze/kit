@@ -209,7 +209,7 @@ public class LzDialogUtils {
         return mSaAlertDialog;
     }
 
-    public static LzBottomDialog alertBottomDialog(Context context, View view, String pos, View.OnClickListener positiveClickListener,
+    public static LzBottomDialog alertBottomDialog(Context context,String title, View view, String pos, View.OnClickListener positiveClickListener,
                                                    String neg, View.OnClickListener negativeClickListener) {
 
         LzBottomDialog mSaAlertDialog = new LzBottomDialog(context).builder()

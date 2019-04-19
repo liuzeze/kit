@@ -54,7 +54,7 @@ public class DialogActivity extends BaseActivity {
                 });
                 break;
             case R.id.show4:
-                LzDialogUtils.alertBottomDialog(this, getListView(), null, null, null, null);
+                LzDialogUtils.alertBottomDialog(this, "标题", getListView(), null, null, null, null);
                 break;
             case R.id.show5:
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
@@ -103,7 +103,7 @@ public class DialogActivity extends BaseActivity {
 
                     @Override
                     public void onChecked(BaseViewHolder holder, SelectBean obj) {
-                        holder.itemView.setBackgroundColor(0xFF73E0E4);
+                        holder.itemView.setBackgroundColor(0x3373E0E4);
                         holder.setChecked(R.id.checkbox, true);
                     }
 
