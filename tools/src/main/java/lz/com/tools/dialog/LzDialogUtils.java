@@ -213,7 +213,7 @@ public class LzDialogUtils {
                                                    String neg, View.OnClickListener negativeClickListener) {
 
         LzBottomDialog mSaAlertDialog = new LzBottomDialog(context).builder()
-                .setTitle("biaoti")
+                .setTitle(title)
                 .setContentView(view)
                 .setPositiveButton(pos,
                         positiveClickListener != null ? positiveClickListener :
