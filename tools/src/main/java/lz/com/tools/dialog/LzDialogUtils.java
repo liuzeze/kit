@@ -196,6 +196,19 @@ public class LzDialogUtils {
         return mSaAlertDialog;
     }
 
+    public static LzAlertDialog alertViewDialog(Context context, View view ) {
+
+        if (mSaAlertDialog != null) {
+            mSaAlertDialog.dismiss();
+        }
+
+        mSaAlertDialog = new LzAlertDialog(context).builder()
+                .setContentView(view)
+                .show();
+
+        return mSaAlertDialog;
+    }
+
     public static LzBottomDialog alertBottomDialog(Context context, View view, String pos, View.OnClickListener positiveClickListener,
                                                    String neg, View.OnClickListener negativeClickListener) {
 

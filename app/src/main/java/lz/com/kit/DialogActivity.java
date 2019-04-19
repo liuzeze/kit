@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import lz.com.kit.bean.SelectBean;
 import lz.com.tools.dialog.LzDialogUtils;
-import lz.com.tools.dialog.LzBottomDialog;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.inject.OnClick;
 import lz.com.tools.recycleview.ReboundReyclerView;
@@ -23,7 +21,7 @@ import lz.com.tools.recycleview.checked.SingleUnCancelCheckedHelper;
 @LayoutId(R.layout.activity_dialog)
 public class DialogActivity extends BaseActivity {
 
-    @OnClick({R.id.show, R.id.show1, R.id.show2, R.id.show3, R.id.show4, R.id.show5})
+    @OnClick({R.id.show, R.id.show1, R.id.show2, R.id.show3, R.id.show4, R.id.show5, R.id.show6})
     public void onShow(View view) {
         switch (view.getId()) {
             case R.id.show:
@@ -59,13 +57,16 @@ public class DialogActivity extends BaseActivity {
                 LzDialogUtils.alertBottomDialog(this, getListView(), null, null, null, null);
                 break;
             case R.id.show5:
-
-
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
                 bottomSheetDialog.setContentView(getListView());
                 bottomSheetDialog.show();
 
+                break;
+            case R.id.show6:
 
+
+                View inflate1 = View.inflate(this, R.layout.layout_dialog, null);
+                LzDialogUtils.alertViewDialog(this, inflate1);
                 break;
 
             default:

@@ -37,6 +37,7 @@ public class LzAlertDialog {
     private TextView txt_msg;
     private TextView btn_neg;
     private TextView btn_pos;
+    private View mLine;
     private Display display;
     private boolean showTitle = false;
     private boolean showMsg = false;
@@ -89,6 +90,7 @@ public class LzAlertDialog {
         btn_neg.setVisibility(View.GONE);
         btn_pos = (TextView) view.findViewById(R.id.btn_pos);
         btn_pos.setVisibility(View.GONE);
+        mLine = (View) view.findViewById(R.id.line);
         mDialogRoot.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -281,6 +283,7 @@ public class LzAlertDialog {
 
         if (!showPosBtn && !showNegBtn) {
             ll_btn_group.setVisibility(View.GONE);
+            mLine.setVisibility(View.INVISIBLE);
         } else {
             ll_btn_group.setVisibility(View.VISIBLE);
         }
