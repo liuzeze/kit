@@ -35,6 +35,12 @@
             android:text="只显示自定义布局" />
 
         <Button
+            android:id="@+id/show7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="定时关闭" />
+
+        <Button
             android:id="@+id/show2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BottomSheetDialog" />
+
 
     </LinearLayout>
 </lz.com.tools.widget.ReboundScrollView>

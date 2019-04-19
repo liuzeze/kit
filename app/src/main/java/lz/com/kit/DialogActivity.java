@@ -21,11 +21,11 @@ import lz.com.tools.recycleview.checked.SingleUnCancelCheckedHelper;
 @LayoutId(R.layout.activity_dialog)
 public class DialogActivity extends BaseActivity {
 
-    @OnClick({R.id.show, R.id.show1, R.id.show2, R.id.show3, R.id.show4, R.id.show5, R.id.show6})
+    @OnClick({R.id.show, R.id.show1, R.id.show2, R.id.show3, R.id.show4, R.id.show5, R.id.show6, R.id.show7})
     public void onShow(View view) {
         switch (view.getId()) {
             case R.id.show:
-                LzDialogUtils.alertDialog(this, "标题", "");
+                LzDialogUtils.alertConfirmDialog(this, "标题", "");
                 break;
             case R.id.show1:
 
@@ -38,7 +38,7 @@ public class DialogActivity extends BaseActivity {
                 });
                 break;
             case R.id.show2:
-                LzDialogUtils.alertDialog(this, "", "内容", null, new View.OnClickListener() {
+                LzDialogUtils.alertConfirmDialog(this, "", "内容", null, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -67,6 +67,10 @@ public class DialogActivity extends BaseActivity {
 
                 View inflate1 = View.inflate(this, R.layout.layout_dialog, null);
                 LzDialogUtils.alertViewDialog(this, inflate1);
+                break;
+            case R.id.show7:
+                LzDialogUtils.alertTimetDialog(this, "标题", "定时4秒之后关闭当前对话框", 4000);
+
                 break;
 
             default:

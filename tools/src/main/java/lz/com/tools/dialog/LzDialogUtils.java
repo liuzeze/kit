@@ -74,13 +74,13 @@ public class LzDialogUtils {
     }
 
 
-    public static LzAlertDialog alertDialog(Context context,
-                                            String title,
-                                            String content,
-                                            String positiveBtnStr,
-                                            View.OnClickListener positiveClickListener,
-                                            String negativeBtnStr,
-                                            View.OnClickListener negativeClickListener
+    public static LzAlertDialog alertConfirmDialog(Context context,
+                                                   String title,
+                                                   String content,
+                                                   String positiveBtnStr,
+                                                   View.OnClickListener positiveClickListener,
+                                                   String negativeBtnStr,
+                                                   View.OnClickListener negativeClickListener
     ) {
 
         if (mSaAlertDialog != null) {
@@ -108,11 +108,11 @@ public class LzDialogUtils {
         return mSaAlertDialog;
     }
 
-    public static LzAlertDialog alertDialog(Context context,
-                                            String title,
-                                            String content,
-                                            String comfirmText,
-                                            View.OnClickListener confirmClickListener) {
+    public static LzAlertDialog alertConfirmDialog(Context context,
+                                                   String title,
+                                                   String content,
+                                                   String comfirmText,
+                                                   View.OnClickListener confirmClickListener) {
 
         if (mSaAlertDialog != null) {
             mSaAlertDialog.dismiss();
@@ -132,6 +132,25 @@ public class LzDialogUtils {
         return mSaAlertDialog;
     }
 
+    public static LzAlertDialog alertTimetDialog(Context context,
+                                                 String title,
+                                                 String content,
+                                                 int time) {
+
+        if (mSaAlertDialog != null) {
+            mSaAlertDialog.dismiss();
+        }
+
+        mSaAlertDialog = new LzAlertDialog(context).builder()
+                .setAutoDismissTime(time)
+                .setTitle(title)
+                .setMsg(content)
+                .setCancelable(false)
+                .show();
+
+        return mSaAlertDialog;
+    }
+
     /**
      * 通用的提示框,带有两个按钮,标题，
      *
@@ -139,9 +158,9 @@ public class LzDialogUtils {
      * @param title   提示框标题，可以为null，默认使用“提示”
      * @param content 内容
      */
-    public static LzAlertDialog alertDialog(Context context,
-                                            String title,
-                                            String content) {
+    public static LzAlertDialog alertConfirmDialog(Context context,
+                                                   String title,
+                                                   String content) {
 
         if (mSaAlertDialog != null) {
             mSaAlertDialog.dismiss();
@@ -196,7 +215,7 @@ public class LzDialogUtils {
         return mSaAlertDialog;
     }
 
-    public static LzAlertDialog alertViewDialog(Context context, View view ) {
+    public static LzAlertDialog alertViewDialog(Context context, View view) {
 
         if (mSaAlertDialog != null) {
             mSaAlertDialog.dismiss();
@@ -209,7 +228,7 @@ public class LzDialogUtils {
         return mSaAlertDialog;
     }
 
-    public static LzBottomDialog alertBottomDialog(Context context,String title, View view, String pos, View.OnClickListener positiveClickListener,
+    public static LzBottomDialog alertBottomDialog(Context context, String title, View view, String pos, View.OnClickListener positiveClickListener,
                                                    String neg, View.OnClickListener negativeClickListener) {
 
         LzBottomDialog mSaAlertDialog = new LzBottomDialog(context).builder()
