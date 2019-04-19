@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示ios样式" />
+
+    <Button
+        android:id="@+id/show1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示自定义布局" />
+
+    <Button
+        android:id="@+id/show2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示单个按钮" />
+
+    <Button
+        android:id="@+id/show3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="只显示内容" />
+
+    <Button
+        android:id="@+id/show4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BottomSheetDialog" />
+
+</LinearLayout>

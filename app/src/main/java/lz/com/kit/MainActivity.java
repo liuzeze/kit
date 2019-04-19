@@ -63,6 +63,7 @@ public class MainActivity extends BaseActivity {
         strings.add(new ActivityBean().setName("SingleUnCancelCheckedActivity").setCalssName(SingleUnCancelCheckedActivity.class));
         strings.add(new ActivityBean().setName("PageRecyclerViewActivity").setCalssName(PageRecyclerViewActivity.class));
         strings.add(new ActivityBean().setName("PermissionActivity").setCalssName(PermissionActivity.class));
+        strings.add(new ActivityBean().setName("DialogActivity").setCalssName(DialogActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 
