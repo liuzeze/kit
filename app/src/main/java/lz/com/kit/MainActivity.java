@@ -31,22 +31,9 @@ import lz.com.tools.recycleview.decoration.DividerItemDecoration;
 
 @LayoutId(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
-
-
     @InjectView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
     private BaseRecycleAdapter<ActivityBean, BaseViewHolder> mAdapter;
-
-    @OnClick(R.id.btn)
-    public void onShow(View view) {
-        Toast.makeText(this, "onclick", Toast.LENGTH_SHORT).show();
-    }
-
-    @OnLongClick(R.id.btn)
-    public boolean onLongShow(View view) {
-        Toast.makeText(this, "onlongclick", Toast.LENGTH_SHORT).show();
-        return false;
-    }
 
     @Override
     public void init() {
@@ -64,6 +51,7 @@ public class MainActivity extends BaseActivity {
         strings.add(new ActivityBean().setName("PageRecyclerViewActivity").setCalssName(PageRecyclerViewActivity.class));
         strings.add(new ActivityBean().setName("PermissionActivity").setCalssName(PermissionActivity.class));
         strings.add(new ActivityBean().setName("DialogActivity").setCalssName(DialogActivity.class));
+        strings.add(new ActivityBean().setName("IocActivity").setCalssName(IocActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 

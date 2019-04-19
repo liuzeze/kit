@@ -46,7 +46,7 @@ public class ExampleFragment extends Fragment {
         InjectManager.inject(this, inflate);
 
 
-        isvConditionSecond.setText("sdgagasdg");
+        isvConditionSecond.setText("fragment中使用ioc ");
 
         return inflate;
     }

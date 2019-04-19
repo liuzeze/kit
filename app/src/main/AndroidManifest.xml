@@ -30,6 +30,7 @@
         <activity android:name=".RecyclerViewActivity" />
         <activity android:name=".IntervalActivity" />
         <activity android:name=".DialogActivity" />
+        <activity android:name=".IocActivity" />
     </application>
 
 </manifest>

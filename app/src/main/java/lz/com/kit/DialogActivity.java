@@ -77,7 +77,7 @@ public class DialogActivity extends BaseActivity {
         ReboundReyclerView recyclerView = new ReboundReyclerView(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ArrayList<SelectBean> mStrings = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 30; i++) {
             SelectBean selectBean = new SelectBean();
             selectBean.name = "位置+" + i;
             mStrings.add(selectBean);

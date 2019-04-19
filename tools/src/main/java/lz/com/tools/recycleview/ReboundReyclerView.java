@@ -4,6 +4,7 @@ package lz.com.tools.recycleview;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -53,20 +54,24 @@ public class ReboundReyclerView extends RecyclerView {
 
     public ReboundReyclerView(Context context) {
         super(context);
+        setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
     public ReboundReyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
     public ReboundReyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
 
+    @SuppressLint("RestrictedApi")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (mRefreshHeader != null) {
+        {
 
             int action = ev.getAction();
             switch (action) {
@@ -82,39 +87,41 @@ public class ReboundReyclerView extends RecyclerView {
                     if (isMoved) {
 
                         if (isEnableRefrash) {
-                            final int height = mLayoutParams.height;
-                            if (height < mRefreshViewHeight) {
-                                closeRefresh();
-                            } else {
-                                if (mRefreshState != RefreshState.RefreshReleased) {
-                                    mRefreshHeader.onStateChanged(mRefreshHeader, mRefreshState, RefreshState.RefreshReleased);
-                                    mRefreshState = RefreshState.RefreshReleased;
-                                }
-                            }
-                            ValueAnimator valueAnimator = ValueAnimator.ofInt(height, height > mRefreshViewHeight ? mRefreshViewHeight : 0);
-                            valueAnimator.setDuration(ANIM_TIME);
-                            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                                @Override
-                                public void onAnimationUpdate(ValueAnimator animation) {
-                                    int animatedValue = (int) animation.getAnimatedValue();
-                                    mLayoutParams.height = animatedValue;
-                                    mRefreshHeader.setLayoutParams(mLayoutParams);
-                                    FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRefreshHeader.getChildAt(0).getLayoutParams();
-                                    layoutParams.setMargins(0, animatedValue - mRefreshViewHeight, 0, 0);
-                                    mRefreshHeader.getChildAt(0).setLayoutParams(layoutParams);
-
-                                }
-                            });
-                            valueAnimator.addListener(new AnimatorListenerAdapter() {
-                                @Override
-                                public void onAnimationEnd(Animator animation) {
-                                    super.onAnimationEnd(animation);
-                                    if (mOnRefreshListener != null && height > mRefreshViewHeight) {
-                                        mOnRefreshListener.onRefreshing(mRefreshViewHeight);
+                            if (mRefreshHeader != null) {
+                                final int height = mLayoutParams.height;
+                                if (height < mRefreshViewHeight) {
+                                    closeRefresh();
+                                } else {
+                                    if (mRefreshState != RefreshState.RefreshReleased) {
+                                        mRefreshHeader.onStateChanged(mRefreshHeader, mRefreshState, RefreshState.RefreshReleased);
+                                        mRefreshState = RefreshState.RefreshReleased;
                                     }
                                 }
-                            });
-                            valueAnimator.start();
+                                ValueAnimator valueAnimator = ValueAnimator.ofInt(height, height > mRefreshViewHeight ? mRefreshViewHeight : 0);
+                                valueAnimator.setDuration(ANIM_TIME);
+                                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                                    @Override
+                                    public void onAnimationUpdate(ValueAnimator animation) {
+                                        int animatedValue = (int) animation.getAnimatedValue();
+                                        mLayoutParams.height = animatedValue;
+                                        mRefreshHeader.setLayoutParams(mLayoutParams);
+                                        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRefreshHeader.getChildAt(0).getLayoutParams();
+                                        layoutParams.setMargins(0, animatedValue - mRefreshViewHeight, 0, 0);
+                                        mRefreshHeader.getChildAt(0).setLayoutParams(layoutParams);
+
+                                    }
+                                });
+                                valueAnimator.addListener(new AnimatorListenerAdapter() {
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        super.onAnimationEnd(animation);
+                                        if (mOnRefreshListener != null && height > mRefreshViewHeight) {
+                                            mOnRefreshListener.onRefreshing(mRefreshViewHeight);
+                                        }
+                                    }
+                                });
+                                valueAnimator.start();
+                            }
                         } else {
                             final float translationY = getTranslationY();
                             // 开启动画
@@ -163,22 +170,24 @@ public class ReboundReyclerView extends RecyclerView {
                                     //既可以上拉也可以下拉（这种情况出现在ScrollView包裹的控件比ScrollView还小）
                                     || (mCanPullUp && mCanPullDown);
                     if (shouldMove) {
+
                         //计算偏移量
                         int offset = (int) (deltaY * MOVE_FACTOR);
                         //随着手指的移动而移动布局
                         if (isEnableRefrash) {
-                            //随着手指的移动而移动布局
-                            mLayoutParams.height = offset;
-                            mRefreshHeader.setLayoutParams(mLayoutParams);
-                            if (mRefreshState != RefreshState.PullDownToRefresh) {
-                                mRefreshHeader.onStateChanged(mRefreshHeader, mRefreshState, RefreshState.PullDownToRefresh);
-                                mRefreshState = RefreshState.PullDownToRefresh;
+                            if (mRefreshHeader != null) {
+                                //随着手指的移动而移动布局
+                                mLayoutParams.height = offset;
+                                mRefreshHeader.setLayoutParams(mLayoutParams);
+                                if (mRefreshState != RefreshState.PullDownToRefresh) {
+                                    mRefreshHeader.onStateChanged(mRefreshHeader, mRefreshState, RefreshState.PullDownToRefresh);
+                                    mRefreshState = RefreshState.PullDownToRefresh;
+                                }
+                                mRefreshHeader.onMoving(true, (float) offset / (float) mRefreshViewHeight, offset, mRefreshViewHeight, offset);
+                                FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRefreshHeader.getChildAt(0).getLayoutParams();
+                                layoutParams.setMargins(0, offset - mRefreshViewHeight, 0, 0);
+                                mRefreshHeader.getChildAt(0).setLayoutParams(layoutParams);
                             }
-                            mRefreshHeader.onMoving(true, (float) offset / (float) mRefreshViewHeight, offset, mRefreshViewHeight, offset);
-                            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRefreshHeader.getChildAt(0).getLayoutParams();
-                            layoutParams.setMargins(0, offset - mRefreshViewHeight, 0, 0);
-                            mRefreshHeader.getChildAt(0).setLayoutParams(layoutParams);
-
                         } else {
                             setTranslationY(offset);
                             if ((mCanPullUp && deltaY < 0)) {

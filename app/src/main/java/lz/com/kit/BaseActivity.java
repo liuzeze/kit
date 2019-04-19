@@ -1,5 +1,6 @@
 package lz.com.kit;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.transition.Slide;
@@ -20,6 +21,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final int EXPLODE_XML = 2;
     public static final int SLIDE_CODE = 3;
     public static final int SLIDE_XML = 4;
+    protected Activity mActivity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class BaseActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         InjectManager.getLayoutId(this);
-
+        mActivity = this;
         init();
     }
 

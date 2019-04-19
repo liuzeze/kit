@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/ff0000"
         android:focusable="false"
+        android:clickable="false"
         android:focusableInTouchMode="false" />
 
 </LinearLayout>
