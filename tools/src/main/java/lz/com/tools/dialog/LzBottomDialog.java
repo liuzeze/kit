@@ -1,6 +1,7 @@
 package lz.com.tools.dialog;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,7 +19,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -28,18 +28,16 @@ import lz.com.tools.R;
 /**
  * @author 刘泽
  */
-public class LpAlertDialog {
-    private LpAlertDialog mLpAlertDialog;
+public class LzBottomDialog {
+    private LzBottomDialog mLpAlertDialog;
     private Context context;
     private Dialog dialog;
     private LinearLayout ll_btn_group;
     private TextView txt_title;
-    private TextView txt_msg;
     private TextView btn_neg;
     private TextView btn_pos;
     private Display display;
     private boolean showTitle = false;
-    private boolean showMsg = false;
     private boolean showContentView = false;
     private boolean showPosBtn = false;
     private boolean showNegBtn = false;
@@ -60,11 +58,11 @@ public class LpAlertDialog {
     private Timer t;
 
     private TimerTask tt;
-    private FrameLayout mFrameLayout;
-    private FrameLayout mDialogRoot;
+    private FrameLayout mContentLayout;
+    private View mView;
 
 
-    public LpAlertDialog(Context context) {
+    public LzBottomDialog(Context context) {
         this.context = context;
         mLpAlertDialog = this;
         WindowManager windowManager = (WindowManager) context
@@ -72,24 +70,30 @@ public class LpAlertDialog {
         display = windowManager.getDefaultDisplay();
     }
 
-    public LpAlertDialog builder() {
+    public LzBottomDialog builder() {
         // 获取Dialog布局
-        View view = LayoutInflater.from(context).inflate(
-                R.layout.view_alertdialog, null);
+        mView = LayoutInflater.from(context).inflate(
+                R.layout.view_bottom_dialog, null);
 
         // 获取自定义Dialog布局中的控件
-        ll_btn_group = (LinearLayout) view.findViewById(R.id.ll_btn_group);
-        mDialogRoot = (FrameLayout) view.findViewById(R.id.fl_dialog_root);
-        mFrameLayout = (FrameLayout) view.findViewById(R.id.fl_rootview);
-        txt_title = (TextView) view.findViewById(R.id.txt_title);
-        txt_title.setVisibility(View.GONE);
-        txt_msg = (TextView) view.findViewById(R.id.txt_msg);
-        txt_msg.setVisibility(View.GONE);
-        btn_neg = (TextView) view.findViewById(R.id.btn_neg);
-        btn_neg.setVisibility(View.GONE);
-        btn_pos = (TextView) view.findViewById(R.id.btn_pos);
-        btn_pos.setVisibility(View.GONE);
-        mDialogRoot.setOnClickListener(new OnClickListener() {
+        ll_btn_group = (LinearLayout) mView.findViewById(R.id.ll_btn_group);
+
+        mContentLayout = (FrameLayout) mView.findViewById(R.id.fl_rootview);
+        txt_title = (TextView) mView.findViewById(R.id.txt_title);
+        txt_title.setVisibility(View.INVISIBLE);
+        btn_neg = (TextView) mView.findViewById(R.id.btn_neg);
+        btn_neg.setVisibility(View.INVISIBLE);
+        btn_pos = (TextView) mView.findViewById(R.id.btn_pos);
+        btn_pos.setVisibility(View.INVISIBLE);
+
+        // 定义Dialog布局和参数
+        dialog = new Dialog(context, R.style.AlertDialogStyle);
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        window.setWindowAnimations(R.style.dialog_animations);
+        dialog.setCanceledOnTouchOutside(true);
+        mView.setPadding(0, display.getHeight() / 3, 0, 0);
+        mView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (dialog != null && mCancel) {
@@ -97,10 +101,6 @@ public class LpAlertDialog {
                 }
             }
         });
-        // 定义Dialog布局和参数
-        dialog = new Dialog(context, R.style.AlertDialogStyle);
-        dialog.setContentView(view);
-
         return this;
     }
 
@@ -110,13 +110,13 @@ public class LpAlertDialog {
      * @param autoDismissTime 关闭时间长度
      * @return 当前帮助类
      */
-    public LpAlertDialog setAutoDismissTime(int autoDismissTime) {
+    public LzBottomDialog setAutoDismissTime(int autoDismissTime) {
         mMillisInFuture = autoDismissTime;
         startTimer();
         return this;
     }
 
-    public LpAlertDialog setTitle(String title) {
+    public LzBottomDialog setTitle(String title) {
         showTitle = true;
         if (TextUtils.isEmpty(title)) {
             txt_title.setText("请输入提示标题");
@@ -126,34 +126,18 @@ public class LpAlertDialog {
         return this;
     }
 
-    public LpAlertDialog setMsg(String msg) {
-        showMsg = true;
-        if (TextUtils.isEmpty(msg)) {
-            txt_msg.setText("请输入提示内容");
-        } else {
-            txt_msg.setText(msg);
-        }
-        return this;
-    }
 
-    public LpAlertDialog setContentView(View view) {
+    public LzBottomDialog setContentView(View view) {
         showContentView = true;
         if (view == null) {
             showContentView = false;
         } else {
-            try {
-                view.setLayoutParams(
-                        new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            mFrameLayout.addView(view);
+            mContentLayout.addView(view);
         }
         return this;
     }
 
-    public LpAlertDialog setCancelable(boolean cancel) {
+    public LzBottomDialog setCancelable(boolean cancel) {
         mCancel = cancel;
         dialog.setCancelable(cancel);
         return this;
@@ -166,8 +150,8 @@ public class LpAlertDialog {
      * @param listener
      * @return
      */
-    public LpAlertDialog setPositiveButton(String text,
-                                           final OnClickListener listener) {
+    public LzBottomDialog setPositiveButton(String text,
+                                            final OnClickListener listener) {
         showPosBtn = true;
         if (TextUtils.isEmpty(text)) {
             btn_pos.setText("确定");
@@ -186,35 +170,8 @@ public class LpAlertDialog {
         return this;
     }
 
-    /**
-     * 确定按钮不带取消的diaglog
-     *
-     * @param text
-     * @param listener
-     * @return
-     */
-    public LpAlertDialog setConfirmButton(String text,
-                                          final OnClickListener listener) {
-        showPosBtn = true;
-        if (TextUtils.isEmpty(text)) {
-            btn_pos.setText("确定");
-        } else {
-            btn_pos.setText(text);
-        }
-        btn_pos.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                if (listener != null) {
-                    listener.onClick(v);
-                }
-            }
-        });
-        return this;
-    }
-
-    public LpAlertDialog setNegativeButton(String text,
-                                           final OnClickListener listener) {
+    public LzBottomDialog setNegativeButton(String text,
+                                            final OnClickListener listener) {
         showNegBtn = true;
         if (TextUtils.isEmpty(text)) {
             btn_neg.setText("取消");
@@ -238,7 +195,7 @@ public class LpAlertDialog {
      *
      * @param onDismisListener
      */
-    public LpAlertDialog setOnDismisListener(DialogInterface.OnDismissListener onDismisListener) {
+    public LzBottomDialog setOnDismisListener(DialogInterface.OnDismissListener onDismisListener) {
         if (onDismisListener != null) {
             dialog.setOnDismissListener(onDismisListener);
         }
@@ -247,63 +204,27 @@ public class LpAlertDialog {
 
 
     private void setLayout() {
+        //标题
         if (!showTitle) {
-            txt_title.setVisibility(View.GONE);
+            txt_title.setVisibility(View.INVISIBLE);
         } else {
             txt_title.setVisibility(View.VISIBLE);
         }
 
-        if (showMsg) {
-            txt_msg.setVisibility(View.VISIBLE);
-        } else {
-            txt_msg.setVisibility(View.GONE);
-        }
-        if (showContentView) {
-            mFrameLayout.setVisibility(View.VISIBLE);
-        } else {
-            mFrameLayout.setVisibility(View.GONE);
-        }
-        if (!showPosBtn && !showNegBtn) {
-            btn_pos.setText("确定");
+        if (showPosBtn) {
             btn_pos.setVisibility(View.VISIBLE);
-            btn_pos.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
         }
 
-        if (showPosBtn && showNegBtn) {
-            btn_pos.setVisibility(View.VISIBLE);
+        if (showNegBtn) {
             btn_neg.setVisibility(View.VISIBLE);
         }
 
-        if (showPosBtn && !showNegBtn) {
-            btn_pos.setVisibility(View.VISIBLE);
-        }
-
-        if (!showPosBtn && showNegBtn) {
-            btn_neg.setVisibility(View.VISIBLE);
-        }
-
-        if (!showPosBtn && !showNegBtn) {
+        if (!showTitle && !showPosBtn && !showNegBtn) {
             ll_btn_group.setVisibility(View.GONE);
+        } else {
+            ll_btn_group.setVisibility(View.VISIBLE);
         }
 
-        setFullScreen();
-    }
-
-    /**
-     * 设置全屏显示
-     */
-    public void setFullScreen() {
-        Window window = dialog.getWindow();
-        WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.gravity = Gravity.CENTER;
-        window.setAttributes(lp);
     }
 
     /**
@@ -311,10 +232,15 @@ public class LpAlertDialog {
      *
      * @return 返回对话框对象
      */
-    public LpAlertDialog show() {
+    public LzBottomDialog show() {
         try {
             setLayout();
             dialog.show();
+            WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+            lp.width = (int) (display.getWidth());
+            dialog.getWindow().setAttributes(lp);
+            dialog.setContentView(mView);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -399,7 +325,7 @@ public class LpAlertDialog {
      *
      * @param clickable
      */
-    public LpAlertDialog setBtnPosClickable(boolean clickable) {
+    public LzBottomDialog setBtnPosClickable(boolean clickable) {
         btn_pos.setClickable(clickable);
         return this;
     }
@@ -409,7 +335,7 @@ public class LpAlertDialog {
      *
      * @param clickable
      */
-    public LpAlertDialog setBtnNegClickable(boolean clickable) {
+    public LzBottomDialog setBtnNegClickable(boolean clickable) {
         btn_neg.setClickable(clickable);
         return this;
     }

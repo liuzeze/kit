@@ -8,9 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minWidth="100dp"
-        android:text="涉及到哈接口还是会计法还是接口涉及到哈接口还是会计法还是接口涉及到哈接口还是会计法还是接口涉及到哈接口还是会计法还是接口" />
+        android:text="涉及到哈接哈接口还是会计法还是接口" />
 
     <EditText
+        android:focusable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

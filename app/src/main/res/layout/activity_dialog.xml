@@ -36,6 +36,11 @@
         android:id="@+id/show4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="底部弹出dialog" />
+    <Button
+        android:id="@+id/show5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="BottomSheetDialog" />
 
 </LinearLayout>
