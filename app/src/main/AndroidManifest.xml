@@ -31,6 +31,7 @@
         <activity android:name=".IntervalActivity" />
         <activity android:name=".DialogActivity" />
         <activity android:name=".IocActivity" />
+        <activity android:name=".ShopActivity" />
     </application>
 
 </manifest>
