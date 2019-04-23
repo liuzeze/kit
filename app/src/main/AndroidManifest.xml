@@ -32,6 +32,7 @@
         <activity android:name=".DialogActivity" />
         <activity android:name=".IocActivity" />
         <activity android:name=".ShopActivity" />
+        <activity android:name=".CitySelectActivity" />
     </application>
 
 </manifest>
