@@ -22,7 +22,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:text="选择签约城市"
+            android:text="选择城市"
             android:textColor="#333333"
             android:textSize="15dp"
             app:layout_constraintLeft_toLeftOf="parent" />
@@ -48,8 +48,8 @@
         android:layout_weight="1"
         android:background="#ffffff"
         android:divider="@drawable/shape_divide_line"
-        android:showDividers="middle"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:showDividers="middle">
 
         <lz.com.tools.recycleview.ReboundReyclerView
             android:id="@+id/area_list1"

@@ -61,7 +61,7 @@ public class CitySelectActivity extends BaseActivity {
                     @Override
                     public void run() {
 
-                        SystemClock.sleep(3000);
+                        SystemClock.sleep(1500);
                         CityPickerInfo cityPickerInfo;
                         for (int i = 0; i < 30; i++) {
                             cityPickerInfo = new CityPickerInfo();
