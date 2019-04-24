@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context=".IntervalActivity">
 
+    <include layout="@layout/common_toolbar" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -27,7 +29,7 @@
         app:resultValueColor="#f5bf0a"
         app:rightUnit="㎡"
         app:startValueColor="#282828"
-        app:titleText="面积"
-        app:titleTextColor="#282828"
-        app:titleTextSize="18" />
+        app:tipText="面积"
+        app:tipTextColor="#282828"
+        app:tipTextSize="18" />
 </LinearLayout>

@@ -33,6 +33,7 @@
         <activity android:name=".IocActivity" />
         <activity android:name=".ShopActivity" />
         <activity android:name=".CitySelectActivity" />
+        <activity android:name=".TitleActivity" />
     </application>
 
 </manifest>

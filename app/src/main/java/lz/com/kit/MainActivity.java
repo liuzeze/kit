@@ -54,6 +54,7 @@ public class MainActivity extends BaseActivity {
         strings.add(new ActivityBean().setName("IocActivity").setCalssName(IocActivity.class));
         strings.add(new ActivityBean().setName("ShopActivity").setCalssName(ShopActivity.class));
         strings.add(new ActivityBean().setName("CitySelectActivity").setCalssName(CitySelectActivity.class));
+        strings.add(new ActivityBean().setName("TitleActivity").setCalssName(TitleActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 

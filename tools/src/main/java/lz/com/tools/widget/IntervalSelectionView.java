@@ -129,9 +129,9 @@ public class IntervalSelectionView extends View {
         precision = ta.getInteger(R.styleable.intervalSelectionView_valuePrecision, 2);
         startNum = ta.getFloat(R.styleable.intervalSelectionView_startValue, startNum);
         endNum = ta.getFloat(R.styleable.intervalSelectionView_endValue, endNum);
-        titleText = ta.getString(R.styleable.intervalSelectionView_titleText);
-        titleTextColor = ta.getColor(R.styleable.intervalSelectionView_titleTextColor, Color.MAGENTA);
-        titleTextSize = ta.getInt(R.styleable.intervalSelectionView_titleTextSize, 18);
+        titleText = ta.getString(R.styleable.intervalSelectionView_tipText);
+        titleTextColor = ta.getColor(R.styleable.intervalSelectionView_tipTextColor, Color.MAGENTA);
+        titleTextSize = ta.getInt(R.styleable.intervalSelectionView_tipTextSize, 18);
         if (ta.getString(R.styleable.intervalSelectionView_leftUnit) != null) {
             leftUnit = ta.getString(R.styleable.intervalSelectionView_leftUnit);
         }

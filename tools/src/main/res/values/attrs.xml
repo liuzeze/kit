@@ -38,9 +38,9 @@
         <attr name="leftUnit" format="string|reference" />
         <!-- 右侧单位 -->
         <attr name="rightUnit" format="string|reference" />
-        <attr name="titleText" format="string|reference" />
-        <attr name="titleTextSize" format="integer" />
-        <attr name="titleTextColor" format="color" />
+        <attr name="tipText" format="string|reference" />
+        <attr name="tipTextSize" format="integer" />
+        <attr name="tipTextColor" format="color" />
     </declare-styleable>
 
     <!--商品详情-->
@@ -53,4 +53,66 @@
             <enum name="behind" value="1" />
         </attr>
     </declare-styleable>
+
+
+    <!--**************************公用自定义ToolBar相关属性**************************-->
+
+    <declare-styleable name="SaTitleToolbar">
+        <!--主标题-->
+        <attr name="titleVisible" format="boolean" />
+        <attr name="titleTextSize" format="dimension" />
+
+        <!--副标题-->
+        <attr name="subtitleVisible" format="boolean" />
+        <attr name="subtitleTextSize" format="dimension" />
+
+
+        <!--标题重力设置-->
+        <attr name="title_gravity">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center_vertical" value="0x10" />
+            <flag name="fill_vertical" value="0x70" />
+            <flag name="center_horizontal" value="0x01" />
+            <flag name="fill_horizontal" value="0x07" />
+            <flag name="center" value="0x11" />
+            <flag name="fill" value="0x77" />
+            <flag name="clip_vertical" value="0x80" />
+            <flag name="clip_horizontal" value="0x08" />
+            <flag name="start" value="0x00800003" />
+            <flag name="end" value="0x00800005" />
+        </attr>
+
+        <!--关闭按钮-->
+        <attr name="closeVisible" format="boolean" />
+        <attr name="closeText" format="string" />
+        <attr name="closeTextAppearance" format="reference" />
+        <attr name="closeTextColor" format="color" />
+        <attr name="closeTextSize" format="dimension" />
+        <attr name="closeIcon" format="reference" />
+
+        <!--右边按钮-->
+        <attr name="rightVisible" format="boolean" />
+        <attr name="rightText" format="string" />
+        <attr name="rightTextAppearance" format="reference" />
+        <attr name="rightTextColor" format="color" />
+        <attr name="rightTextSize" format="dimension" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="rightMarginRight" format="dimension" />
+        <attr name="rightDrawPadding" format="dimension" />
+
+
+        <!--返回按钮-->
+        <attr name="backVisible" format="boolean" />
+        <attr name="backText" format="string" />
+        <attr name="backTextAppearance" format="reference" />
+        <attr name="backTextColor" format="color" />
+        <attr name="backTextSize" format="dimension" />
+        <attr name="backIcon" format="reference" />
+        <attr name="backMarginRight" format="dimension" />
+    </declare-styleable>
+
+    <!--**************************公用自定义ToolBar相关属性**************************-->
 </resources>

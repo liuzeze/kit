@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <lz.com.tools.toolbar.TitleToolbar
+        android:id="@+id/common_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffffff"
+        android:minHeight="?attr/actionBarSize"
+        app:backIcon="@mipmap/back"
+        app:backTextAppearance="?attr/actionMenuTextAppearance"
+        app:backTextColor="#ffffff"
+        app:backVisible="true"
+        app:closeText="关闭"
+        app:closeTextAppearance="?attr/actionMenuTextAppearance"
+        app:closeTextColor="#ffffff"
+        app:closeTextSize="12px"
+        app:closeVisible="false"
+        app:subtitle="副标题"
+        app:subtitleTextAppearance="@style/Toolbar_Subtitle_Appearance"
+        app:subtitleTextColor="#ffffff"
+        app:subtitleVisible="false"
+        app:title="标题"
+        app:titleTextAppearance="@style/Toolbar_Title_Appearance"
+        app:titleTextColor="#282828"
+        app:title_gravity="center" />
+</merge>
