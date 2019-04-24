@@ -20,7 +20,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import lz.com.tools.R;
-import lz.com.tools.util.Dp2Px;
+import lz.com.tools.util.LzDp2Px;
 
 /**
  * -----------作者----------日期----------变更内容-----
@@ -333,12 +333,12 @@ public class IntervalSelectionView extends View {
 
         paintStartText = new TextPaint();
         paintStartText.setColor(startValueColor);
-        paintStartText.setTextSize(Dp2Px.dp2px(getContext(),textSize));
+        paintStartText.setTextSize(LzDp2Px.dp2px(getContext(),textSize));
         paintStartText.setAntiAlias(true);
 
         paintEndText = new Paint();
         paintEndText.setColor(endValueColor);
-        paintEndText.setTextSize(Dp2Px.dp2px(getContext(),textSize));
+        paintEndText.setTextSize(LzDp2Px.dp2px(getContext(),textSize));
         paintEndText.setAntiAlias(true);
         paintEndText.setTextAlign(Paint.Align.RIGHT);
 
@@ -355,14 +355,14 @@ public class IntervalSelectionView extends View {
         paintTitleText = new Paint();
         paintTitleText.setColor(titleTextColor);
         paintTitleText.setStrokeWidth(backLineWidth);
-        paintTitleText.setTextSize(Dp2Px.dp2px(getContext(),titleTextSize));
+        paintTitleText.setTextSize(LzDp2Px.dp2px(getContext(),titleTextSize));
         paintTitleText.setFakeBoldText(true);
         paintTitleText.setAntiAlias(true);
 
         paintTitleResult = new Paint();
         paintTitleResult.setColor(resultValueColor);
         paintTitleResult.setStrokeWidth(backLineWidth);
-        paintTitleResult.setTextSize(Dp2Px.dp2px(getContext(),16));
+        paintTitleResult.setTextSize(LzDp2Px.dp2px(getContext(),16));
         paintTitleResult.setFakeBoldText(true);
         paintTitleResult.setAntiAlias(true);
 
@@ -379,8 +379,8 @@ public class IntervalSelectionView extends View {
         //背景线
         canvas.drawLine(marginHorizontal + paddingStart, centerVertical, width - marginHorizontal - paddingEnd, centerVertical, paintBackground);
 
-        canvas.drawCircle(marginHorizontal + paddingStart + Dp2Px.dp2px(getContext(),4), centerVertical, Dp2Px.dp2px(getContext(),4), paintBackground);
-        canvas.drawCircle(width - marginHorizontal - paddingEnd - Dp2Px.dp2px(getContext(),4), centerVertical, Dp2Px.dp2px(getContext(),4), paintBackground);
+        canvas.drawCircle(marginHorizontal + paddingStart + LzDp2Px.dp2px(getContext(),4), centerVertical, LzDp2Px.dp2px(getContext(),4), paintBackground);
+        canvas.drawCircle(width - marginHorizontal - paddingEnd - LzDp2Px.dp2px(getContext(),4), centerVertical, LzDp2Px.dp2px(getContext(),4), paintBackground);
         //起始点连接线
         canvas.drawLine(pointStart, centerVertical, pointEnd, centerVertical, paintConnectLine);
 
@@ -412,11 +412,11 @@ public class IntervalSelectionView extends View {
             if (startAndEndText.contains("\n")) {
                 StaticLayout staticLayout = new StaticLayout(startAndEndText, paintStartText, rect2.width(), Layout.Alignment.ALIGN_CENTER, 1f, 0f, false);
                 canvas.save();
-                canvas.translate(pointStart + (pointEnd - pointStart) / 2 - (rect2.width()) / 3, centerVertical + marginBottom - circleRadius + Dp2Px.dp2px(getContext(),12));
+                canvas.translate(pointStart + (pointEnd - pointStart) / 2 - (rect2.width()) / 3, centerVertical + marginBottom - circleRadius + LzDp2Px.dp2px(getContext(),12));
                 staticLayout.draw(canvas);
                 canvas.restore();
             } else {
-                canvas.drawText(startAndEndText, pointStart + (pointEnd - pointStart) / 2 - (rect.width()) / 2, centerVertical + marginBottom + circleRadius + Dp2Px.dp2px(getContext(),12), paintStartText);
+                canvas.drawText(startAndEndText, pointStart + (pointEnd - pointStart) / 2 - (rect.width()) / 2, centerVertical + marginBottom + circleRadius + LzDp2Px.dp2px(getContext(),12), paintStartText);
             }
         } else {
 
@@ -424,30 +424,30 @@ public class IntervalSelectionView extends View {
             if (text.contains("\n")) {
                 StaticLayout staticLayout = new StaticLayout(text, paintStartText, rect.width(), Layout.Alignment.ALIGN_CENTER, 1f, 0f, false);
                 canvas.save();
-                canvas.translate(pointStart + circleRadius - rect.width() / 2, centerVertical + marginBottom - circleRadius + Dp2Px.dp2px(getContext(),12));
+                canvas.translate(pointStart + circleRadius - rect.width() / 2, centerVertical + marginBottom - circleRadius + LzDp2Px.dp2px(getContext(),12));
                 staticLayout.draw(canvas);
                 canvas.restore();
             } else {
-                canvas.drawText(text, pointStart + circleRadius - rect.width() / 2, centerVertical + marginBottom + circleRadius + Dp2Px.dp2px(getContext(),12), paintStartText);
+                canvas.drawText(text, pointStart + circleRadius - rect.width() / 2, centerVertical + marginBottom + circleRadius + LzDp2Px.dp2px(getContext(),12), paintStartText);
             }
 
 
             if (text1.contains("\n")) {
                 StaticLayout staticLayout = new StaticLayout(text1, paintStartText, rect1.width(), Layout.Alignment.ALIGN_CENTER, 1f, 0f, false);
                 canvas.save();
-                canvas.translate(pointEnd + circleRadius - rect1.width() / 2, centerVertical + marginBottom - circleRadius + Dp2Px.dp2px(getContext(),12));
+                canvas.translate(pointEnd + circleRadius - rect1.width() / 2, centerVertical + marginBottom - circleRadius + LzDp2Px.dp2px(getContext(),12));
                 staticLayout.draw(canvas);
                 canvas.restore();
             } else {
-                canvas.drawText(text1, pointEnd + circleRadius + rect1.width() / 2, centerVertical + marginBottom + circleRadius + Dp2Px.dp2px(getContext(),12), paintEndText);
+                canvas.drawText(text1, pointEnd + circleRadius + rect1.width() / 2, centerVertical + marginBottom + circleRadius + LzDp2Px.dp2px(getContext(),12), paintEndText);
             }
 
         }
 
         if (isShowResult) {
             //结果值
-            canvas.drawText(titleText, marginHorizontal + paddingStart, centerVertical - Dp2Px.dp2px(getContext(),32), paintTitleText);
-            canvas.drawText(assembleResultText(), marginHorizontal + paddingStart + Dp2Px.dp2px(getContext(),38), centerVertical - Dp2Px.dp2px(getContext(),32), paintTitleResult);
+            canvas.drawText(titleText, marginHorizontal + paddingStart, centerVertical - LzDp2Px.dp2px(getContext(),32), paintTitleText);
+            canvas.drawText(assembleResultText(), marginHorizontal + paddingStart + LzDp2Px.dp2px(getContext(),38), centerVertical - LzDp2Px.dp2px(getContext(),32), paintTitleResult);
         }
     }
 

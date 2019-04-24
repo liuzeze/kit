@@ -17,6 +17,7 @@ import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.checked.CheckHelper;
 import lz.com.tools.recycleview.checked.SingleUnCancelCheckedHelper;
+import lz.com.tools.util.LzTimeUtils;
 
 @LayoutId(R.layout.activity_dialog)
 public class DialogActivity extends BaseActivity {
@@ -74,6 +75,7 @@ public class DialogActivity extends BaseActivity {
                 break;
 
             default:
+
                 break;
         }
     }

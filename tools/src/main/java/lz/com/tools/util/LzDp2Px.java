@@ -6,8 +6,8 @@ import android.util.TypedValue;
 /**
  * 常用单位转换的辅助类
  */
-public class Dp2Px {
-    private Dp2Px() {
+public class LzDp2Px {
+    private LzDp2Px() {
         /* cannot be instantiated */
         throw new UnsupportedOperationException("cannot be instantiated");
     }

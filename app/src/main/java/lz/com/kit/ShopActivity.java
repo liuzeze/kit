@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import lz.com.tools.inject.InjectView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.shopview.SlideLayout;
+import lz.com.tools.util.LzWebViewUtils;
 
 /**
  * Created by yc on 2018/7/23.
@@ -75,34 +76,11 @@ public class ShopActivity extends BaseActivity {
 
     @SuppressLint({"ObsoleteSdkInt", "SetJavaScriptEnabled"})
     private void initWebView() {
-        final WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setSupportZoom(true);
-        settings.setBuiltInZoomControls(true);
-        settings.setUseWideViewPort(true);
-        settings.setDomStorageEnabled(true);
-        webView.setWebViewClient(new WebViewClient() {
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-        });
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR_MR1) {
-            new Object() {
-                void setLoadWithOverviewMode(boolean overview) {
-                    settings.setLoadWithOverviewMode(overview);
-                }
-            }.setLoadWithOverviewMode(true);
-        }
-
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
-
+        LzWebViewUtils.initWebView(mActivity,webView);
         getWindow().getDecorView().post(new Runnable() {
             @Override
             public void run() {
-                webView.loadUrl("https://www.jianshu.com/p/d745ea0cb5bd");
+                LzWebViewUtils.loadUrl(webView,"https://github.com/liuzeze");
             }
         });
     }

@@ -10,7 +10,7 @@ import android.view.View;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import lz.com.tools.util.Dp2Px;
+import lz.com.tools.util.LzDp2Px;
 
 public abstract class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
@@ -37,27 +37,27 @@ public abstract class DividerItemDecoration extends RecyclerView.ItemDecoration 
             if (divider != null) {
 
                 if (divider.getLeftSideLine().isHave()) {
-                    int lineWidthPx = Dp2Px.convert(context, divider.getLeftSideLine().getWidthDp());
-                    int startPaddingPx = Dp2Px.convert(context, divider.getLeftSideLine().getStartPaddingDp());
-                    int endPaddingPx = Dp2Px.convert(context, divider.getLeftSideLine().getEndPaddingDp());
+                    int lineWidthPx = LzDp2Px.convert(context, divider.getLeftSideLine().getWidthDp());
+                    int startPaddingPx = LzDp2Px.convert(context, divider.getLeftSideLine().getStartPaddingDp());
+                    int endPaddingPx = LzDp2Px.convert(context, divider.getLeftSideLine().getEndPaddingDp());
                     drawChildLeftVertical(child, c, parent, divider.getLeftSideLine().getColor(), lineWidthPx, startPaddingPx, endPaddingPx);
                 }
                 if (divider.getTopSideLine().isHave()) {
-                    int lineWidthPx = Dp2Px.convert(context, divider.getTopSideLine().getWidthDp());
-                    int startPaddingPx = Dp2Px.convert(context, divider.getTopSideLine().getStartPaddingDp());
-                    int endPaddingPx = Dp2Px.convert(context, divider.getTopSideLine().getEndPaddingDp());
+                    int lineWidthPx = LzDp2Px.convert(context, divider.getTopSideLine().getWidthDp());
+                    int startPaddingPx = LzDp2Px.convert(context, divider.getTopSideLine().getStartPaddingDp());
+                    int endPaddingPx = LzDp2Px.convert(context, divider.getTopSideLine().getEndPaddingDp());
                     drawChildTopHorizontal(child, c, parent, divider.topSideLine.getColor(), lineWidthPx, startPaddingPx, endPaddingPx);
                 }
                 if (divider.getRightSideLine().isHave()) {
-                    int lineWidthPx = Dp2Px.convert(context, divider.getRightSideLine().getWidthDp());
-                    int startPaddingPx = Dp2Px.convert(context, divider.getRightSideLine().getStartPaddingDp());
-                    int endPaddingPx = Dp2Px.convert(context, divider.getRightSideLine().getEndPaddingDp());
+                    int lineWidthPx = LzDp2Px.convert(context, divider.getRightSideLine().getWidthDp());
+                    int startPaddingPx = LzDp2Px.convert(context, divider.getRightSideLine().getStartPaddingDp());
+                    int endPaddingPx = LzDp2Px.convert(context, divider.getRightSideLine().getEndPaddingDp());
                     drawChildRightVertical(child, c, parent, divider.getRightSideLine().getColor(), lineWidthPx, startPaddingPx, endPaddingPx);
                 }
                 if (divider.getBottomSideLine().isHave()) {
-                    int lineWidthPx = Dp2Px.convert(context, divider.getBottomSideLine().getWidthDp());
-                    int startPaddingPx = Dp2Px.convert(context, divider.getBottomSideLine().getStartPaddingDp());
-                    int endPaddingPx = Dp2Px.convert(context, divider.getBottomSideLine().getEndPaddingDp());
+                    int lineWidthPx = LzDp2Px.convert(context, divider.getBottomSideLine().getWidthDp());
+                    int startPaddingPx = LzDp2Px.convert(context, divider.getBottomSideLine().getStartPaddingDp());
+                    int endPaddingPx = LzDp2Px.convert(context, divider.getBottomSideLine().getEndPaddingDp());
                     drawChildBottomHorizontal(child, c, parent, divider.getBottomSideLine().getColor(), lineWidthPx, startPaddingPx, endPaddingPx);
                 }
             }
@@ -197,10 +197,10 @@ public abstract class DividerItemDecoration extends RecyclerView.ItemDecoration 
             divider = new DividerBuilder().create();
         }
 
-        int left = divider.getLeftSideLine().isHave() ? Dp2Px.convert(context, divider.getLeftSideLine().getWidthDp()) : 0;
-        int top = divider.getTopSideLine().isHave() ? Dp2Px.convert(context, divider.getTopSideLine().getWidthDp()) : 0;
-        int right = divider.getRightSideLine().isHave() ? Dp2Px.convert(context, divider.getRightSideLine().getWidthDp()) : 0;
-        int bottom = divider.getBottomSideLine().isHave() ? Dp2Px.convert(context, divider.getBottomSideLine().getWidthDp()) : 0;
+        int left = divider.getLeftSideLine().isHave() ? LzDp2Px.convert(context, divider.getLeftSideLine().getWidthDp()) : 0;
+        int top = divider.getTopSideLine().isHave() ? LzDp2Px.convert(context, divider.getTopSideLine().getWidthDp()) : 0;
+        int right = divider.getRightSideLine().isHave() ? LzDp2Px.convert(context, divider.getRightSideLine().getWidthDp()) : 0;
+        int bottom = divider.getBottomSideLine().isHave() ? LzDp2Px.convert(context, divider.getBottomSideLine().getWidthDp()) : 0;
 
         outRect.set(left, top, right, bottom);
     }

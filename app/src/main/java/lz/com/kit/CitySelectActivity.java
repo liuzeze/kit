@@ -6,6 +6,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,8 @@ import lz.com.tools.inject.LayoutId;
 import lz.com.tools.inject.OnClick;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
+import lz.com.tools.util.LzTimeUtils;
+import lz.com.tools.util.LzToast;
 
 /**
  * Created by yc on 2018/7/23.
@@ -43,6 +47,8 @@ public class CitySelectActivity extends BaseActivity {
             @Override
             public void onAreaSelect(String s, int... position) {
                 if (!TextUtils.isEmpty(s)) {
+                    Logger.e(s);
+                    LzToast.showToast(s);
                     mCitySelectPosition = position;
                     mButton.setText(s);
                 }
