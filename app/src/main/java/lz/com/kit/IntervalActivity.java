@@ -1,21 +1,19 @@
 package lz.com.kit;
 
-import android.os.Bundle;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import lz.com.tools.inject.BindView;
+import lz.com.tools.inject.LayoutId;
 import lz.com.tools.widget.IntervalSelectionView;
 
+
+@LayoutId(R.layout.activity_interval)
 public class IntervalActivity extends BaseActivity {
 
     @BindView(R.id.isv_condition_second)
     IntervalSelectionView isvConditionSecond;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_interval);
-        ButterKnife.bind(this);
+    public void init() {
+        super.init();
 
         isvConditionSecond.post(new Runnable() {
             @Override

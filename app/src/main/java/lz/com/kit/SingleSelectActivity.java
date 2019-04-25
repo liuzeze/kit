@@ -1,22 +1,22 @@
 package lz.com.kit;
 
-import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import lz.com.kit.bean.SelectBean;
+import lz.com.tools.inject.BindView;
+import lz.com.tools.inject.LayoutId;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.checked.CheckHelper;
 import lz.com.tools.recycleview.checked.SingleCheckedHelper;
 
+@LayoutId(value = R.layout.activity_checked,titleName = "单选")
 public class SingleSelectActivity extends BaseActivity {
 
     @BindView(R.id.recyclevie)
@@ -27,10 +27,8 @@ public class SingleSelectActivity extends BaseActivity {
     private ArrayList<SelectBean> mStrings;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checked);
-        ButterKnife.bind(this);
+    public void init() {
+        super.init();
 
 //        recyclevie.setLayoutManager(new LinearLayoutManager(this));
         recyclevie.setLayoutManager(new GridLayoutManager(this, 4));

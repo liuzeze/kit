@@ -2,28 +2,26 @@ package lz.com.kit;
 
 import android.graphics.Color;
 import android.graphics.Outline;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+
 import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import lz.com.kit.view.SimpleRefreshLayout;
+import lz.com.tools.inject.BindView;
+import lz.com.tools.inject.LayoutId;
 import lz.com.tools.recycleview.ReboundReyclerView;
-import lz.com.tools.recycleview.layoutmanager.LzLinearLayoutManager;
-import lz.com.tools.recycleview.swipe.SwipeMenuItem;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.decoration.sticky.StickyDecoration;
 import lz.com.tools.recycleview.decoration.sticky.listener.GroupListener;
+import lz.com.tools.recycleview.swipe.SwipeMenuItem;
 
+@LayoutId(value = R.layout.activity_recycler_view, titleName = "RecyclerViewActivity")
 public class RecyclerViewActivity extends BaseActivity {
 
 
@@ -31,14 +29,10 @@ public class RecyclerViewActivity extends BaseActivity {
     ReboundReyclerView recyclevie;
     private BaseRecycleAdapter<String, BaseViewHolder> mAdapter;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view);
-
-        ButterKnife.bind(this);
+    public void init() {
+        super.init();
 //        recyclevie.setLayoutManager(new LzLinearLayoutManager(this));
         recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
 

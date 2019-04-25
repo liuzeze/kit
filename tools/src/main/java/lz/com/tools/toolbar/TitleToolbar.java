@@ -71,7 +71,9 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
                 R.styleable.Toolbar, defStyleAttr, 0);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SaTitleToolbar);
 
-        //
+
+
+
 
         if (!isChild(mRightTextView)) {
             mRightTextView = new TextView(context);
@@ -101,8 +103,8 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
 
 
             Drawable drawableClose = typedArray.getDrawable(R.styleable.SaTitleToolbar_rightIcon);
-                mRightTextView.setCompoundDrawablePadding(typedArray.getDimensionPixelSize(
-                        R.styleable.SaTitleToolbar_rightDrawPadding, dp2px(DEFAULT_BACK_MARGIN_RIGHT)));
+            mRightTextView.setCompoundDrawablePadding(typedArray.getDimensionPixelSize(
+                    R.styleable.SaTitleToolbar_rightDrawPadding, dp2px(DEFAULT_BACK_MARGIN_RIGHT)));
             if (drawableClose != null) {
                 mRightTextView.setCompoundDrawablesWithIntrinsicBounds(drawableClose, null, null, null);
             }
@@ -404,7 +406,7 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
     }
 
     public CharSequence getRightText() {
-        return mCloseText;
+        return mRightText;
     }
 
     public TitleToolbar setRightTextColor(int color) {

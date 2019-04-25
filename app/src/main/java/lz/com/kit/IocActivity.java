@@ -3,9 +3,8 @@ package lz.com.kit;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import lz.com.tools.inject.InjectView;
+import lz.com.tools.inject.BindView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.inject.OnClick;
 import lz.com.tools.inject.OnLongClick;
@@ -16,7 +15,7 @@ import lz.com.tools.util.LzToast;
 @LayoutId(R.layout.activity_ioc)
 public class IocActivity extends BaseActivity {
 
-    @InjectView(R.id.btn1)
+    @BindView(R.id.btn1)
     Button bt1;
 
     @OnClick(R.id.btn)

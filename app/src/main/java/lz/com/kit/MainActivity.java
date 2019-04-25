@@ -4,23 +4,17 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import lz.com.kit.bean.ActivityBean;
-import lz.com.tools.inject.InjectView;
+import lz.com.tools.inject.BindView;
 import lz.com.tools.inject.LayoutId;
-import lz.com.tools.inject.OnClick;
-import lz.com.tools.inject.OnLongClick;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
@@ -29,9 +23,9 @@ import lz.com.tools.recycleview.decoration.DividerBuilder;
 import lz.com.tools.recycleview.decoration.DividerItemDecoration;
 
 
-@LayoutId(R.layout.activity_main)
+@LayoutId(value = R.layout.activity_main,isShowBackIcon = false)
 public class MainActivity extends BaseActivity {
-    @InjectView(R.id.recyclevie)
+    @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
     private BaseRecycleAdapter<ActivityBean, BaseViewHolder> mAdapter;
 

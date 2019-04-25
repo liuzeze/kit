@@ -1,33 +1,20 @@
 package lz.com.kit;
 
-import android.graphics.Color;
-import android.graphics.Outline;
-import android.os.Bundle;
 import android.view.View;
-import android.view.ViewOutlineProvider;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.PagerSnapHelper;
-import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import lz.com.kit.view.SimpleRefreshLayout;
+import lz.com.tools.inject.BindView;
+import lz.com.tools.inject.LayoutId;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
-import lz.com.tools.recycleview.decoration.sticky.StickyDecoration;
-import lz.com.tools.recycleview.decoration.sticky.listener.GroupListener;
-import lz.com.tools.recycleview.layoutmanager.LzLinearLayoutManager;
 import lz.com.tools.recycleview.layoutmanager.PagerLayoutManager;
-import lz.com.tools.recycleview.swipe.SwipeMenuItem;
 
+@LayoutId(value = R.layout.activity_recycler_view, titleName = "仿抖音")
 public class PageRecyclerViewActivity extends BaseActivity {
-
 
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
@@ -35,13 +22,9 @@ public class PageRecyclerViewActivity extends BaseActivity {
     private PagerLayoutManager mLzLinearLayoutManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void init() {
+        super.init();
 
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view);
-
-        ButterKnife.bind(this);
         mLzLinearLayoutManager = new PagerLayoutManager(this, RecyclerView.VERTICAL);
         recyclevie.setLayoutManager(mLzLinearLayoutManager);
 

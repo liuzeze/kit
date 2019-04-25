@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import lz.com.tools.inject.LayoutId;
+
+@LayoutId(value = R.layout.activity_permission, titleName = "权限申请")
 public class PermissionActivity extends BaseActivity {
     /**
      * 需要进行检测的权限数组
@@ -23,13 +26,6 @@ public class PermissionActivity extends BaseActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.READ_PHONE_STATE};
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_permission);
-
-
-    }
 
     private void checkedPermission() {
         //权限未通过

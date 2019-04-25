@@ -1,19 +1,13 @@
 package lz.com.kit;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
 
-import androidx.annotation.ContentView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import lz.com.tools.inject.InjectView;
+import lz.com.tools.inject.BindView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.shopview.SlideLayout;
 import lz.com.tools.util.LzWebViewUtils;
@@ -25,12 +19,12 @@ import lz.com.tools.util.LzWebViewUtils;
 @LayoutId(R.layout.activity_shop)
 public class ShopActivity extends BaseActivity {
 
-    @InjectView(R.id.slideDetailsLayout)
+    @BindView(R.id.slideDetailsLayout)
     private  SlideLayout mSlideDetailsLayout;
     private ShopMainFragment shopMainFragment;
-    @InjectView(R.id.wb_view)
+    @BindView(R.id.wb_view)
     private WebView webView;
-    @InjectView(R.id.ll_detail)
+    @BindView(R.id.ll_detail)
     private  LinearLayout mLlDetail;
 
 

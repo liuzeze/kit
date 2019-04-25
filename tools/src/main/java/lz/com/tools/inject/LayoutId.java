@@ -14,4 +14,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface LayoutId {
     int value() default -1;
+
+    boolean isShowTitle() default true;
+
+    boolean isShowBackIcon() default true;
+
+    String titleName() default "标题";
 }

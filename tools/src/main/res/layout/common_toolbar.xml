@@ -7,8 +7,9 @@
     <lz.com.tools.toolbar.TitleToolbar
         android:id="@+id/common_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="#ffffff"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:elevation="1dp"
         android:minHeight="?attr/actionBarSize"
         app:backIcon="@mipmap/back"
         app:backTextAppearance="?attr/actionMenuTextAppearance"

@@ -1,24 +1,23 @@
 package lz.com.kit;
 
-import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import lz.com.kit.bean.SelectBean;
+import lz.com.tools.inject.BindView;
+import lz.com.tools.inject.LayoutId;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.checked.CheckHelper;
 import lz.com.tools.recycleview.checked.MultiCheckedHelper;
 
-public class MultiCheckedActivity extends AppCompatActivity {
+@LayoutId(value = R.layout.activity_checked,titleName = "多选")
+public class MultiCheckedActivity extends BaseActivity  {
 
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
@@ -28,10 +27,8 @@ public class MultiCheckedActivity extends AppCompatActivity {
     private BaseRecycleAdapter<SelectBean, BaseViewHolder> mAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checked);
-        ButterKnife.bind(this);
+    public void init() {
+        super.init();
 //        recyclevie.setLayoutManager(new LinearLayoutManager(this));
         recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
         mStrings = new ArrayList<>();

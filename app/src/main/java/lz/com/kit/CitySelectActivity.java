@@ -1,7 +1,6 @@
 package lz.com.kit;
 
 import android.os.SystemClock;
-import android.telecom.Call;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +13,11 @@ import java.util.List;
 import lz.com.tools.city.CityLoadingView;
 import lz.com.tools.city.CityPickerInfo;
 import lz.com.tools.city.CitySelectDialog;
-import lz.com.tools.inject.InjectView;
+import lz.com.tools.inject.BindView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.inject.OnClick;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
-import lz.com.tools.util.LzTimeUtils;
 import lz.com.tools.util.LzToast;
 
 /**
@@ -32,7 +30,7 @@ public class CitySelectActivity extends BaseActivity {
     private int[] mCitySelectPosition;
     private ArrayList<CityPickerInfo> mAreaItem = new ArrayList<>();
 
-    @InjectView(R.id.bt_show_pop)
+    @BindView(R.id.bt_show_pop)
     Button mButton;
     //加载框
     private CityLoadingView mCityLoadingView;

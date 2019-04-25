@@ -1,13 +1,13 @@
 package lz.com.kit;
 
-import android.os.Bundle;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import lz.com.kit.view.SimpleRefreshLayout;
+import lz.com.tools.inject.BindView;
+import lz.com.tools.inject.LayoutId;
 import lz.com.tools.widget.ReboundScrollView;
 
+@LayoutId(value = R.layout.activity_scroll_view, titleName = "scrollview")
 public class ScrollViewActivity extends BaseActivity {
 
     @BindView(R.id.tv_title)
@@ -18,10 +18,8 @@ public class ScrollViewActivity extends BaseActivity {
     ReboundScrollView reboundScroll;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scroll_view);
-        ButterKnife.bind(this);
+    public void init() {
+        super.init();
         tvTitle.getBackground().setAlpha(1);
 
         reboundScroll.setEnableRefrash(true);

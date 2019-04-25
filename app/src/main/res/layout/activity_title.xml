@@ -29,7 +29,6 @@
         app:title_gravity="center" />
 
     <lz.com.tools.toolbar.TitleToolbar
-        android:id="@+id/common_toolbar"
 
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -46,6 +45,7 @@
         app:closeTextSize="12px"
         app:closeVisible="true"
         app:rightMarginRight="16dp"
+        app:rightText="12px"
         app:rightTextAppearance="?attr/actionMenuTextAppearance"
         app:rightTextColor="#ffffff"
         app:rightTextSize="12px"
