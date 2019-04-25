@@ -11,20 +11,18 @@ import lz.com.kit.bean.SelectBean;
 import lz.com.tools.inject.BindView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.recycleview.ReboundReyclerView;
-import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
-import lz.com.tools.recycleview.checked.CheckHelper;
-import lz.com.tools.recycleview.checked.MultiCheckedHelper;
+import lz.com.tools.recycleview.checked.BaseCheckedRecycleAdapter;
 
-@LayoutId(value = R.layout.activity_checked,titleName = "多选")
-public class MultiCheckedActivity extends BaseActivity  {
+@LayoutId(value = R.layout.activity_checked, titleName = "多选")
+public class MultiCheckedActivity extends BaseActivity {
 
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
     @BindView(R.id.tv_title)
     TextView tvTitle;
     private List<SelectBean> mStrings;
-    private BaseRecycleAdapter<SelectBean, BaseViewHolder> mAdapter;
+    private BaseCheckedRecycleAdapter<SelectBean, BaseViewHolder> mAdapter;
 
     @Override
     public void init() {
@@ -37,10 +35,28 @@ public class MultiCheckedActivity extends BaseActivity  {
             selectBean.name = "位置+" + i;
             mStrings.add(selectBean);
         }
-        mAdapter = new BaseRecycleAdapter<SelectBean, BaseViewHolder>(R.layout.item_text_checked) {
+        mAdapter = new BaseCheckedRecycleAdapter<SelectBean, BaseViewHolder>(R.layout.item_text_checked, BaseCheckedRecycleAdapter.MULTI) {
+            @Override
+            public void onChecked(BaseViewHolder holder, SelectBean obj) {
+                holder.itemView.setBackgroundColor(0xFF73E0E4); //蓝色
+                holder.setChecked(R.id.checkbox, true);
+                tvTitle.setText("");
+                ArrayList<SelectBean> checkedList = mCheckHelper.getCheckedList();
+                for (SelectBean selectBean : checkedList) {
+                    tvTitle.append(selectBean.name);
+                }
+            }
+
+            @Override
+            public void onUnChecked(BaseViewHolder holder, SelectBean obj) {
+                holder.itemView.setBackgroundColor(0xFFFFFFFF);  //白色
+                holder.setChecked(R.id.checkbox, false);
+
+            }
 
             @Override
             protected void onBindView(BaseViewHolder holder, SelectBean item) {
+                super.onBindView(holder, item);
                 holder.setText(R.id.tv_1, item.name);
 
             }
@@ -48,42 +64,8 @@ public class MultiCheckedActivity extends BaseActivity  {
 
         recyclevie.setAdapter(mAdapter);
         mAdapter.setNewData(mStrings);
-        mAdapter.setCheckHelper(createHelper());
 
     }
 
 
-    private MultiCheckedHelper createHelper() {
-        MultiCheckedHelper<SelectBean> mCheckHelper = new MultiCheckedHelper<>();
-        mCheckHelper.setOnCheckedListener(
-                new CheckHelper.OnCheckedListener<SelectBean, BaseViewHolder>() {
-
-                    @Override
-                    public void onChecked(BaseViewHolder holder, SelectBean obj) {
-                        holder.itemView.setBackgroundColor(0xFF73E0E4); //蓝色
-                        holder.setChecked(R.id.checkbox, true);
-                    }
-
-                    @Override
-                    public void onUnChecked(BaseViewHolder holder, SelectBean obj) {
-                        holder.itemView.setBackgroundColor(0xFFFFFFFF);  //白色
-                        holder.setChecked(R.id.checkbox, false);
-
-                    }
-
-                    @Override
-                    public void onSelectitem(List<SelectBean> itemLists) {
-                        tvTitle.setText("");
-                        ArrayList<SelectBean> checkedList = mCheckHelper.getCheckedList();
-                        for (SelectBean selectBean : checkedList) {
-                            tvTitle.append(selectBean.name);
-                        }
-                    }
-
-                });
-
-        //添加默认选中数据
-        mCheckHelper.setDefaultItem(mStrings.get(0));
-        return mCheckHelper;
-    }
 }

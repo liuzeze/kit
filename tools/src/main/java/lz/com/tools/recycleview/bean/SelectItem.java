@@ -1,7 +1,5 @@
 package lz.com.tools.recycleview.bean;
 
-import android.text.TextUtils;
-
 import androidx.annotation.Nullable;
 
 /**

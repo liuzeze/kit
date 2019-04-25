@@ -1,9 +1,6 @@
 package lz.com.tools.recycleview.checked;
 
-import android.text.TextUtils;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -17,46 +14,46 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T> {
 
 
-    private T mUnCancelItem;
+    private T mAlwaysSelectItem;
 
     @Override
     public void onSelect(RecyclerView.Adapter adapter, RecyclerView.ViewHolder holder, T obj, int position) {
         if (mOnCheckedListener != null) {
+            //点击未选中的条目
             if (!checkedList.containsKey(obj)) {
                 //点击选中
-                if (Objects.equals(mUnCancelItem, obj)) {
+                if (Objects.equals(mAlwaysSelectItem, obj)) {
+                    //点击的是互斥的的  需要把其他条目置为未选中
                     for (Map.Entry<T, RecyclerView.ViewHolder> entry : checkedList.entrySet()) {
                         mOnCheckedListener.onUnChecked(entry.getValue(), entry.getKey());
                     }
                     checkedList.clear();
+                    checkedList.put(obj, holder);
+                    mOnCheckedListener.onChecked(holder, obj);
                 } else {
-                    if (checkedList.containsKey(mUnCancelItem)) {
-                        RecyclerView.ViewHolder viewHolder = checkedList.get(mUnCancelItem);
+                    //点击互斥条目之外的条目
+                    if (checkedList.containsKey(mAlwaysSelectItem)) {
+                        RecyclerView.ViewHolder viewHolder = checkedList.get(mAlwaysSelectItem);
                         if (viewHolder != null) {
-                            checkedList.remove(mUnCancelItem);
-                            mOnCheckedListener.onUnChecked(viewHolder, mUnCancelItem);
-                        } else {
-                            checkedList.remove(mUnCancelItem);
-                            adapter.notifyDataSetChanged();
+                            checkedList.remove(mAlwaysSelectItem);
+                            mOnCheckedListener.onUnChecked(viewHolder, mAlwaysSelectItem);
                         }
                     }
+                    checkedList.put(obj, holder);
+                    mOnCheckedListener.onChecked(holder, obj);
                 }
-                checkedList.put(obj, holder);
-                mOnCheckedListener.onChecked(holder, obj);
-
 
             } else {
-                //点击取消
-                if (!Objects.equals(mUnCancelItem, obj)) {
+                //点击已选中的条目
+                if (!Objects.equals(mAlwaysSelectItem, obj)) {
                     checkedList.remove(obj);
                     mOnCheckedListener.onUnChecked(holder, obj);
                     if (checkedList.size() == 0) {
-                        checkedList.put(mUnCancelItem, null);
+                        checkedList.put(mAlwaysSelectItem, null);
                         adapter.notifyDataSetChanged();
                     }
                 }
             }
-            mOnCheckedListener.onSelectitem(getCheckedList());
 
         }
 
@@ -64,6 +61,9 @@ public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T>
 
     @Override
     public void isChecked(RecyclerView.ViewHolder holder, T obj, int position) {
+        if (checkedList.size() > 1) {
+            checkedList.remove(mAlwaysSelectItem);
+        }
         if (checkedList.containsKey(obj)) {
             checkedList.put(obj, holder);
             if (mOnCheckedListener != null) {
@@ -77,42 +77,41 @@ public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T>
     }
 
 
-    public void setDefaultItem(T... objs) {
+    @Override
+    public CheckHelper setDefaultItem(T... objs) {
         for (T obj : objs) {
             if (!checkedList.containsKey(obj)) {
                 checkedList.put(obj, null);
             }
         }
-        if (mOnCheckedListener != null) {
-            mOnCheckedListener.onSelectitem(getCheckedList());
-        }
+        return this;
     }
 
+    @Override
     public void setDefaultItem(List<T> objs) {
         for (T obj : objs) {
             if (!checkedList.containsKey(obj)) {
                 checkedList.put(obj, null);
             }
         }
-        if (mOnCheckedListener != null) {
-            mOnCheckedListener.onSelectitem(getCheckedList());
-        }
+
     }
 
-    public void setUnCancelItem(T unCancelItem) {
-        mUnCancelItem = unCancelItem;
-        if (!checkedList.containsKey(mUnCancelItem)) {
-            checkedList.put(mUnCancelItem, null);
+    @Override
+    public CheckHelper setAlwaysSelectItem(T... unCancelItem) {
+        if (unCancelItem != null) {
+            mAlwaysSelectItem = unCancelItem[0];
+            if (!checkedList.containsKey(mAlwaysSelectItem)) {
+                checkedList.put(mAlwaysSelectItem, null);
+            }
         }
-        if (mOnCheckedListener != null) {
-            mOnCheckedListener.onSelectitem(getCheckedList());
-        }
+        return this;
     }
 
     @Override
     public ArrayList<T> getCheckedList() {
         ArrayList<T> checkedList = super.getCheckedList();
-        checkedList.remove(mUnCancelItem);
+        checkedList.remove(mAlwaysSelectItem);
         return checkedList;
     }
 }

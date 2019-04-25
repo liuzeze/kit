@@ -11,10 +11,8 @@ import lz.com.kit.bean.SelectBean;
 import lz.com.tools.inject.BindView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.recycleview.ReboundReyclerView;
-import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
-import lz.com.tools.recycleview.checked.CheckHelper;
-import lz.com.tools.recycleview.checked.MultiUnCancelCheckedHelper;
+import lz.com.tools.recycleview.checked.BaseCheckedRecycleAdapter;
 
 @LayoutId(value = R.layout.activity_checked, titleName = "多选不可取消")
 public class MultiUnCancelCheckedActivity extends BaseActivity {
@@ -24,7 +22,7 @@ public class MultiUnCancelCheckedActivity extends BaseActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
     private List<SelectBean> mStrings;
-    private BaseRecycleAdapter<SelectBean, BaseViewHolder> mAdapter;
+    private BaseCheckedRecycleAdapter<SelectBean, BaseViewHolder> mAdapter;
 
     @Override
     public void init() {
@@ -41,54 +39,38 @@ public class MultiUnCancelCheckedActivity extends BaseActivity {
         SelectBean selectBean = new SelectBean();
         selectBean.name = "不限+";
         mStrings.add(0, selectBean);
-        mAdapter = new BaseRecycleAdapter<SelectBean, BaseViewHolder>(R.layout.item_text_checked) {
+        mAdapter = new BaseCheckedRecycleAdapter<SelectBean, BaseViewHolder>(R.layout.item_text_checked, BaseCheckedRecycleAdapter.MULTI) {
+            @Override
+            public void onChecked(BaseViewHolder holder, SelectBean obj) {
+                holder.itemView.setBackgroundColor(0xFF73E0E4); //蓝色
+                holder.setChecked(R.id.checkbox, true);
+                tvTitle.setText("");
+                ArrayList<SelectBean> checkedList = mCheckHelper.getCheckedList();
+                for (SelectBean selectBean : checkedList) {
+                    tvTitle.append(selectBean.name);
+                }
+            }
+
+            @Override
+            public void onUnChecked(BaseViewHolder holder, SelectBean obj) {
+                holder.itemView.setBackgroundColor(0xFFFFFFFF);  //白色
+                holder.setChecked(R.id.checkbox, false);
+
+            }
 
             @Override
             protected void onBindView(BaseViewHolder holder, SelectBean item) {
+                super.onBindView(holder, item);
                 holder.setText(R.id.tv_1, item.name);
 
             }
         };
+        mAdapter.getCheckHelper().setDefaultItem(mStrings.get(1)).setAlwaysSelectItem(mStrings.get(5));
 
         recyclevie.setAdapter(mAdapter);
         mAdapter.setNewData(mStrings);
-        mAdapter.setCheckHelper(createHelper());
 
     }
 
 
-    private MultiUnCancelCheckedHelper createHelper() {
-        MultiUnCancelCheckedHelper<SelectBean> mCheckHelper = new MultiUnCancelCheckedHelper<>();
-        mCheckHelper.setOnCheckedListener(
-                new CheckHelper.OnCheckedListener<SelectBean, BaseViewHolder>() {
-
-                    @Override
-                    public void onChecked(BaseViewHolder holder, SelectBean obj) {
-                        holder.itemView.setBackgroundColor(0xFF73E0E4); //蓝色
-                        holder.setChecked(R.id.checkbox, true);
-
-                    }
-
-                    @Override
-                    public void onUnChecked(BaseViewHolder holder, SelectBean obj) {
-                        holder.itemView.setBackgroundColor(0xFFFFFFFF);  //白色
-                        holder.setChecked(R.id.checkbox, false);
-
-                    }
-
-                    @Override
-                    public void onSelectitem(List<SelectBean> itemLists) {
-                        tvTitle.setText("");
-                        ArrayList<SelectBean> checkedList = mCheckHelper.getCheckedList();
-                        for (SelectBean selectBean : checkedList) {
-                            tvTitle.append(selectBean.name);
-                        }
-                    }
-
-                });
-
-        //添加默认选中数据
-        mCheckHelper.setUnCancelItem(mStrings.get(0));
-        return mCheckHelper;
-    }
 }

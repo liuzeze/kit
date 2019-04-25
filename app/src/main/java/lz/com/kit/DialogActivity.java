@@ -5,7 +5,6 @@ import android.view.View;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import lz.com.kit.bean.SelectBean;
@@ -16,8 +15,7 @@ import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.checked.CheckHelper;
-import lz.com.tools.recycleview.checked.SingleUnCancelCheckedHelper;
-import lz.com.tools.util.LzTimeUtils;
+import lz.com.tools.recycleview.checked.SingleCheckedHelper;
 
 @LayoutId(R.layout.activity_dialog)
 public class DialogActivity extends BaseActivity {
@@ -103,7 +101,7 @@ public class DialogActivity extends BaseActivity {
 
         recyclerView.setAdapter(mAdapter);
         mAdapter.setNewData(mStrings);
-        SingleUnCancelCheckedHelper<SelectBean> checkedHelper = new SingleUnCancelCheckedHelper<>();
+        SingleCheckedHelper<SelectBean> checkedHelper = new SingleCheckedHelper<>();
         checkedHelper.setOnCheckedListener(
                 new CheckHelper.OnCheckedListener<SelectBean, BaseViewHolder>() {
 
@@ -119,13 +117,10 @@ public class DialogActivity extends BaseActivity {
                         holder.setChecked(R.id.checkbox, false);
                     }
 
-                    @Override
-                    public void onSelectitem(List<SelectBean> itemLists) {
-                    }
                 });
 
         //添加默认选中数据
-        checkedHelper.setUnCancelItem(mStrings.get(0));
+        checkedHelper.setAlwaysSelectItem(mStrings.get(0));
         mAdapter.setCheckHelper(checkedHelper);
         return recyclerView;
     }

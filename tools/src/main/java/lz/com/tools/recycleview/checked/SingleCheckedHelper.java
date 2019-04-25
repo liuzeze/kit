@@ -1,46 +1,63 @@
 package lz.com.tools.recycleview.checked;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.Map;
-
-import androidx.recyclerview.widget.RecyclerView;
+import java.util.Objects;
 
 /**
  * -----------作者----------日期----------变更内容-----
  * -          刘泽      2019-01-28       创建class
  */
 public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
-    private boolean isCanCancel = true;
+
+    private boolean mIsLastItemEnable = true;
+
+    private T mAlwaysSelectItem;
+
 
     @Override
     public void onSelect(RecyclerView.Adapter adapter, RecyclerView.ViewHolder holder, T obj, int position) {
         if (mOnCheckedListener != null) {
+            //点击已选中的条目
             if (checkedList.containsKey(obj)) {
-                //已选的
-                if (isCanCancel) {
-                    mOnCheckedListener.onUnChecked(holder, obj);
-                    checkedList.clear();
+                //最后一个不可取消
+                if (mIsLastItemEnable) {
+                    //取消选中
+                    if (!Objects.equals(mAlwaysSelectItem, obj)) {
+                        checkedList.clear();
+                        mOnCheckedListener.onUnChecked(holder, obj);
+                        //选中默认第一个的条目
+                        if (mAlwaysSelectItem != null) {
+                            checkedList.put(mAlwaysSelectItem, null);
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
                 }
             } else {
-                //没有选的
+                //选中条目 上一个取消选中
                 for (Map.Entry<T, RecyclerView.ViewHolder> entry : checkedList.entrySet()) {
                     if (entry.getValue() != null) {
                         mOnCheckedListener.onUnChecked(entry.getValue(), obj);
                     }
                     break;
                 }
+                //当前选中
                 checkedList.clear();
                 checkedList.put(obj, holder);
-
                 mOnCheckedListener.onChecked(holder, obj);
             }
 
-            mOnCheckedListener.onSelectitem(getCheckedList());
         }
+
     }
 
     @Override
     public void isChecked(RecyclerView.ViewHolder holder, T obj, int position) {
+        if (checkedList.size() > 1) {
+            checkedList.remove(mAlwaysSelectItem);
+        }
         if (mOnCheckedListener != null) {
             if (checkedList.containsKey(obj)) {
                 checkedList.put(obj, holder);
@@ -51,16 +68,39 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
         }
     }
 
-    public SingleCheckedHelper<T> setCanCancel(boolean canCancel) {
-        isCanCancel = canCancel;
+
+    @Override
+    public CheckHelper setDefaultItem(T... obj) {
+        if (obj != null) {
+            checkedList.clear();
+            checkedList.put(obj[0], null);
+        }
         return this;
     }
 
-    public void setDefaultItem(T obj) {
-        checkedList.clear();
-        checkedList.put(obj, null);
-        if (mOnCheckedListener != null) {
-            mOnCheckedListener.onSelectitem(getCheckedList());
+    @Override
+    public CheckHelper setAlwaysSelectItem(T... alwaysSelectItem) {
+        if (alwaysSelectItem != null) {
+            mAlwaysSelectItem = alwaysSelectItem[0];
+            if (!checkedList.containsKey(mAlwaysSelectItem)) {
+                checkedList.put(mAlwaysSelectItem, null);
+            }
         }
+        return this;
+
+    }
+
+    @Override
+    public CheckHelper<T> setLastItemEnable(boolean canCancel) {
+        mIsLastItemEnable = canCancel;
+        return this;
+    }
+
+
+    @Override
+    public ArrayList<T> getCheckedList() {
+        ArrayList<T> checkedList = super.getCheckedList();
+        checkedList.remove(mAlwaysSelectItem);
+        return checkedList;
     }
 }

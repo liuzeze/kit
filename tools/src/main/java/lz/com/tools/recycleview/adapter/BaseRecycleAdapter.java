@@ -789,6 +789,9 @@ public abstract class BaseRecycleAdapter<T, K extends BaseViewHolder> extends Re
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
     }
+    public final OnItemClickListener getOnItemClickListener() {
+        return mOnItemClickListener;
+    }
 
     public interface RequestLoadMoreListener {
         void onLoadMoreRequested();
