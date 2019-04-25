@@ -15,10 +15,11 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
     private boolean mIsLastItemEnable = true;
 
     private T mAlwaysSelectItem;
+    private RecyclerView.ViewHolder mAlwaysSelecHolder;
 
 
     @Override
-    public void onSelect(RecyclerView.Adapter adapter, RecyclerView.ViewHolder holder, T obj, int position) {
+    public void onSelect( RecyclerView.ViewHolder holder, T obj, int position) {
         if (mOnCheckedListener != null) {
             //点击已选中的条目
             if (checkedList.containsKey(obj)) {
@@ -30,8 +31,8 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
                         mOnCheckedListener.onUnChecked(holder, obj);
                         //选中默认第一个的条目
                         if (mAlwaysSelectItem != null) {
-                            checkedList.put(mAlwaysSelectItem, null);
-                            adapter.notifyDataSetChanged();
+                            checkedList.put(mAlwaysSelectItem, mAlwaysSelecHolder);
+                            mOnCheckedListener.onChecked(mAlwaysSelecHolder, mAlwaysSelectItem);
                         }
                     }
                 }
@@ -57,6 +58,9 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
     public void isChecked(RecyclerView.ViewHolder holder, T obj, int position) {
         if (checkedList.size() > 1) {
             checkedList.remove(mAlwaysSelectItem);
+        }
+        if (Objects.equals(mAlwaysSelectItem, obj)) {
+            mAlwaysSelecHolder = holder;
         }
         if (mOnCheckedListener != null) {
             if (checkedList.containsKey(obj)) {

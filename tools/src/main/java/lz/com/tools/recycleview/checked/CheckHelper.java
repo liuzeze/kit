@@ -12,7 +12,7 @@ public abstract class CheckHelper<T extends Object> {
 
     protected OnCheckedListener mOnCheckedListener;
 
-    public abstract void onSelect(RecyclerView.Adapter adapter, RecyclerView.ViewHolder holder, T obj, int position);
+    public abstract void onSelect(RecyclerView.ViewHolder holder, T obj, int position);
 
     public abstract void isChecked(RecyclerView.ViewHolder holder, T obj, int position);
 
@@ -25,14 +25,13 @@ public abstract class CheckHelper<T extends Object> {
     public interface OnCheckedListener<D, V extends RecyclerView.ViewHolder> {
         void onChecked(V holder, D obj);
 
-         void onUnChecked(V holder, D obj);
+        void onUnChecked(V holder, D obj);
 
     }
 
     public ArrayList<T> getCheckedList() {
         return new ArrayList<>(checkedList.keySet());
     }
-
 
 
     public CheckHelper setDefaultItem(T... obj) {
@@ -42,9 +41,11 @@ public abstract class CheckHelper<T extends Object> {
     public CheckHelper setAlwaysSelectItem(T... unCancelItem) {
         return this;
     }
+
     public CheckHelper<T> setLastItemEnable(boolean canCancel) {
         return this;
     }
+
     public void setDefaultItem(List<T> objs) {
 
     }

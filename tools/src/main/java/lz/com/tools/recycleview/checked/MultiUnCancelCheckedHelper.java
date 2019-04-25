@@ -15,9 +15,10 @@ public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T>
 
 
     private T mAlwaysSelectItem;
+    private RecyclerView.ViewHolder mAlwaysSelecHolder;
 
     @Override
-    public void onSelect(RecyclerView.Adapter adapter, RecyclerView.ViewHolder holder, T obj, int position) {
+    public void onSelect(RecyclerView.ViewHolder holder, T obj, int position) {
         if (mOnCheckedListener != null) {
             //点击未选中的条目
             if (!checkedList.containsKey(obj)) {
@@ -44,13 +45,15 @@ public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T>
                 }
 
             } else {
-                //点击已选中的条目
+                //点击已选中的条目  要取消选中
                 if (!Objects.equals(mAlwaysSelectItem, obj)) {
                     checkedList.remove(obj);
                     mOnCheckedListener.onUnChecked(holder, obj);
-                    if (checkedList.size() == 0) {
-                        checkedList.put(mAlwaysSelectItem, null);
-                        adapter.notifyDataSetChanged();
+                    if (mAlwaysSelecHolder != null) {
+                        if (checkedList.size() == 0) {
+                            checkedList.put(mAlwaysSelectItem, mAlwaysSelecHolder);
+                            mOnCheckedListener.onChecked(mAlwaysSelecHolder, mAlwaysSelectItem);
+                        }
                     }
                 }
             }
@@ -63,6 +66,9 @@ public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T>
     public void isChecked(RecyclerView.ViewHolder holder, T obj, int position) {
         if (checkedList.size() > 1) {
             checkedList.remove(mAlwaysSelectItem);
+        }
+        if (Objects.equals(mAlwaysSelectItem, obj)) {
+            mAlwaysSelecHolder = holder;
         }
         if (checkedList.containsKey(obj)) {
             checkedList.put(obj, holder);
