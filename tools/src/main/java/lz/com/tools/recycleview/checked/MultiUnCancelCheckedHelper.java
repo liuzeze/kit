@@ -26,33 +26,33 @@ public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T>
                 if (Objects.equals(mAlwaysSelectItem, obj)) {
                     //点击的是互斥的的  需要把其他条目置为未选中
                     for (Map.Entry<T, RecyclerView.ViewHolder> entry : checkedList.entrySet()) {
-                        mOnCheckedListener.onUnChecked(entry.getValue(), entry.getKey());
+                        mOnCheckedListener.onChecked(entry.getValue(), entry.getKey(),false);
                     }
                     checkedList.clear();
                     checkedList.put(obj, holder);
-                    mOnCheckedListener.onChecked(holder, obj);
+                    mOnCheckedListener.onChecked(holder, obj,true);
                 } else {
                     //点击互斥条目之外的条目
                     if (checkedList.containsKey(mAlwaysSelectItem)) {
                         RecyclerView.ViewHolder viewHolder = checkedList.get(mAlwaysSelectItem);
                         if (viewHolder != null) {
                             checkedList.remove(mAlwaysSelectItem);
-                            mOnCheckedListener.onUnChecked(viewHolder, mAlwaysSelectItem);
+                            mOnCheckedListener.onChecked(viewHolder, mAlwaysSelectItem,false);
                         }
                     }
                     checkedList.put(obj, holder);
-                    mOnCheckedListener.onChecked(holder, obj);
+                    mOnCheckedListener.onChecked(holder, obj,true);
                 }
 
             } else {
                 //点击已选中的条目  要取消选中
                 if (!Objects.equals(mAlwaysSelectItem, obj)) {
                     checkedList.remove(obj);
-                    mOnCheckedListener.onUnChecked(holder, obj);
+                    mOnCheckedListener.onChecked(holder, obj,false);
                     if (mAlwaysSelecHolder != null) {
                         if (checkedList.size() == 0) {
                             checkedList.put(mAlwaysSelectItem, mAlwaysSelecHolder);
-                            mOnCheckedListener.onChecked(mAlwaysSelecHolder, mAlwaysSelectItem);
+                            mOnCheckedListener.onChecked(mAlwaysSelecHolder, mAlwaysSelectItem,true);
                         }
                     }
                 }
@@ -73,9 +73,9 @@ public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T>
         if (mOnCheckedListener != null) {
             if (checkedList.containsKey(obj)) {
                 checkedList.put(obj, holder);
-                mOnCheckedListener.onChecked(holder, obj);
+                mOnCheckedListener.onChecked(holder, obj,true);
             } else {
-                mOnCheckedListener.onUnChecked(holder, obj);
+                mOnCheckedListener.onChecked(holder, obj,false);
 
             }
         }

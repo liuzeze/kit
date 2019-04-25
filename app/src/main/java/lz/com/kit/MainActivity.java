@@ -38,10 +38,7 @@ public class MainActivity extends BaseActivity {
         strings.add(new ActivityBean().setName("ScrollView").setCalssName(ScrollViewActivity.class));
         strings.add(new ActivityBean().setName("RecyclerView").setCalssName(RecyclerViewActivity.class));
         strings.add(new ActivityBean().setName("IntervalActivity").setCalssName(IntervalActivity.class));
-        strings.add(new ActivityBean().setName("SingleChecked").setCalssName(SingleSelectActivity.class));
-        strings.add(new ActivityBean().setName("MultiCheckedActivity").setCalssName(MultiCheckedActivity.class));
-        strings.add(new ActivityBean().setName("MultiUnCancelCheckedActivity").setCalssName(MultiUnCancelCheckedActivity.class));
-        strings.add(new ActivityBean().setName("SingleUnCancelCheckedActivity").setCalssName(SingleUnCancelCheckedActivity.class));
+        strings.add(new ActivityBean().setName("SingleChecked").setCalssName(SelectActivity.class));
         strings.add(new ActivityBean().setName("PageRecyclerViewActivity").setCalssName(PageRecyclerViewActivity.class));
         strings.add(new ActivityBean().setName("PermissionActivity").setCalssName(PermissionActivity.class));
         strings.add(new ActivityBean().setName("DialogActivity").setCalssName(DialogActivity.class));

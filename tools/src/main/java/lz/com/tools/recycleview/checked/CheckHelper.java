@@ -23,9 +23,7 @@ public abstract class CheckHelper<T extends Object> {
     }
 
     public interface OnCheckedListener<D, V extends RecyclerView.ViewHolder> {
-        void onChecked(V holder, D obj);
-
-        void onUnChecked(V holder, D obj);
+        void onChecked(V holder, D obj, boolean isChecked);
 
     }
 
@@ -45,8 +43,10 @@ public abstract class CheckHelper<T extends Object> {
     public CheckHelper setMultiDefaultItem(T... obj) {
         return this;
     }
+
     public void setMultiDefaultItem(List<T> objs) {
     }
+
     public CheckHelper setAlwaysSelectItem(T... unCancelItem) {
         return this;
     }

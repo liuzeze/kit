@@ -7,6 +7,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import java.util.ArrayList;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import lz.com.kit.bean.SelectBean;
 import lz.com.tools.dialog.LzDialogUtils;
 import lz.com.tools.inject.LayoutId;
@@ -103,20 +104,9 @@ public class DialogActivity extends BaseActivity {
         mAdapter.setNewData(mStrings);
         SingleCheckedHelper<SelectBean> checkedHelper = new SingleCheckedHelper<>();
         checkedHelper.setOnCheckedListener(
-                new CheckHelper.OnCheckedListener<SelectBean, BaseViewHolder>() {
-
-                    @Override
-                    public void onChecked(BaseViewHolder holder, SelectBean obj) {
-                        holder.itemView.setBackgroundColor(0x3373E0E4);
-                        holder.setChecked(R.id.checkbox, true);
-                    }
-
-                    @Override
-                    public void onUnChecked(BaseViewHolder holder, SelectBean obj) {
-                        holder.itemView.setBackgroundColor(0xFFFFFFFF);
-                        holder.setChecked(R.id.checkbox, false);
-                    }
-
+                (CheckHelper.OnCheckedListener<SelectBean, BaseViewHolder>) (holder, obj, isChecked) -> {
+                    holder.itemView.setBackgroundColor(isChecked ? 0xFF73E0E4 : 0xffffffff);
+                    holder.setChecked(R.id.checkbox, isChecked);
                 });
 
         //添加默认选中数据

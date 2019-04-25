@@ -2,32 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
+    android:padding="5dp"
     tools:ignore="MissingPrefix">
 
 
-    <lz.com.kit.MyTextview
+    <TextView
         android:id="@+id/tv_1"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:elevation="3dp"
-        android:gravity="center"
         android:text="dhgasjgdhjaksgh"
         android:textColor="#111111"
         app:bl_selected_solid_color="#333333"
         app:bl_unSelected_solid_color="#ff0000" />
 
 
-    <CheckBox
+    <ImageView
         android:id="@+id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:backgroundTint="@color/ff0000"
-        android:focusable="false"
-        android:enabled="false"
-        android:focusableInTouchMode="false" />
+        android:src="@mipmap/seekbar" />
 
 </LinearLayout>

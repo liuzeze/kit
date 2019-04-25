@@ -19,7 +19,7 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
 
 
     @Override
-    public void onSelect( RecyclerView.ViewHolder holder, T obj, int position) {
+    public void onSelect(RecyclerView.ViewHolder holder, T obj, int position) {
         if (mOnCheckedListener != null) {
             //点击已选中的条目
             if (checkedList.containsKey(obj)) {
@@ -28,11 +28,11 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
                     //取消选中
                     if (!Objects.equals(mAlwaysSelectItem, obj)) {
                         checkedList.clear();
-                        mOnCheckedListener.onUnChecked(holder, obj);
+                        mOnCheckedListener.onChecked(holder, obj, false);
                         //选中默认第一个的条目
                         if (mAlwaysSelectItem != null) {
                             checkedList.put(mAlwaysSelectItem, mAlwaysSelecHolder);
-                            mOnCheckedListener.onChecked(mAlwaysSelecHolder, mAlwaysSelectItem);
+                            mOnCheckedListener.onChecked(mAlwaysSelecHolder, mAlwaysSelectItem, true);
                         }
                     }
                 }
@@ -40,14 +40,14 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
                 //选中条目 上一个取消选中
                 for (Map.Entry<T, RecyclerView.ViewHolder> entry : checkedList.entrySet()) {
                     if (entry.getValue() != null) {
-                        mOnCheckedListener.onUnChecked(entry.getValue(), obj);
+                        mOnCheckedListener.onChecked(entry.getValue(), obj, false);
                     }
                     break;
                 }
                 //当前选中
                 checkedList.clear();
                 checkedList.put(obj, holder);
-                mOnCheckedListener.onChecked(holder, obj);
+                mOnCheckedListener.onChecked(holder, obj, true);
             }
 
         }
@@ -65,9 +65,9 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
         if (mOnCheckedListener != null) {
             if (checkedList.containsKey(obj)) {
                 checkedList.put(obj, holder);
-                mOnCheckedListener.onChecked(holder, obj);
+                mOnCheckedListener.onChecked(holder, obj, true);
             } else {
-                mOnCheckedListener.onUnChecked(holder, obj);
+                mOnCheckedListener.onChecked(holder, obj, false);
             }
         }
     }
@@ -75,8 +75,8 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
 
     @Override
     public CheckHelper setSingleDefaultItem(T obj) {
-            checkedList.clear();
-            checkedList.put(obj, null);
+        checkedList.clear();
+        checkedList.put(obj, null);
 
         return this;
     }

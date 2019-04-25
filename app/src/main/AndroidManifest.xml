@@ -14,11 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".PermissionActivity"></activity>
-        <activity android:name=".MultiCheckedActivity" />
-        <activity android:name=".MultiUnCancelCheckedActivity" />
-        <activity android:name=".SingleUnCancelCheckedActivity" />
         <activity android:name=".PageRecyclerViewActivity" />
-        <activity android:name=".SingleSelectActivity" />
+        <activity android:name=".SelectActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

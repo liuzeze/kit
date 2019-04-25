@@ -9,19 +9,60 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="单选1" />
+
 
     <lz.com.tools.recycleview.ReboundReyclerView
 
         android:id="@+id/recyclevie"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="5"
-        tools:listitem="@layout/recycler_view_item">
+        tools:listitem="@layout/recycler_view_item" />
 
-    </lz.com.tools.recycleview.ReboundReyclerView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="单选2" />
 
+
+    <lz.com.tools.recycleview.ReboundReyclerView
+
+        android:id="@+id/recyclevie2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="5"
+        tools:listitem="@layout/recycler_view_item" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="多选1" />
+
+    <lz.com.tools.recycleview.ReboundReyclerView
+
+        android:id="@+id/recyclevie3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="5"
+        tools:listitem="@layout/recycler_view_item" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="多选2" />
+
+    <lz.com.tools.recycleview.ReboundReyclerView
+
+        android:id="@+id/recyclevie4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="5"
+        tools:listitem="@layout/recycler_view_item" />
 </LinearLayout>
