@@ -65,7 +65,7 @@ public class MultiUnCancelCheckedActivity extends BaseActivity {
 
             }
         };
-        mAdapter.getCheckHelper().setDefaultItem(mStrings.get(1)).setAlwaysSelectItem(mStrings.get(5));
+        mAdapter.getCheckHelper().setMultiDefaultItem(mStrings.get(1)).setAlwaysSelectItem(mStrings.get(5));
 
         recyclevie.setAdapter(mAdapter);
         mAdapter.setNewData(mStrings);

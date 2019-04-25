@@ -59,7 +59,7 @@ public class SingleSelectActivity extends BaseActivity {
             }
         };
 
-        mAdapter.getCheckHelper().setDefaultItem(mStrings.get(1)).setLastItemEnable(false);
+        mAdapter.getCheckHelper().setSingleDefaultItem(mStrings.get(1)).setLastItemEnable(false);
 
         recyclevie.setAdapter(mAdapter);
         mAdapter.setNewData(mStrings);

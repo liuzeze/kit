@@ -70,7 +70,7 @@ public class SingleUnCancelCheckedActivity extends BaseActivity {
         };
 
 
-        mAdapter.getCheckHelper().setLastItemEnable(true).setDefaultItem(mStrings.get(1)).setAlwaysSelectItem(mStrings.get(5));
+        mAdapter.getCheckHelper().setLastItemEnable(true).setSingleDefaultItem(mStrings.get(1)).setAlwaysSelectItem(mStrings.get(5));
 
         recyclevie.setAdapter(mAdapter);
         mAdapter.setNewData(mStrings);

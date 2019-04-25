@@ -33,12 +33,7 @@ public abstract class CheckHelper<T extends Object> {
         return new ArrayList<>(checkedList.keySet());
     }
 
-
-    public CheckHelper setDefaultItem(T... obj) {
-        return this;
-    }
-
-    public CheckHelper setAlwaysSelectItem(T... unCancelItem) {
+    public CheckHelper setSingleDefaultItem(T obj) {
         return this;
     }
 
@@ -46,7 +41,14 @@ public abstract class CheckHelper<T extends Object> {
         return this;
     }
 
-    public void setDefaultItem(List<T> objs) {
 
+    public CheckHelper setMultiDefaultItem(T... obj) {
+        return this;
     }
+    public void setMultiDefaultItem(List<T> objs) {
+    }
+    public CheckHelper setAlwaysSelectItem(T... unCancelItem) {
+        return this;
+    }
+
 }

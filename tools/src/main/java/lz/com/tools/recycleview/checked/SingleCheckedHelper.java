@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  * -----------作者----------日期----------变更内容-----
- * -          刘泽      2019-01-28       创建class
+ * -          刘泽      2019-01-28       单选列表
  */
 public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
 
@@ -74,11 +74,10 @@ public class SingleCheckedHelper<T extends Object> extends CheckHelper<T> {
 
 
     @Override
-    public CheckHelper setDefaultItem(T... obj) {
-        if (obj != null) {
+    public CheckHelper setSingleDefaultItem(T obj) {
             checkedList.clear();
-            checkedList.put(obj[0], null);
-        }
+            checkedList.put(obj, null);
+
         return this;
     }
 

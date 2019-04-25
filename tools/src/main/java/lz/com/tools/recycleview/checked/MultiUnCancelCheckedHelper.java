@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * -----------作者----------日期----------变更内容-----
- * -          刘泽      2019-01-28       创建class
+ * -          刘泽      2019-01-28       多选列表
  */
 public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T> {
 
@@ -70,21 +70,20 @@ public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T>
         if (Objects.equals(mAlwaysSelectItem, obj)) {
             mAlwaysSelecHolder = holder;
         }
-        if (checkedList.containsKey(obj)) {
-            checkedList.put(obj, holder);
-            if (mOnCheckedListener != null) {
+        if (mOnCheckedListener != null) {
+            if (checkedList.containsKey(obj)) {
+                checkedList.put(obj, holder);
                 mOnCheckedListener.onChecked(holder, obj);
-            }
-        } else {
-            if (mOnCheckedListener != null) {
+            } else {
                 mOnCheckedListener.onUnChecked(holder, obj);
+
             }
         }
     }
 
 
     @Override
-    public CheckHelper setDefaultItem(T... objs) {
+    public CheckHelper setMultiDefaultItem(T... objs) {
         for (T obj : objs) {
             if (!checkedList.containsKey(obj)) {
                 checkedList.put(obj, null);
@@ -94,7 +93,7 @@ public class MultiUnCancelCheckedHelper<T extends Object> extends CheckHelper<T>
     }
 
     @Override
-    public void setDefaultItem(List<T> objs) {
+    public void setMultiDefaultItem(List<T> objs) {
         for (T obj : objs) {
             if (!checkedList.containsKey(obj)) {
                 checkedList.put(obj, null);
