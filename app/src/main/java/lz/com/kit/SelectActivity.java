@@ -4,17 +4,17 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import lz.com.kit.bean.SelectBean;
-import lz.com.tools.inject.BindView;
+import lz.com.tools.inject.InjectView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.checked.BaseCheckedRecycleAdapter;
-import lz.com.tools.recycleview.checked.SingleCheckedHelper;
 
 
 @LayoutId(value = R.layout.activity_checked, titleName = "单选")
-public class SelectActivity extends BaseActivity {
+public class SelectActivity extends BaseKitActivity {
 
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
@@ -32,8 +32,7 @@ public class SelectActivity extends BaseActivity {
     private ArrayList<SelectBean> mStrings;
 
     @Override
-    public void init() {
-        super.init();
+    public void initData() {
 
         recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
         recyclevie2.setLayoutManager(new GridLayoutManager(this, 4));

@@ -2,21 +2,19 @@ package lz.com.kit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import lz.com.tools.inject.LayoutId;
 
 @LayoutId(value = R.layout.activity_permission, titleName = "权限申请")
-public class PermissionActivity extends BaseActivity {
+public class PermissionActivity extends BaseKitActivity {
     /**
      * 需要进行检测的权限数组
      */
@@ -76,5 +74,10 @@ public class PermissionActivity extends BaseActivity {
                 System.out.print(permission + "===");
             }
         }
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

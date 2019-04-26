@@ -1,6 +1,6 @@
 package lz.com.kit;
 
-import lz.com.tools.inject.BindView;
+import butterknife.BindView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.toolbar.TitleToolbar;
 
@@ -9,21 +9,18 @@ import lz.com.tools.toolbar.TitleToolbar;
  */
 
 @LayoutId(value = R.layout.activity_title, titleName = "标题控件")
-public class TitleActivity extends BaseActivity {
+public class TitleActivity extends BaseKitActivity {
 
 
     @BindView(R.id.common_toolbar)
     TitleToolbar mTitleToolbar;
 
     @Override
-    public void init() {
-        super.init();
+    public void initData() {
         if (mTitleToolbar != null) {
             mTitleToolbar.setSubtitle("subtitle");
             mTitleToolbar.setRightText("按钮");
         }
-
-
     }
 
 

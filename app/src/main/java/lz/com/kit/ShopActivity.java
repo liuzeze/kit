@@ -7,7 +7,9 @@ import android.widget.LinearLayout;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import lz.com.tools.inject.BindView;
+
+import butterknife.BindView;
+import lz.com.tools.inject.InjectView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.shopview.SlideLayout;
 import lz.com.tools.util.LzWebViewUtils;
@@ -17,20 +19,19 @@ import lz.com.tools.util.LzWebViewUtils;
  */
 
 @LayoutId(R.layout.activity_shop)
-public class ShopActivity extends BaseActivity {
+public class ShopActivity extends BaseKitActivity {
 
     @BindView(R.id.slideDetailsLayout)
-    private  SlideLayout mSlideDetailsLayout;
+      SlideLayout mSlideDetailsLayout;
     private ShopMainFragment shopMainFragment;
     @BindView(R.id.wb_view)
-    private WebView webView;
+     WebView webView;
     @BindView(R.id.ll_detail)
-    private  LinearLayout mLlDetail;
+      LinearLayout mLlDetail;
 
 
     @Override
-    public void init() {
-        super.init();
+    public void initData() {
         initShopMainFragment();
         initSlideDetailsLayout();
         initWebView();

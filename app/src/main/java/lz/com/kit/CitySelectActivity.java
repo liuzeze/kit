@@ -10,12 +10,12 @@ import com.orhanobut.logger.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import lz.com.tools.city.CityLoadingView;
 import lz.com.tools.city.CityPickerInfo;
 import lz.com.tools.city.CitySelectDialog;
-import lz.com.tools.inject.BindView;
 import lz.com.tools.inject.LayoutId;
-import lz.com.tools.inject.OnClick;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.util.LzToast;
@@ -25,7 +25,7 @@ import lz.com.tools.util.LzToast;
  */
 
 @LayoutId(R.layout.activity_select_city)
-public class CitySelectActivity extends BaseActivity {
+public class CitySelectActivity extends BaseKitActivity {
 
     private int[] mCitySelectPosition;
     private ArrayList<CityPickerInfo> mAreaItem = new ArrayList<>();
@@ -87,8 +87,7 @@ public class CitySelectActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
-        super.init();
+    public void initData() {
         mCityLoadingView = new CityLoadingView(mActivity);
 
         CityPickerInfo cityPickerInfo;
@@ -99,6 +98,5 @@ public class CitySelectActivity extends BaseActivity {
         }
 
     }
-
 
 }

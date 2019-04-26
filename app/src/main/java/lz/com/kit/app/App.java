@@ -1,20 +1,20 @@
-package lz.com.kit;
+package lz.com.kit.app;
 
-import android.app.Application;
-
+import com.lz.fram.app.FrameApplication;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.LogcatLogStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 
+import lz.com.kit.BuildConfig;
 import lz.com.tools.util.LzUtil;
 
 /**
  * -----------作者----------日期----------变更内容-----
  * -          刘泽      2019-01-22       创建class
  */
-public class App extends Application {
+public class App extends FrameApplication {
     @Override
     public void onCreate() {
         super.onCreate();

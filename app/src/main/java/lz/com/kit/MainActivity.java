@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import lz.com.kit.bean.ActivityBean;
-import lz.com.tools.inject.BindView;
+import lz.com.kit.mvp.MvpActivity;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
@@ -24,14 +25,13 @@ import lz.com.tools.recycleview.decoration.DividerItemDecoration;
 
 
 @LayoutId(value = R.layout.activity_main,isShowBackIcon = false)
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseKitActivity {
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
     private BaseRecycleAdapter<ActivityBean, BaseViewHolder> mAdapter;
 
     @Override
-    public void init() {
-        super.init();
+    public void initData() {
 
 
         ArrayList<ActivityBean> strings = new ArrayList<>();
@@ -49,6 +49,7 @@ public class MainActivity extends BaseActivity {
         strings.add(new ActivityBean().setName("TablayoutActivity").setCalssName(TablayoutActivity.class));
         strings.add(new ActivityBean().setName("BannerActivity").setCalssName(BannerActivity.class));
         strings.add(new ActivityBean().setName("TextViewActivity").setCalssName(TextViewActivity.class));
+        strings.add(new ActivityBean().setName("MvpActivity").setCalssName(MvpActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 
@@ -77,7 +78,7 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(BaseRecycleAdapter adapter, View view, int position) {
                 Intent mIntent = new Intent(MainActivity.this, mAdapter.getData().get(position).calssName);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    mIntent.putExtra("type", BaseActivity.SLIDE_CODE);
+                    mIntent.putExtra("type", BaseKitActivity.SLIDE_CODE);
                     startActivity(mIntent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                 } else {
                     startActivity(mIntent);

@@ -1,6 +1,5 @@
 package lz.com.kit;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.transition.Slide;
@@ -9,19 +8,19 @@ import android.view.Gravity;
 import android.view.animation.DecelerateInterpolator;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import lz.com.tools.inject.InjectManager;
+
+import butterknife.ButterKnife;
+import lz.com.tools.base.BaseActivity;
 
 /**
  * -----------作者----------日期----------变更内容-----
  * -          刘泽      2019-01-22       创建class
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseKitActivity extends BaseActivity {
     public static final int EXPLODE_CODE = 1;
     public static final int EXPLODE_XML = 2;
     public static final int SLIDE_CODE = 3;
     public static final int SLIDE_XML = 4;
-    protected Activity mActivity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,11 +49,18 @@ public class BaseActivity extends AppCompatActivity {
             getWindow().setExitTransition(transition);
         }
         super.onCreate(savedInstanceState);
-        InjectManager.getLayoutId(this);
-        mActivity = this;
-        init();
+
+
     }
 
-    public void init() {
+    @Override
+    protected void initConfig() {
+        super.initConfig();
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    public void showErrorMsg(String msg) {
+
     }
 }

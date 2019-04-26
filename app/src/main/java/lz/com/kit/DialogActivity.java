@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import butterknife.OnClick;
 import lz.com.kit.bean.SelectBean;
 import lz.com.tools.dialog.LzDialogUtils;
 import lz.com.tools.inject.LayoutId;
-import lz.com.tools.inject.OnClick;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
@@ -19,7 +19,7 @@ import lz.com.tools.recycleview.checked.CheckHelper;
 import lz.com.tools.recycleview.checked.SingleCheckedHelper;
 
 @LayoutId(R.layout.activity_dialog)
-public class DialogActivity extends BaseActivity {
+public class DialogActivity extends BaseKitActivity {
 
     @OnClick({R.id.show, R.id.show1, R.id.show2, R.id.show3, R.id.show4, R.id.show5, R.id.show6, R.id.show7})
     public void onShow(View view) {
@@ -116,4 +116,8 @@ public class DialogActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void initData() {
+
+    }
 }

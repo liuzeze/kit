@@ -44,7 +44,7 @@ public class InjectManager {
     private static void initInjectFragmetnField(View view, Object target) {
         Field[] declaredFields = target.getClass().getDeclaredFields();
         for (Field field : declaredFields) {
-            BindView annotation = field.getAnnotation(BindView.class);
+            InjectView annotation = field.getAnnotation(InjectView.class);
             if (annotation != null) {
                 try {
                     field.setAccessible(true);
@@ -66,8 +66,8 @@ public class InjectManager {
         Class<? extends Activity> aClass = target.getClass();
 
         initInjectLayout(target, aClass);
-        initInjectField(target, aClass);
-        initInjectEvent(target, aClass);
+        //initInjectField(target, aClass);
+        // initInjectEvent(target, aClass);
     }
 
     private static void initInjectFragmentEvent(Object target, View view) {
@@ -156,7 +156,7 @@ public class InjectManager {
     private static void initInjectField(Activity target, Class<? extends Activity> aClass) {
         Field[] declaredFields = aClass.getDeclaredFields();
         for (Field field : declaredFields) {
-            BindView annotation = field.getAnnotation(BindView.class);
+            InjectView annotation = field.getAnnotation(InjectView.class);
             if (annotation != null) {
                 View view = target.findViewById(annotation.value());
 
@@ -177,7 +177,7 @@ public class InjectManager {
         LayoutId setContentView = aClass.getDeclaredAnnotation(LayoutId.class);
         if (setContentView != null) {
             int value = setContentView.value();
-            if (setContentView.isShowTitle()) {
+            if (setContentView.isShowActTitle()) {
                 LinearLayout root = (LinearLayout) target.getLayoutInflater().inflate(R.layout.layout_root, null);
                 TitleToolbar titleToolbar = root.findViewById(R.id.common_toolbar);
                 titleToolbar.setTitle(setContentView.titleName());

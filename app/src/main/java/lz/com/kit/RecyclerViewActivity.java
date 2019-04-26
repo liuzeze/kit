@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import lz.com.kit.view.SimpleRefreshLayout;
-import lz.com.tools.inject.BindView;
+import lz.com.tools.inject.InjectView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
@@ -22,7 +23,7 @@ import lz.com.tools.recycleview.decoration.sticky.listener.GroupListener;
 import lz.com.tools.recycleview.swipe.SwipeMenuItem;
 
 @LayoutId(value = R.layout.activity_recycler_view, titleName = "RecyclerViewActivity")
-public class RecyclerViewActivity extends BaseActivity {
+public class RecyclerViewActivity extends BaseKitActivity {
 
 
     @BindView(R.id.recyclevie)
@@ -31,8 +32,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
 
     @Override
-    public void init() {
-        super.init();
+    public void initData() {
 //        recyclevie.setLayoutManager(new LzLinearLayoutManager(this));
         recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
 

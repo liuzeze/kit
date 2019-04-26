@@ -19,17 +19,17 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import lz.com.kit.bean.TabEntity;
-import lz.com.tools.inject.BindView;
+import lz.com.tools.inject.InjectView;
 import lz.com.tools.inject.LayoutId;
-import lz.com.tools.recycleview.swipe.CstViewPager;
 
 /**
  * Created by yc on 2018/7/23.
  */
 
 @LayoutId(value = R.layout.activity_tab, titleName = "tablayout")
-public class TablayoutActivity extends BaseActivity {
+public class TablayoutActivity extends BaseKitActivity {
 
 
     private String[] mTitles = {"首页", "消息", "联系人", "更多"};
@@ -52,8 +52,7 @@ public class TablayoutActivity extends BaseActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
     @Override
-    public void init() {
-        super.init();
+    public void initData() {
 
 
         for (int i = 0; i < mTitles.length; i++) {

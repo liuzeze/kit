@@ -5,11 +5,11 @@ import android.widget.ImageView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.SegmentTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.lz.fram.net.RxRequestUtils;
 
+import butterknife.BindView;
 import cn.bingoogolapple.bgabanner.BGABanner;
 import cn.bingoogolapple.bgabanner.BGALocalImageSize;
-import lz.com.tools.inject.BindView;
 import lz.com.tools.inject.LayoutId;
 
 /**
@@ -17,7 +17,7 @@ import lz.com.tools.inject.LayoutId;
  */
 
 @LayoutId(value = R.layout.activity_banner, titleName = "标题控件")
-public class BannerActivity extends BaseActivity {
+public class BannerActivity extends BaseKitActivity {
     private String[] mTitles = {"首页", "消息", "联系人", "更多"};
 
 
@@ -26,9 +26,11 @@ public class BannerActivity extends BaseActivity {
     @BindView(R.id.tl_2)
     SegmentTabLayout mSegmentTabLayout;
 
+
     @Override
-    public void init() {
-        super.init();
+    protected void initData() {
+
+
         BGALocalImageSize localImageSize = new BGALocalImageSize(720, 1280, 320, 640);
         int[] ints = {R.mipmap.index_yz_ze_zydotknowledge_picze,
                 R.mipmap.index_yz_ze_zydotknowledge_piczs,
@@ -50,6 +52,4 @@ public class BannerActivity extends BaseActivity {
             }
         });
     }
-
-
 }

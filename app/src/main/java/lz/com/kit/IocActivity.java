@@ -4,16 +4,16 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 
-import lz.com.tools.inject.BindView;
+import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.OnLongClick;
 import lz.com.tools.inject.LayoutId;
-import lz.com.tools.inject.OnClick;
-import lz.com.tools.inject.OnLongClick;
 import lz.com.tools.util.LzSnackbarUtils;
 import lz.com.tools.util.LzToast;
 
 
 @LayoutId(R.layout.activity_ioc)
-public class IocActivity extends BaseActivity {
+public class IocActivity extends BaseKitActivity {
 
     @BindView(R.id.btn1)
     Button bt1;
@@ -30,8 +30,7 @@ public class IocActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
-        super.init();
+    public void initData() {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -15,7 +15,9 @@ import java.lang.annotation.Target;
 public @interface LayoutId {
     int value() default -1;
 
-    boolean isShowTitle() default true;
+    boolean isShowActTitle() default true;
+
+    boolean isShowFragTitle() default false;
 
     boolean isShowBackIcon() default true;
 

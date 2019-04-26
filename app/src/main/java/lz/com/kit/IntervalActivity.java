@@ -1,19 +1,18 @@
 package lz.com.kit;
 
-import lz.com.tools.inject.BindView;
+import butterknife.BindView;
 import lz.com.tools.inject.LayoutId;
 import lz.com.tools.widget.IntervalSelectionView;
 
 
 @LayoutId(R.layout.activity_interval)
-public class IntervalActivity extends BaseActivity {
+public class IntervalActivity extends BaseKitActivity {
 
     @BindView(R.id.isv_condition_second)
     IntervalSelectionView isvConditionSecond;
 
     @Override
-    public void init() {
-        super.init();
+    public void initData() {
 
         isvConditionSecond.post(new Runnable() {
             @Override
