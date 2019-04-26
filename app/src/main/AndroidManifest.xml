@@ -31,6 +31,9 @@
         <activity android:name=".ShopActivity" />
         <activity android:name=".CitySelectActivity" />
         <activity android:name=".TitleActivity" />
+        <activity android:name=".TablayoutActivity" />
+        <activity android:name=".BannerActivity" />
+        <activity android:name=".TextViewActivity" />
     </application>
 
 </manifest>

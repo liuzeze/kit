@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
         strings.add(new ActivityBean().setName("ScrollView").setCalssName(ScrollViewActivity.class));
         strings.add(new ActivityBean().setName("RecyclerView").setCalssName(RecyclerViewActivity.class));
         strings.add(new ActivityBean().setName("IntervalActivity").setCalssName(IntervalActivity.class));
-        strings.add(new ActivityBean().setName("SingleChecked").setCalssName(SelectActivity.class));
+        strings.add(new ActivityBean().setName("Checked").setCalssName(SelectActivity.class));
         strings.add(new ActivityBean().setName("PageRecyclerViewActivity").setCalssName(PageRecyclerViewActivity.class));
         strings.add(new ActivityBean().setName("PermissionActivity").setCalssName(PermissionActivity.class));
         strings.add(new ActivityBean().setName("DialogActivity").setCalssName(DialogActivity.class));
@@ -46,6 +46,9 @@ public class MainActivity extends BaseActivity {
         strings.add(new ActivityBean().setName("ShopActivity").setCalssName(ShopActivity.class));
         strings.add(new ActivityBean().setName("CitySelectActivity").setCalssName(CitySelectActivity.class));
         strings.add(new ActivityBean().setName("TitleActivity").setCalssName(TitleActivity.class));
+        strings.add(new ActivityBean().setName("TablayoutActivity").setCalssName(TablayoutActivity.class));
+        strings.add(new ActivityBean().setName("BannerActivity").setCalssName(BannerActivity.class));
+        strings.add(new ActivityBean().setName("TextViewActivity").setCalssName(TextViewActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 

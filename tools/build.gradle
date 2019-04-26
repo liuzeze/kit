@@ -32,7 +32,7 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4'
     debugImplementation 'com.jakewharton:butterknife:10.0.0'
     api 'com.noober.background:core:1.3.7'
-
+    api 'cn.bingoogolapple:bga-banner:2.2.4@aar'
     api 'com.orhanobut:logger:2.2.0'
-
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 }
