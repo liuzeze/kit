@@ -15,9 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <meta-data
-            android:name="lz.com.kit.app.GlobalConfiguration"
-            android:value="ConfigModule" />
+
 
 
 

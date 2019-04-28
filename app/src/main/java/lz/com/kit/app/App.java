@@ -1,6 +1,8 @@
 package lz.com.kit.app;
 
-import com.lz.fram.app.FrameApplication;
+import android.app.Application;
+
+import com.lz.fram.net.RxRequestUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.LogcatLogStrategy;
@@ -14,13 +16,13 @@ import lz.com.tools.util.LzUtil;
  * -----------作者----------日期----------变更内容-----
  * -          刘泽      2019-01-22       创建class
  */
-public class App extends FrameApplication {
+public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
         LzUtil.init(this);
 
-
+//        RxRequestUtils.initConfig(new GlobalConfiguration());
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(false)
                 .methodCount(0)
