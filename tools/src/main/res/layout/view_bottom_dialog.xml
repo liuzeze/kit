@@ -17,7 +17,7 @@
             android:id="@+id/ll_btn_group"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:divider="@drawable/shape_divide_line"
+            android:divider="@drawable/shape_horizontal_line"
             android:dividerPadding="10dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"

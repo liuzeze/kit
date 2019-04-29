@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="338dp"
     android:clickable="true"
-    android:divider="@drawable/shape_width_divide_line"
+    android:divider="@drawable/shape_vertical_line"
     android:orientation="vertical"
     android:showDividers="middle">
 
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="#ffffff"
-        android:divider="@drawable/shape_divide_line"
+        android:divider="@drawable/shape_horizontal_line"
         android:orientation="horizontal"
         android:showDividers="middle">
 
