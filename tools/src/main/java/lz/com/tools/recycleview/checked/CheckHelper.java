@@ -1,5 +1,7 @@
 package lz.com.tools.recycleview.checked;
 
+import android.util.ArrayMap;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public abstract class CheckHelper<T extends Object> {
-    protected HashMap<T, RecyclerView.ViewHolder> checkedList = new HashMap<>();
+    protected ArrayMap<T, RecyclerView.ViewHolder> checkedList = new ArrayMap<>();
 
     protected OnCheckedListener mOnCheckedListener;
 
