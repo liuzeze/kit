@@ -100,7 +100,7 @@
         <attr name="rightTextColor" format="color" />
         <attr name="rightTextSize" format="dimension" />
         <attr name="rightIcon" format="reference" />
-        <attr name="rightMarginRight" format="dimension" />
+        <attr name="rightPaddingRight" format="dimension" />
         <attr name="rightDrawPadding" format="dimension" />
 
 

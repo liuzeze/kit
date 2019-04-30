@@ -9,6 +9,8 @@ import android.view.animation.DecelerateInterpolator;
 
 import androidx.annotation.Nullable;
 
+import com.noober.background.BackgroundLibrary;
+
 import butterknife.ButterKnife;
 import lz.com.tools.base.BaseActivity;
 
@@ -55,8 +57,10 @@ public abstract class BaseKitActivity extends BaseActivity {
 
     @Override
     protected void initConfig() {
+        BackgroundLibrary.inject(this);
         super.initConfig();
         ButterKnife.bind(this);
+
     }
 
     @Override

@@ -44,7 +44,7 @@
         app:closeTextColor="#ffffff"
         app:closeTextSize="12px"
         app:closeVisible="true"
-        app:rightMarginRight="16dp"
+        app:rightPaddingRight="16dp"
         app:rightText="12px"
         app:rightTextAppearance="?attr/actionMenuTextAppearance"
         app:rightTextColor="#ffffff"

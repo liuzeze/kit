@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
@@ -72,9 +71,6 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SaTitleToolbar);
 
 
-
-
-
         if (!isChild(mRightTextView)) {
             mRightTextView = new TextView(context);
             mRightTextView.setId(R.id.rightButton);
@@ -118,9 +114,8 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
             LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT,
                     LayoutParams.MATCH_PARENT, Gravity.RIGHT);
 
-            params.rightMargin = typedArray.getDimensionPixelSize(
-                    R.styleable.SaTitleToolbar_rightMarginRight, dp2px(DEFAULT_BACK_MARGIN_RIGHT));
-
+            mRightTextView.setPadding(mRightTextView.getPaddingLeft(),mRightTextView.getPaddingTop(),typedArray.getDimensionPixelSize(
+                    R.styleable.SaTitleToolbar_rightPaddingRight, dp2px(DEFAULT_BACK_MARGIN_RIGHT)),mRightTextView.getPaddingBottom());
             addView(mRightTextView, params);
         }
 
@@ -131,8 +126,9 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
             mTitleLayout.setGravity(typedArray.getInt(
                     R.styleable.SaTitleToolbar_title_gravity, Gravity.CENTER_VERTICAL));
 
-            addView(mTitleLayout, new Toolbar.LayoutParams(
-                    Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.MATCH_PARENT, Gravity.CENTER));
+            LayoutParams params = new LayoutParams(
+                    LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT, Gravity.CENTER);
+            addView(mTitleLayout, params);
         }
 
         if (!isChild(mTitleTextView, mTitleLayout)) {
@@ -141,6 +137,8 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
             mTitleTextView.setEllipsize(TextUtils.TruncateAt.END);
             mTitleTextView.setGravity(Gravity.CENTER);
             mTitleTextView.setEms(10);
+            mTitleTextView.setGravity(typedArray.getInt(
+                    R.styleable.SaTitleToolbar_title_gravity, Gravity.CENTER_VERTICAL));
 
             int titleTextAppearance = a.getResourceId(R.styleable.Toolbar_titleTextAppearance, 0);
             if (titleTextAppearance != 0) {
@@ -170,7 +168,8 @@ public class TitleToolbar extends BaseToolbar implements View.OnClickListener {
             mSubtitleTextView.setEllipsize(TextUtils.TruncateAt.END);
             mSubtitleTextView.setGravity(Gravity.CENTER);
             mSubtitleTextView.setEms(10);
-
+            mSubtitleTextView.setGravity(typedArray.getInt(
+                    R.styleable.SaTitleToolbar_title_gravity, Gravity.CENTER_VERTICAL));
 
             int subTextAppearance = a.getResourceId(R.styleable.Toolbar_subtitleTextAppearance, 0);
             if (subTextAppearance != 0) {

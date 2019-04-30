@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -111,7 +112,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Hello World load!" />
+                android:text="Hello World load!"
+                app:bl_corners_radius="20dp"
+                app:bl_gradient_angle="0"
+                app:bl_gradient_centerColor="#CD4F39"
+                app:bl_gradient_endColor="#CD2626"
+                app:bl_gradient_startColor="#CD5B45"
+                app:bl_shape="rectangle"
+                tools:ignore="MissingPrefix" />
 
             <TextView
                 android:id="@+id/tv9"

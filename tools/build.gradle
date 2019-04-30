@@ -35,7 +35,7 @@ dependencies {
     api 'androidx.recyclerview:recyclerview:1.1.0-alpha04'
     api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4'
     api 'com.jakewharton:butterknife:10.0.0'
-    api 'com.noober.background:core:1.3.7'
+    api 'com.noober.background:core:1.4.4'
     api 'cn.bingoogolapple:bga-banner:2.2.4@aar'
     api 'com.orhanobut:logger:2.2.0'
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
