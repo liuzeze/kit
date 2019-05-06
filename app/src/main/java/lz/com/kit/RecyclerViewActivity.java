@@ -13,8 +13,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import lz.com.kit.view.SimpleRefreshLayout;
-import lz.com.tools.inject.InjectView;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
@@ -22,7 +21,7 @@ import lz.com.tools.recycleview.decoration.sticky.StickyDecoration;
 import lz.com.tools.recycleview.decoration.sticky.listener.GroupListener;
 import lz.com.tools.recycleview.swipe.SwipeMenuItem;
 
-@LayoutId(value = R.layout.activity_recycler_view, titleName = "RecyclerViewActivity")
+@InjectLayout(layoutId = R.layout.activity_recycler_view, titleName = "RecyclerViewActivity")
 public class RecyclerViewActivity extends BaseKitActivity {
 
 

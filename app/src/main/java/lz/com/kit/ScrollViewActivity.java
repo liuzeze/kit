@@ -4,11 +4,10 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import lz.com.kit.view.SimpleRefreshLayout;
-import lz.com.tools.inject.InjectView;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.widget.ReboundScrollView;
 
-@LayoutId(value = R.layout.activity_scroll_view, titleName = "scrollview")
+@InjectLayout(layoutId = R.layout.activity_scroll_view, titleName = "scrollview")
 public class ScrollViewActivity extends BaseKitActivity {
 
     @BindView(R.id.tv_title)

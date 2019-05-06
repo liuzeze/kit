@@ -39,7 +39,7 @@ dependencies {
     api 'cn.bingoogolapple:bga-banner:2.2.4@aar'
     api 'com.orhanobut:logger:2.2.0'
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
-    api 'com.lz:fram:1.0.3'
+    api 'com.lz:fram:1.0.4'
     api 'com.lz:lzstatus:1.0.0'
 
 }

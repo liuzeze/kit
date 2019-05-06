@@ -16,7 +16,6 @@
 package lz.com.kit.app;
 
 
-import com.lz.fram.BuildConfig;
 import com.lz.fram.net.http.ConfigModule;
 import com.lz.fram.net.http.GlobalConfigBuild;
 import com.lz.fram.net.http.OkhttpFactory;
@@ -24,6 +23,7 @@ import com.lz.fram.net.http.RetrofitFactory;
 
 import java.util.concurrent.TimeUnit;
 
+import lz.com.kit.BuildConfig;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
@@ -37,7 +37,7 @@ public class GlobalConfiguration implements ConfigModule {
     public void applyOptions(GlobalConfigBuild.Builder builder) {
         if (BuildConfig.DEBUG) {
             //Release 时,让框架不再打印 Http 请求和响应的信息
-//            builder.addInterceptor(new LoggerInterceptor());
+            builder.addInterceptor(new LoggerInterceptor());
 //            builder.addNetworkInterceptor(new OkNetworkMonitorInterceptor());
         }
 

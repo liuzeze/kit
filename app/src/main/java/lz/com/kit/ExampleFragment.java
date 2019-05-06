@@ -7,14 +7,14 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 
 
 /**
  * -----------作者----------日期----------变更内容-----
  * -          刘泽      2019-04-03       创建class
  */
-@LayoutId(value = R.layout.activity_permission)
+@InjectLayout(layoutId = R.layout.activity_permission)
 public class ExampleFragment extends BaseKitFragment {
     @BindView(R.id.btn)
     Button isvConditionSecond;

@@ -11,9 +11,9 @@ import android.content.pm.PackageManager;
 import android.view.View;
 import android.widget.Toast;
 
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 
-@LayoutId(value = R.layout.activity_permission, titleName = "权限申请")
+@InjectLayout(layoutId = R.layout.activity_permission, titleName = "权限申请")
 public class PermissionActivity extends BaseKitActivity {
     /**
      * 需要进行检测的权限数组

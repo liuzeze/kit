@@ -11,7 +11,7 @@ public class SideLine {
 
     public boolean isHave = false;
     /**
-     * A single color value in the form 0xAARRGGBB.
+     * A single color layoutId in the form 0xAARRGGBB.
      **/
     public int color;
     /**

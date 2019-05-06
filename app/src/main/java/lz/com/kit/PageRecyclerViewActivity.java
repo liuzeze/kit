@@ -7,14 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import lz.com.tools.inject.InjectView;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.layoutmanager.PagerLayoutManager;
 
-@LayoutId(value = R.layout.activity_recycler_view, titleName = "仿抖音")
+@InjectLayout(layoutId = R.layout.activity_recycler_view, titleName = "仿抖音")
 public class PageRecyclerViewActivity extends BaseKitActivity {
 
     @BindView(R.id.recyclevie)

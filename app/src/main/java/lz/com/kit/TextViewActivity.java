@@ -1,10 +1,10 @@
 package lz.com.kit;
 
 
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.textview.SuperTextView;
 
-@LayoutId(value = R.layout.activity_textview,titleName = "textview")
+@InjectLayout(layoutId = R.layout.activity_textview,titleName = "textview")
 public class TextViewActivity extends BaseKitActivity {
 
     @Override

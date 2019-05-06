@@ -287,7 +287,7 @@ public class ReboundFrameLayout extends FrameLayout {
     }
 
     /**
-     * The default value is {@link #DEFAULT_SLIDING_SCALE_RATIO}.
+     * The default layoutId is {@link #DEFAULT_SLIDING_SCALE_RATIO}.
      *
      * @param scrollRatio the sliding ratio on vertical direction
      */
@@ -300,7 +300,7 @@ public class ReboundFrameLayout extends FrameLayout {
     }
 
     /**
-     * The default value is {@link #DEFAULT_MAX_REBOUND_DURATION}.
+     * The default layoutId is {@link #DEFAULT_MAX_REBOUND_DURATION}.
      *
      * @param maxReboundAnimDuration the rebound-animation duration
      */

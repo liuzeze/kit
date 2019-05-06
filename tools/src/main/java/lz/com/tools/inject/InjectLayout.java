@@ -12,8 +12,8 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface LayoutId {
-    int value() default -1;
+public @interface InjectLayout {
+    int layoutId() default -1;
 
     boolean isShowActTitle() default true;
 

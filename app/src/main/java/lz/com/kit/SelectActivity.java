@@ -6,14 +6,13 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import lz.com.kit.bean.SelectBean;
-import lz.com.tools.inject.InjectView;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.checked.BaseCheckedRecycleAdapter;
 
 
-@LayoutId(value = R.layout.activity_checked, titleName = "单选")
+@InjectLayout(layoutId = R.layout.activity_checked, titleName = "单选")
 public class SelectActivity extends BaseKitActivity {
 
     @BindView(R.id.recyclevie)

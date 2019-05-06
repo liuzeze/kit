@@ -146,7 +146,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             getView(viewId).setAlpha(value);
         } else {
-            // Pre-honeycomb hack to set Alpha value
+            // Pre-honeycomb hack to set Alpha layoutId
             AlphaAnimation alpha = new AlphaAnimation(value, value);
             alpha.setDuration(0);
             alpha.setFillAfter(true);
@@ -233,7 +233,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
      *
      * @param viewId   The view id.
      * @param progress The progress.
-     * @param max      The max value of a ProgressBar.
+     * @param max      The max layoutId of a ProgressBar.
      * @return The BaseViewHolder for chaining.
      */
     public BaseViewHolder setProgress(@IdRes int viewId, int progress, int max) {
@@ -247,7 +247,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
      * Sets the range of a ProgressBar to 0...max.
      *
      * @param viewId The view id.
-     * @param max    The max value of a ProgressBar.
+     * @param max    The max layoutId of a ProgressBar.
      * @return The BaseViewHolder for chaining.
      */
     public BaseViewHolder setMax(@IdRes int viewId, int max) {

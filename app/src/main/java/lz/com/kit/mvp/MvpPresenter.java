@@ -20,13 +20,14 @@ public class MvpPresenter extends RxPresenter<MvpContract.View> implements MvpCo
 
     @Override
     public void getNewLists(String type) {
-        CommonSubscriber<String> commonSubscriber = mRequestApi.getNewLists(type, LzTimeUtils.getNowMills()/1000+"").subscribeWith(new CommonSubscriber<String>() {
+        CommonSubscriber<String> commonSubscriber = mRequestApi
+                .getNewLists(type, LzTimeUtils.getNowMills() / 1000 + "")
+                .subscribeWith(new CommonSubscriber<String>() {
 
-
-            @Override
-            public void onNext(String s) {
-                mBaseView.getNewsListSuccess(s);
-            }
-        });
+                    @Override
+                    public void onNext(String s) {
+                        mBaseView.getNewsListSuccess(s);
+                    }
+                });
     }
 }

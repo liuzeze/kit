@@ -22,7 +22,7 @@ public class App extends Application {
         super.onCreate();
         LzUtil.init(this);
 
-//        RxRequestUtils.initConfig(new GlobalConfiguration());
+        RxRequestUtils.initConfig(new GlobalConfiguration());
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(false)
                 .methodCount(0)

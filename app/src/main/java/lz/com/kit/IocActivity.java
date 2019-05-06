@@ -7,12 +7,12 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.util.LzSnackbarUtils;
 import lz.com.tools.util.LzToast;
 
 
-@LayoutId(R.layout.activity_ioc)
+@InjectLayout(layoutId = R.layout.activity_ioc)
 public class IocActivity extends BaseKitActivity {
 
     @BindView(R.id.btn1)

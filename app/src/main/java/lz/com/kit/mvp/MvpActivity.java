@@ -2,32 +2,36 @@ package lz.com.kit.mvp;
 
 import android.widget.TextView;
 
-import com.lz.fram.scope.AttachView;
+import com.lz.fram.scope.AttachPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import lz.com.kit.BaseKitActivity;
 import lz.com.kit.R;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
+
 
 /**
- * Created by yc on 2018/7/23.
+ * @author Administrator
  */
-
-@LayoutId(value = R.layout.activity_mvp, titleName = "mvp框架")
+@InjectLayout(layoutId = R.layout.activity_mvp, titleName = "mvp框架")
 public class MvpActivity extends BaseKitActivity implements MvpContract.View {
 
 
-    @AttachView
-    MvpPresenter mMvpPresenter;
     @BindView(R.id.tv)
     TextView tv;
+    @AttachPresenter
+    MvpPresenter mMvpPresenter;
 
     @Override
     public void initData() {
 
     }
 
+    @Override
+    protected void initLisenter() {
+        super.initLisenter();
+    }
 
     @OnClick(R.id.btn)
     public void onViewClicked() {

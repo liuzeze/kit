@@ -9,8 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import butterknife.BindView;
-import lz.com.tools.inject.InjectView;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.shopview.SlideLayout;
 import lz.com.tools.util.LzWebViewUtils;
 
@@ -18,7 +17,7 @@ import lz.com.tools.util.LzWebViewUtils;
  * Created by yc on 2018/7/23.
  */
 
-@LayoutId(R.layout.activity_shop)
+@InjectLayout(layoutId = R.layout.activity_shop)
 public class ShopActivity extends BaseKitActivity {
 
     @BindView(R.id.slideDetailsLayout)

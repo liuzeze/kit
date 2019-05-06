@@ -13,7 +13,9 @@ import com.lz.fram.base.BaseView;
 import com.lz.fram.inject.PresenterDispatch;
 import com.lz.fram.inject.PresenterProviders;
 
+import lz.com.tools.R;
 import lz.com.tools.inject.InjectManager;
+import lz.com.tools.toolbar.TitleToolbar;
 
 /**
  * Activity 基类
@@ -23,6 +25,7 @@ import lz.com.tools.inject.InjectManager;
 public abstract class BaseActivity extends FragmentActivity implements BaseView {
 
     protected Activity mActivity;
+    private TitleToolbar titleToolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public abstract class BaseActivity extends FragmentActivity implements BaseView 
         initData();
         initLisenter();
     }
+
     /**
      * 初始化公用的参数
      */
@@ -42,7 +46,16 @@ public abstract class BaseActivity extends FragmentActivity implements BaseView 
         presenterDispatch.attachView(this, getLifecycle());
     }
 
+    protected TitleToolbar getTitleToolbar() {
+        if (titleToolbar == null) {
+            titleToolbar = findViewById(R.id.common_toolbar);
+        }
 
+        if (titleToolbar == null) {
+            titleToolbar = new TitleToolbar(this);
+        }
+        return titleToolbar;
+    }
 
     @Override
     public Context getContext() {

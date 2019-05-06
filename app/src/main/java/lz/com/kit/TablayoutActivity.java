@@ -21,14 +21,13 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import lz.com.kit.bean.TabEntity;
-import lz.com.tools.inject.InjectView;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 
 /**
  * Created by yc on 2018/7/23.
  */
 
-@LayoutId(value = R.layout.activity_tab, titleName = "tablayout")
+@InjectLayout(layoutId = R.layout.activity_tab, titleName = "tablayout")
 public class TablayoutActivity extends BaseKitActivity {
 
 

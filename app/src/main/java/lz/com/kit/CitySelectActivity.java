@@ -15,7 +15,7 @@ import butterknife.OnClick;
 import lz.com.tools.city.CityLoadingView;
 import lz.com.tools.city.CityPickerInfo;
 import lz.com.tools.city.CitySelectDialog;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.util.LzToast;
@@ -24,7 +24,7 @@ import lz.com.tools.util.LzToast;
  * Created by yc on 2018/7/23.
  */
 
-@LayoutId(R.layout.activity_select_city)
+@InjectLayout(layoutId = R.layout.activity_select_city)
 public class CitySelectActivity extends BaseKitActivity {
 
     private int[] mCitySelectPosition;

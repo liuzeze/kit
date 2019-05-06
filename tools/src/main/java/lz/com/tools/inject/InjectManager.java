@@ -27,9 +27,9 @@ public class InjectManager {
      */
     public static int getLayoutId(Object target) {
         Class<?> aClass = target.getClass();
-        LayoutId layoutId = aClass.getDeclaredAnnotation(LayoutId.class);
+        InjectLayout layoutId = aClass.getDeclaredAnnotation(InjectLayout.class);
         if (layoutId != null) {
-            return layoutId.value();
+            return layoutId.layoutId();
         }
 
 
@@ -82,7 +82,7 @@ public class InjectManager {
                     Class<?> eventMethodType = baseEvent.eventMethodType();
                     String backMethod = baseEvent.eventBackMethod();
                     try {
-                        Method value = annotationType.getMethod("value");
+                        Method value = annotationType.getMethod("layoutId");
                         int[] values = (int[]) value.invoke(annotation);
 
                         ListenerInvocationHandler invocationHandler = new ListenerInvocationHandler(target);
@@ -123,7 +123,7 @@ public class InjectManager {
                     Class<?> eventMethodType = baseEvent.eventMethodType();
                     String backMethod = baseEvent.eventBackMethod();
                     try {
-                        Method value = annotationType.getMethod("value");
+                        Method value = annotationType.getMethod("layoutId");
                         int[] values = (int[]) value.invoke(annotation);
 
                         ListenerInvocationHandler invocationHandler = new ListenerInvocationHandler(target);
@@ -161,7 +161,7 @@ public class InjectManager {
                 View view = target.findViewById(annotation.value());
 
 //                    Method method = aClass.getDeclaredMethod("findViewById", int.class);
-//                    Object view = method.invoke(target, annotation.value());
+//                    Object view = method.invoke(target, annotation.layoutId());
 
                 try {
                     field.setAccessible(true);
@@ -174,22 +174,22 @@ public class InjectManager {
     }
 
     private static void initInjectLayout(Activity target, Class<? extends Activity> aClass) {
-        LayoutId setContentView = aClass.getDeclaredAnnotation(LayoutId.class);
-        if (setContentView != null) {
-            int value = setContentView.value();
-            if (setContentView.isShowActTitle()) {
+        InjectLayout injectLayout = aClass.getDeclaredAnnotation(InjectLayout.class);
+        if (injectLayout != null) {
+            int value = injectLayout.layoutId();
+            if (injectLayout.isShowActTitle()) {
                 LinearLayout root = (LinearLayout) target.getLayoutInflater().inflate(R.layout.layout_root, null);
                 TitleToolbar titleToolbar = root.findViewById(R.id.common_toolbar);
-                titleToolbar.setTitle(setContentView.titleName());
-                titleToolbar.setBackVisible(setContentView.isShowBackIcon());
+                titleToolbar.setTitle(injectLayout.titleName());
+                titleToolbar.setBackVisible(injectLayout.isShowBackIcon());
                 target.getLayoutInflater().inflate(value, root);
                 target.setContentView(root);
             } else {
                 target.setContentView(value);
             }
           /*  try {
-                Method method = aClass.getDeclaredMethod("setContentView", int.class);
-                method.invoke(target, value);
+                Method method = aClass.getDeclaredMethod("injectLayout", int.class);
+                method.invoke(target, layoutId);
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

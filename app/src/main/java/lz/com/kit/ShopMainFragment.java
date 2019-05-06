@@ -4,10 +4,9 @@ package lz.com.kit;
 import android.widget.TextView;
 
 import butterknife.BindView;
-import lz.com.tools.inject.InjectView;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 
-@LayoutId(value = R.layout.include_shop_main)
+@InjectLayout(layoutId = R.layout.include_shop_main)
 public class ShopMainFragment extends BaseKitFragment {
 
 

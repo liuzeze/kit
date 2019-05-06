@@ -362,7 +362,6 @@ public class ReboundScrollView extends ScrollView {
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        System.out.println("liuze11111111111111");
         if (scrollAlphaChangeListener == null) {
             return;
         }

@@ -16,10 +16,8 @@ import com.lz.fram.base.BaseView;
 import com.lz.fram.inject.PresenterDispatch;
 import com.lz.fram.inject.PresenterProviders;
 
-import butterknife.ButterKnife;
 import lz.com.tools.R;
-import lz.com.tools.inject.InjectManager;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.toolbar.TitleToolbar;
 
 /**
@@ -46,17 +44,17 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
     private View getRootView(LayoutInflater inflater, @Nullable ViewGroup container) {
         Class<?> aClass = getClass();
-        LayoutId layoutId = aClass.getDeclaredAnnotation(LayoutId.class);
+        InjectLayout layoutId = aClass.getDeclaredAnnotation(InjectLayout.class);
         View inflate;
         if (layoutId.isShowFragTitle()) {
             LinearLayout linearLayout = (LinearLayout) inflater.inflate(lz.com.tools.R.layout.layout_root, null);
             TitleToolbar titleToolbar = linearLayout.findViewById(R.id.common_toolbar);
             titleToolbar.setTitle(layoutId.titleName());
             titleToolbar.setBackVisible(layoutId.isShowBackIcon());
-            inflater.inflate(layoutId.value(), linearLayout);
+            inflater.inflate(layoutId.layoutId(), linearLayout);
             inflate = linearLayout;
         } else {
-            inflate = inflater.inflate(layoutId.value(), container, false);
+            inflate = inflater.inflate(layoutId.layoutId(), container, false);
         }
        // InjectManager.inject(this, inflate);
 

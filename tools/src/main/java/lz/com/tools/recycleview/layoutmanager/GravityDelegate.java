@@ -45,7 +45,7 @@ class GravityDelegate {
                            @Nullable GravitySnapHelper.SnapListener listener) {
         if (gravity != Gravity.START && gravity != Gravity.END
                 && gravity != Gravity.BOTTOM && gravity != Gravity.TOP) {
-            throw new IllegalArgumentException("Invalid gravity value. Use START " +
+            throw new IllegalArgumentException("Invalid gravity layoutId. Use START " +
                     "| END | BOTTOM | TOP constants");
         }
         this.snapLastItem = enableSnapLast;

@@ -5,18 +5,17 @@ import android.widget.ImageView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.SegmentTabLayout;
-import com.lz.fram.net.RxRequestUtils;
 
 import butterknife.BindView;
 import cn.bingoogolapple.bgabanner.BGABanner;
 import cn.bingoogolapple.bgabanner.BGALocalImageSize;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 
 /**
  * Created by yc on 2018/7/23.
  */
 
-@LayoutId(value = R.layout.activity_banner, titleName = "标题控件")
+@InjectLayout(layoutId = R.layout.activity_banner, titleName = "标题控件")
 public class BannerActivity extends BaseKitActivity {
     private String[] mTitles = {"首页", "消息", "联系人", "更多"};
 

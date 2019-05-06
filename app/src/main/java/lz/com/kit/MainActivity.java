@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import lz.com.kit.bean.ActivityBean;
 import lz.com.kit.mvp.MvpActivity;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
@@ -24,7 +24,7 @@ import lz.com.tools.recycleview.decoration.DividerBuilder;
 import lz.com.tools.recycleview.decoration.DividerItemDecoration;
 
 
-@LayoutId(value = R.layout.activity_main,isShowBackIcon = false)
+@InjectLayout(layoutId = R.layout.activity_main,isShowBackIcon = false)
 public class MainActivity extends BaseKitActivity {
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;

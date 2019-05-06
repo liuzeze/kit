@@ -68,7 +68,7 @@ public class GravitySnapHelper extends LinearSnapHelper {
 
     /**
      * Enable snapping of the last item that's snappable.
-     * The default value is false, because you can't see the last item completely
+     * The default layoutId is false, because you can't see the last item completely
      * if this is enabled.
      *
      * @param snap true if you want to enable snapping of the last snappable item

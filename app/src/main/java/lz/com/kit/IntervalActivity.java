@@ -1,11 +1,11 @@
 package lz.com.kit;
 
 import butterknife.BindView;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.widget.IntervalSelectionView;
 
 
-@LayoutId(R.layout.activity_interval)
+@InjectLayout(layoutId = R.layout.activity_interval)
 public class IntervalActivity extends BaseKitActivity {
 
     @BindView(R.id.isv_condition_second)

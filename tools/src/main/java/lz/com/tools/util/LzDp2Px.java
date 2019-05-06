@@ -1,7 +1,9 @@
 package lz.com.tools.util;
 
 import android.content.Context;
-import android.util.TypedValue;
+
+import static lz.com.tools.util.LzDisplayUtils.getDensity;
+import static lz.com.tools.util.LzDisplayUtils.getFontDensity;
 
 /**
  * 常用单位转换的辅助类
@@ -12,24 +14,46 @@ public class LzDp2Px {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
+
+
     /**
-     * dp转px
+     * 单位转换: dp -> px
      *
-     * @param context
-     * @param dpVal
+     * @param dp
      * @return
      */
-    public static int convert(Context context, float dpVal) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                dpVal, context.getResources().getDisplayMetrics());
+    public static int dp2px(Context context, float dp) {
+        return (int) (getDensity(context) * dp + 0.5);
     }
 
-    public static float dp2px(Context context,float dp) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+    /**
+     * 单位转换: sp -> px
+     *
+     * @param sp
+     * @return
+     */
+    public static int sp2px(Context context, float sp) {
+        return (int) (getFontDensity(context) * sp + 0.5);
     }
 
-    public static int sp2px(Context context,float sp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources().getDisplayMetrics());
+    /**
+     * 单位转换:px -> dp
+     *
+     * @param px
+     * @return
+     */
+    public static int px2dp(Context context, float px) {
+        return (int) (px / getDensity(context) + 0.5);
+    }
+
+    /**
+     * 单位转换:px -> sp
+     *
+     * @param px
+     * @return
+     */
+    public static int px2sp(Context context, float px) {
+        return (int) (px / getFontDensity(context) + 0.5);
     }
 
 }

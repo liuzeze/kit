@@ -6,10 +6,10 @@ import android.view.ViewGroup;
 
 import lz.com.status.StatusConfigBuild;
 import lz.com.status.StatusView;
-import lz.com.tools.inject.LayoutId;
+import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.widget.WaterRippleAnim;
 
-@LayoutId(value = R.layout.activity_statue, titleName = "状态加载控件")
+@InjectLayout(layoutId = R.layout.activity_statue, titleName = "状态加载控件")
 public class StatueActivity extends BaseKitActivity {
 
 

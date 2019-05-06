@@ -1378,7 +1378,7 @@ public class LzTimeUtils {
     }
 
     /**
-     * Returns the value of the given calendar field.
+     * Returns the layoutId of the given calendar field.
      * <p>The pattern is {@code yyyy-MM-dd HH:mm:ss}.</p>
      *
      * @param time  The formatted time string.
@@ -1390,14 +1390,14 @@ public class LzTimeUtils {
      *              <li>...</li>
      *              <li>{@link Calendar#DST_OFFSET}</li>
      *              </ul>
-     * @return the value of the given calendar field
+     * @return the layoutId of the given calendar field
      */
     public static int getValueByCalendarField(final String time, final int field) {
         return getValueByCalendarField(string2Date(time, DATE_FORMAT_YMDHMS), field);
     }
 
     /**
-     * Returns the value of the given calendar field.
+     * Returns the layoutId of the given calendar field.
      *
      * @param time   The formatted time string.
      * @param format The format.
@@ -1409,7 +1409,7 @@ public class LzTimeUtils {
      *               <li>...</li>
      *               <li>{@link Calendar#DST_OFFSET}</li>
      *               </ul>
-     * @return the value of the given calendar field
+     * @return the layoutId of the given calendar field
      */
     public static int getValueByCalendarField(final String time,
                                               @NonNull final String format,
@@ -1418,7 +1418,7 @@ public class LzTimeUtils {
     }
 
     /**
-     * Returns the value of the given calendar field.
+     * Returns the layoutId of the given calendar field.
      *
      * @param date  The date.
      * @param field The given calendar field.
@@ -1429,7 +1429,7 @@ public class LzTimeUtils {
      *              <li>...</li>
      *              <li>{@link Calendar#DST_OFFSET}</li>
      *              </ul>
-     * @return the value of the given calendar field
+     * @return the layoutId of the given calendar field
      */
     public static int getValueByCalendarField(final Date date, final int field) {
         Calendar cal = Calendar.getInstance();
@@ -1438,7 +1438,7 @@ public class LzTimeUtils {
     }
 
     /**
-     * Returns the value of the given calendar field.
+     * Returns the layoutId of the given calendar field.
      *
      * @param millis The milliseconds.
      * @param field  The given calendar field.
@@ -1449,7 +1449,7 @@ public class LzTimeUtils {
      *               <li>...</li>
      *               <li>{@link Calendar#DST_OFFSET}</li>
      *               </ul>
-     * @return the value of the given calendar field
+     * @return the layoutId of the given calendar field
      */
     public static int getValueByCalendarField(final long millis, final int field) {
         Calendar cal = Calendar.getInstance();
