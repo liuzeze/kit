@@ -115,4 +115,19 @@
     </declare-styleable>
 
     <!--**************************公用自定义ToolBar相关属性**************************-->
+    <!--DropDownMenu-->
+    <declare-styleable name="DropDownMenu">
+
+        <attr name="underlineColor" format="color" />
+        <attr name="dividerColor" format="color" />
+        <attr name="textSelectedColor" format="color" />
+        <attr name="textUnselectedColor" format="color" />
+        <attr name="menuBackgroundColor" format="color" />
+        <attr name="maskColor" format="color" />
+        <attr name="menuSelectedIcon" format="reference" />
+        <attr name="menuUnselectedIcon" format="reference" />
+        <attr name="menuTitleHeight" format="dimension" />
+    </declare-styleable>
+
+
 </resources>

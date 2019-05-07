@@ -42,6 +42,7 @@
         <activity android:name=".TextViewActivity" />
         <activity android:name=".mvp.MvpActivity" />
         <activity android:name=".StatueActivity" />
+        <activity android:name=".MenuActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<lz.com.tools.widget.DropDownMenu
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dropdownmenu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:dividerColor="#ebebeb"
+    app:menuBackgroundColor="#ffffff"
+    app:menuSelectedIcon="@drawable/select_filter_down_arrow"
+    app:menuTitleHeight="50dp"
+    app:menuUnselectedIcon="@drawable/select_filter_down_arrow"
+    app:textSelectedColor="#f5bf0a"
+    app:textUnselectedColor="#282828"
+    app:underlineColor="#ebebeb"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+      android:gravity="center"
+        android:textSize="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="下拉菜单" />
+
+</lz.com.tools.widget.DropDownMenu>
+
+

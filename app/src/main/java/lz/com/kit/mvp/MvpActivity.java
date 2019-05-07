@@ -2,6 +2,9 @@ package lz.com.kit.mvp;
 
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.lz.fram.scope.AttachPresenter;
 
 import butterknife.BindView;
@@ -25,7 +28,8 @@ public class MvpActivity extends BaseKitActivity implements MvpContract.View {
 
     @Override
     public void initData() {
-
+        RecyclerView recyclerView = new RecyclerView(mActivity);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
     }
 
     @Override
