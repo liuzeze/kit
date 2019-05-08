@@ -212,7 +212,7 @@ public class MenuActivity extends BaseKitActivity {
                         s.append(selectBean.name);
                     }
                 });
-                mDropDownMenu.setTabSelect(3, TextUtils.isEmpty(s.toString()) ? titleText[3] : s.toString());
+                mDropDownMenu.setTabSelect(4, TextUtils.isEmpty(s.toString()) ? titleText[4] : s.toString());
                 mDropDownMenu.closeMenu();
             }
         });
