@@ -8,23 +8,45 @@
     android:id="@+id/dropdownmenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:separationDividerColor="#ff0000"
     app:menuBackgroundColor="#ffffff"
     app:menuSelectedIcon="@drawable/select_filter_up_arrow"
-    app:showSeparationDivider="false"
     app:menuTitleHeight="50dp"
     app:menuUnselectedIcon="@drawable/select_filter_down_arrow"
+    app:separationDividerColor="#ff0000"
+    app:showSeparationDivider="false"
     app:textSelectedColor="#f5bf0a"
     app:textUnselectedColor="#282828"
     app:underlineColor="#ebebeb"
     tools:ignore="MissingDefaultResource">
 
-    <TextView
-      android:gravity="center"
-        android:textSize="50dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="下拉菜单" />
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下拉菜单"
+            android:textSize="50dp" />
+
+        <lz.com.tools.widget.ClearEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@null"
+            android:hint="请输入"
+            android:inputType="number"
+            android:digits="111"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="15dp"
+            app:bl_corners_radius="45dp"
+            app:bl_stroke_color="@color/ff0000"
+            app:bl_stroke_width="1dp" />
+    </LinearLayout>
 
 </lz.com.tools.widget.DropDownMenu>
 

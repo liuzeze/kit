@@ -50,25 +50,13 @@ public class MenuActivity extends BaseKitActivity {
 
     @Override
     public void initData() {
-//        mDropDownMenu.setContentView();
         mDropDownMenu.addTab(titleText);
         mViews[0] = getCityView();
         mViews[1] = getPriceView();
         mViews[2] = getHouseView();
         mViews[3] = getMoreView();
         mViews[4] = getSortView();
-
-
         mDropDownMenu.setDropDownMenu(mViews);
-
-        mDropDownMenu.setOnDropDownMenuListener(new DropDownMenu.OnDropDownMenuListener() {
-            @Override
-            public void onMenuClose(int position) {
-
-            }
-        });
-
-        //
     }
 
     private View getMoreView() {
@@ -109,20 +97,12 @@ public class MenuActivity extends BaseKitActivity {
         mAdapter2.getCheckHelper().setLastItemEnable(true).setAlwaysSelectItem(mStrings.get(0));
         reyclerView.setAdapter(mAdapter2);
         mAdapter2.setNewData(mStrings);
-        mAdapter2.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseRecycleAdapter adapter, View view, int position) {
-                ArrayList<SelectBean> selectitem = mAdapter2.getSelectitem();
-                StringBuffer s = new StringBuffer();
-                selectitem.forEach(new Consumer<SelectBean>() {
-                    @Override
-                    public void accept(SelectBean selectBean) {
-                        s.append(selectBean.name);
-                    }
-                });
-                mDropDownMenu.setTabSelect(1, TextUtils.isEmpty(s.toString()) ? titleText[1] : s.toString());
-                mDropDownMenu.closeMenu();
-            }
+        mAdapter2.setOnItemClickListener((adapter, view, position) -> {
+            ArrayList<SelectBean> selectitem = mAdapter2.getSelectitem();
+            StringBuffer s = new StringBuffer();
+            selectitem.forEach(selectBean -> s.append(selectBean.name));
+            mDropDownMenu.setTabSelect(1, TextUtils.isEmpty(s.toString()) ? titleText[1] : s.toString());
+            mDropDownMenu.closeMenu();
         });
         return reyclerView;
     }
@@ -156,20 +136,11 @@ public class MenuActivity extends BaseKitActivity {
         mAdapter4.getCheckHelper().setAlwaysSelectItem(mStrings.get(0));
         reyclerView.setAdapter(mAdapter4);
         mAdapter4.setNewData(mStrings);
-        mAdapter4.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseRecycleAdapter adapter, View view, int position) {
-                ArrayList<SelectBean> selectitem = mAdapter4.getSelectitem();
-                StringBuffer s = new StringBuffer();
-                selectitem.forEach(new Consumer<SelectBean>() {
-                    @Override
-                    public void accept(SelectBean selectBean) {
-                        s.append(selectBean.name);
-                    }
-                });
-                mDropDownMenu.setTabSelect(2, TextUtils.isEmpty(s.toString()) ? titleText[2] : s.toString());
-                // mDropDownMenu.closeMenu();
-            }
+        mAdapter4.setOnItemClickListener((adapter, view, position) -> {
+            ArrayList<SelectBean> selectitem = mAdapter4.getSelectitem();
+            StringBuffer s = new StringBuffer();
+            selectitem.forEach(selectBean -> s.append(selectBean.name));
+            mDropDownMenu.setTabSelect(2, TextUtils.isEmpty(s.toString()) ? titleText[2] : s.toString());
         });
         return reyclerView;
     }
@@ -201,24 +172,14 @@ public class MenuActivity extends BaseKitActivity {
         mAdapter2.getCheckHelper().setLastItemEnable(true).setAlwaysSelectItem(mStrings.get(0));
         reyclerView.setAdapter(mAdapter2);
         mAdapter2.setNewData(mStrings);
-        mAdapter2.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseRecycleAdapter adapter, View view, int position) {
-                ArrayList<SelectBean> selectitem = mAdapter2.getSelectitem();
-                StringBuffer s = new StringBuffer();
-                selectitem.forEach(new Consumer<SelectBean>() {
-                    @Override
-                    public void accept(SelectBean selectBean) {
-                        s.append(selectBean.name);
-                    }
-                });
-                mDropDownMenu.setTabSelect(4, TextUtils.isEmpty(s.toString()) ? titleText[4] : s.toString());
-                mDropDownMenu.closeMenu();
-            }
+        mAdapter2.setOnItemClickListener((adapter, view, position) -> {
+            ArrayList<SelectBean> selectitem = mAdapter2.getSelectitem();
+            StringBuffer s = new StringBuffer();
+            selectitem.forEach(selectBean -> s.append(selectBean.name));
+            mDropDownMenu.setTabSelect(4, TextUtils.isEmpty(s.toString()) ? titleText[4] : s.toString());
+            mDropDownMenu.closeMenu();
         });
         return reyclerView;
-        // 33000
-        // 18000   18000 ==36000  8000
     }
 
     /**
