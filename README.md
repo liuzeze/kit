@@ -28,14 +28,14 @@
     </tr> 
     </tr>
         <tr align="center">
-           <td><img src="https://github.com/liuzeze/kit/blob/master/doc/7.png" width="280" height="380"/></td>
-         <td><img src="https://github.com/liuzeze/kit/blob/master/doc/8.png" width="280" height="380"/></td>
-         <td><img src="https://github.com/liuzeze/kit/blob/master/doc/9.png" width="280" height="380"/></td>
+           <td><img src="https://github.com/liuzeze/kit/blob/master/doc/7.jpg" width="280" height="380"/></td>
+         <td><img src="https://github.com/liuzeze/kit/blob/master/doc/8.jpg" width="280" height="380"/></td>
+         <td><img src="https://github.com/liuzeze/kit/blob/master/doc/9.jpg" width="280" height="380"/></td>
     </tr>
       </tr>
             <tr align="center">
-               <td><img src="https://github.com/liuzeze/kit/blob/master/doc/10.png" width="280" height="380"/></td>
-             <td><img src="https://github.com/liuzeze/kit/blob/master/doc/11.png" width="280" height="380"/></td>
+               <td><img src="https://github.com/liuzeze/kit/blob/master/doc/10.jpg" width="280" height="380"/></td>
+             <td><img src="https://github.com/liuzeze/kit/blob/master/doc/11.jpg" width="280" height="380"/></td>
         </tr>
 </table>
 
