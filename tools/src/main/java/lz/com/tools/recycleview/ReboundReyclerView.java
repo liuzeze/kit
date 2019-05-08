@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import lz.com.tools.recycleview.layoutmanager.LzLinearLayoutManager;
 import lz.com.tools.refresh.BaseRefrashHeader;
 import lz.com.tools.refresh.RefreshState;
 
@@ -55,16 +57,19 @@ public class ReboundReyclerView extends RecyclerView {
     public ReboundReyclerView(Context context) {
         super(context);
         setOverScrollMode(OVER_SCROLL_NEVER);
+        setLayoutManager(new LzLinearLayoutManager(context));
     }
 
     public ReboundReyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOverScrollMode(OVER_SCROLL_NEVER);
+        setLayoutManager(new LzLinearLayoutManager(context));
     }
 
     public ReboundReyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setOverScrollMode(OVER_SCROLL_NEVER);
+        setLayoutManager(new LzLinearLayoutManager(context));
     }
 
 

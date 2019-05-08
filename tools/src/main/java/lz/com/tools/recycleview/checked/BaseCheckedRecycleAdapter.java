@@ -60,13 +60,14 @@ public abstract class BaseCheckedRecycleAdapter<T, K extends BaseViewHolder> ext
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getOnItemClickListener() != null) {
-                    getOnItemClickListener().onItemClick(BaseCheckedRecycleAdapter.this, v, holder.getLayoutPosition() - getHeaderLayoutCount());
-                }
                 if (mCheckHelper != null) {
                     int position = holder.getLayoutPosition() - getHeaderLayoutCount();
                     mCheckHelper.onSelect(holder, getItem(position), position);
                 }
+                if (getOnItemClickListener() != null) {
+                    getOnItemClickListener().onItemClick(BaseCheckedRecycleAdapter.this, v, holder.getLayoutPosition() - getHeaderLayoutCount());
+                }
+
 
             }
         });

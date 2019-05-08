@@ -1,1025 +1,996 @@
 <templateSet group="BackgroundLibrary">
-    <template name="bl_shape" description="shape类型" toReformat="false"
-        toShortenFQNames="true" value="app:bl_shape=&quot;$value$&quot;">
+    <template name="bl_shape" description="shape类型" toReformat="false" toShortenFQNames="true"
+        value="app:bl_shape=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_solid_color" description="填充颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_solid_color=&quot;$value$&quot;">
+    <template name="bl_solid_color" description="填充颜色" toReformat="true" toShortenFQNames="true"
+        value="app:bl_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_corners_radius" description="圆角宽度"
-        toReformat="false" toShortenFQNames="true" value="app:bl_corners_radius=&quot;$value$&quot;">
+    <template name="bl_corners_radius" description="圆角宽度" toReformat="false" toShortenFQNames="true"
+        value="app:bl_corners_radius=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_corners_bottomLeftRadius"
-        description="左下圆角宽度" toReformat="false"
+    <template name="bl_corners_bottomLeftRadius" description="左下圆角宽度" toReformat="false"
         toShortenFQNames="true" value="app:bl_corners_bottomLeftRadius=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_corners_bottomRightRadius"
-        description="右下圆角宽度" toReformat="false"
+    <template name="bl_corners_bottomRightRadius" description="右下圆角宽度" toReformat="false"
         toShortenFQNames="true" value="app:bl_corners_bottomRightRadius=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_corners_topRightRadius"
-        description="右上圆角宽度" toReformat="true"
+    <template name="bl_corners_topRightRadius" description="右上圆角宽度" toReformat="true"
         toShortenFQNames="true" value="app:bl_corners_topRightRadius=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_corners_topLeftRadius"
-        description="左上圆角宽度" toReformat="false"
+    <template name="bl_corners_topLeftRadius" description="左上圆角宽度" toReformat="false"
         toShortenFQNames="true" value="app:bl_corners_topLeftRadius=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_gradient_angle" description="渐变角度"
-        toReformat="true" toShortenFQNames="true" value="app:bl_gradient_angle=&quot;$value$&quot;">
+    <template name="bl_gradient_angle" description="渐变角度" toReformat="true" toShortenFQNames="true"
+        value="app:bl_gradient_angle=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_gradient_centerX" description="渐变中心X"
-        toReformat="true" toShortenFQNames="true" value="app:bl_gradient_centerX=&quot;$value$&quot;">
+    <template name="bl_gradient_centerX" description="渐变中心X" toReformat="true"
+        toShortenFQNames="true" value="app:bl_gradient_centerX=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_gradient_centerY" description="渐变中心Y"
-        toReformat="true" toShortenFQNames="true" value="app:bl_gradient_centerY=&quot;$value$&quot;">
+    <template name="bl_gradient_centerY" description="渐变中心Y" toReformat="true"
+        toShortenFQNames="true" value="app:bl_gradient_centerY=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_gradient_centerColor" description="渐变中心颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_gradient_centerColor=&quot;$value$&quot;">
+    <template name="bl_gradient_centerColor" description="渐变中心颜色" toReformat="true"
+        toShortenFQNames="true" value="app:bl_gradient_centerColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_gradient_endColor" description="渐变结束颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_gradient_endColor=&quot;$value$&quot;">
+    <template name="bl_gradient_endColor" description="渐变结束颜色" toReformat="true"
+        toShortenFQNames="true" value="app:bl_gradient_endColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_gradient_startColor" description="渐变开始颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_gradient_startColor=&quot;$value$&quot;">
+    <template name="bl_gradient_startColor" description="渐变开始颜色" toReformat="true"
+        toShortenFQNames="true" value="app:bl_gradient_startColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_gradient_gradientRadius"
-        description="渐变角度" toReformat="true"
+    <template name="bl_gradient_gradientRadius" description="渐变角度" toReformat="true"
         toShortenFQNames="true" value="app:bl_gradient_gradientRadius=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_gradient_type" description="渐变类型"
-        toReformat="true" toShortenFQNames="true" value="app:bl_gradient_type=&quot;$value$&quot;">
+    <template name="bl_gradient_type" description="渐变类型" toReformat="true" toShortenFQNames="true"
+        value="app:bl_gradient_type=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_gradient_useLevel" description="useLevel"
-        toReformat="true" toShortenFQNames="true" value="app:bl_gradient_useLevel=&quot;$value$&quot;">
+    <template name="bl_gradient_useLevel" description="useLevel" toReformat="true"
+        toShortenFQNames="true" value="app:bl_gradient_useLevel=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_size_width" description="宽度" toReformat="true"
-        toShortenFQNames="true" value="app:bl_size_width=&quot;$value$&quot;">
+    <template name="bl_size_width" description="宽度" toReformat="true" toShortenFQNames="true"
+        value="app:bl_size_width=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_stroke_width" description="边框高度"
-        toReformat="true" toShortenFQNames="true" value="app:bl_stroke_width=&quot;$value$&quot;">
+    <template name="bl_stroke_width" description="边框高度" toReformat="true" toShortenFQNames="true"
+        value="app:bl_stroke_width=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_stroke_color" description="边框颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_stroke_color=&quot;$value$&quot;">
+    <template name="bl_stroke_color" description="边框颜色" toReformat="true" toShortenFQNames="true"
+        value="app:bl_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_stroke_dashWidth" description="边框间隔宽度"
-        toReformat="true" toShortenFQNames="true" value="app:bl_stroke_dashWidth=&quot;$value$&quot;">
+    <template name="bl_stroke_dashWidth" description="边框间隔宽度" toReformat="true"
+        toShortenFQNames="true" value="app:bl_stroke_dashWidth=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_stroke_dashGap" description="stroke_dashGap"
-        toReformat="true" toShortenFQNames="true" value="app:bl_stroke_dashGap=&quot;$value$&quot;">
+    <template name="bl_stroke_dashGap" description="stroke_dashGap" toReformat="true"
+        toShortenFQNames="true" value="app:bl_stroke_dashGap=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_checkable_drawable" description="checkable_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_checkable_drawable=&quot;$value$&quot;">
+    <template name="bl_checkable_drawable" description="checkable_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_checkable_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_checked_drawable" description="checked_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_checked_drawable=&quot;$value$&quot;">
+    <template name="bl_checked_drawable" description="checked_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_checked_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_enabled_drawable" description="enabled_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_enabled_drawable=&quot;$value$&quot;">
+    <template name="bl_enabled_drawable" description="enabled_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_enabled_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_selected_drawable" description="selected_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_selected_drawable=&quot;$value$&quot;">
+    <template name="bl_selected_drawable" description="selected_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_selected_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_pressed_drawable" description="pressed_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_pressed_drawable=&quot;$value$&quot;">
+    <template name="bl_pressed_drawable" description="pressed_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_pressed_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_focused_drawable" description="focused_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_focused_drawable=&quot;$value$&quot;">
+    <template name="bl_focused_drawable" description="focused_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_focused_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_focused_hovered" description="focused_hovered"
-        toReformat="true" toShortenFQNames="true" value="app:bl_focused_hovered=&quot;$value$&quot;">
+    <template name="bl_focused_hovered" description="focused_hovered" toReformat="true"
+        toShortenFQNames="true" value="app:bl_focused_hovered=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_focused_activated" description="focused_activated"
-        toReformat="true" toShortenFQNames="true" value="app:bl_focused_activated=&quot;$value$&quot;">
+    <template name="bl_focused_activated" description="focused_activated" toReformat="true"
+        toShortenFQNames="true" value="app:bl_focused_activated=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unCheckable_drawable" description="unCheckable_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unCheckable_drawable=&quot;$value$&quot;">
+    <template name="bl_unCheckable_drawable" description="unCheckable_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unCheckable_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unChecked_drawable" description="unChecked_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unChecked_drawable=&quot;$value$&quot;">
+    <template name="bl_unChecked_drawable" description="unChecked_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unChecked_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unEnabled_drawable" description="unEnabled_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unEnabled_drawable=&quot;$value$&quot;">
+    <template name="bl_unEnabled_drawable" description="unEnabled_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unEnabled_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unSelected_drawable" description="unSelected_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unSelected_drawable=&quot;$value$&quot;">
+    <template name="bl_unSelected_drawable" description="unSelected_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unSelected_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unPressed_drawable" description="unPressed_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unPressed_drawable=&quot;$value$&quot;">
+    <template name="bl_unPressed_drawable" description="unPressed_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unPressed_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unFocused_drawable" description="unFocused_drawable"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unFocused_drawable=&quot;$value$&quot;">
+    <template name="bl_unFocused_drawable" description="unFocused_drawable" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unFocused_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unFocused_hovered" description="unFocused_hovered"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unFocused_hovered=&quot;$value$&quot;">
+    <template name="bl_unFocused_hovered" description="unFocused_hovered" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unFocused_hovered=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unFocused_activated" description="unFocused_activated"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unFocused_activated=&quot;$value$&quot;">
+    <template name="bl_unFocused_activated" description="unFocused_activated" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unFocused_activated=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_ripple_enable" description="水波纹效果"
-        toReformat="false" toShortenFQNames="true" value="app:bl_ripple_enable=&quot;$value$&quot;">
+    <template name="bl_ripple_enable" description="水波纹效果" toReformat="false" toShortenFQNames="true"
+        value="app:bl_ripple_enable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_ripple_color" description="水波纹颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_ripple_color=&quot;$value$&quot;">
+    <template name="bl_ripple_color" description="水波纹颜色" toReformat="false" toShortenFQNames="true"
+        value="app:bl_ripple_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_checkable_stroke_color"
-        description="边框状态的属性" toReformat="false"
+    <template name="bl_checkable_stroke_color" description="边框状态的属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_checkable_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_checked_stroke_color" description="边框状态属性"
-        toReformat="false" toShortenFQNames="true" value="app:bl_checked_stroke_color=&quot;$value$&quot;">
+    <template name="bl_checked_stroke_color" description="边框状态属性" toReformat="false"
+        toShortenFQNames="true" value="app:bl_checked_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_enabled_stroke_color" description="边框状态属性"
-        toReformat="false" toShortenFQNames="true" value="app:bl_enabled_stroke_color=&quot;$value$&quot;">
+    <template name="bl_enabled_stroke_color" description="边框状态属性" toReformat="false"
+        toShortenFQNames="true" value="app:bl_enabled_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_selected_stroke_color"
-        description="边框状态属性" toReformat="false"
+    <template name="bl_selected_stroke_color" description="边框状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_selected_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_pressed_stroke_color" description="边框状态属性"
-        toReformat="false" toShortenFQNames="true" value="app:bl_pressed_stroke_color=&quot;$value$&quot;">
+    <template name="bl_pressed_stroke_color" description="边框状态属性" toReformat="false"
+        toShortenFQNames="true" value="app:bl_pressed_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_focused_stroke_color" description="边框状态属性"
-        toReformat="false" toShortenFQNames="true" value="app:bl_focused_stroke_color=&quot;$value$&quot;">
+    <template name="bl_focused_stroke_color" description="边框状态属性" toReformat="false"
+        toShortenFQNames="true" value="app:bl_focused_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unCheckable_stroke_color"
-        description="边框状态的属性" toReformat="false"
+    <template name="bl_unCheckable_stroke_color" description="边框状态的属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unCheckable_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unChecked_stroke_color"
-        description="边框状态属性" toReformat="false"
+    <template name="bl_unChecked_stroke_color" description="边框状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unChecked_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unEnabled_stroke_color"
-        description="边框状态属性" toReformat="false"
+    <template name="bl_unEnabled_stroke_color" description="边框状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unEnabled_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unSelected_stroke_color"
-        description="边框状态属性" toReformat="false"
+    <template name="bl_unSelected_stroke_color" description="边框状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unSelected_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unPressed_stroke_color"
-        description="边框状态属性" toReformat="false"
+    <template name="bl_unPressed_stroke_color" description="边框状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unPressed_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unFocused_stroke_color"
-        description="边框状态属性" toReformat="false"
+    <template name="bl_unFocused_stroke_color" description="边框状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unFocused_stroke_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_checked_button_drawable"
-        description="buttonDrawable属性" toReformat="true"
+    <template name="bl_checked_button_drawable" description="buttonDrawable属性" toReformat="true"
         toShortenFQNames="true" value="app:bl_checked_button_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unChecked_button_drawable"
-        description="buttonDrawable属性" toReformat="true"
+    <template name="bl_unChecked_button_drawable" description="buttonDrawable属性" toReformat="true"
         toShortenFQNames="true" value="app:bl_unChecked_button_drawable=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_checkable_textColor" description="checkable文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_checkable_textColor=&quot;$value$&quot;">
+    <template name="bl_checkable_textColor" description="checkable文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_checkable_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unCheckable_textColor"
-        description="unCheckable文字颜色" toReformat="false"
+    <template name="bl_unCheckable_textColor" description="unCheckable文字颜色" toReformat="false"
         toShortenFQNames="true" value="app:bl_unCheckable_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_checked_textColor" description="checked文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_checked_textColor=&quot;$value$&quot;">
+    <template name="bl_checked_textColor" description="checked文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_checked_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unChecked_textColor" description="unChecked文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_unChecked_textColor=&quot;$value$&quot;">
+    <template name="bl_unChecked_textColor" description="unChecked文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_unChecked_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_enabled_textColor" description="enabled文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_enabled_textColor=&quot;$value$&quot;">
+    <template name="bl_enabled_textColor" description="enabled文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_enabled_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unEnabled_textColor" description="unEnabled文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_unEnabled_textColor=&quot;$value$&quot;">
+    <template name="bl_unEnabled_textColor" description="unEnabled文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_unEnabled_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_selected_textColor" description="selected文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_selected_textColor=&quot;$value$&quot;">
+    <template name="bl_selected_textColor" description="selected文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_selected_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unSelected_textColor" description="unSelected文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_unSelected_textColor=&quot;$value$&quot;">
+    <template name="bl_unSelected_textColor" description="unSelected文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_unSelected_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_pressed_textColor" description="pressed文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_pressed_textColor=&quot;$value$&quot;">
+    <template name="bl_pressed_textColor" description="pressed文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_pressed_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unPressed_textColor" description="unPressed文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_unPressed_textColor=&quot;$value$&quot;">
+    <template name="bl_unPressed_textColor" description="unPressed文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_unPressed_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_focused_textColor" description="focused文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_focused_textColor=&quot;$value$&quot;">
+    <template name="bl_focused_textColor" description="focused文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_focused_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unFocused_textColor" description="unFocused文字颜色"
-        toReformat="false" toShortenFQNames="true" value="app:bl_unFocused_textColor=&quot;$value$&quot;">
+    <template name="bl_unFocused_textColor" description="unFocused文字颜色" toReformat="false"
+        toShortenFQNames="true" value="app:bl_unFocused_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_checked_solid_color" description="填充颜色状态属性"
-        toReformat="false" toShortenFQNames="true" value="app:bl_checked_solid_color=&quot;$value$&quot;">
+    <template name="bl_checked_solid_color" description="填充颜色状态属性" toReformat="false"
+        toShortenFQNames="true" value="app:bl_checked_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unChecked_solid_color"
-        description="填充颜色状态属性" toReformat="false"
+    <template name="bl_unChecked_solid_color" description="填充颜色状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unChecked_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_checkable_solid_color"
-        description="填充颜色状态属性" toReformat="false"
+    <template name="bl_checkable_solid_color" description="填充颜色状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_checkable_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unCheckable_solid_color"
-        description="填充颜色状态属性" toReformat="false"
+    <template name="bl_unCheckable_solid_color" description="填充颜色状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unCheckable_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_enabled_solid_color" description="填充颜色状态属性"
-        toReformat="false" toShortenFQNames="true" value="app:bl_enabled_solid_color=&quot;$value$&quot;">
+    <template name="bl_enabled_solid_color" description="填充颜色状态属性" toReformat="false"
+        toShortenFQNames="true" value="app:bl_enabled_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unEnabled_solid_color"
-        description="填充颜色状态属性" toReformat="false"
+    <template name="bl_unEnabled_solid_color" description="填充颜色状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unEnabled_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unSelected_solid_color"
-        description="填充颜色状态属性" toReformat="false"
+    <template name="bl_unSelected_solid_color" description="填充颜色状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unSelected_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_selected_solid_color" description="填充颜色状态属性"
-        toReformat="false" toShortenFQNames="true" value="app:bl_selected_solid_color=&quot;$value$&quot;">
+    <template name="bl_selected_solid_color" description="填充颜色状态属性" toReformat="false"
+        toShortenFQNames="true" value="app:bl_selected_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unPressed_solid_color"
-        description="填充颜色状态属性" toReformat="false"
+    <template name="bl_unPressed_solid_color" description="填充颜色状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unPressed_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_pressed_solid_color" description="填充颜色状态属性"
-        toReformat="false" toShortenFQNames="true" value="app:bl_pressed_solid_color=&quot;$value$&quot;">
+    <template name="bl_pressed_solid_color" description="填充颜色状态属性" toReformat="false"
+        toShortenFQNames="true" value="app:bl_pressed_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_focused_solid_color" description="填充颜色状态属性"
-        toReformat="false" toShortenFQNames="true" value="app:bl_focused_solid_color=&quot;$value$&quot;">
+    <template name="bl_focused_solid_color" description="填充颜色状态属性" toReformat="false"
+        toShortenFQNames="true" value="app:bl_focused_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unFocused_solid_color"
-        description="填充颜色状态属性" toReformat="false"
+    <template name="bl_unFocused_solid_color" description="填充颜色状态属性" toReformat="false"
         toShortenFQNames="true" value="app:bl_unFocused_solid_color=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_position" description="drawable位置"
-        toReformat="true" toShortenFQNames="true" value="app:bl_position=&quot;$value$&quot;">
+    <template name="bl_position" description="drawable位置" toReformat="true" toShortenFQNames="true"
+        value="app:bl_position=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_oneshot" description="是否只播放一次" toReformat="false"
-        toShortenFQNames="true" value="app:bl_oneshot=&quot;$value$&quot;">
+    <template name="bl_oneshot" description="是否只播放一次" toReformat="false" toShortenFQNames="true"
+        value="app:bl_oneshot=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration" description="每一帧动画时长" toReformat="true"
-        toShortenFQNames="true" value="app:bl_duration=&quot;$value$&quot;">
+    <template name="bl_duration" description="每一帧动画时长" toReformat="true" toShortenFQNames="true"
+        value="app:bl_duration=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item0" description="第0帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item0=&quot;$value$&quot;">
+    <template name="bl_duration_item0" description="第0帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item0=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item02" description="第2帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item02=&quot;$value$&quot;">
+    <template name="bl_duration_item02" description="第2帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item02=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item01" description="第1帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item01=&quot;$value$&quot;">
+    <template name="bl_duration_item01" description="第1帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item01=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item03" description="第3帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item03=&quot;$value$&quot;">
+    <template name="bl_duration_item03" description="第3帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item03=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item04" description="第4帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item04=&quot;$value$&quot;">
+    <template name="bl_duration_item04" description="第4帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item04=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item05" description="第5帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item05=&quot;$value$&quot;">
+    <template name="bl_duration_item05" description="第5帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item05=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item06" description="第6帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item06=&quot;$value$&quot;">
+    <template name="bl_duration_item06" description="第6帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item06=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item07" description="第7帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item07=&quot;$value$&quot;">
+    <template name="bl_duration_item07" description="第7帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item07=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item08" description="第8帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item08=&quot;$value$&quot;">
+    <template name="bl_duration_item08" description="第8帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item08=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item09" description="第9帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item09=&quot;$value$&quot;">
+    <template name="bl_duration_item09" description="第9帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item09=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item10" description="第10帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item10=&quot;$value$&quot;">
+    <template name="bl_duration_item10" description="第10帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item10=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item11" description="第11帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item11=&quot;$value$&quot;">
+    <template name="bl_duration_item11" description="第11帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item11=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item12" description="第12帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item12=&quot;$value$&quot;">
+    <template name="bl_duration_item12" description="第12帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item12=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item13" description="第13帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item13=&quot;$value$&quot;">
+    <template name="bl_duration_item13" description="第13帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item13=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_duration_item14" description="第14帧动画时长"
-        toReformat="true" toShortenFQNames="true" value="app:bl_duration_item14=&quot;$value$&quot;">
+    <template name="bl_duration_item14" description="第14帧动画时长" toReformat="true"
+        toShortenFQNames="true" value="app:bl_duration_item14=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item0" description="第0帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item0=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item0" description="第0帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item0=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item1" description="第1帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item1=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item1" description="第1帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item1=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item2" description="第2帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item2=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item2" description="第2帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item2=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item3" description="第3帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item3=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item3" description="第3帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item3=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item4" description="第4帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item4=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item4" description="第4帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item4=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item5" description="第5帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item5=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item5" description="第5帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item5=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item6" description="第6帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item6=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item6" description="第6帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item6=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item7" description="第7帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item7=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item7" description="第7帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item7=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item8" description="第8帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item8=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item8" description="第8帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item8=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item9" description="第9帧动画"
-        toReformat="true" toShortenFQNames="true" value="app:bl_frame_drawable_item9=&quot;$value$&quot;">
+    <template name="bl_frame_drawable_item9" description="第9帧动画" toReformat="true"
+        toShortenFQNames="true" value="app:bl_frame_drawable_item9=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item10"
-        description="第10帧动画" toReformat="true"
+    <template name="bl_frame_drawable_item10" description="第10帧动画" toReformat="true"
         toShortenFQNames="true" value="app:bl_frame_drawable_item10=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item11"
-        description="第11帧动画" toReformat="true"
+    <template name="bl_frame_drawable_item11" description="第11帧动画" toReformat="true"
         toShortenFQNames="true" value="app:bl_frame_drawable_item11=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item12"
-        description="第12帧动画" toReformat="true"
+    <template name="bl_frame_drawable_item12" description="第12帧动画" toReformat="true"
         toShortenFQNames="true" value="app:bl_frame_drawable_item12=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item13"
-        description="第13帧动画" toReformat="true"
+    <template name="bl_frame_drawable_item13" description="第13帧动画" toReformat="true"
         toShortenFQNames="true" value="app:bl_frame_drawable_item13=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_frame_drawable_item14"
-        description="第14帧动画" toReformat="true"
+    <template name="bl_frame_drawable_item14" description="第14帧动画" toReformat="true"
         toShortenFQNames="true" value="app:bl_frame_drawable_item14=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_activated_textColor" description="activated文字颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_activated_textColor=&quot;$value$&quot;">
+    <template name="bl_activated_textColor" description="activated文字颜色" toReformat="true"
+        toShortenFQNames="true" value="app:bl_activated_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unActivated_textColor"
-        description="unActivated文字颜色" toReformat="true"
+    <template name="bl_unActivated_textColor" description="unActivated文字颜色" toReformat="true"
         toShortenFQNames="true" value="app:bl_unActivated_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_active_textColor" description="active文字颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_active_textColor=&quot;$value$&quot;">
+    <template name="bl_active_textColor" description="active文字颜色" toReformat="true"
+        toShortenFQNames="true" value="app:bl_active_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unActive_textColor" description="unActive文字颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unActive_textColor=&quot;$value$&quot;">
+    <template name="bl_unActive_textColor" description="unActive文字颜色" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unActive_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_expanded_textColor" description="expanded文字颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_expanded_textColor=&quot;$value$&quot;">
+    <template name="bl_expanded_textColor" description="expanded文字颜色" toReformat="true"
+        toShortenFQNames="true" value="app:bl_expanded_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="bl_unExpanded_textColor" description="unExpanded文字颜色"
-        toReformat="true" toShortenFQNames="true" value="app:bl_unExpanded_textColor=&quot;$value$&quot;">
-        <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
-        <context>
-            <option name="XML" value="true" />
-        </context>
-    </template>
-
-
-    <template name="titleVisible" description="titlebar主标题是否显示"
-        toReformat="true" toShortenFQNames="true" value="app:titleVisible=&quot;$value$&quot;">
-        <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
-        <context>
-            <option name="XML" value="true" />
-        </context>
-    </template>
-    <template name="titleTextSize" description="titlebar主标题文字大小"
-        toReformat="true" toShortenFQNames="true" value="app:titleTextSize=&quot;$value$&quot;">
-        <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
-        <context>
-            <option name="XML" value="true" />
-        </context>
-    </template>
-    <template name="subtitleVisible" description="titlebar副标题是否显示"
-        toReformat="true" toShortenFQNames="true" value="app:subtitleVisible=&quot;$value$&quot;">
-        <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
-        <context>
-            <option name="XML" value="true" />
-        </context>
-    </template>
-    <template name="subtitleTextSize" description="titlebar副标题文字大小"
-        toReformat="true" toShortenFQNames="true" value="app:subtitleTextSize=&quot;$value$&quot;">
+    <template name="bl_unExpanded_textColor" description="unExpanded文字颜色" toReformat="true"
+        toShortenFQNames="true" value="app:bl_unExpanded_textColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
 
-    <template name="title_gravity" description="titlebar标题位置"
-        toReformat="true" toShortenFQNames="true" value="app:title_gravity=&quot;$value$&quot;">
+
+    <template name="titleVisible" description="titlebar主标题是否显示" toReformat="true"
+        toShortenFQNames="true" value="app:titleVisible=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="closeVisible" description="titlebar关闭按钮是否显示"
-        toReformat="true" toShortenFQNames="true" value="app:closeVisible=&quot;$value$&quot;">
+    <template name="titleTextSize" description="titlebar主标题文字大小" toReformat="true"
+        toShortenFQNames="true" value="app:titleTextSize=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="closeText" description="titlebar关闭文字" toReformat="true"
-        toShortenFQNames="true" value="app:closeText=&quot;$value$&quot;">
+    <template name="subtitleVisible" description="titlebar副标题是否显示" toReformat="true"
+        toShortenFQNames="true" value="app:subtitleVisible=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="closeTextAppearance" description="titlebar关闭文字样式"
-        toReformat="true" toShortenFQNames="true" value="app:closeTextAppearance=&quot;$value$&quot;">
+    <template name="subtitleTextSize" description="titlebar副标题文字大小" toReformat="true"
+        toShortenFQNames="true" value="app:subtitleTextSize=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="closeTextColor" description="titlebar关闭文字颜色"
-        toReformat="true" toShortenFQNames="true" value="app:closeTextColor=&quot;$value$&quot;">
+
+    <template name="title_gravity" description="titlebar标题位置" toReformat="true"
+        toShortenFQNames="true" value="app:title_gravity=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="closeTextSize" description="titlebar关闭文字大小"
-        toReformat="true" toShortenFQNames="true" value="app:closeTextSize=&quot;$value$&quot;">
+    <template name="closeVisible" description="titlebar关闭按钮是否显示" toReformat="true"
+        toShortenFQNames="true" value="app:closeVisible=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="closeIcon" description="titlebar关闭图标" toReformat="true"
-        toShortenFQNames="true" value="app:closeIcon=&quot;$value$&quot;">
+    <template name="closeText" description="titlebar关闭文字" toReformat="true" toShortenFQNames="true"
+        value="app:closeText=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="rightVisible" description="titlebar右边视图显示"
-        toReformat="true" toShortenFQNames="true" value="app:rightVisible=&quot;$value$&quot;">
+    <template name="closeTextAppearance" description="titlebar关闭文字样式" toReformat="true"
+        toShortenFQNames="true" value="app:closeTextAppearance=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="rightText" description="titlebar右边文字" toReformat="true"
-        toShortenFQNames="true" value="app:rightText=&quot;$value$&quot;">
+    <template name="closeTextColor" description="titlebar关闭文字颜色" toReformat="true"
+        toShortenFQNames="true" value="app:closeTextColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="rightTextAppearance" description="titlebar右边字体样式"
-        toReformat="true" toShortenFQNames="true" value="app:rightTextAppearance=&quot;$value$&quot;">
+    <template name="closeTextSize" description="titlebar关闭文字大小" toReformat="true"
+        toShortenFQNames="true" value="app:closeTextSize=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="rightTextColor" description="titlebar右边字体颜色"
-        toReformat="true" toShortenFQNames="true" value="app:rightTextColor=&quot;$value$&quot;">
+    <template name="closeIcon" description="titlebar关闭图标" toReformat="true" toShortenFQNames="true"
+        value="app:closeIcon=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="rightTextSize" description="titlebar右边字体大小"
-        toReformat="true" toShortenFQNames="true" value="app:rightTextSize=&quot;$value$&quot;">
+    <template name="rightVisible" description="titlebar右边视图显示" toReformat="true"
+        toShortenFQNames="true" value="app:rightVisible=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="rightIcon" description="titlebar右边图标" toReformat="true"
-        toShortenFQNames="true" value="app:rightIcon=&quot;$value$&quot;">
+    <template name="rightText" description="titlebar右边文字" toReformat="true" toShortenFQNames="true"
+        value="app:rightText=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="rightPaddingRight" description="titlebar右边距离"
-        toReformat="true" toShortenFQNames="true" value="app:rightPaddingRight=&quot;$value$&quot;">
+    <template name="rightTextAppearance" description="titlebar右边字体样式" toReformat="true"
+        toShortenFQNames="true" value="app:rightTextAppearance=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="rightDrawPadding" description="titlebar右边图片文字间距"
-        toReformat="true" toShortenFQNames="true" value="app:rightDrawPadding=&quot;$value$&quot;">
+    <template name="rightTextColor" description="titlebar右边字体颜色" toReformat="true"
+        toShortenFQNames="true" value="app:rightTextColor=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="backVisible" description="titlebar返回图标显示"
-        toReformat="true" toShortenFQNames="true" value="app:backVisible=&quot;$value$&quot;">
+    <template name="rightTextSize" description="titlebar右边字体大小" toReformat="true"
+        toShortenFQNames="true" value="app:rightTextSize=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="backText" description="titlebar返回文字" toReformat="true"
-        toShortenFQNames="true" value="app:backText=&quot;$value$&quot;">
+    <template name="rightIcon" description="titlebar右边图标" toReformat="true" toShortenFQNames="true"
+        value="app:rightIcon=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="backTextAppearance" description="titlebar返回字体样式"
-        toReformat="true" toShortenFQNames="true" value="app:backTextAppearance=&quot;$value$&quot;">
+    <template name="rightPaddingRight" description="titlebar右边距离" toReformat="true"
+        toShortenFQNames="true" value="app:rightPaddingRight=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="backTextColor" description="titlebar返回文字颜色"
-        toReformat="true" toShortenFQNames="true" value="app:backTextColor=&quot;$value$&quot;">
+    <template name="rightDrawPadding" description="titlebar右边图片文字间距" toReformat="true"
+        toShortenFQNames="true" value="app:rightDrawPadding=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="backTextSize" description="titlebar返回文字大小"
-        toReformat="true" toShortenFQNames="true" value="app:backTextSize=&quot;$value$&quot;">
+    <template name="backVisible" description="titlebar返回图标显示" toReformat="true"
+        toShortenFQNames="true" value="app:backVisible=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="backIcon" description="titlebar返回图标" toReformat="true"
-        toShortenFQNames="true" value="app:backIcon=&quot;$value$&quot;">
+    <template name="backText" description="titlebar返回文字" toReformat="true" toShortenFQNames="true"
+        value="app:backText=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />
         </context>
     </template>
-    <template name="backMarginRight" description="titlebar返回图标与右边间距"
-        toReformat="true" toShortenFQNames="true" value="app:backMarginRight=&quot;$value$&quot;">
+    <template name="backTextAppearance" description="titlebar返回字体样式" toReformat="true"
+        toShortenFQNames="true" value="app:backTextAppearance=&quot;$value$&quot;">
+        <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
+        <context>
+            <option name="XML" value="true" />
+        </context>
+    </template>
+    <template name="backTextColor" description="titlebar返回文字颜色" toReformat="true"
+        toShortenFQNames="true" value="app:backTextColor=&quot;$value$&quot;">
+        <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
+        <context>
+            <option name="XML" value="true" />
+        </context>
+    </template>
+    <template name="backTextSize" description="titlebar返回文字大小" toReformat="true"
+        toShortenFQNames="true" value="app:backTextSize=&quot;$value$&quot;">
+        <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
+        <context>
+            <option name="XML" value="true" />
+        </context>
+    </template>
+    <template name="backIcon" description="titlebar返回图标" toReformat="true" toShortenFQNames="true"
+        value="app:backIcon=&quot;$value$&quot;">
+        <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
+        <context>
+            <option name="XML" value="true" />
+        </context>
+    </template>
+    <template name="backMarginRight" description="titlebar返回图标与右边间距" toReformat="true"
+        toShortenFQNames="true" value="app:backMarginRight=&quot;$value$&quot;">
         <variable name="value" alwaysStopAt="true" defaultValue="" expression="" />
         <context>
             <option name="XML" value="true" />

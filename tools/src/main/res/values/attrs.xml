@@ -119,7 +119,10 @@
     <declare-styleable name="DropDownMenu">
 
         <attr name="underlineColor" format="color" />
-        <attr name="dividerColor" format="color" />
+        <attr name="showUnderLine" format="boolean" />
+        <attr name="separationDividerColor" format="color" />
+        <attr name="showSeparationDivider" format="boolean" />
+
         <attr name="textSelectedColor" format="color" />
         <attr name="textUnselectedColor" format="color" />
         <attr name="menuBackgroundColor" format="color" />
