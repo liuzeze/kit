@@ -16,6 +16,7 @@
 package lz.com.kit.app;
 
 
+import com.google.protobuf.nano.converter.ProtoNanoConverterFactory;
 import com.lz.fram.net.http.ConfigModule;
 import com.lz.fram.net.http.GlobalConfigBuild;
 import com.lz.fram.net.http.OkhttpFactory;
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 import lz.com.kit.BuildConfig;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * 请求框架参数赋值
@@ -47,7 +49,7 @@ public class GlobalConfiguration implements ConfigModule {
                     @Override
                     public void configRetrofit(Retrofit.Builder builder) {
                         //retrofit  信息配置
-                        //builder.addConverterFactory(ScalarsConverterFactory.create());
+                        builder.addConverterFactory(ProtoNanoConverterFactory.create());
                         // .addConverterFactory(GsonConverterFactory.create())
                     }
                 })

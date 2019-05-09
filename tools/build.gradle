@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.google.protobuf' //在gradle脚本开始处声明依赖的插件
 android {
     compileSdkVersion 28
 
@@ -26,6 +26,40 @@ android {
     }
 
 }
+//编写编译任务，调用plugin编译生成java文件
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.0.0'//编译器版本
+    }
+    plugins {
+        javalite {
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'//指定当前工程使用的protobuf版本为javalite版，以生成javalite版的java类
+        }
+    }
+    generateProtoTasks.generatedFilesBaseDir = "$projectDir/src/main/java" //指定编译生成java类的存放位置
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                javalite {
+                    outputSubDir = '/src/main/java' //指定存放位置的二级目录，这里未指定
+                }
+            }
+        }
+    }
+}
+//指定原始.proto文件的位置
+android {
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src/main/java'
+            }
+            proto {
+                srcDirs 'src/main/proto'
+            }
+        }
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -33,13 +67,14 @@ dependencies {
     api 'androidx.appcompat:appcompat:1.1.0-alpha04'
     api 'com.google.android.material:material:1.0.0'
     api 'androidx.recyclerview:recyclerview:1.1.0-alpha04'
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4'
-    api 'com.jakewharton:butterknife:10.0.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5'
+    api 'com.jakewharton:butterknife:10.1.0'
     api 'com.noober.background:core:1.4.4'
     api 'cn.bingoogolapple:bga-banner:2.2.4@aar'
     api 'com.orhanobut:logger:2.2.0'
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     api 'com.lz:fram:1.0.4'
     api 'com.lz:lzstatus:1.0.0'
-
+    api 'com.google.protobuf:protobuf-lite:3.0.0' //依赖protobuf-lite库
+    api 'com.google.protobuf.nano:protobuf-javanano:3.2.0rc2'
 }

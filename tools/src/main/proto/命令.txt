@@ -1,0 +1,37 @@
+使用protoc Nano生成器生成具体的代码，以下是一些可能用到的编译选项，选项之间用逗号隔开（大括号中的为可选值）：
+1.   optional_field_style={default,accessors,reftypes}，定义每个字段所生成的代码的格式：
+            default：proto中每个字段生成一个public的可变的值；
+            accessors：proto中每个optional字段会封装成一个private的值和4个用于操作该值的方法，分别是get<fieldname>(), set<fieldname>(), has<fieldname>()和clear<fieldname>()，
+                       在accessors选项中，required字段依旧是生成public的可变的值，repeated字段依旧是生成一个array；要注意的是，当启用accessors选项时，使用Proguard混淆时，
+                       一定禁用-dontoptimize选项和启用-allowaccessmodification选项，这能够在项目编译时去掉那些没被调用的方法，减少最终的代码量；
+            reftypes:proto中每个字段都会生成一个public的可变的值，与default不同的是，对于每个基本数据类型，如int，float等，都会使用Java对应的内建类型，
+            并初始化为null（比如int会使用Java.lang.Integer类来替代），这样会带来额外的开销，好处是你可以避免歧义，比如optional int的字段，收到为0的值时，会分不清到底传来的值是0，还是这个字段为空
+
+2.   enum_style={c,java} (default: c)，定义枚举的格式，使用java style。
+
+3.  ignore_services={true,false} (default: false)，Protobuf Nano不支持services，如果在proto文件中定义了services，会导致编译错误，将该选项置为true，在编译时会忽略services相关的内容。
+
+4.parcelable_messages={true,false} (default: false),这个选项很重要，在android中，Parcelable是序列化对象的接口，很多数据交换都要应用到这个接口，
+    比如Intent，和进程间通信。开启该选项，Protobuf Nano所生成的Java对象都会自动实现Parcelable接口，Intent和进程间通信就能直接使用这些对象。
+
+
+//获取当前目录结构
+tree /f >tree.bat
+
+//由于修改了protoc的编译源码，所以现在不支持通配符的使用了，如果需要编译.proto文件的需要使用下面的命令号，并将中文部分进行修改；
+//命令执行前需要 cd coremodellib/protoc
+
+//编译protoc内的.proto文件；
+protoc --javanano_out=enum_style=java,optional_field_style=default,parcelable_messages=true:../src/main/java 目标文件名称.proto
+
+
+//编译protoc内的子文件夹内的.proto文件；
+
+protoc --javanano_out=enum_style=java,optional_field_style=default,parcelable_messages=true:../src/main/java BaseRequest.proto
+
+
+
+
+
+
+
