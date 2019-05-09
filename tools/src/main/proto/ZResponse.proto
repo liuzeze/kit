@@ -3,7 +3,7 @@ syntax = "proto2";
 
 //指定java类的包名
 option java_package = "lz.com.tools";
-
+option optimize_for = LITE_RUNTIME;
 //message.proto文件中的每个message都生成一个对应的.java。设为fasle时只导出一个.java类文件，所有message都以内部类的形式出现
 option java_multiple_files = true;
 //最基础的压缩，一般不会改，除非重构接口，到时候找张宁要，如果张宁离职了那就找献州要，如果都走了，呵呵O(∩_∩)O
