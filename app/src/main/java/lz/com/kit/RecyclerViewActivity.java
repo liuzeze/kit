@@ -41,7 +41,7 @@ public class RecyclerViewActivity extends BaseKitActivity {
                 return (position) % 4 == 0 ? "位置" + position : null;
             }
         })
-                .setHeaderCount(1)
+                .setHeaderCount(0)
                 .setDivideHeight(10)
                 .setDivideColor(Color.RED)
                 .build());

@@ -19,6 +19,7 @@ import java.util.Map;
 import androidx.annotation.ColorInt;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import lz.com.tools.BuildConfig;
 import lz.com.tools.recycleview.decoration.sticky.listener.OnGroupClickListener;
 
@@ -85,6 +86,21 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
      * @return group
      */
     abstract String getGroupName(int position);
+    @Override
+    public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
+        super.onDrawOver(c, parent, state);
+        //点击事件处理
+        if (gestureDetector == null) {
+            gestureDetector = new GestureDetector(parent.getContext(), gestureListener);
+            parent.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    return gestureDetector.onTouchEvent(event);
+                }
+            });
+        }
+        stickyHeaderPosArray.clear();
+    }
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
@@ -97,9 +113,8 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
             if (!isHeader(position)) {
                 if (isFirstLineInGroup(position, spanCount)) {
                     //为悬浮view预留空间
+                    System.out.println("liuze========="+position);
                     outRect.top = mGroupHeight;
-                    System.out.println("位置=GridLayoutManager==="+position);
-
                 } else {
                     //为分割线预留空间
                     outRect.top = mDivideHeight;
@@ -111,8 +126,6 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
             if (!isHeader(position)) {
                 if (isFirstInGroup(position)) {
                     //为悬浮view预留空间
-                    System.out.println("位置=------==="+position);
-
                     outRect.top = mGroupHeight;
                 } else {
                     //为分割线预留空间
@@ -183,17 +196,16 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
         } else if (realPosition == 0) {
             return true;
         }
-        return true;
-       /* if (position <= 0) {
+        if (position <= 0) {
             return true;
         } else {
             int posFirstInGroup = getFirstInGroupWithCash(position);
-            if (realPosition - posFirstInGroup < spanCount) {
+            if (position - posFirstInGroup < spanCount) {
                 return true;
             } else {
                 return false;
             }
-        }*/
+        }
     }
 
     /**
@@ -345,21 +357,6 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
-    @Override
-    public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-        super.onDrawOver(c, parent, state);
-        //点击事件处理
-        if (gestureDetector == null) {
-            gestureDetector = new GestureDetector(parent.getContext(), gestureListener);
-            parent.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    return gestureDetector.onTouchEvent(event);
-                }
-            });
-        }
-        stickyHeaderPosArray.clear();
-    }
 
     /**
      * 点击事件调用
@@ -486,5 +483,6 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
             Log.i("StickDecoration", content);
         }
     }
+
 
 }

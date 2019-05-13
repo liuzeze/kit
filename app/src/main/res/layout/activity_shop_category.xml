@@ -6,10 +6,11 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/bt_show_pop"
+    <lz.com.tools.city.LinkRecyclerView
+        android:id="@+id/linkedRecycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="点击弹框" />
+        android:layout_height="match_parent">
+
+    </lz.com.tools.city.LinkRecyclerView>
 
 </LinearLayout>

@@ -15,17 +15,20 @@ import butterknife.OnClick;
 import lz.com.tools.city.CityLoadingView;
 import lz.com.tools.city.CityPickerInfo;
 import lz.com.tools.city.CitySelectDialog;
+import lz.com.tools.city.LinkBean;
+import lz.com.tools.city.LinkRecyclerView;
+import lz.com.tools.city.LinkedAdapter1Config;
+import lz.com.tools.city.LinkedAdapter2Config;
 import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.util.LzToast;
 
-/**
- * Created by yc on 2018/7/23.
- */
+
 
 @InjectLayout(layoutId = R.layout.activity_select_city)
 public class CitySelectActivity extends BaseKitActivity {
+
 
     private int[] mCitySelectPosition;
     private ArrayList<CityPickerInfo> mAreaItem = new ArrayList<>();
@@ -37,7 +40,6 @@ public class CitySelectActivity extends BaseKitActivity {
 
     @OnClick({R.id.bt_show_pop})
     public void button(View view) {
-
         CitySelectDialog citySelectView = CitySelectDialog.newInstance(mCitySelectPosition, mAreaItem);
 
         citySelectView.show(getSupportFragmentManager(), "citySelect");
@@ -97,6 +99,9 @@ public class CitySelectActivity extends BaseKitActivity {
             mAreaItem.add(cityPickerInfo);
         }
 
+
     }
 
 }
+
+

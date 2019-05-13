@@ -34,7 +34,7 @@ public class MvpActivity extends BaseKitActivity implements MvpContract.View {
 
     @Override
     protected void initLisenter() {
-        super.initLisenter();
+        
     }
 
     @OnClick(R.id.btn)

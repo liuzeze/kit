@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:divider="@drawable/shape_horizontal_line"
+    android:orientation="horizontal"
+    android:showDividers="middle">
+
+
+    <lz.com.tools.recycleview.ReboundReyclerView
+        android:id="@+id/recyclerview1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" />
+
+
+        <lz.com.tools.recycleview.ReboundReyclerView
+            android:id="@+id/recyclerview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none" />
+
+</LinearLayout>

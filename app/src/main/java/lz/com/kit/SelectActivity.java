@@ -3,6 +3,7 @@ package lz.com.kit;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import lz.com.kit.bean.SelectBean;
@@ -32,7 +33,6 @@ public class SelectActivity extends BaseKitActivity {
 
     @Override
     public void initData() {
-
         recyclevie.setLayoutManager(new GridLayoutManager(this, 4));
         recyclevie2.setLayoutManager(new GridLayoutManager(this, 4));
         recyclevie3.setLayoutManager(new GridLayoutManager(this, 4));
