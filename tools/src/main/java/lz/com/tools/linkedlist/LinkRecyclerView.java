@@ -1,4 +1,4 @@
-package lz.com.tools.city;
+package lz.com.tools.linkedlist;
 
 import android.content.Context;
 import android.util.ArrayMap;
@@ -36,7 +36,6 @@ public class LinkRecyclerView extends FrameLayout {
     private ArrayMap<String, Integer> mGroupList = new ArrayMap<>();
     private ReboundReyclerView mRecyclerview1;
     private ReboundReyclerView mRecyclerview2;
-    private LinearLayoutManager mLayoutManager1;
     private LinearLayoutManager mLayoutManager2;
     private LinkedAdapter2Config mConfig = new DefaultAdapter2Config();
 
@@ -63,7 +62,6 @@ public class LinkRecyclerView extends FrameLayout {
         mRecyclerview1 = findViewById(R.id.recyclerview1);
         mRecyclerview2 = findViewById(R.id.recyclerview2);
         ((SimpleItemAnimator) mRecyclerview1.getItemAnimator()).setSupportsChangeAnimations(false);
-        mLayoutManager1 = (LinearLayoutManager) mRecyclerview1.getLayoutManager();
         mLayoutManager2 = (LinearLayoutManager) mRecyclerview2.getLayoutManager();
 
 

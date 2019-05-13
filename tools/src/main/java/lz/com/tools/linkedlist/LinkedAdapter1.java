@@ -1,10 +1,9 @@
-package lz.com.tools.city;
+package lz.com.tools.linkedlist;
 
 import androidx.annotation.Nullable;
 
 import java.util.List;
 
-import lz.com.tools.R;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 

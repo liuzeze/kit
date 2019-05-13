@@ -1,4 +1,4 @@
-package lz.com.tools.city;
+package lz.com.tools.linkedlist;
 
 import lz.com.tools.R;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
@@ -20,8 +20,8 @@ public class DefaultAdapter2Config extends LinkedAdapter2Config {
 
     @Override
     public void onBindViewData(BaseViewHolder holder, LinkBean item, int position, boolean showGrid) {
-        holder.setText(R.id.tv_righttitle, item.getTitleText());
-        holder.setText(R.id.tv_sub_righttitle, item.getTitleText());
+        holder.setText(R.id.tv_righttitle, item.getGroupTag());
+        holder.setText(R.id.tv_sub_righttitle, item.getGroupTag());
 
     }
 }

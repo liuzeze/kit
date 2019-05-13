@@ -6,11 +6,11 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <lz.com.tools.city.LinkRecyclerView
+    <lz.com.tools.linkedlist.LinkRecyclerView
         android:id="@+id/linkedRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </lz.com.tools.city.LinkRecyclerView>
+    </lz.com.tools.linkedlist.LinkRecyclerView>
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package lz.com.tools.city;
+package lz.com.tools.linkedlist;
 
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 
@@ -6,7 +6,7 @@ import lz.com.tools.recycleview.adapter.BaseViewHolder;
  * -----------作者----------日期----------变更内容-----
  * -          刘泽      2019-05-10       创建class
  */
-public abstract class LinkedAdapter2Config {
+public abstract class LinkedAdapter2Config< T extends  LinkBean> {
 
     public abstract int getLieanLayout();
 
@@ -25,7 +25,7 @@ public abstract class LinkedAdapter2Config {
     }
 
 
-    public abstract void onBindViewData(BaseViewHolder holder, LinkBean item, int position, boolean showGrid);
+    public abstract void onBindViewData(BaseViewHolder holder, T item, int position, boolean showGrid);
 
 
 }

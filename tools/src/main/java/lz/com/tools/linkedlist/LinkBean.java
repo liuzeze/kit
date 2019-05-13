@@ -1,4 +1,4 @@
-package lz.com.tools.city;
+package lz.com.tools.linkedlist;
 
 import androidx.annotation.Nullable;
 
@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 public class LinkBean {
 
     private String groupTag = "";
-    private String titleText = "";
 
 
     @Override
@@ -41,15 +40,5 @@ public class LinkBean {
         this.groupTag = groupTag;
         return this;
     }
-
-    public String getTitleText() {
-        return titleText;
-    }
-
-    public LinkBean setTitleText(String titleText) {
-        this.titleText = titleText;
-        return this;
-    }
-
 
 }
