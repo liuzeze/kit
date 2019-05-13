@@ -86,6 +86,7 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
      * @return group
      */
     abstract String getGroupName(int position);
+
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDrawOver(c, parent, state);
@@ -113,12 +114,12 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
             if (!isHeader(position)) {
                 if (isFirstLineInGroup(position, spanCount)) {
                     //为悬浮view预留空间
-                    System.out.println("liuze========="+position);
                     outRect.top = mGroupHeight;
                 } else {
                     //为分割线预留空间
                     outRect.top = mDivideHeight;
                 }
+
             }
         } else {
             //其他的默认为线性布局
@@ -467,6 +468,8 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
                     if (bottom >= mGroupHeight) {
                         c.drawRect(left, bottom - mDivideHeight, right, bottom, mDividePaint);
                     }
+
+
                 }
             } else {
                 float bottom = childView.getTop();
@@ -477,12 +480,4 @@ public abstract class BaseDecoration extends RecyclerView.ItemDecoration {
             }
         }
     }
-
-    protected void log(String content) {
-        if (BuildConfig.DEBUG) {
-            Log.i("StickDecoration", content);
-        }
-    }
-
-
 }

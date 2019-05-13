@@ -12,7 +12,9 @@
         android:id="@+id/tv_lefttitle"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:ellipsize="marquee"
         app:bl_selected_textColor="#ffffff"
-        app:bl_unSelected_textColor="#333333" />
+        app:bl_unSelected_textColor="#333333"
+        android:singleLine="true" />
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package lz.com.tools.linkedlist;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.ArrayMap;
 import android.util.AttributeSet;
 import android.view.View;
@@ -121,8 +122,6 @@ public class LinkRecyclerView extends FrameLayout {
     }
 
 
-
-
     public void init() {
         if (mLinkedAdapter1 == null) {
             mLinkedAdapter1 = new LinkedAdapter1(new DefaultAdapter1Config(), mLinkBeans1);
@@ -166,7 +165,7 @@ public class LinkRecyclerView extends FrameLayout {
                         return linkBean.getGroupTag();
 
                     }
-                });
+                }).setDivideHeight(10).setDivideColor(Color.TRANSPARENT);
         if (mLinkedAdapter2.getConfig().isShowGrid()) {
             mLayoutManager2 = new GridLayoutManager(getContext(), mLinkedAdapter2.getConfig().setSpanCount());
             init.resetSpan(mRecyclerview2, (GridLayoutManager) mLayoutManager2);
