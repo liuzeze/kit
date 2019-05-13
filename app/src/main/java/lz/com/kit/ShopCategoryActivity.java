@@ -52,7 +52,7 @@ public class ShopCategoryActivity extends BaseKitActivity {
 
                     @Override
                     public int setSpanCount() {
-                        return 4;
+                        return 5;
                     }
 
                     @Override
@@ -84,7 +84,10 @@ public class ShopCategoryActivity extends BaseKitActivity {
         LinkListBean e;
         for (int i = 0; i < count; i++) {
             e = new LinkListBean();
-            e.setGroupTag("标题" + count);
+            e.setGroupTag("分类" + count);
+            if (count > 6) {
+                e.setGroupTag("分类分类分类分类" + count);
+            }
             e.setTitleText("条目" + i);
             linkBeans.add(e);
         }
