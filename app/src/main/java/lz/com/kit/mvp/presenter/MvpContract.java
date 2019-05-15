@@ -1,4 +1,4 @@
-package lz.com.kit.mvp;
+package lz.com.kit.mvp.presenter;
 
 import com.lz.fram.base.BasePresenter;
 import com.lz.fram.base.BaseView;
@@ -9,7 +9,7 @@ import com.lz.fram.base.BaseView;
  */
 public class MvpContract {
 
-    interface View extends BaseView {
+   public interface View extends BaseView {
         void getNewsListSuccess(String s);
     }
 

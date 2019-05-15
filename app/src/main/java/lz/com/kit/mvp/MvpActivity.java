@@ -11,6 +11,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import lz.com.kit.BaseKitActivity;
 import lz.com.kit.R;
+import lz.com.kit.mvp.presenter.MvpContract;
+import lz.com.kit.mvp.presenter.MvpPresenter;
 import lz.com.tools.inject.InjectLayout;
 
 
@@ -28,8 +30,7 @@ public class MvpActivity extends BaseKitActivity implements MvpContract.View {
 
     @Override
     public void initData() {
-        RecyclerView recyclerView = new RecyclerView(mActivity);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
+
     }
 
     @Override

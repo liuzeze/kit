@@ -1,4 +1,4 @@
-package lz.com.kit.mvp;
+package lz.com.kit.mvp.presenter;
 
 import com.lz.fram.base.RxPresenter;
 import com.lz.fram.observer.CommonSubscriber;
