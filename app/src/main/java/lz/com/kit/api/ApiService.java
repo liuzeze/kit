@@ -2,7 +2,10 @@ package lz.com.kit.api;
 
 
 import io.reactivex.Observable;
+import lz.com.kit.mvp.NewGoodsRequestBean;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -15,6 +18,11 @@ public interface ApiService {
     Observable<String> getNewsArticle2(
             @Query("category") String category,
             @Query("max_behot_time") String maxBehotTime);
+
+
+    @POST("http://101.201.234.42/shopkeeper/portal/api/mall/goodsspec/findgoods-bynavid")
+    Observable<String> findgoods(
+            @Body NewGoodsRequestBean newGoodsRequestBean);
 
 
 }

@@ -53,6 +53,7 @@ public class MainActivity extends BaseKitActivity {
         strings.add(new ActivityBean().setName("StatueActivity").setCalssName(StatueActivity.class));
         strings.add(new ActivityBean().setName("MenuActivity").setCalssName(MenuActivity.class));
         strings.add(new ActivityBean().setName("ShopCategoryActivity").setCalssName(ShopCategoryActivity.class));
+        strings.add(new ActivityBean().setName("LongImageActivity").setCalssName(LongImageActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 

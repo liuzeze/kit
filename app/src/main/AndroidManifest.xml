@@ -14,12 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-
-
-
-        <activity android:name=".PermissionActivity"/>
+        <activity android:name=".LongImageActivity"></activity>
+        <activity android:name=".PermissionActivity" />
         <activity android:name=".PageRecyclerViewActivity" />
         <activity android:name=".SelectActivity" />
         <activity android:name=".MainActivity">

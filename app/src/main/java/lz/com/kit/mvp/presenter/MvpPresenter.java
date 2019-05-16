@@ -4,6 +4,7 @@ import com.lz.fram.base.RxPresenter;
 import com.lz.fram.observer.CommonSubscriber;
 
 import lz.com.kit.api.RequestApi;
+import lz.com.kit.mvp.NewGoodsRequestBean;
 import lz.com.tools.util.LzTimeUtils;
 
 /**
@@ -20,8 +21,19 @@ public class MvpPresenter extends RxPresenter<MvpContract.View> implements MvpCo
 
     @Override
     public void getNewLists(String type) {
-        CommonSubscriber<String> commonSubscriber = mRequestApi
+      /*  CommonSubscriber<String> commonSubscriber = mRequestApi
                 .getNewLists(type, LzTimeUtils.getNowMills() / 1000 + "")
+                .subscribeWith(new CommonSubscriber<String>() {
+
+                    @Override
+                    public void onNext(String s) {
+                        mBaseView.getNewsListSuccess(s);
+                    }
+                });*/
+        CommonSubscriber<String> commonSubscriber = mRequestApi
+                .findgoods(new NewGoodsRequestBean()
+                        .setNumPerPage(10)
+                        .setPageNum(1))
                 .subscribeWith(new CommonSubscriber<String>() {
 
                     @Override

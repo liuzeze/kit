@@ -6,6 +6,7 @@ import com.lz.fram.net.RxRequestUtils;
 import com.lz.fram.observer.Transformer;
 
 import io.reactivex.Observable;
+import lz.com.kit.mvp.NewGoodsRequestBean;
 import lz.com.tools.util.LzUtil;
 
 /**
@@ -26,6 +27,18 @@ public class RequestApi {
                 RxRequestUtils
                         .create(ApiService.class)
                         .getNewsArticle2(category, time)
+                        .compose(Transformer.switchSchedulersObser(mLpLoadDialog));
+
+
+    }
+
+    public Observable<String> findgoods(NewGoodsRequestBean newGoodsRequestBean) {
+
+
+        return
+                RxRequestUtils
+                        .create(ApiService.class)
+                        .findgoods(newGoodsRequestBean)
                         .compose(Transformer.switchSchedulersObser(mLpLoadDialog));
 
 
