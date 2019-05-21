@@ -20,8 +20,11 @@ import java.util.Objects;
 import lz.com.tools.R;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
+import lz.com.tools.recycleview.decoration.sticky.BaseDecoration;
+import lz.com.tools.recycleview.decoration.sticky.PowerfulStickyDecoration;
 import lz.com.tools.recycleview.decoration.sticky.StickyDecoration;
 import lz.com.tools.recycleview.decoration.sticky.listener.GroupListener;
+import lz.com.tools.recycleview.decoration.sticky.listener.PowerGroupListener;
 
 /**
  * -----------作者----------日期----------变更内容-----
@@ -39,6 +42,7 @@ public class LinkRecyclerView extends FrameLayout {
     private ReboundReyclerView mRecyclerview2;
     private LinearLayoutManager mLayoutManager2;
     private LinkedAdapter2Config mConfig = new DefaultAdapter2Config();
+    private BaseDecoration mItemDecoration;
 
     public LinkRecyclerView(@NonNull Context context) {
         this(context, null);
@@ -117,7 +121,12 @@ public class LinkRecyclerView extends FrameLayout {
         if (config != null) {
             mConfig = config;
         }
-        mLinkedAdapter2 = new LinkedAdapter2(mConfig, mLinkBeans2);
+        mLinkedAdapter2 = new LinkedAdapter2(mConfig, mLinkBeans2, mRecyclerview2);
+        return this;
+    }
+
+    public LinkRecyclerView setItemDecoration(BaseDecoration itemDecoration) {
+        mItemDecoration = itemDecoration;
         return this;
     }
 
@@ -127,7 +136,7 @@ public class LinkRecyclerView extends FrameLayout {
             mLinkedAdapter1 = new LinkedAdapter1(new DefaultAdapter1Config(), mLinkBeans1);
         }
         if (mLinkedAdapter2 == null) {
-            mLinkedAdapter2 = new LinkedAdapter2(new DefaultAdapter2Config(), mLinkBeans2);
+            mLinkedAdapter2 = new LinkedAdapter2(new DefaultAdapter2Config(), mLinkBeans2, mRecyclerview2);
         }
         mRecyclerview1.setAdapter(mLinkedAdapter1);
         mRecyclerview2.setAdapter(mLinkedAdapter2);
@@ -150,32 +159,41 @@ public class LinkRecyclerView extends FrameLayout {
 
             }
         });
-
+        mLinkedAdapter2.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseRecycleAdapter adapter, View view, int position) {
+                mConfig.onItemClickListener(mLinkedAdapter2.getData().get(position), view, position);
+            }
+        });
 
     }
 
 
     private void setShowGrid() {
-        StickyDecoration.Builder init = StickyDecoration.Builder
-                .init(new GroupListener() {
+        if (mItemDecoration == null) {
+            mItemDecoration = StickyDecoration.Builder
+                    .init(new GroupListener() {
 
-                    @Override
-                    public String getGroupName(int position) {
-                        LinkBean linkBean = mLinkBeans2.get(position);
-                        return linkBean.getGroupTag();
+                        @Override
+                        public String getGroupName(int position) {
+                            LinkBean linkBean = mLinkBeans2.get(position);
+                            return linkBean.getGroupTag();
 
-                    }
-                }).setDivideHeight(10).setDivideColor(Color.TRANSPARENT);
+                        }
+                    }).setDivideHeight(10)
+                    .setDivideColor(Color.TRANSPARENT)
+                    .setGroupBackground(Color.GRAY)
+                    .setGroupTextColor(Color.WHITE).build();
+        }
         if (mLinkedAdapter2.getConfig().isShowGrid()) {
             mLayoutManager2 = new GridLayoutManager(getContext(), mLinkedAdapter2.getConfig().setSpanCount());
-            init.resetSpan(mRecyclerview2, (GridLayoutManager) mLayoutManager2);
+            mItemDecoration.resetSpan(mRecyclerview2, (GridLayoutManager) mLayoutManager2);
 
         } else {
             mLayoutManager2 = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         }
         mRecyclerview2.setLayoutManager(mLayoutManager2);
-        mRecyclerview2.addItemDecoration(init.build());
-
+        mRecyclerview2.addItemDecoration(mItemDecoration);
     }
 
 }

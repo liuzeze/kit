@@ -1,5 +1,10 @@
 package lz.com.kit;
 
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -9,7 +14,12 @@ import lz.com.tools.linkedlist.LinkRecyclerView;
 import lz.com.tools.linkedlist.LinkedAdapter1Config;
 import lz.com.tools.linkedlist.LinkedAdapter2Config;
 import lz.com.tools.inject.InjectLayout;
+import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
+import lz.com.tools.recycleview.decoration.sticky.PowerfulStickyDecoration;
+import lz.com.tools.recycleview.decoration.sticky.listener.PowerGroupListener;
+import lz.com.tools.util.LzDisplayUtils;
+import lz.com.tools.util.LzToast;
 
 
 @InjectLayout(layoutId = R.layout.activity_shop_category, titleName = "商品分类选择")
@@ -33,26 +43,41 @@ public class ShopCategoryActivity extends BaseKitActivity {
         getRightData(linkBeans, 60);
 
         linkedRecycler.setData(linkBeans)
-                .setAdapter1Config(new LinkedAdapter1Config() {
+                .setItemDecoration(PowerfulStickyDecoration.Builder.init(new PowerGroupListener() {
+                    @Override
+                    public View getGroupView(int position) {
+                        TextView textView = new TextView(mActivity);
+                        textView.setBackgroundColor(Color.RED);
+                        textView.setText(linkBeans.get(position).getGroupTag());
+                        return textView;
+                    }
+
+                    @Override
+                    public String getGroupName(int position) {
+                        LinkBean linkBean = linkBeans.get(position);
+                        return linkBean.getGroupTag();
+                    }
+                }).setDivideHeight(10).setDivideColor(Color.YELLOW).build())
+                .setAdapter1Config(new LinkedAdapter1Config<LinkBean>() {
                     @Override
                     public int getItemLayout() {
-                        return lz.com.tools.R.layout.item_left_text;
+                        return R.layout.item_left_text;
                     }
 
                     @Override
                     public void onBindViewData(BaseViewHolder holder, LinkBean item, int position) {
-                        holder.setText(lz.com.tools.R.id.tv_lefttitle, item.getGroupTag());
+                        holder.setText(R.id.tv_lefttitle, item.getGroupTag());
                     }
                 })
                 .setAdapter2Config(new LinkedAdapter2Config<LinkListBean>() {
                     @Override
                     public int getLieanLayout() {
-                        return lz.com.tools.R.layout.item_left_text;
+                        return R.layout.item_left_text;
                     }
 
                     @Override
                     public int setSpanCount() {
-                        return 5;
+                        return 3;
                     }
 
                     @Override
@@ -62,19 +87,23 @@ public class ShopCategoryActivity extends BaseKitActivity {
 
                     @Override
                     public int getGridLayout() {
-                        return lz.com.tools.R.layout.item_right_layout;
+                        return R.layout.item_right_layout;
                     }
 
                     @Override
                     public void onBindViewData(BaseViewHolder holder, LinkListBean item, int position, boolean showGrid) {
                         if (showGrid) {
-                            holder.setText(lz.com.tools.R.id.tv_righttitle, item.getGroupTag());
-                            holder.setText(lz.com.tools.R.id.tv_sub_righttitle, item.getTitleText());
+                            holder.setText(R.id.tv_righttitle, item.getGroupTag());
+                            holder.setText(R.id.tv_sub_righttitle, item.getTitleText());
                         } else {
-                            holder.setText(lz.com.tools.R.id.tv_lefttitle, item.getTitleText());
-
+                            holder.setText(R.id.tv_lefttitle, item.getTitleText());
                         }
+                    }
 
+                    @Override
+                    public void onItemClickListener(LinkListBean linkListBean, View view, int position) {
+                        super.onItemClickListener(linkListBean, view, position);
+                        LzToast.showToast(linkListBean.getTitleText() + "位置===" + position);
                     }
                 })
                 .init();

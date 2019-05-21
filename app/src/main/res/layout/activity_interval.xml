@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".IntervalActivity">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -29,4 +30,9 @@
         app:tipText="面积"
         app:tipTextColor="#282828"
         app:tipTextSize="18" />
+
+    <lz.com.kit.view.TimeSelectView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 </LinearLayout>
