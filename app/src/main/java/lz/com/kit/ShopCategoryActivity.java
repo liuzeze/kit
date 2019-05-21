@@ -77,7 +77,7 @@ public class ShopCategoryActivity extends BaseKitActivity {
 
                     @Override
                     public int setSpanCount() {
-                        return 3;
+                        return 2;
                     }
 
                     @Override

@@ -17,9 +17,12 @@ public class LinkedAdapter1 extends BaseRecycleAdapter<LinkBean, BaseViewHolder>
     private int mPosition = 0;
 
     public LinkedAdapter1 setPosition(int position) {
-        notifyItemChanged(mPosition);
-        mPosition = position;
-        notifyItemChanged(mPosition);
+        if (mPosition != position) {
+
+            notifyItemChanged(mPosition);
+            mPosition = position;
+            notifyItemChanged(mPosition);
+        }
         return this;
     }
 
