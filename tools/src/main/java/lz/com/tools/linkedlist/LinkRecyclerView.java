@@ -75,11 +75,7 @@ public class LinkRecyclerView extends FrameLayout {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-
-
                 int position = ((LinearLayoutManager) Objects.requireNonNull(mRecyclerview2.getLayoutManager())).findFirstVisibleItemPosition();
-
-
                 int i = mLinkBeans1.indexOf(mLinkBeans2.get(position));
                 if (i != -1) {
                     mLinkedAdapter1.setPosition(i);

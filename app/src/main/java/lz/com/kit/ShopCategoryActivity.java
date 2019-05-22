@@ -1,6 +1,7 @@
 package lz.com.kit;
 
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.decoration.sticky.PowerfulStickyDecoration;
 import lz.com.tools.recycleview.decoration.sticky.listener.PowerGroupListener;
 import lz.com.tools.util.LzDisplayUtils;
+import lz.com.tools.util.LzDp2Px;
 import lz.com.tools.util.LzToast;
 
 
@@ -48,6 +50,8 @@ public class ShopCategoryActivity extends BaseKitActivity {
                     public View getGroupView(int position) {
                         TextView textView = new TextView(mActivity);
                         textView.setBackgroundColor(Color.RED);
+                        textView.setGravity(Gravity.CENTER_VERTICAL);
+                        textView.setPadding(5, 5, 5, 5);
                         textView.setText(linkBeans.get(position).getGroupTag());
                         return textView;
                     }
@@ -57,7 +61,11 @@ public class ShopCategoryActivity extends BaseKitActivity {
                         LinkBean linkBean = linkBeans.get(position);
                         return linkBean.getGroupTag();
                     }
-                }).setDivideHeight(10).setDivideColor(Color.YELLOW).build())
+                })
+                        .setDivideHeight(0)
+                        .setGroupHeight(LzDp2Px.dp2px(mActivity, 50))
+                        .setDivideColor(Color.YELLOW)
+                        .build())
                 .setAdapter1Config(new LinkedAdapter1Config<LinkBean>() {
                     @Override
                     public int getItemLayout() {
@@ -82,7 +90,7 @@ public class ShopCategoryActivity extends BaseKitActivity {
 
                     @Override
                     public boolean isShowGrid() {
-                        return true;
+                        return false;
                     }
 
                     @Override
