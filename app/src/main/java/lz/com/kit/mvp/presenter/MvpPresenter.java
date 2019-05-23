@@ -21,7 +21,7 @@ public class MvpPresenter extends RxPresenter<MvpContract.View> implements MvpCo
 
     @Override
     public void getNewLists(String type) {
-      /*  CommonSubscriber<String> commonSubscriber = mRequestApi
+        CommonSubscriber<String> commonSubscriber = mRequestApi
                 .getNewLists(type, LzTimeUtils.getNowMills() / 1000 + "")
                 .subscribeWith(new CommonSubscriber<String>() {
 
@@ -29,8 +29,8 @@ public class MvpPresenter extends RxPresenter<MvpContract.View> implements MvpCo
                     public void onNext(String s) {
                         mBaseView.getNewsListSuccess(s);
                     }
-                });*/
-        CommonSubscriber<String> commonSubscriber = mRequestApi
+                });
+      /*  CommonSubscriber<String> commonSubscriber = mRequestApi
                 .findgoods(new NewGoodsRequestBean()
                         .setNumPerPage(10)
                         .setPageNum(1))
@@ -40,6 +40,6 @@ public class MvpPresenter extends RxPresenter<MvpContract.View> implements MvpCo
                     public void onNext(String s) {
                         mBaseView.getNewsListSuccess(s);
                     }
-                });
+                });*/
     }
 }

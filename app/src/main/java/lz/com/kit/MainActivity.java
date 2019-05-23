@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import lz.com.kit.aac.MvvmActivity;
 import lz.com.kit.bean.ActivityBean;
 import lz.com.kit.mvp.MvpActivity;
 import lz.com.tools.inject.InjectLayout;
@@ -54,6 +55,7 @@ public class MainActivity extends BaseKitActivity {
         strings.add(new ActivityBean().setName("MenuActivity").setCalssName(MenuActivity.class));
         strings.add(new ActivityBean().setName("ShopCategoryActivity").setCalssName(ShopCategoryActivity.class));
         strings.add(new ActivityBean().setName("LongImageActivity").setCalssName(LongImageActivity.class));
+        strings.add(new ActivityBean().setName("MvvmActivity").setCalssName(MvvmActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 
