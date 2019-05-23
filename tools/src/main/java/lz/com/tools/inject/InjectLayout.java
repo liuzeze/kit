@@ -22,4 +22,6 @@ public @interface InjectLayout {
     boolean isShowBackIcon() default true;
 
     String titleName() default "标题";
+
+    int variableId() default -1;
 }

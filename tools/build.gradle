@@ -64,10 +64,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api 'androidx.appcompat:appcompat:1.1.0-alpha04'
-    api 'com.google.android.material:material:1.0.0'
-    api 'androidx.recyclerview:recyclerview:1.1.0-alpha04'
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5'
+    api 'androidx.appcompat:appcompat:1.1.0-alpha05'
+    api 'com.google.android.material:material:1.1.0-alpha06'
+    api 'androidx.recyclerview:recyclerview:1.1.0-alpha05'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
     api 'com.jakewharton:butterknife:10.1.0'
     api 'com.noober.background:core:1.4.4'
     api 'cn.bingoogolapple:bga-banner:2.2.4@aar'
@@ -75,6 +75,10 @@ dependencies {
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     api 'com.lz:fram:1.0.4'
     api 'com.lz:lzstatus:1.0.0'
-    api 'com.google.protobuf:protobuf-lite:3.0.0' //依赖protobuf-lite库
+    api 'com.google.protobuf:protobuf-lite:3.0.1' //依赖protobuf-lite库
     api 'com.google.protobuf.nano:protobuf-javanano:3.2.0rc2'
+    api 'android.arch.lifecycle:extensions:1.1.1'
+    api 'android.arch.lifecycle:viewmodel:1.1.1'
+    api 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    api 'com.github.bumptech.glide:glide:4.9.0'
 }
