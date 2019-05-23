@@ -1,10 +1,7 @@
 package lz.com.kit.aac;
 
-import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
-
-import java.util.List;
 
 /**
  * -----------作者----------日期----------变更内容-----

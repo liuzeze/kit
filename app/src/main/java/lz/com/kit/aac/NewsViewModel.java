@@ -47,7 +47,9 @@ public class NewsViewModel extends BaseViewModel {
                             NewsDataVo dataVo = new NewsDataVo();
                             dataVo.id.set("1223" + i);
                             dataVo.newsTitle.set("Android AccArchitecture框架简介" + i);
-                            dataVo.newsContent.set("Android Architecture Components,\n简称 AAC,一个处理UI的生命\n周期与数据的持久化的架构" + i);
+                            dataVo.newsContent.set("Android Architecture Components," +
+                                    "\n简称 AAC,一个处理UI的生命" +
+                                    "\n周期与数据的持久化的架构" + i);
                             dataVo.newsUrl.set("https://upload.jianshu.io/users/upload_avatars/8669504/e210988a-4cea-4310-8b6f-0f8af4ab0ee6.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240");
                             dataVo.readNum.set(i);
                             value.add(dataVo);

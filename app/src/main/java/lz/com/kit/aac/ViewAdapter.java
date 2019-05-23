@@ -16,7 +16,6 @@ public class ViewAdapter {
     @BindingAdapter(value = {"imgUrl"}, requireAll = false)
     public static void loadRoundImage(ImageView imageView,String url){
         if (!TextUtils.isEmpty(url)) {
-            //使用Glide框架加载图片
             GlideUtils.loadRoundImage(imageView.getContext(),url,imageView,10);
         }
     }
