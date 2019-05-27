@@ -80,4 +80,10 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
         }
         getLifecycle().addObserver(viewModel);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getLifecycle().removeObserver(viewModel);
+    }
 }

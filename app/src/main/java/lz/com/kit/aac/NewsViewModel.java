@@ -1,5 +1,6 @@
 package lz.com.kit.aac;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.view.View;
 
@@ -33,9 +34,12 @@ public class NewsViewModel extends BaseViewModel {
     /**
      * 模拟获取网络数据
      */
+    @SuppressLint("CheckResult")
     public void httpGetData(View view) {
-
-        CommonSubscriber<String> commonSubscriber = mRequestApi
+        if (mData.getValue() != null && mData.getValue().size() > 0) {
+            return;
+        }
+        mRequestApi
                 .getNewLists("推荐", LzTimeUtils.getNowMills() / 1000 + "")
                 .subscribeWith(new CommonSubscriber<String>() {
 
