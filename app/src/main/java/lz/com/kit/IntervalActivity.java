@@ -1,6 +1,9 @@
 package lz.com.kit;
 
+import android.view.View;
+
 import butterknife.BindView;
+import lz.com.kit.view.TimeSelectView;
 import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.widget.IntervalSelectionView;
 
@@ -10,6 +13,8 @@ public class IntervalActivity extends BaseKitActivity {
 
     @BindView(R.id.isv_condition_second)
     IntervalSelectionView isvConditionSecond;
+    @BindView(R.id.time_view)
+    TimeSelectView timeView;
 
     @Override
     public void initData() {
@@ -36,5 +41,13 @@ public class IntervalActivity extends BaseKitActivity {
 
             }
         });
+    }
+
+    public void add(View view) {
+        timeView.add();
+    }
+
+    public void reduction(View view) {
+        timeView.reduction();
     }
 }

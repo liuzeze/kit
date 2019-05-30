@@ -1,5 +1,8 @@
 package lz.com.kit.view;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,8 +13,12 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 
 import lz.com.kit.R;
@@ -24,11 +31,10 @@ import lz.com.tools.util.LzDp2Px;
 public class TimeSelectView extends View implements View.OnTouchListener {
 
 
-    private float translate = 0;
     private Paint mTimePaint;
-    private float offset = 150;
+    private float areaWidth = 150;
 
-    private String[] timeArea = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00",
+    private String[] mDataArea = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00",
             "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",};
     private Paint mLinePaint;
     private Paint mBgPaint;
@@ -41,6 +47,16 @@ public class TimeSelectView extends View implements View.OnTouchListener {
     private float mStartClickOffset;
     private float mEndClickOffset;
     private Bitmap mBitmap;
+    private VelocityTracker mVelocityTracker;
+    private ValueAnimator mAnimatorRunning;
+
+
+    private int mTextsize = LzDp2Px.dp2px(getContext(), 10);
+    private @ColorInt
+    int mBgColor = Color.parseColor("#ff8522");
+    private @DrawableRes
+    int mBitmapRes = R.mipmap.seekbar;
+    private Paint mPaddingPaint;
 
     public TimeSelectView(Context context) {
         this(context, null);
@@ -56,25 +72,30 @@ public class TimeSelectView extends View implements View.OnTouchListener {
 
     public TimeSelectView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        mTimePaint = new Paint();
+        //时间画笔
+        mTimePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTimePaint.setColor(Color.BLACK);
-        mTimePaint.setTextSize(LzDp2Px.dp2px(getContext(), 10));
+        mTimePaint.setTextSize(mTextsize);
 
+        //线条画笔
         mLinePaint = new Paint();
         mLinePaint.setColor(Color.GRAY);
         mLinePaint.setTextSize(LzDp2Px.dp2px(getContext(), 1));
 
+        //选中背景画笔
         mBgPaint = new Paint();
-        //设置画笔宽度
-        mBgPaint.setStrokeWidth(5);
         //设置画笔颜色
-        mBgPaint.setColor(Color.RED);
+        mBgPaint.setColor(mBgColor);
         //设置画笔样式
         mBgPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 
+        mPaddingPaint = new Paint();
+        mPaddingPaint.setColor(Color.WHITE);
+        //选中区域
         mRect = new Rect();
 
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.seekbar);
+        //图片
+        mBitmap = BitmapFactory.decodeResource(getResources(), mBitmapRes);
 
         setOnTouchListener(this);
 
@@ -89,7 +110,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
 
         switch (specMode) {
             case MeasureSpec.AT_MOST:
-                defaultWidth = (int) mTimePaint.measureText(timeArea[0]) + getPaddingLeft() + getPaddingRight();
+                defaultWidth = (int) (mDataArea.length * areaWidth + getPaddingLeft() + getPaddingRight());
                 break;
             case MeasureSpec.EXACTLY:
                 defaultWidth = specSize;
@@ -110,20 +131,13 @@ public class TimeSelectView extends View implements View.OnTouchListener {
 
         switch (specMode) {
             case MeasureSpec.AT_MOST:
-                defaultHeight = (int) (-mTimePaint.ascent() + mTimePaint.descent()) + getPaddingTop() + getPaddingBottom();
+                defaultHeight = (int) (-mTimePaint.ascent() + mTimePaint.descent()) * 6 + getPaddingTop() + getPaddingBottom();
                 break;
             case MeasureSpec.EXACTLY:
                 defaultHeight = specSize;
                 break;
             case MeasureSpec.UNSPECIFIED:
-                defaultHeight = Math.max(defaultHeight, specSize);
-//        1.基准点是baseline
-//        2.ascent：是baseline之上至字符最高处的距离
-//        3.descent：是baseline之下至字符最低处的距离
-//        4.leading：是上一行字符的descent到下一行的ascent之间的距离,也就是相邻行间的空白距离
-//        5.top：是指的是最高字符到baseline的值,即ascent的最大值
-//        6.bottom：是指最低字符到baseline的值,即descent的最大值
-
+                defaultHeight = Math.max(mTextsize * 6, specSize);
                 break;
             default:
                 break;
@@ -143,73 +157,165 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         setMeasuredDimension(width, height);
         mMeasuredWidth = getMeasuredWidth();
         mMeasuredHeight = getMeasuredHeight();
-        limitOffset = timeArea.length * offset - mMeasuredWidth;
+        limitOffset = mDataArea.length * areaWidth - mMeasuredWidth;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //z左
+        canvas.drawLine(getPaddingLeft(),
+                getPaddingTop(),
+                getPaddingLeft(),
+                mMeasuredHeight - getPaddingBottom(),
+                mLinePaint);
+        //右边
+        canvas.drawLine(mMeasuredWidth - getPaddingRight(),
+                getPaddingTop(),
+                mMeasuredWidth - getPaddingRight() - 1,
+                mMeasuredHeight - getPaddingBottom(),
+                mLinePaint);
+
+        //上
+        canvas.drawLine(getPaddingLeft(),
+                getPaddingTop(),
+                mMeasuredWidth - getPaddingRight(),
+                getPaddingTop(),
+                mLinePaint);
+        //中
+        canvas.drawLine(getPaddingLeft(),
+                getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 2,
+                mMeasuredWidth - getPaddingRight(),
+                getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 2,
+                mLinePaint);
+        //下
+        canvas.drawLine(getPaddingLeft(),
+                mMeasuredHeight - 1 - getPaddingBottom(),
+                mMeasuredWidth - getPaddingRight(),
+                mMeasuredHeight - 1 - getPaddingBottom(),
+                mLinePaint);
+
         canvas.save();
-
-
         canvas.translate(mOffset + mTempset, 0);
-
-        int textWidths = (int) mTimePaint.measureText(timeArea[0]);
-        for (int i = 0; i < timeArea.length; i++) {
-            canvas.drawText(timeArea[i], offset * i, textWidths, mTimePaint);
-            canvas.drawLine(offset * i, 0, offset * i, getMeasuredHeight(), mLinePaint);
-
-
+        //绘制线条和时间字体
+        for (int i = 0; i < mDataArea.length; i++) {
+            if (i != 0) {
+                canvas.drawLine(areaWidth * i + getPaddingLeft(),
+                        getPaddingTop(),
+                        areaWidth * i + getPaddingLeft(),
+                        mMeasuredHeight - getPaddingBottom(),
+                        mLinePaint);
+            }
+            canvas.drawText(mDataArea[i],
+                    areaWidth * i + 10 + getPaddingLeft(),
+                    getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 4 + mTextsize / 2,
+                    mTimePaint);
         }
 
+
+        //绘制选中区域和图片
         if (mStartClickOffset >= 0 && mEndClickOffset > 0) {
 
-            mRect.top = mMeasuredHeight / 2;
-            mRect.bottom = mMeasuredHeight;
-            mRect.left = (int) mStartClickOffset;
-            mRect.right = (int) mEndClickOffset;
+            mRect.top = getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 2;
+            mRect.bottom = mMeasuredHeight - getPaddingBottom();
+            mRect.left = (int) mStartClickOffset + getPaddingLeft();
+            mRect.right = (int) mEndClickOffset + getPaddingLeft();
             canvas.drawRect(mRect, mBgPaint);
-            canvas.drawBitmap(mBitmap, mRect.right - mBitmap.getWidth() / 2, mMeasuredHeight * 3 / 4 - mBitmap.getHeight() / 2, null);
+            if (isDrawLeft) {
+                canvas.drawBitmap(mBitmap,
+                        mRect.left - mBitmap.getWidth() / 2,
+                        (mRect.top + (mRect.bottom - mRect.top) / 2) - mBitmap.getHeight() / 2,
+                        null);
+            } else {
+                canvas.drawBitmap(mBitmap,
+                        mRect.right - mBitmap.getWidth() / 2,
+                        (mRect.top + (mRect.bottom - mRect.top) / 2) - mBitmap.getHeight() / 2,
+                        null);
+            }
         }
 
-
         canvas.restore();
+
+        Rect rect = new Rect();
+        if (getPaddingLeft() > 0) {
+
+            rect.top = getPaddingTop();
+            rect.bottom = mMeasuredHeight - getPaddingBottom();
+            rect.left = 0;
+            rect.right = getPaddingLeft();
+            canvas.drawRect(rect, mPaddingPaint);
+        }
+
+        if (getPaddingRight() > 0) {
+
+            rect.top = getPaddingTop();
+            rect.bottom = mMeasuredHeight - getPaddingBottom();
+            rect.left = mMeasuredWidth - getPaddingRight();
+            rect.right = mMeasuredWidth;
+            canvas.drawRect(rect, mPaddingPaint);
+        }
     }
 
 
+    //dowm时间x位置
     private float startX = 0;
+    //临时记录已选择的起点位置
     private float mTempStartOffset = 0;
+    //点击的是否是左右滑动区域
     private boolean isScrollArea;
-    private boolean isClickArea;
+    //是否点击在图片上
+    private boolean isClickImg;
+    //推按画在左侧还是右侧
+    private boolean isDrawLeft;
+    //点击的是否是选中的并且没惦记在图片上
+    private boolean isClickContent;
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
+        if (null == mVelocityTracker) {
+            mVelocityTracker = VelocityTracker.obtain();//手指抬起之后的速度变化
+        }
+        mVelocityTracker.computeCurrentVelocity(200);
+        mVelocityTracker.addMovement(event);
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 startX = event.getX();
-                if (event.getY() < getMeasuredHeight() / 2) {
+                //是否点击在控件上部
+                if (event.getY() < getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 2) {
                     isScrollArea = true;
                 } else {
                     isScrollArea = false;
                 }
-                float x = event.getX();
-                if (x > mRect.right - mBitmap.getWidth() / 2 && x < mRect.right + mBitmap.getWidth() / 2) {
-                    isClickArea = true;
+                //点击位置在画布上的绝对位置
+                float currentPos = Math.abs(mOffset) + event.getX();
+                //点击的位置是否是图片
+                if (currentPos > mRect.right - mBitmap.getWidth() / 2 && currentPos < mRect.right + mBitmap.getWidth() / 2) {
+                    isClickImg = true;
                 } else {
-                    isClickArea = false;
+                    isClickImg = false;
                 }
+                //是否点击在选中区域 并且不在图片上
+                if (currentPos > mRect.left && currentPos < mRect.right && mRect.width() == areaWidth) {
+                    isClickContent = true;
+                } else {
+                    isClickContent = false;
+                }
+                //临时记录上次选中的起始位置
                 if (mTempStartOffset == 0) {
                     mTempStartOffset = mStartClickOffset;
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
+                //滚动整个控件
                 if (isScrollArea) {
                     float stopX = event.getX();
                     mTempset = (stopX - startX);
-                    if (mOffset + mTempset <= -limitOffset && mTempset <= 0) {
-                        mOffset = -limitOffset;
+                    //防止内容划出控件
+                    float offset = -(limitOffset + getPaddingLeft() + getPaddingRight());
+                    if (mOffset + mTempset <= offset && mTempset <= 0) {
+                        mOffset = offset;
                         mTempset = 0;
                     } else if (mOffset + mTempset >= 0 && mTempset >= 0) {
                         mOffset = 0;
@@ -217,30 +323,55 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                     }
 
                 } else {
-                    if (isClickArea) {
+                    //点击选中区域
+                    if (isClickImg) {
+                        //右滑
+                        float endClickOffset = Math.abs(mOffset) + Math.abs(event.getX());
+                        if (event.getX() - startX > 0) {//在末尾右边滑动
+                            //大于开始位置优化 终点跟随手指 起点不变
+                            mEndClickOffset = endClickOffset;
+                            mStartClickOffset = mTempStartOffset;
+                            isDrawLeft = false;
 
-                        if (event.getX() - startX > 0) {
-                            float startClickOffset = (int) ((Math.abs(mOffset + startX)) / offset) * offset - offset;
-                            if (mStartClickOffset == 0) {
-                                mStartClickOffset = startClickOffset;
-                            }
-
-                            mEndClickOffset = (Math.abs(mOffset + event.getX()));
-                        } else {
-
-                            float startClickOffset = (Math.abs(mOffset - event.getX()));
-                            if (startClickOffset - mTempStartOffset > 0) {
-                                mEndClickOffset = startClickOffset;
-                            } else if (startClickOffset - mTempStartOffset == 0) {
-                                mEndClickOffset = mTempStartOffset;
-                            } else {
-                                mStartClickOffset = startClickOffset;
-                            }
+                        } else if (event.getX() < startX && event.getX() >= mTempStartOffset) {//在初始选中的区域内滑动
+                            mStartClickOffset = mTempStartOffset;
+                            //开始位置不变终点改变
+                            mEndClickOffset = endClickOffset;
+                            isDrawLeft = false;
+                        } else if (event.getX() < mTempStartOffset) {
+                            //终点是初始化的起点
+                            mEndClickOffset = mTempStartOffset;
+                            //起点跟随手指
+                            mStartClickOffset = endClickOffset;
+                            isDrawLeft = true;
                         }
+
+                        if (endClickOffset > mDataArea.length * areaWidth) {
+                            mEndClickOffset = mDataArea.length * areaWidth;
+                        }
+                        if (mStartClickOffset < getPaddingLeft()) {
+                            mStartClickOffset = getPaddingLeft();
+                        }
+
+
+                    } else {
+                        //点击不是图片的地方
+                        //左滑
+                        if (isClickContent) {
+                            mStartClickOffset = mTempStartOffset + (event.getX() - startX);
+                            if (mStartClickOffset > mTempStartOffset) {
+                                mStartClickOffset = mTempStartOffset;
+                            }
+                            if (mStartClickOffset<=0) {
+                                mStartClickOffset=0;
+                            }
+                            //开始位置不变终点改变
+                            mEndClickOffset = mStartClickOffset + areaWidth;
+                        }
+
+
                     }
                 }
-
-
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
@@ -249,72 +380,73 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                     mOffset += mTempset;
                     mTempset = 0;
                 } else {
-                    if (isClickArea) {
-                        if (event.getX() - startX > 0) {
-                            float startClickOffset = (int) (Math.abs(mOffset + startX) / offset) * offset - offset;
-                            if (startClickOffset == 0) {
-                                mStartClickOffset = startClickOffset;
-                            }
-                            mEndClickOffset = (int) (Math.abs(mOffset + event.getX()) / offset) * offset + offset;
-                        } else {
-                            float startClickOffset = (Math.abs(mOffset - event.getX()));
-                            if (startClickOffset - mTempStartOffset >0) {
-                                mEndClickOffset = (int) (startClickOffset / offset) * offset + offset;
-                            } else if (startClickOffset - mTempStartOffset == 0) {
-                                mEndClickOffset = mStartClickOffset;
-                            } else if (mEndClickOffset > startClickOffset) {
-                                mStartClickOffset = (int) (startClickOffset / offset) * offset;
-                            }
+                    if (isClickImg) {
+                        //右滑
+                        int currentPos2 = (int) (Math.abs(mOffset) + Math.abs(event.getX()));
+                        if (event.getX() - startX > 0) {//在末尾右边滑动
+                            //大于开始位置优化 终点跟随手指 起点不变
+                            int v1 = (int) ((int) (currentPos2 / areaWidth) * areaWidth);
+                            mEndClickOffset = currentPos2 % areaWidth > (areaWidth / 2) ? v1 + areaWidth : v1;
+                            mStartClickOffset = mTempStartOffset;
+                        } else if (event.getX() < startX && event.getX() >= mTempStartOffset) {//在初始选中的区域内滑动
+                            //开始位置不变终点改变
+                            int v1 = (int) ((int) (currentPos2 / areaWidth) * areaWidth);
+                            mEndClickOffset = currentPos2 % areaWidth > (areaWidth / 2) ? v1 + areaWidth : v1;
+                            mStartClickOffset = mTempStartOffset;
 
+                            //滑动小于一个偏移量
+                            if (mEndClickOffset - mStartClickOffset < areaWidth) {
+                                mEndClickOffset = mStartClickOffset + areaWidth;
+                            }
+                        } else if (event.getX() < mTempStartOffset) {
+                            //终点是初始化的起点
+                            mEndClickOffset = mTempStartOffset;
+                            //起点跟随手指
+                            int v1 = (int) ((int) (currentPos2 / areaWidth) * areaWidth);
+                            mStartClickOffset = currentPos2 % areaWidth > (areaWidth / 2) ? v1 + areaWidth : v1;
+                            //滑动小于一个偏移量
+                            if (mEndClickOffset - mStartClickOffset < areaWidth) {
+                                mStartClickOffset = mEndClickOffset - areaWidth;
+                            }
+                        }
+
+                        if (mStartClickOffset < getPaddingLeft()) {
+                            mStartClickOffset =0;
+                            mEndClickOffset = mTempStartOffset;
+                        }
+                        if (mEndClickOffset > mDataArea.length * areaWidth) {
+                            mEndClickOffset = mDataArea.length * areaWidth;
                         }
                     } else {
-                        if (Math.abs(event.getX() - startX) < offset) {
-                            if (event.getX() - startX > 0) {
-                                float startClickOffset = (int) (Math.abs(mOffset + event.getX()) / offset) * offset;
-                                float endClickOffset = (int) (Math.abs(mOffset + event.getX()) / offset) * offset + offset;
-                                if (mEndClickOffset - mStartClickOffset <= offset) {
 
+                        //点击事件 或者点击选中区域进行左滑操作
+                        float v1 = event.getX() - startX;
+                        if ((v1 < 0 && isClickContent) || Math.abs(v1) < 30) {
 
-                                    if (startClickOffset == mStartClickOffset) {
-                                        mStartClickOffset = 0;
-                                    } else {
-                                        mStartClickOffset = startClickOffset;
-                                    }
-                                    if (endClickOffset == mEndClickOffset) {
-                                        mEndClickOffset = 0;
-                                    } else {
-                                        mEndClickOffset = endClickOffset;
-                                    }
-                                } else {
-                                    mStartClickOffset = startClickOffset;
-                                    mEndClickOffset = endClickOffset;
-                                }
+                            float startClickOffset = (int) ((Math.abs(mOffset) + Math.abs(event.getX())) / areaWidth) * areaWidth;
+                            float endClickOffset = startClickOffset + areaWidth;
+
+                            if (startClickOffset == mStartClickOffset && endClickOffset == mEndClickOffset) {
+                                mStartClickOffset = 0;
+                                mEndClickOffset = mStartClickOffset+ areaWidth;
                             } else {
-                                float startClickOffset = (int) (Math.abs(mOffset - event.getX()) / offset) * offset;
-                                float endClickOffset = (int) (Math.abs(mOffset + event.getX()) / offset) * offset + offset;
-                                if (mEndClickOffset - mStartClickOffset <= offset) {
-                                    if (startClickOffset == mStartClickOffset) {
-                                        mStartClickOffset = 0;
-                                    } else {
-                                        mStartClickOffset = startClickOffset;
-                                    }
-                                    if (endClickOffset == mEndClickOffset) {
-                                        mEndClickOffset = 0;
-                                    } else {
-                                        mEndClickOffset = endClickOffset;
-                                    }
-                                } else {
-                                    mStartClickOffset = startClickOffset;
-                                    mEndClickOffset = endClickOffset;
-                                }
+                                mStartClickOffset = startClickOffset;
+                                mEndClickOffset = endClickOffset;
                             }
-
                         }
                     }
                 }
+
+                if (isScrollArea) {
+                    int xVelocity = (int) mVelocityTracker.getXVelocity();
+                    setxVelocity(xVelocity);
+                    mVelocityTracker.clear();
+                }
                 startX = 0;
                 isScrollArea = false;
-                mTempStartOffset=0;
+                mTempStartOffset = 0;
+                isDrawLeft = false;
+                isClickContent = false;
                 break;
             default:
                 break;
@@ -322,5 +454,112 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         invalidate();
 
         return true;
+    }
+
+    /**
+     * 惯性滑动
+     *
+     * @param xVelocity
+     */
+    protected void setxVelocity(int xVelocity) {
+        if (Math.abs(xVelocity) < 20) {
+            return;
+        }
+        if (mAnimatorRunning != null && mAnimatorRunning.isRunning()) {
+            return;
+        }
+        mAnimatorRunning = ValueAnimator.ofInt(0, xVelocity / 20).setDuration(Math.abs(xVelocity / 10));
+        mAnimatorRunning.setInterpolator(new DecelerateInterpolator());
+        mAnimatorRunning.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mOffset += (int) animation.getAnimatedValue();
+                mTempset = 0;
+                //防止内容划出控件
+                float offset = -(limitOffset + getPaddingLeft() + getPaddingRight());
+                if (mOffset + mTempset <= offset) {
+                    mOffset = offset;
+                } else if (mOffset + mTempset >= 0) {
+                    mOffset = 0;
+                }
+
+                invalidate();
+            }
+
+        });
+        mAnimatorRunning.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                invalidate();
+            }
+        });
+
+        mAnimatorRunning.start();
+    }
+
+
+    public TimeSelectView setBitmap(Bitmap bitmap) {
+        if (bitmap != null) {
+            mBitmap = bitmap;
+        }
+        return this;
+    }
+
+    public TimeSelectView setTextsize(int textsize) {
+        mTextsize = textsize;
+        mTimePaint.setTextSize(mTextsize);
+        return this;
+    }
+
+    public TimeSelectView setBgColor(int bgColor) {
+        mBgColor = bgColor;
+        mBgPaint.setColor(mBgColor);
+        return this;
+    }
+
+    public TimeSelectView setBitmapRes(int bitmapRes) {
+        mBitmapRes = bitmapRes;
+        mBitmap = BitmapFactory.decodeResource(getResources(), mBitmapRes);
+
+        return this;
+    }
+
+    public TimeSelectView setDataArea(String[] dataArea) {
+        mDataArea = dataArea;
+        return this;
+    }
+
+    public TimeSelectView add() {
+        mEndClickOffset += areaWidth;
+        //防止内容划出控件
+        if (mEndClickOffset > mDataArea.length * areaWidth + getPaddingLeft()) {
+            mEndClickOffset = mDataArea.length * areaWidth;
+        }
+        if (mEndClickOffset >= Math.abs(mOffset) + mMeasuredWidth - areaWidth-getPaddingRight()) {
+            mOffset = -(mEndClickOffset - mMeasuredWidth + areaWidth+getPaddingRight()+getPaddingLeft());
+        }
+        float offset = -(limitOffset + getPaddingLeft() + getPaddingRight());
+        if (mOffset + mTempset <= offset) {
+            mOffset = offset;
+            mTempset = 0;
+        }
+        invalidate();
+        return this;
+    }
+
+    public TimeSelectView reduction() {
+        mStartClickOffset -= areaWidth;
+        if (mStartClickOffset <= getPaddingLeft()) {
+            mStartClickOffset = 0;
+        }
+        if (mStartClickOffset <= Math.abs(mOffset) + areaWidth+getPaddingLeft()) {
+            mOffset = -(mStartClickOffset - areaWidth+getPaddingLeft());
+        }
+        if (mOffset + mTempset >= 0) {
+            mOffset = 0;
+            mTempset = 0;
+        }
+        invalidate();
+        return this;
     }
 }
