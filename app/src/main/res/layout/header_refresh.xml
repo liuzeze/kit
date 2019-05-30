@@ -19,7 +19,7 @@
             android:id="@+id/iv_house"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/refresh_house" />
+             android:src="@mipmap/refresh_house" />
 
         <ImageView
             android:id="@+id/iv_circle"
@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:scaleX="1.3"
             android:scaleY="1.3"
-            app:srcCompat="@mipmap/circle"
+            android:src="@mipmap/circle"
             android:visibility="invisible" />
 
 
@@ -49,14 +49,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
-            app:srcCompat="@mipmap/cloud_3" />
+             android:src="@mipmap/cloud_3" />
 
         <ImageView
             android:id="@+id/iv_cloud2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
-            app:srcCompat="@mipmap/cloud_2" />
+             android:src="@mipmap/cloud_2" />
 
         <ImageView
             android:id="@+id/iv_cloud3"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="3dp"
-            app:srcCompat="@mipmap/cloud_1" />
+             android:src="@mipmap/cloud_1" />
     </LinearLayout>
 
     <TextView

@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<lz.com.tools.recycleview.ReboundReyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/recyclevie"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</lz.com.tools.recycleview.ReboundReyclerView>
+
+    <lz.com.tools.recycleview.ScrollHelperView
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+   <!--     <lz.com.kit.view.SimpleRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></lz.com.kit.view.SimpleRefreshLayout>
+-->
+
+        <lz.com.tools.recycleview.ReboundReyclerView
+            android:id="@+id/recyclevie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"></lz.com.tools.recycleview.ReboundReyclerView>
+
+    </lz.com.tools.recycleview.ScrollHelperView>
+</LinearLayout>
 

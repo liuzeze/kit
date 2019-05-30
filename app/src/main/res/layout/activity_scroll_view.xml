@@ -17,10 +17,6 @@
         android:gravity="center"
         android:text="ScrollViewActivity" />
 
-    <lz.com.kit.view.SimpleRefreshLayout
-        android:id="@+id/refresh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <lz.com.tools.widget.ReboundScrollView
         android:id="@+id/reboundScroll"
@@ -32,10 +28,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <lz.com.kit.view.SimpleRefreshLayout
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginTop="50dp"
                 android:background="@color/ff0000"
                 android:text="  仿ios 越界回弹, 滑动改变标题颜色   下拉添加下拉刷新" />
 

@@ -15,6 +15,7 @@ import butterknife.BindView;
 import lz.com.kit.view.SimpleRefreshLayout;
 import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.recycleview.ReboundReyclerView;
+import lz.com.tools.recycleview.ScrollHelperView;
 import lz.com.tools.recycleview.adapter.BaseRecycleAdapter;
 import lz.com.tools.recycleview.adapter.BaseViewHolder;
 import lz.com.tools.recycleview.decoration.sticky.StickyDecoration;
@@ -27,6 +28,8 @@ public class RecyclerViewActivity extends BaseKitActivity {
 
     @BindView(R.id.recyclevie)
     ReboundReyclerView recyclevie;
+    @BindView(R.id.refresh)
+    ScrollHelperView refresh;
     private BaseRecycleAdapter<String, BaseViewHolder> mAdapter;
 
 
@@ -68,15 +71,14 @@ public class RecyclerViewActivity extends BaseKitActivity {
         mAdapter.setNewData(strings);
 
         TextView header = new TextView(this);
+        header.setBackgroundColor(Color.RED);
         header.setText("\n\n\n封装Adapter ,可以添加Header Footer  加载更对\n 下拉刷新,可以在列表任意位置显示刷新布局" +
                 " \n  空布局 侧滑删除 分割线  悬浮吸顶   列表滑动标题渐变   仿ios越界回弹\n\n\n");
         mAdapter.addHeaderView(header);
 
-
-        recyclevie.setEnableRefrash(true);
         SimpleRefreshLayout simpleRefreshLayout = new SimpleRefreshLayout(this);
         mAdapter.addHeaderView(simpleRefreshLayout);
-        recyclevie.setRefreshView(simpleRefreshLayout);
+        refresh.setRefreshView(simpleRefreshLayout);
 
 
         for (int i = 0; i < 10; i++) {
@@ -160,7 +162,7 @@ public class RecyclerViewActivity extends BaseKitActivity {
         }, recyclevie);
 //        adapter.disableLoadMoreIfNotFullPage(recyclevie);
 
-        recyclevie.setOnRefreshListener(new ReboundReyclerView.OnRefreshListener() {
+        refresh.setOnRefreshListener(new ScrollHelperView.OnRefreshListener() {
             @Override
             public void onRefreshing(int offset) {
                 recyclevie.postDelayed(new Runnable() {
@@ -168,13 +170,13 @@ public class RecyclerViewActivity extends BaseKitActivity {
                     public void run() {
                         mAdapter.setNewData(strings);
 
-                        recyclevie.closeRefresh();
+                        refresh.closeRefresh();
 
                     }
                 }, 2000);
             }
         });
-        recyclevie.setOnUpScrollListener(new ReboundReyclerView.OnUpScrollListener() {
+        refresh.setOnScrollOffsetListener(new ScrollHelperView.OnScrollOffsetListener() {
             @Override
             public void onUpScroll(int offset) {
 
@@ -186,6 +188,23 @@ public class RecyclerViewActivity extends BaseKitActivity {
             }
         });
 
+        recyclevie.setScrollAlphaChangeListener(new ReboundReyclerView.ScrollAlphaChangeListener() {
+            @Override
+            public void onAlphaChange(int alpha, int scrollDyCounter) {
+                header.getBackground().setAlpha(alpha);
+            }
 
+            @Override
+            public int setLimitHeight() {
+                return 1300;
+            }
+
+          /*  @Override
+            public void onSwipeFoeword(boolean isUp) {
+                super.onSwipeFoeword(isUp);
+                System.out.println("滑动方向" + isUp);
+
+            }*/
+        });
     }
 }
