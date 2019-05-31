@@ -409,21 +409,22 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                         }
 
                     } else {
-
+                        float startClickOffset = (int) ((Math.abs(mOffset) + Math.abs(event.getX())) / areaWidth) * areaWidth;
+                        float endClickOffset = startClickOffset + areaWidth;
                         //点击事件 或者点击选中区域进行左滑操作
                         float v1 = event.getX() - startX;
-                        if ((v1 < 0 && isClickContent) || Math.abs(v1) < 30) {
-
-                            float startClickOffset = (int) ((Math.abs(mOffset) + Math.abs(event.getX())) / areaWidth) * areaWidth;
-                            float endClickOffset = startClickOffset + areaWidth;
-
+                        if (Math.abs(v1) < 30) {
+                            //点击数据啊in
                             if (startClickOffset == mStartClickOffset && endClickOffset == mEndClickOffset) {
                                 mStartClickOffset = 0;
-                                mEndClickOffset = mStartClickOffset + areaWidth;
+                                mEndClickOffset = 0;
                             } else {
                                 mStartClickOffset = startClickOffset;
                                 mEndClickOffset = endClickOffset;
                             }
+                        } else if ((v1 < 0 && isClickContent)) {
+                            mStartClickOffset = startClickOffset;
+                            mEndClickOffset = endClickOffset;
                         }
                     }
                 }
@@ -433,18 +434,22 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                     setxVelocity(xVelocity);
                     mVelocityTracker.clear();
                 }
+                if (!isScrollArea && mOnSelectAreaLienter != null) {
+                    if (mEndClickOffset == 0) {
+                        mOnSelectAreaLienter.onSelect("", "");
+                    } else {
+                        int start = (int) (mStartClickOffset / areaWidth);
+                        float v1 = (mEndClickOffset - mStartClickOffset) / areaWidth;
+                        int end = (int) (start + v1 - 1);
+                        mOnSelectAreaLienter.onSelect(mDataArea[start], mDataArea[end]);
+                    }
+                }
                 startX = 0;
                 isScrollArea = false;
                 mTempStartOffset = 0;
                 isDrawLeft = false;
                 isClickContent = false;
-                if (mOnSelectAreaLienter != null) {
 
-                    int start = (int) (mStartClickOffset / areaWidth);
-                    float v1 = (mEndClickOffset - mStartClickOffset )/ areaWidth;
-                    int end = (int) (start + v1 - 1);
-                    mOnSelectAreaLienter.onSelect(mDataArea[start], mDataArea[end]);
-                }
                 break;
             default:
                 break;
