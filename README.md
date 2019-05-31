@@ -17,7 +17,7 @@
 
 <table align="center">
     <tr align="center">
-      <td><img src="https://github.com/liuzeze/kit/blob/master/doc/1.png" width="280" height="450"/></td>
+      <td><img src="https://github.com/liuzeze/kit/blob/master/doc/1.jpg" width="280" height="450"/></td>
         <td><img src="https://github.com/liuzeze/kit/blob/master/doc/2.png" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/3.png" width="280" height="450"/></td>
     </tr>
