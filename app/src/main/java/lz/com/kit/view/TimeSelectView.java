@@ -172,7 +172,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         //右边
         canvas.drawLine(mMeasuredWidth - getPaddingRight(),
                 getPaddingTop(),
-                mMeasuredWidth - getPaddingRight() - 1,
+                mMeasuredWidth - getPaddingRight() - 2,
                 mMeasuredHeight - getPaddingBottom(),
                 mLinePaint);
 
@@ -327,33 +327,31 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                     if (isClickImg) {
                         //右滑
                         float endClickOffset = Math.abs(mOffset) + Math.abs(event.getX());
-                        if (event.getX() - startX > 0) {//在末尾右边滑动
-                            //大于开始位置优化 终点跟随手指 起点不变
+
+                        if (endClickOffset > mTempStartOffset) {
+                            //在开始右侧滑动
                             mEndClickOffset = endClickOffset;
                             mStartClickOffset = mTempStartOffset;
                             isDrawLeft = false;
 
-                        } else if (event.getX() < startX && event.getX() >= mTempStartOffset) {//在初始选中的区域内滑动
-                            mStartClickOffset = mTempStartOffset;
-                            //开始位置不变终点改变
-                            mEndClickOffset = endClickOffset;
-                            isDrawLeft = false;
-                        } else if (event.getX() < mTempStartOffset) {
+                            //右侧边界
+                            if (endClickOffset >= mDataArea.length * areaWidth) {
+                                mEndClickOffset = mDataArea.length * areaWidth;
+                            }
+                        } else {
+                            //开始左侧滑动
                             //终点是初始化的起点
                             mEndClickOffset = mTempStartOffset;
                             //起点跟随手指
                             mStartClickOffset = endClickOffset;
                             isDrawLeft = true;
+
+                            if (mStartClickOffset <= getPaddingLeft()) {
+                                mStartClickOffset = 0;
+                            }
                         }
 
-                        if (endClickOffset > mDataArea.length * areaWidth) {
-                            mEndClickOffset = mDataArea.length * areaWidth;
-                        }
-                        if (mStartClickOffset < getPaddingLeft()) {
-                            mStartClickOffset = getPaddingLeft();
-                        }
-
-
+                        System.out.println("开始距离" + mStartClickOffset);
                     } else {
                         //点击不是图片的地方
                         //左滑
@@ -362,8 +360,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                             if (mStartClickOffset > mTempStartOffset) {
                                 mStartClickOffset = mTempStartOffset;
                             }
-                            if (mStartClickOffset<=0) {
-                                mStartClickOffset=0;
+                            if (mStartClickOffset <= 0) {
+                                mStartClickOffset = 0;
                             }
                             //开始位置不变终点改变
                             mEndClickOffset = mStartClickOffset + areaWidth;
@@ -383,22 +381,22 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                     if (isClickImg) {
                         //右滑
                         int currentPos2 = (int) (Math.abs(mOffset) + Math.abs(event.getX()));
-                        if (event.getX() - startX > 0) {//在末尾右边滑动
-                            //大于开始位置优化 终点跟随手指 起点不变
-                            int v1 = (int) ((int) (currentPos2 / areaWidth) * areaWidth);
-                            mEndClickOffset = currentPos2 % areaWidth > (areaWidth / 2) ? v1 + areaWidth : v1;
-                            mStartClickOffset = mTempStartOffset;
-                        } else if (event.getX() < startX && event.getX() >= mTempStartOffset) {//在初始选中的区域内滑动
-                            //开始位置不变终点改变
+                        //当前位置与起点比较
+                        //在起点右侧
+                        if (currentPos2 > mTempStartOffset) {
                             int v1 = (int) ((int) (currentPos2 / areaWidth) * areaWidth);
                             mEndClickOffset = currentPos2 % areaWidth > (areaWidth / 2) ? v1 + areaWidth : v1;
                             mStartClickOffset = mTempStartOffset;
 
-                            //滑动小于一个偏移量
                             if (mEndClickOffset - mStartClickOffset < areaWidth) {
                                 mEndClickOffset = mStartClickOffset + areaWidth;
                             }
-                        } else if (event.getX() < mTempStartOffset) {
+                            //右侧边界
+                            if (mEndClickOffset > mDataArea.length * areaWidth) {
+                                mEndClickOffset = mDataArea.length * areaWidth;
+                            }
+                        } else {
+                            //在起点左侧
                             //终点是初始化的起点
                             mEndClickOffset = mTempStartOffset;
                             //起点跟随手指
@@ -410,13 +408,6 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                             }
                         }
 
-                        if (mStartClickOffset < getPaddingLeft()) {
-                            mStartClickOffset =0;
-                            mEndClickOffset = mTempStartOffset;
-                        }
-                        if (mEndClickOffset > mDataArea.length * areaWidth) {
-                            mEndClickOffset = mDataArea.length * areaWidth;
-                        }
                     } else {
 
                         //点击事件 或者点击选中区域进行左滑操作
@@ -428,7 +419,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
 
                             if (startClickOffset == mStartClickOffset && endClickOffset == mEndClickOffset) {
                                 mStartClickOffset = 0;
-                                mEndClickOffset = mStartClickOffset+ areaWidth;
+                                mEndClickOffset = mStartClickOffset + areaWidth;
                             } else {
                                 mStartClickOffset = startClickOffset;
                                 mEndClickOffset = endClickOffset;
@@ -447,6 +438,13 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                 mTempStartOffset = 0;
                 isDrawLeft = false;
                 isClickContent = false;
+                if (mOnSelectAreaLienter != null) {
+
+                    int start = (int) (mStartClickOffset / areaWidth);
+                    float v1 = (mEndClickOffset - mStartClickOffset )/ areaWidth;
+                    int end = (int) (start + v1 - 1);
+                    mOnSelectAreaLienter.onSelect(mDataArea[start], mDataArea[end]);
+                }
                 break;
             default:
                 break;
@@ -535,8 +533,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         if (mEndClickOffset > mDataArea.length * areaWidth + getPaddingLeft()) {
             mEndClickOffset = mDataArea.length * areaWidth;
         }
-        if (mEndClickOffset >= Math.abs(mOffset) + mMeasuredWidth - areaWidth-getPaddingRight()) {
-            mOffset = -(mEndClickOffset - mMeasuredWidth + areaWidth+getPaddingRight()+getPaddingLeft());
+        if (mEndClickOffset >= Math.abs(mOffset) + mMeasuredWidth - areaWidth - getPaddingRight()) {
+            mOffset = -(mEndClickOffset - mMeasuredWidth + areaWidth + getPaddingRight() + getPaddingLeft());
         }
         float offset = -(limitOffset + getPaddingLeft() + getPaddingRight());
         if (mOffset + mTempset <= offset) {
@@ -552,8 +550,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         if (mStartClickOffset <= getPaddingLeft()) {
             mStartClickOffset = 0;
         }
-        if (mStartClickOffset <= Math.abs(mOffset) + areaWidth+getPaddingLeft()) {
-            mOffset = -(mStartClickOffset - areaWidth+getPaddingLeft());
+        if (mStartClickOffset <= Math.abs(mOffset) + areaWidth + getPaddingLeft()) {
+            mOffset = -(mStartClickOffset - areaWidth + getPaddingLeft());
         }
         if (mOffset + mTempset >= 0) {
             mOffset = 0;
@@ -561,5 +559,16 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         }
         invalidate();
         return this;
+    }
+
+
+    public interface OnSelectAreaLisenter {
+        void onSelect(String start, String end);
+    }
+
+    private OnSelectAreaLisenter mOnSelectAreaLienter;
+
+    public void setOnSelectAreaLisenter(OnSelectAreaLisenter onSelectAreaLienter) {
+        mOnSelectAreaLienter = onSelectAreaLienter;
     }
 }

@@ -1,10 +1,12 @@
 package lz.com.kit;
 
 import android.view.View;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import lz.com.kit.view.TimeSelectView;
 import lz.com.tools.inject.InjectLayout;
+import lz.com.tools.util.LzToast;
 import lz.com.tools.widget.IntervalSelectionView;
 
 
@@ -39,6 +41,13 @@ public class IntervalActivity extends BaseKitActivity {
             @Override
             public void rightCursor(String resultValue) {
 
+            }
+        });
+
+        timeView.setOnSelectAreaLisenter(new TimeSelectView.OnSelectAreaLisenter() {
+            @Override
+            public void onSelect(String start, String end) {
+                LzToast.showToast(start+"=================="+end);
             }
         });
     }
