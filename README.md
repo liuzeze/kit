@@ -21,22 +21,17 @@
         <td><img src="https://github.com/liuzeze/kit/blob/master/doc/2.jpg" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/3.jpg" width="280" height="450"/></td>
     </tr>
-        <tr align="center">
+    <tr align="center">
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/7.jpg" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/5.png" width="280" height="450"/></td>
-         <td><img src="https://github.com/liuzeze/kit/blob/master/doc/6.png" width="280" height="450"/></td>
-    </tr> 
+          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/11.jpg" width="280" height="450"/></td>
     </tr>
-        <tr align="center">
+    <tr align="center">
            <td><img src="https://github.com/liuzeze/kit/blob/master/doc/10.jpg" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/8.jpg" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/9.jpg" width="280" height="450"/></td>
     </tr>
-      </tr>
-            <tr align="center">
-       
-             <td><img src="https://github.com/liuzeze/kit/blob/master/doc/11.jpg" width="280" height="450"/></td>
-        </tr>
+  
 </table>
 
 
