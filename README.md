@@ -18,11 +18,11 @@
 <table align="center">
     <tr align="center">
       <td><img src="https://github.com/liuzeze/kit/blob/master/doc/1.jpg" width="280" height="450"/></td>
-        <td><img src="https://github.com/liuzeze/kit/blob/master/doc/2.png" width="280" height="450"/></td>
-         <td><img src="https://github.com/liuzeze/kit/blob/master/doc/3.png" width="280" height="450"/></td>
+        <td><img src="https://github.com/liuzeze/kit/blob/master/doc/2.jpg" width="280" height="450"/></td>
+         <td><img src="https://github.com/liuzeze/kit/blob/master/doc/3.jpg" width="280" height="450"/></td>
     </tr>
         <tr align="center">
-           <td><img src="https://github.com/liuzeze/kit/blob/master/doc/4.png" width="280" height="450"/></td>
+           <td><img src="https://github.com/liuzeze/kit/blob/master/doc/4.MP4" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/5.png" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/6.png" width="280" height="450"/></td>
     </tr> 
