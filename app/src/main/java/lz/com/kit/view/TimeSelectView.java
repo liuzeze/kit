@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -34,8 +35,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
     private Paint mTimePaint;
     private float areaWidth = 150;
 
-    private String[] mDataArea = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00",
-            "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",};
+    private String[] mDataArea = {"08:00","08:30", "09:00", "09:30", "10:00","10:30", "11:00","11:30",
+            "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00",  "17:30", "18:00"};
     private Paint mLinePaint;
     private Paint mBgPaint;
     private Rect mRect;
@@ -99,6 +100,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
 
         setOnTouchListener(this);
 
+        setBackgroundColor(Color.WHITE);
+
     }
 
     private int measureWidth(int defaultWidth, int measureSpec) {
@@ -108,12 +111,14 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         Log.e("YViewWidth", "---speSize = " + specSize + "");
 
 
+        int defaultWidth1 = (int) (mDataArea.length * areaWidth + getPaddingLeft() + getPaddingRight());
         switch (specMode) {
             case MeasureSpec.AT_MOST:
-                defaultWidth = (int) (mDataArea.length * areaWidth + getPaddingLeft() + getPaddingRight());
+                defaultWidth = defaultWidth1 > getMeasuredWidth() ? getMeasuredWidth() : defaultWidth1;
                 break;
             case MeasureSpec.EXACTLY:
-                defaultWidth = specSize;
+                defaultWidth = defaultWidth1 > specSize ? specSize : defaultWidth1;
+//                defaultWidth = specSize;
                 break;
             case MeasureSpec.UNSPECIFIED:
                 defaultWidth = Math.max(defaultWidth, specSize);
@@ -164,17 +169,17 @@ public class TimeSelectView extends View implements View.OnTouchListener {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //z左
-        canvas.drawLine(getPaddingLeft(),
+        /*canvas.drawLine(getPaddingLeft(),
                 getPaddingTop(),
                 getPaddingLeft(),
                 mMeasuredHeight - getPaddingBottom(),
-                mLinePaint);
-        //右边
+                mLinePaint);*/
+       /* //右边
         canvas.drawLine(mMeasuredWidth - getPaddingRight(),
                 getPaddingTop(),
                 mMeasuredWidth - getPaddingRight() - 2,
                 mMeasuredHeight - getPaddingBottom(),
-                mLinePaint);
+                mLinePaint);*/
 
         //上
         canvas.drawLine(getPaddingLeft(),
@@ -221,18 +226,31 @@ public class TimeSelectView extends View implements View.OnTouchListener {
             mRect.left = (int) mStartClickOffset + getPaddingLeft();
             mRect.right = (int) mEndClickOffset + getPaddingLeft();
             canvas.drawRect(mRect, mBgPaint);
+            if (isDrawLeft) {
+                canvas.drawBitmap(mBitmap,
+                        mRect.left - mBitmap.getWidth() / 2,
+                        (mRect.top + (mRect.bottom - mRect.top) / 2) - mBitmap.getHeight() / 2,
+                        null);
+            } else {
 
-            canvas.drawBitmap(mBitmap,
-                    mRect.right - mBitmap.getWidth() / 2,
-                    (mRect.top + (mRect.bottom - mRect.top) / 2) - mBitmap.getHeight() / 2,
-                    null);
+                canvas.drawBitmap(mBitmap,
+                        mRect.right - mBitmap.getWidth() / 2,
+                        (mRect.top + (mRect.bottom - mRect.top) / 2) - mBitmap.getHeight() / 2,
+                        null);
+            }
 
         }
 
         canvas.restore();
 
         Rect rect = new Rect();
+        //paddingleft
         if (getPaddingLeft() > 0) {
+            if (getBackground() != null) {
+                ColorDrawable colordDrawable = (ColorDrawable) getBackground();
+                int color = colordDrawable.getColor();
+                mPaddingPaint.setColor(color);
+            }
 
             rect.top = getPaddingTop();
             rect.bottom = mMeasuredHeight - getPaddingBottom();
@@ -241,11 +259,16 @@ public class TimeSelectView extends View implements View.OnTouchListener {
             canvas.drawRect(rect, mPaddingPaint);
         }
 
+        //paddright
         if (getPaddingRight() > 0) {
-
+            if (getBackground() != null) {
+                ColorDrawable colordDrawable = (ColorDrawable) getBackground();
+                int color = colordDrawable.getColor();
+                mPaddingPaint.setColor(color);
+            }
             rect.top = getPaddingTop();
             rect.bottom = mMeasuredHeight - getPaddingBottom();
-            rect.left = mMeasuredWidth - getPaddingRight();
+            rect.left = mMeasuredWidth - getPaddingRight() + mBitmap.getWidth() / 2;
             rect.right = mMeasuredWidth;
             canvas.drawRect(rect, mPaddingPaint);
         }
@@ -262,6 +285,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
     private boolean isClickImg;
     //点击的是否是选中的并且没惦记在图片上
     private boolean isClickContent;
+    //推按画在左侧还是右侧
+    private boolean isDrawLeft;
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -330,6 +355,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                             if (endClickOffset >= mDataArea.length * areaWidth) {
                                 mEndClickOffset = mDataArea.length * areaWidth;
                             }
+                            isDrawLeft = false;
                         } else {
                             //开始左侧滑动
                             //终点是初始化的起点
@@ -340,6 +366,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                             if (mStartClickOffset <= getPaddingLeft()) {
                                 mStartClickOffset = 0;
                             }
+                            isDrawLeft = true;
                         }
 
                     } else {
@@ -413,7 +440,12 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                                 mEndClickOffset = 0;
                             } else {
                                 mStartClickOffset = startClickOffset;
-                                mEndClickOffset = endClickOffset;
+                                //防止内容划出控件
+                                if (mStartClickOffset > mDataArea.length * areaWidth - areaWidth) {
+                                    mStartClickOffset = mDataArea.length * areaWidth - areaWidth;
+                                }
+                                //越界判断
+                                mEndClickOffset = mStartClickOffset + areaWidth;
                             }
                         } else if (isClickContent) {
                             mStartClickOffset = startClickOffset;
@@ -437,19 +469,13 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                     mVelocityTracker.clear();
                 }
                 if (!isScrollArea && mOnSelectAreaLienter != null) {
-                    if (mEndClickOffset == 0) {
-                        mOnSelectAreaLienter.onSelect("", "");
-                    } else {
-                        int start = (int) (mStartClickOffset / areaWidth);
-                        float v1 = (mEndClickOffset - mStartClickOffset) / areaWidth;
-                        int end = (int) (start + v1 - 1);
-                        mOnSelectAreaLienter.onSelect(mDataArea[start], mDataArea[end]);
-                    }
+                    setOnlitener();
                 }
                 startX = 0;
                 isScrollArea = false;
                 mTempStartOffset = 0;
                 isClickContent = false;
+                isDrawLeft = false;
                 break;
             default:
                 break;
@@ -457,6 +483,21 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         invalidate();
 
         return true;
+    }
+
+    private void setOnlitener() {
+        if (mEndClickOffset == 0) {
+            mOnSelectAreaLienter.onSelect("", "");
+        } else {
+            try {
+                int start = (int) (mStartClickOffset / areaWidth);
+                float v1 = (mEndClickOffset - mStartClickOffset) / areaWidth;
+                int end = (int) (start + v1 - 1);
+                mOnSelectAreaLienter.onSelect(mDataArea[start], mDataArea[end]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -538,15 +579,21 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         if (mEndClickOffset > mDataArea.length * areaWidth + getPaddingLeft()) {
             mEndClickOffset = mDataArea.length * areaWidth;
         }
-        if (mEndClickOffset >= Math.abs(mOffset) + mMeasuredWidth - areaWidth - getPaddingRight()) {
-            mOffset = -(mEndClickOffset - mMeasuredWidth + areaWidth + getPaddingRight() + getPaddingLeft());
-        }
-        float offset = -(limitOffset + getPaddingLeft() + getPaddingRight());
-        if (mOffset + mTempset <= offset) {
-            mOffset = offset;
-            mTempset = 0;
+
+
+        int defaultWidth1 = (int) (mDataArea.length * areaWidth + getPaddingLeft() + getPaddingRight());
+        if (defaultWidth1 > mMeasuredWidth) {
+            if (mEndClickOffset >= Math.abs(mOffset) + mMeasuredWidth - areaWidth - getPaddingRight()) {
+                mOffset = -(mEndClickOffset - mMeasuredWidth + areaWidth + getPaddingRight() + getPaddingLeft());
+            }
+            float offset = -(limitOffset + getPaddingLeft() + getPaddingRight());
+            if (mOffset + mTempset <= offset) {
+                mOffset = offset;
+                mTempset = 0;
+            }
         }
         invalidate();
+        setOnlitener();
         return this;
     }
 
@@ -555,14 +602,19 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         if (mStartClickOffset <= getPaddingLeft()) {
             mStartClickOffset = 0;
         }
-        if (mStartClickOffset <= Math.abs(mOffset) + areaWidth + getPaddingLeft()) {
-            mOffset = -(mStartClickOffset - areaWidth + getPaddingLeft());
-        }
-        if (mOffset + mTempset >= 0) {
-            mOffset = 0;
-            mTempset = 0;
+
+        int defaultWidth1 = (int) (mDataArea.length * areaWidth + getPaddingLeft() + getPaddingRight());
+        if (defaultWidth1 > mMeasuredWidth) {
+            if (mStartClickOffset <= Math.abs(mOffset) + areaWidth + getPaddingLeft()) {
+                mOffset = -(mStartClickOffset - areaWidth + getPaddingLeft());
+            }
+            if (mOffset + mTempset >= 0) {
+                mOffset = 0;
+                mTempset = 0;
+            }
         }
         invalidate();
+        setOnlitener();
         return this;
     }
 

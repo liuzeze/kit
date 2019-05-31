@@ -1,7 +1,7 @@
 package lz.com.kit;
 
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import lz.com.kit.view.TimeSelectView;
@@ -17,6 +17,10 @@ public class IntervalActivity extends BaseKitActivity {
     IntervalSelectionView isvConditionSecond;
     @BindView(R.id.time_view)
     TimeSelectView timeView;
+    @BindView(R.id.tv_time)
+    TextView tvTime;
+    private String[] mDataArea = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00",
+            "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",};
 
     @Override
     public void initData() {
@@ -47,9 +51,10 @@ public class IntervalActivity extends BaseKitActivity {
         timeView.setOnSelectAreaLisenter(new TimeSelectView.OnSelectAreaLisenter() {
             @Override
             public void onSelect(String start, String end) {
-                LzToast.showToast(start+"=================="+end);
+                tvTime.setText("时间\n" + start + "--" + end);
             }
         });
+//        timeView.setDataArea(mDataArea);
     }
 
     public void add(View view) {
