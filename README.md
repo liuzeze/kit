@@ -22,7 +22,7 @@
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/3.jpg" width="280" height="450"/></td>
     </tr>
         <tr align="center">
-           <td><img src="https://github.com/liuzeze/kit/blob/master/doc/4.MP4" width="280" height="450"/></td>
+           <td><img src="https://github.com/liuzeze/kit/blob/master/doc/4.gif" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/5.png" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/6.png" width="280" height="450"/></td>
     </tr> 
