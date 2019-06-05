@@ -19,7 +19,7 @@ public class DefaultAdapter2Config extends LinkedAdapter2Config {
     }
 
     @Override
-    public void onBindViewData(BaseViewHolder holder, LinkBean item, int position, boolean showGrid) {
+    public void onBindViewData(BaseViewHolder holder, LinkBean item, int position) {
         holder.setText(R.id.tv_righttitle, item.getGroupTag());
         holder.setText(R.id.tv_sub_righttitle, item.getGroupTag());
 

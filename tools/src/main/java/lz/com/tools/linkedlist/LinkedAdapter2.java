@@ -38,7 +38,7 @@ public class LinkedAdapter2 extends BaseRecycleAdapter<LinkBean, BaseViewHolder>
                         ViewGroup.LayoutParams.WRAP_CONTENT));
             }
         }
-        mConfig.onBindViewData(holder, item, position, mConfig.isShowGrid());
+        mConfig.onBindViewData(holder, item, position);
     }
 
 

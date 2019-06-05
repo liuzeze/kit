@@ -85,12 +85,12 @@ public class ShopCategoryActivity extends BaseKitActivity {
 
                     @Override
                     public int setSpanCount() {
-                        return 2;
+                        return 4;
                     }
 
                     @Override
                     public boolean isShowGrid() {
-                        return false;
+                        return true;
                     }
 
                     @Override
@@ -99,8 +99,8 @@ public class ShopCategoryActivity extends BaseKitActivity {
                     }
 
                     @Override
-                    public void onBindViewData(BaseViewHolder holder, LinkListBean item, int position, boolean showGrid) {
-                        if (showGrid) {
+                    public void onBindViewData(BaseViewHolder holder, LinkListBean item, int position) {
+                        if (isShowGrid()) {
                             holder.setText(R.id.tv_righttitle, item.getGroupTag());
                             holder.setText(R.id.tv_sub_righttitle, item.getTitleText());
                         } else {

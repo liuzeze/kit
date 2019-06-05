@@ -41,6 +41,7 @@
         <activity android:name=".mvp.MvpActivity" />
         <activity android:name=".StatueActivity" />
         <activity android:name=".MenuActivity" />
+        <activity android:name=".FinancialActivity" />
         <activity android:name=".ShopCategoryActivity" />
     </application>
 

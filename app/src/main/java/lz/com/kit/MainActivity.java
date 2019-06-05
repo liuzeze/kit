@@ -58,6 +58,7 @@ public class MainActivity extends BaseKitActivity {
         strings.add(new ActivityBean().setName("LongImageActivity").setCalssName(LongImageActivity.class));
         strings.add(new ActivityBean().setName("MvvmActivity").setCalssName(MvvmActivity.class));
         strings.add(new ActivityBean().setName("PagingActivity").setCalssName(PagingActivity.class));
+        strings.add(new ActivityBean().setName("FinancialActivity").setCalssName(FinancialActivity.class));
 
         mAdapter = new BaseRecycleAdapter<ActivityBean, BaseViewHolder>(R.layout.item_text_list) {
 

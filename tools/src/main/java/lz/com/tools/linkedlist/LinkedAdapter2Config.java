@@ -27,7 +27,7 @@ public abstract class LinkedAdapter2Config<T extends LinkBean> {
     }
 
 
-    public abstract void onBindViewData(BaseViewHolder holder, T item, int position, boolean showGrid);
+    public abstract void onBindViewData(BaseViewHolder holder, T item, int position);
 
 
     public void onItemClickListener(T t, View view, int position) {

@@ -160,7 +160,7 @@ public class RecyclerViewActivity extends BaseKitActivity {
                 }
             }
         }, recyclevie);
-//        adapter.disableLoadMoreIfNotFullPage(recyclevie);
+//        mAdapter.disableLoadMoreIfNotFullPage(recyclevie);
 
         refresh.setOnRefreshListener(new ScrollHelperView.OnRefreshListener() {
             @Override
