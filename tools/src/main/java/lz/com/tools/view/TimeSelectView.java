@@ -1,4 +1,4 @@
-package lz.com.kit.view;
+package lz.com.tools.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -22,7 +22,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 
-import lz.com.kit.R;
+import lz.com.tools.R;
 import lz.com.tools.util.LzDp2Px;
 
 /**

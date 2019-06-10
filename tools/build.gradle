@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.google.protobuf' //在gradle脚本开始处声明依赖的插件
+//apply plugin: 'com.google.protobuf' //在gradle脚本开始处声明依赖的插件
 android {
     compileSdkVersion 28
 
@@ -26,7 +26,7 @@ android {
     }
 
 }
-//编写编译任务，调用plugin编译生成java文件
+/*//编写编译任务，调用plugin编译生成java文件
 protobuf {
     protoc {
         artifact = 'com.google.protobuf:protoc:3.0.0'//编译器版本
@@ -59,7 +59,7 @@ android {
             }
         }
     }
-}
+}*/
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

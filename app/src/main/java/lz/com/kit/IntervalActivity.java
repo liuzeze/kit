@@ -4,9 +4,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import butterknife.BindView;
-import lz.com.kit.view.TimeSelectView;
+import lz.com.tools.view.TimeSelectView;
 import lz.com.tools.inject.InjectLayout;
-import lz.com.tools.util.LzToast;
 import lz.com.tools.widget.IntervalSelectionView;
 
 

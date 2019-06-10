@@ -3,10 +3,9 @@ package lz.com.kit;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -14,8 +13,6 @@ import java.util.ArrayList;
 import java.util.function.Consumer;
 
 import butterknife.BindView;
-import lz.com.kit.BaseKitActivity;
-import lz.com.kit.R;
 import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.recycleview.ReboundReyclerView;
 import lz.com.tools.recycleview.ScrollHelperView;
@@ -41,27 +38,33 @@ public class FinancialActivity extends BaseKitActivity {
 
     @Override
     protected void initData() {
+        ClassLoader classLoader = this.getClassLoader();
+        Class<? extends FinancialActivity> aClass = getClass();
+
         for (int i = 0; i < 50; i++) {
             mArrayList.add("标题" + i);
         }
-        mArrayList.subList(0,20);
+        mArrayList.subList(0, 20);
         BaseRecycleAdapter<String, BaseViewHolder> adapter = new BaseRecycleAdapter<String, BaseViewHolder>(R.layout.item_scroll_layout, mArrayList) {
 
             @Override
             protected void onBindView(BaseViewHolder holder, String item) {
                 holder.setText(R.id.tv_title, item);
                 mViews.add(holder.getView(R.id.h_scroll));
+
+                HorizontalScrollView horizontalScrollView = holder.getView(R.id.h_scroll);
+                horizontalScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                    @Override
+                    public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                        mViews.forEach(view -> view.scrollTo(horizontalScrollView.getScrollX(), 0));
+                    }
+                });
+
             }
         };
         recyclevie.setAdapter(adapter);
         recyclevie.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        adapter.setOnItemClickListener(new BaseRecycleAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseRecycleAdapter adapter, View view, int position) {
 
-            }
-        });
-        recyclevie.setOnTouchListener(getL());
     }
 
     @NotNull
@@ -84,7 +87,7 @@ public class FinancialActivity extends BaseKitActivity {
                                 @Override
                                 public void accept(View view) {
                                     view.setNestedScrollingEnabled(false);
-                                    view.scrollBy((int) (moveX - mStartX), 0);
+                                    view.scrollTo((int) (moveX - mStartX), 0);
                                 }
                             });
                         }
