@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 import androidx.annotation.ColorInt;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import lz.com.tools.recycleview.decoration.sticky.cache.CacheUtil;
 import lz.com.tools.recycleview.decoration.sticky.listener.OnGroupClickListener;
 import lz.com.tools.recycleview.decoration.sticky.listener.PowerGroupListener;
@@ -166,7 +168,12 @@ public class PowerfulStickyDecoration extends BaseDecoration {
     @Override
     String getGroupName(int position) {
         if (mGroupListener != null) {
-            return mGroupListener.getGroupName(position);
+            try {
+                return mGroupListener.getGroupName(position);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             return null;
         }
@@ -180,7 +187,12 @@ public class PowerfulStickyDecoration extends BaseDecoration {
      */
     private View getGroupView(int position) {
         if (mGroupListener != null) {
-            return mGroupListener.getGroupView(position);
+            try {
+                return mGroupListener.getGroupView(position);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return  null;
+            }
         } else {
             return null;
         }

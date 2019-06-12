@@ -30,8 +30,21 @@ public class LinkedAdapter2 extends BaseRecycleAdapter<LinkBean, BaseViewHolder>
         int position = holder.getLayoutPosition() - getHeaderLayoutCount();
         if (mConfig.isShowGrid()) {
             try {
-                holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(mRecyclerview.getMeasuredWidth() / mConfig.setSpanCount(),
-                        ViewGroup.LayoutParams.WRAP_CONTENT));
+                ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
+                if (layoutParams == null) {
+                    layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                }
+                layoutParams.width = mRecyclerview.getMeasuredWidth() / mConfig.setSpanCount();
+
+                if (position == getData().size() - 1) {
+                    layoutParams.height = mRecyclerview.getMeasuredHeight();
+                } else {
+                    layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                }
+
+                holder.itemView.setLayoutParams(layoutParams);
+
             } catch (Exception e) {
                 e.printStackTrace();
                 holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,

@@ -29,6 +29,7 @@ public class ShopCategoryActivity extends BaseKitActivity {
 
     @BindView(R.id.linkedRecycler)
     LinkRecyclerView linkedRecycler;
+    private int mHeight;
 
 
     @Override
@@ -42,78 +43,87 @@ public class ShopCategoryActivity extends BaseKitActivity {
         getRightData(linkBeans, 5);
         getRightData(linkBeans, 2);
         getRightData(linkBeans, 9);
-        getRightData(linkBeans, 60);
-
+        getRightData(linkBeans, 7);
         linkedRecycler.setData(linkBeans)
-                .setItemDecoration(PowerfulStickyDecoration.Builder.init(new PowerGroupListener() {
-                    @Override
-                    public View getGroupView(int position) {
-                        TextView textView = new TextView(mActivity);
-                        textView.setBackgroundColor(Color.RED);
-                        textView.setGravity(Gravity.CENTER_VERTICAL);
-                        textView.setPadding(5, 5, 5, 5);
-                        textView.setText(linkBeans.get(position).getGroupTag());
-                        return textView;
-                    }
+                .setItemDecoration(
+                        PowerfulStickyDecoration.Builder.init(
+                                new PowerGroupListener() {
+                                    @Override
+                                    public View getGroupView(int position) {
+                                        TextView textView = new TextView(mActivity);
+                                        textView.setBackgroundColor(Color.RED);
+                                        textView.setGravity(Gravity.CENTER_VERTICAL);
+                                        textView.setPadding(5, 5, 5, 5);
+                                        textView.setText(linkBeans.get(position).getGroupTag());
+                                        return textView;
+                                    }
 
-                    @Override
-                    public String getGroupName(int position) {
-                        LinkBean linkBean = linkBeans.get(position);
-                        return linkBean.getGroupTag();
-                    }
-                })
-                        .setDivideHeight(0)
-                        .setGroupHeight(LzDp2Px.dp2px(mActivity, 50))
-                        .setDivideColor(Color.YELLOW)
-                        .build())
-                .setAdapter1Config(new LinkedAdapter1Config<LinkBean>() {
-                    @Override
-                    public int getItemLayout() {
-                        return R.layout.item_left_text;
-                    }
+                                    @Override
+                                    public String getGroupName(int position) {
+                                        LinkBean linkBean = linkBeans.get(position);
+                                        return linkBean.getGroupTag();
+                                    }
+                                }
+                        )
+                                .setDivideHeight(0)
+                                .setGroupHeight(LzDp2Px.dp2px(mActivity, 50))
+                                .setDivideColor(Color.YELLOW)
+                                .build()
+                )
+                .setAdapter1Config(
+                        new LinkedAdapter1Config<LinkBean>() {
+                            @Override
+                            public int getItemLayout() {
+                                return R.layout.item_left_text;
+                            }
 
-                    @Override
-                    public void onBindViewData(BaseViewHolder holder, LinkBean item, int position) {
-                        holder.setText(R.id.tv_lefttitle, item.getGroupTag());
-                    }
-                })
-                .setAdapter2Config(new LinkedAdapter2Config<LinkListBean>() {
-                    @Override
-                    public int getLieanLayout() {
-                        return R.layout.item_left_text;
-                    }
-
-                    @Override
-                    public int setSpanCount() {
-                        return 4;
-                    }
-
-                    @Override
-                    public boolean isShowGrid() {
-                        return true;
-                    }
-
-                    @Override
-                    public int getGridLayout() {
-                        return R.layout.item_right_layout;
-                    }
-
-                    @Override
-                    public void onBindViewData(BaseViewHolder holder, LinkListBean item, int position) {
-                        if (isShowGrid()) {
-                            holder.setText(R.id.tv_righttitle, item.getGroupTag());
-                            holder.setText(R.id.tv_sub_righttitle, item.getTitleText());
-                        } else {
-                            holder.setText(R.id.tv_lefttitle, item.getTitleText());
+                            @Override
+                            public void onBindViewData(BaseViewHolder holder, LinkBean item, int position) {
+                                holder.setText(R.id.tv_lefttitle, item.getGroupTag());
+                            }
                         }
-                    }
+                )
+                .setAdapter2Config(
+                        new LinkedAdapter2Config<LinkListBean>() {
+                            @Override
+                            public int getLieanLayout() {
+                                return R.layout.item_left_text;
+                            }
 
-                    @Override
-                    public void onItemClickListener(LinkListBean linkListBean, View view, int position) {
-                        super.onItemClickListener(linkListBean, view, position);
-                        LzToast.showToast(linkListBean.getTitleText() + "位置===" + position);
-                    }
-                })
+                            @Override
+                            public int setSpanCount() {
+                                return 4;
+                            }
+
+                            @Override
+                            public boolean isShowGrid() {
+                                return true;
+                            }
+
+                            @Override
+                            public int getGridLayout() {
+                                return R.layout.item_right_layout;
+                            }
+
+                            @Override
+                            public void onBindViewData(BaseViewHolder holder, LinkListBean item, int position) {
+
+
+                                if (isShowGrid()) {
+                                    holder.setText(R.id.tv_righttitle, item.getGroupTag());
+                                    holder.setText(R.id.tv_sub_righttitle, item.getTitleText());
+                                } else {
+                                    holder.setText(R.id.tv_lefttitle, item.getTitleText());
+                                }
+                            }
+
+                            @Override
+                            public void onItemClickListener(LinkListBean linkListBean, View view, int position) {
+                                super.onItemClickListener(linkListBean, view, position);
+                                LzToast.showToast(linkListBean.getTitleText() + "位置===" + position);
+                            }
+                        }
+                )
                 .init();
     }
 
@@ -128,6 +138,8 @@ public class ShopCategoryActivity extends BaseKitActivity {
             e.setTitleText("条目" + i);
             linkBeans.add(e);
         }
+
+
     }
 
 }

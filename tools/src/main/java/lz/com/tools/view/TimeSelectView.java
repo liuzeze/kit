@@ -12,7 +12,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -32,32 +31,53 @@ import lz.com.tools.util.LzDp2Px;
 public class TimeSelectView extends View implements View.OnTouchListener {
 
 
+    //文字画笔
     private Paint mTimePaint;
+    //线框画笔
+    private Paint mLinePaint;
+    //选中背景画笔
+    private Paint mBgPaint;
+    //自己绘制 padding   画笔
+    private Paint mPaddingPaint;
+
+
+    //每个桃木区域宽度
     private float areaWidth = 150;
 
-    private String[] mDataArea = {"08:00","08:30", "09:00", "09:30", "10:00","10:30", "11:00","11:30",
-            "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00",  "17:30", "18:00"};
-    private Paint mLinePaint;
-    private Paint mBgPaint;
+    //列表数据
+    private String[] mDataArea = {"08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+            "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"};
+
+    //选中的绘制区域
     private Rect mRect;
+    //画布的偏移量
     private float mOffset;
+    //手指左右滑动时额度偏移记录
     private float mTempset;
+    //最大可以偏移的距离 做越界绘制的限制
     private float limitOffset = 0;
+    //当前控件的宽高
     private int mMeasuredWidth;
     private int mMeasuredHeight;
+    //选中区域的开始和结束位置
     private float mStartClickOffset;
     private float mEndClickOffset;
+    //拖拽图片
     private Bitmap mBitmap;
+    //做惯性滑动时的加速度计算辅助类
     private VelocityTracker mVelocityTracker;
+    //惯性滑动动画
     private ValueAnimator mAnimatorRunning;
 
 
+    //绘制文字大小
     private int mTextsize = LzDp2Px.dp2px(getContext(), 10);
+    //选中绘制区域颜色
     private @ColorInt
     int mBgColor = Color.parseColor("#ff8522");
+    //拖拽图片资源
     private @DrawableRes
     int mBitmapRes = R.mipmap.seekbar;
-    private Paint mPaddingPaint;
 
     public TimeSelectView(Context context) {
         this(context, null);
@@ -104,11 +124,17 @@ public class TimeSelectView extends View implements View.OnTouchListener {
 
     }
 
+    /**
+     * //宽度测量
+     *
+     * @param defaultWidth
+     * @param measureSpec
+     * @return
+     */
     private int measureWidth(int defaultWidth, int measureSpec) {
 
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
-        Log.e("YViewWidth", "---speSize = " + specSize + "");
 
 
         int defaultWidth1 = (int) (mDataArea.length * areaWidth + getPaddingLeft() + getPaddingRight());
@@ -128,7 +154,13 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         return defaultWidth;
     }
 
-
+    /**
+     * //高度测量
+     *
+     * @param defaultHeight
+     * @param measureSpec
+     * @return
+     */
     private int measureHeight(int defaultHeight, int measureSpec) {
 
         int specMode = MeasureSpec.getMode(measureSpec);
@@ -160,6 +192,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         int width = measureWidth(minimumWidth, widthMeasureSpec);
         int height = measureHeight(minimumHeight, heightMeasureSpec);
         setMeasuredDimension(width, height);
+
+        //控件宽高 和最大偏移数值赋值
         mMeasuredWidth = getMeasuredWidth();
         mMeasuredHeight = getMeasuredHeight();
         limitOffset = mDataArea.length * areaWidth - mMeasuredWidth;
@@ -181,6 +215,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                 mMeasuredHeight - getPaddingBottom(),
                 mLinePaint);*/
 
+        //绘制线条
         //上
         canvas.drawLine(getPaddingLeft(),
                 getPaddingTop(),
@@ -201,8 +236,9 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                 mLinePaint);
 
         canvas.save();
+        //平移画布实现滑动效果
         canvas.translate(mOffset + mTempset, 0);
-        //绘制线条和时间字体
+        //绘制竖直线条和时间字体
         for (int i = 0; i < mDataArea.length; i++) {
             if (i != 0) {
                 canvas.drawLine(areaWidth * i + getPaddingLeft(),
@@ -221,11 +257,13 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         //绘制选中区域和图片
         if (mStartClickOffset >= 0 && mEndClickOffset > 0) {
 
+            //确定绘制的区域范围
             mRect.top = getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 2;
             mRect.bottom = mMeasuredHeight - getPaddingBottom();
             mRect.left = (int) mStartClickOffset + getPaddingLeft();
             mRect.right = (int) mEndClickOffset + getPaddingLeft();
             canvas.drawRect(mRect, mBgPaint);
+            //图片绘制方向 左右
             if (isDrawLeft) {
                 canvas.drawBitmap(mBitmap,
                         mRect.left - mBitmap.getWidth() / 2,
@@ -243,6 +281,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
 
         canvas.restore();
 
+
+        //货值padding
         Rect rect = new Rect();
         //paddingleft
         if (getPaddingLeft() > 0) {
@@ -291,6 +331,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
+        //加速度计算
         if (null == mVelocityTracker) {
             mVelocityTracker = VelocityTracker.obtain();//手指抬起之后的速度变化
         }
@@ -300,7 +341,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 startX = event.getX();
-                //是否点击在控件上部
+                //是否点击在控件上部  区分左右滑动 和点击选中区域
                 if (event.getY() < getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 2) {
                     isScrollArea = true;
                 } else {
@@ -332,20 +373,23 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                     mTempset = (stopX - startX);
                     //防止内容划出控件
                     float offset = -(limitOffset + getPaddingLeft() + getPaddingRight());
+                    //右边界判断
                     if (mOffset + mTempset <= offset && mTempset <= 0) {
                         mOffset = offset;
                         mTempset = 0;
                     } else if (mOffset + mTempset >= 0 && mTempset >= 0) {
+                        //左边界判断
                         mOffset = 0;
                         mTempset = 0;
                     }
 
                 } else {
-                    //点击选中区域
+                    //点击图片
                     if (isClickImg) {
                         //右滑
                         float endClickOffset = Math.abs(mOffset) + Math.abs(event.getX());
 
+                        //
                         if (endClickOffset > mTempStartOffset) {
                             //在开始右侧滑动
                             mEndClickOffset = endClickOffset;
@@ -465,11 +509,11 @@ public class TimeSelectView extends View implements View.OnTouchListener {
 
                 if (isScrollArea) {
                     int xVelocity = (int) mVelocityTracker.getXVelocity();
-                    setxVelocity(xVelocity);
+                    setXVelocity(xVelocity);
                     mVelocityTracker.clear();
                 }
                 if (!isScrollArea && mOnSelectAreaLienter != null) {
-                    setOnlitener();
+                    setOnlisenter();
                 }
                 startX = 0;
                 isScrollArea = false;
@@ -485,14 +529,17 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         return true;
     }
 
-    private void setOnlitener() {
+    private void setOnlisenter() {
         if (mEndClickOffset == 0) {
             mOnSelectAreaLienter.onSelect("", "");
         } else {
             try {
                 int start = (int) (mStartClickOffset / areaWidth);
                 float v1 = (mEndClickOffset - mStartClickOffset) / areaWidth;
-                int end = (int) (start + v1 - 1);
+                int end = (int) (start + v1);
+                if (end > mDataArea.length-1) {
+                    end = mDataArea.length - 1;
+                }
                 mOnSelectAreaLienter.onSelect(mDataArea[start], mDataArea[end]);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -505,7 +552,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
      *
      * @param xVelocity
      */
-    protected void setxVelocity(int xVelocity) {
+    protected void setXVelocity(int xVelocity) {
         if (Math.abs(xVelocity) < 20) {
             return;
         }
@@ -593,7 +640,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
             }
         }
         invalidate();
-        setOnlitener();
+        setOnlisenter();
         return this;
     }
 
@@ -614,7 +661,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
             }
         }
         invalidate();
-        setOnlitener();
+        setOnlisenter();
         return this;
     }
 

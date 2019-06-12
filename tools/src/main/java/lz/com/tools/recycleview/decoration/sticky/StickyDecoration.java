@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.annotation.ColorInt;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import lz.com.tools.recycleview.decoration.sticky.listener.GroupListener;
 import lz.com.tools.recycleview.decoration.sticky.listener.OnGroupClickListener;
 
@@ -113,7 +114,12 @@ public class StickyDecoration extends BaseDecoration {
     @Override
     String getGroupName(int position) {
         if (mGroupListener != null) {
-            return mGroupListener.getGroupName(position);
+            try {
+                return mGroupListener.getGroupName(position);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return e.getMessage();
+            }
         } else {
             return null;
         }
@@ -237,6 +243,7 @@ public class StickyDecoration extends BaseDecoration {
         /**
          * 设置头部数量
          * 用于顶部Header不需要设置悬浮的情况（仅LinearLayoutManager）
+         *
          * @param headerCount
          * @return
          */

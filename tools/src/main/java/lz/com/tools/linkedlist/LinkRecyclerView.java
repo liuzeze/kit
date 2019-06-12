@@ -6,6 +6,7 @@ import android.util.ArrayMap;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -83,6 +84,7 @@ public class LinkRecyclerView extends FrameLayout {
 
             }
         });
+
     }
 
 
