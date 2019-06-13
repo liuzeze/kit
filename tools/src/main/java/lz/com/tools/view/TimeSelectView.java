@@ -19,6 +19,7 @@ import android.view.animation.DecelerateInterpolator;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 
 import lz.com.tools.R;
@@ -547,7 +548,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         }
     }
 
-    /**
+    /**```
      * 惯性滑动
      *
      * @param xVelocity
@@ -653,7 +654,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         int defaultWidth1 = (int) (mDataArea.length * areaWidth + getPaddingLeft() + getPaddingRight());
         if (defaultWidth1 > mMeasuredWidth) {
             if (mStartClickOffset <= Math.abs(mOffset) + areaWidth + getPaddingLeft()) {
-                mOffset = -(mStartClickOffset - areaWidth + getPaddingLeft());
+                mOffset = -(mStartClickOffset - areaWidth - getPaddingLeft());
             }
             if (mOffset + mTempset >= 0) {
                 mOffset = 0;
