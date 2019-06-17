@@ -16,7 +16,7 @@ import lz.com.tools.util.LzToast;
 
 
 @InjectLayout(layoutId = R.layout.activity_ioc)
-public class IocActivity extends BaseKitActivity {
+public class IocActivity extends BaseKitActivity  {
 
     @BindView(R.id.btn1)
     Button bt1;
@@ -49,6 +49,7 @@ public class IocActivity extends BaseKitActivity {
         SimpleRefreshLayout simpleRefreshLayout = new SimpleRefreshLayout(this);
         content.addView(simpleRefreshLayout, 0);
         container.setRefreshView(simpleRefreshLayout);
+
     }
 
 

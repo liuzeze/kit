@@ -621,7 +621,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         return this;
     }
 
-    public TimeSelectView add() {
+    public TimeSelectView increase() {
         mEndClickOffset += areaWidth;
         //防止内容划出控件
         if (mEndClickOffset > mDataArea.length * areaWidth + getPaddingLeft()) {

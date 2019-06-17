@@ -54,10 +54,12 @@ public class IntervalActivity extends BaseKitActivity {
             }
         });
 //        timeView.setDataArea(mDataArea);
+
+        //433.98  432.03  164.4
     }
 
     public void add(View view) {
-        timeView.add();
+        timeView.increase();
     }
 
     public void reduction(View view) {
