@@ -217,25 +217,24 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                 mLinePaint);*/
 
         //绘制线条
-        //上
-        canvas.drawLine(getPaddingLeft(),
+        float[] pts = {
+                //上
+                getPaddingLeft(),
                 getPaddingTop(),
                 mMeasuredWidth - getPaddingRight(),
                 getPaddingTop(),
-                mLinePaint);
-        //中
-        canvas.drawLine(getPaddingLeft(),
+                //中
+                getPaddingLeft(),
                 getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 2,
                 mMeasuredWidth - getPaddingRight(),
                 getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 2,
-                mLinePaint);
-        //下
-        canvas.drawLine(getPaddingLeft(),
+                //下
+                getPaddingLeft(),
                 mMeasuredHeight - 1 - getPaddingBottom(),
                 mMeasuredWidth - getPaddingRight(),
                 mMeasuredHeight - 1 - getPaddingBottom(),
-                mLinePaint);
-
+        };
+        canvas.drawLines(pts, mLinePaint);
         canvas.save();
         //平移画布实现滑动效果
         canvas.translate(mOffset + mTempset, 0);
@@ -257,7 +256,6 @@ public class TimeSelectView extends View implements View.OnTouchListener {
 
         //绘制选中区域和图片
         if (mStartClickOffset >= 0 && mEndClickOffset > 0) {
-
             //确定绘制的区域范围
             mRect.top = getPaddingTop() + (mMeasuredHeight - getPaddingTop() - getPaddingBottom()) / 2;
             mRect.bottom = mMeasuredHeight - getPaddingBottom();
@@ -271,18 +269,13 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                         (mRect.top + (mRect.bottom - mRect.top) / 2) - mBitmap.getHeight() / 2,
                         null);
             } else {
-
                 canvas.drawBitmap(mBitmap,
                         mRect.right - mBitmap.getWidth() / 2,
                         (mRect.top + (mRect.bottom - mRect.top) / 2) - mBitmap.getHeight() / 2,
                         null);
             }
-
         }
-
         canvas.restore();
-
-
         //货值padding
         Rect rect = new Rect();
         //paddingleft
@@ -538,7 +531,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                 int start = (int) (mStartClickOffset / areaWidth);
                 float v1 = (mEndClickOffset - mStartClickOffset) / areaWidth;
                 int end = (int) (start + v1);
-                if (end > mDataArea.length-1) {
+                if (end > mDataArea.length - 1) {
                     end = mDataArea.length - 1;
                 }
                 mOnSelectAreaLienter.onSelect(mDataArea[start], mDataArea[end]);
@@ -548,7 +541,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         }
     }
 
-    /**```
+    /**
+     * ```
      * 惯性滑动
      *
      * @param xVelocity
