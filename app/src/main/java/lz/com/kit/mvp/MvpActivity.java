@@ -5,6 +5,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lz.fram.net.http.RetrofitFactory;
 import com.lz.fram.scope.AttachPresenter;
 
 import butterknife.BindView;

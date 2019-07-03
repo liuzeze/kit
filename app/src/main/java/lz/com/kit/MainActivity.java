@@ -6,13 +6,13 @@ import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import io.reactivex.annotations.Nullable;
 import lz.com.kit.aac.MvvmActivity;
 import lz.com.kit.bean.ActivityBean;
 import lz.com.kit.mvp.MvpActivity;

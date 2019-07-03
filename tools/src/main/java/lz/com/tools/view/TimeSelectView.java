@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.animation.DecelerateInterpolator;
 
 import androidx.annotation.ColorInt;
@@ -79,6 +80,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
     //拖拽图片资源
     private @DrawableRes
     int mBitmapRes = R.mipmap.seekbar;
+    private int mScaledTouchSlop;
 
     public TimeSelectView(Context context) {
         this(context, null);
@@ -116,6 +118,8 @@ public class TimeSelectView extends View implements View.OnTouchListener {
         //选中区域
         mRect = new Rect();
 
+        //开始滑动阈值
+        mScaledTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
         //图片
         mBitmap = BitmapFactory.decodeResource(getResources(), mBitmapRes);
 
@@ -471,7 +475,7 @@ public class TimeSelectView extends View implements View.OnTouchListener {
                         float endClickOffset = startClickOffset + areaWidth;
                         //点击事件 或者点击选中区域进行左滑操作
                         float v1 = event.getX() - startX;
-                        if (Math.abs(v1) < 30) {
+                        if (Math.abs(v1) < mScaledTouchSlop) {
                             //点击数据啊in
                             if (startClickOffset == mStartClickOffset && endClickOffset == mEndClickOffset) {
                                 mStartClickOffset = 0;
