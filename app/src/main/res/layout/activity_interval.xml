@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,61 +7,198 @@
     android:orientation="vertical"
     tools:context=".IntervalActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="区间选择控件" />
-
-    <lz.com.tools.widget.IntervalSelectionView
-        android:id="@+id/isv_condition_second"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        app:backLineColor="#ebebeb"
-        app:connectLineColor="#ffce2b"
-        app:endValueColor="#282828"
-        app:isInteger="true"
-        app:isShowResult="true"
-        app:resultValueColor="#f5bf0a"
-        app:rightUnit="㎡"
-        app:startValueColor="#282828"
-        app:tipText="面积"
-        app:tipTextColor="#282828"
-        app:tipTextSize="18" />
-
-    <lz.com.tools.view.TimeSelectView
-        android:id="@+id/time_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:padding="20dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="reduction"
-            android:text="左" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:gravity="center"
-            android:text="时间" />
+            android:text="区间选择控件" />
 
-        <Button
-            android:layout_width="0dp"
+        <lz.com.tools.widget.IntervalSelectionView
+
+            android:id="@+id/isv_condition_second"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:backLineColor="#ebebeb"
+            app:connectLineColor="#ffce2b"
+            app:endValueColor="#282828"
+            app:isInteger="true"
+            app:isShowResult="true"
+            app:resultValueColor="#f5bf0a"
+            app:rightUnit="㎡"
+            app:startValueColor="#282828"
+            app:tipText="面积"
+            app:tipTextColor="#282828"
+            app:tipTextSize="18" />
+
+        <lz.com.tools.view.TimeSelectView
+            android:id="@+id/time_view"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="add"
-            android:text="右" />
+            android:layout_marginTop="50dp"
+            android:padding="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="reduction"
+                android:text="左" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="时间" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="add"
+                android:text="右" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/bg"
+            android:alpha="0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#111111" />
+
+        <lz.com.kit.view.MenuView
+            android:id="@+id/menuview"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:onClick="bottomview">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/house"
+                android:gravity="center"
+                android:text="首页"
+                android:textSize="28px" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/house"
+                android:gravity="center"
+
+                android:text="消息"
+                android:textSize="28px" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/house"
+                android:gravity="center"
+                android:onClick="centerview"
+
+                android:text="发布"
+                android:textSize="28px" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/house"
+
+                android:gravity="center"
+                android:text="订单"
+                android:textSize="28px" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/house"
+                android:gravity="center"
+                android:text="我的"
+
+                android:textSize="28px" />
+
+        </lz.com.kit.view.MenuView>
+
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/menuview"
+            android:layout_centerHorizontal="true"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:src="@mipmap/house" />
+
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_above="@+id/menuview"
+            android:layout_centerHorizontal="true"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:src="@mipmap/house" />
+
+        <ImageView
+            android:id="@+id/iv3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/menuview"
+
+            android:layout_centerHorizontal="true"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:src="@mipmap/house" />
+
+        <ImageView
+            android:id="@+id/iv4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_above="@+id/menuview"
+            android:layout_centerHorizontal="true"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:src="@mipmap/house" />
+
+        <ImageView
+            android:id="@+id/iv5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/menuview"
+            android:layout_centerHorizontal="true"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:src="@mipmap/house" />
+
+
+    </RelativeLayout>
+</FrameLayout>
