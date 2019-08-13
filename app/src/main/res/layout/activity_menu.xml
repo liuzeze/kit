@@ -19,6 +19,7 @@
     app:underlineColor="#ebebeb"
     tools:ignore="MissingDefaultResource">
 
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,6 +47,7 @@
             app:bl_stroke_color="@color/ff0000"
             app:bl_stroke_width="1dp" />
     </LinearLayout>
+-->
 
 </lz.com.tools.widget.DropDownMenu>
 

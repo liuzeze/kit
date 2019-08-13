@@ -3,12 +3,14 @@ package lz.com.tools.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.lz.fram.base.BaseView;
 import com.lz.fram.inject.PresenterDispatch;
 import com.lz.fram.inject.PresenterProviders;
@@ -16,6 +18,7 @@ import com.lz.fram.inject.PresenterProviders;
 import lz.com.tools.R;
 import lz.com.tools.inject.InjectManager;
 import lz.com.tools.toolbar.TitleToolbar;
+import lz.com.tools.util.LzStatusBarHelper;
 
 /**
  * Activity 基类
@@ -41,6 +44,10 @@ public abstract class BaseActivity extends FragmentActivity implements BaseView 
      */
     protected void initConfig() {
         mActivity = this;
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.design_default_color_background)
+                .fitsSystemWindows(true)
+                .autoStatusBarDarkModeEnable(true, 0.3f).init();
         InjectManager.getLayoutId(this);
         PresenterDispatch presenterDispatch = PresenterProviders.inject(this).presenterCreate();
         presenterDispatch.attachView(this, getLifecycle());

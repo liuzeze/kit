@@ -57,6 +57,7 @@ public class MenuActivity extends BaseKitActivity {
         mViews[3] = getMoreView();
         mViews[4] = getSortView();
         mDropDownMenu.setDropDownMenu(mViews);
+
     }
 
     private View getMoreView() {

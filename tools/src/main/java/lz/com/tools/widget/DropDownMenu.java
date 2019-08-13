@@ -60,7 +60,7 @@ public class DropDownMenu extends LinearLayout {
     //tab未选中图标
     private int menuUnselectedIcon;
 
-    private int menuTitleHeigh = 50;
+    private int menuTitleHeigh = dpTpPx(50);
     private OnDropDownMenuListener mDropDownMenuListener;
 
 

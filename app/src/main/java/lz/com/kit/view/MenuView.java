@@ -1,5 +1,6 @@
 package lz.com.kit.view;
 
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -52,6 +53,9 @@ public class MenuView extends LinearLayout {
         setWillNotDraw(false);
         mPaint = new Paint();
         mPaint.setPathEffect(new CornerPathEffect(5));
+        //连接的外边缘以圆弧的方式相交
+        mPaint.setStrokeJoin(Paint.Join.ROUND);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(1);
@@ -61,6 +65,11 @@ public class MenuView extends LinearLayout {
         mBgPaint.setColor(Color.WHITE);
         mBgPaint.setAntiAlias(true);
         mBgPaint.setStyle(Paint.Style.FILL);
+        mBgPaint.setPathEffect(new CornerPathEffect(5));
+        //连接的外边缘以圆弧的方式相交
+        mBgPaint.setStrokeJoin(Paint.Join.ROUND);
+        mBgPaint.setStrokeCap(Paint.Cap.ROUND);
+
         mScreenWidth = LzDisplayUtils.getScreenWidth(getContext());
         mRadius = mScreenWidth / 5;
         mStartRadius = (mScreenWidth - mRadius) / 2;
@@ -99,13 +108,7 @@ public class MenuView extends LinearLayout {
 
     }
 
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        if (getChildCount() > 0) {
-            //   setGravity();
-        }
-    }
+
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -133,8 +136,6 @@ public class MenuView extends LinearLayout {
         }
         if (mDy == 0) {
             mValueAnimator.start();
-
-
             View child = getChildAt(getChildCount() / 2);
             if (child != null) {
                 child.animate().translationY(-mRadius / 4).scaleX(1.2f).scaleY(1.2f).setDuration(300).start();

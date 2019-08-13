@@ -23,6 +23,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import lz.com.tools.R;
+import lz.com.tools.util.LzDisplayUtils;
 
 
 /**
@@ -298,7 +299,7 @@ public class LzAlertDialog {
         Window window = dialog.getWindow();
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = LzDisplayUtils.getScreenHeight(context);
         lp.gravity = Gravity.CENTER;
         window.setAttributes(lp);
     }

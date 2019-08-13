@@ -67,6 +67,7 @@
         <attr name="subtitleTextSize" format="dimension" />
 
 
+
         <!--标题重力设置-->
         <attr name="title_gravity">
             <flag name="top" value="0x30" />

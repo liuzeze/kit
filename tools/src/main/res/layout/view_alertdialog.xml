@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     android:padding="50dp"
     tools:background="#ff0000">
 

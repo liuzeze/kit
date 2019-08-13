@@ -2,7 +2,6 @@ package lz.com.tools.toolbar;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewParent;
 
@@ -23,7 +22,7 @@ public abstract class BaseToolbar extends Toolbar {
     }
 
     public BaseToolbar(Context context, AttributeSet attrs) {
-        this(context, attrs, androidx.appcompat.R.attr.toolbarStyle);
+        this(context, attrs, R.attr.toolbarStyle);
     }
 
     public BaseToolbar(Context context, AttributeSet attrs, int defStyleAttr) {

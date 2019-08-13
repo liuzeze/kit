@@ -1,6 +1,8 @@
 package lz.com.kit;
 
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -10,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import butterknife.OnClick;
 import lz.com.kit.bean.SelectBean;
+import lz.com.tools.dialog.LzPopWindow;
+import lz.com.tools.dialog.LzAlertDialog;
+import lz.com.tools.dialog.LzBottomDialog;
 import lz.com.tools.dialog.LzDialogUtils;
 import lz.com.tools.inject.InjectLayout;
 import lz.com.tools.recycleview.ReboundReyclerView;
@@ -21,11 +26,11 @@ import lz.com.tools.recycleview.checked.SingleCheckedHelper;
 @InjectLayout(layoutId = R.layout.activity_dialog)
 public class DialogActivity extends BaseKitActivity {
 
-    @OnClick({R.id.show, R.id.show1, R.id.show2, R.id.show3, R.id.show4, R.id.show5, R.id.show6, R.id.show7})
+    @OnClick({R.id.show, R.id.show1, R.id.show2, R.id.show3, R.id.show4, R.id.show5, R.id.show6, R.id.show7, R.id.show8})
     public void onShow(View view) {
         switch (view.getId()) {
             case R.id.show:
-                LzDialogUtils.alertConfirmDialog(this, "标题", "");
+                LzAlertDialog alertDialog = LzDialogUtils.alertConfirmDialog(this, "标题", "");
                 break;
             case R.id.show1:
 
@@ -54,7 +59,7 @@ public class DialogActivity extends BaseKitActivity {
                 });
                 break;
             case R.id.show4:
-                LzDialogUtils.alertBottomDialog(this, "标题", getListView(), null, null, null, null);
+                LzBottomDialog dialog = LzDialogUtils.alertBottomDialog(this, "标题", getListView(), null, null, null, null);
                 break;
             case R.id.show5:
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
@@ -72,10 +77,25 @@ public class DialogActivity extends BaseKitActivity {
                 LzDialogUtils.alertTimetDialog(this, "标题", "定时4秒之后关闭当前对话框", 4000);
 
                 break;
+            case R.id.show8:
+                inflate = View.inflate(mActivity, R.layout.layout_dialog, null);
+                LzPopWindow customPopWindow = new LzPopWindow.PopupWindowBuilder(mActivity)
+                        .setView(inflate)
+                        .size(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                        .setBgDarkAlpha(0.5f)
+                        .enableBackgroundDark(true)
+                        .setClippingEnable(false)
+                        .setFocusable(true)
+                        .setOutsideTouchable(true)
+                        .create();
+
+                customPopWindow.showAtLocation(view, Gravity.RIGHT, -0, 0);
+                break;
 
             default:
 
                 break;
+
         }
     }
 
