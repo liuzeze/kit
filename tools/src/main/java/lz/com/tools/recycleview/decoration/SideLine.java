@@ -3,16 +3,12 @@ package lz.com.tools.recycleview.decoration;
 
 import androidx.annotation.ColorInt;
 
-/**
- * Created by mac on 2017/5/17.
- */
+
 
 public class SideLine {
 
     public boolean isHave = false;
-    /**
-     * A single color layoutId in the form 0xAARRGGBB.
-     **/
+
     public int color;
     /**
      * 单位dp
