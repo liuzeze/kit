@@ -43,7 +43,7 @@ public class DialogActivity extends BaseKitActivity {
                 });
                 break;
             case R.id.show2:
-                LzDialogUtils.alertConfirmDialog(this, "", "内容", null, new View.OnClickListener() {
+                LzDialogUtils.alertConfirmDialog(this, " ", "内容", null, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
