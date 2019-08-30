@@ -3,9 +3,7 @@ package lz.com.tools.recycleview.decoration;
 
 import androidx.annotation.ColorInt;
 
-/**
- * Created by mac on 2017/5/17.
- */
+
 
 public class DividerBuilder {
 
