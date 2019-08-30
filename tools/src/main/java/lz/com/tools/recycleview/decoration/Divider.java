@@ -1,8 +1,5 @@
 package lz.com.tools.recycleview.decoration;
 
-/**
- * Created by mac on 2017/5/17.
- */
 
 public class Divider {
 
