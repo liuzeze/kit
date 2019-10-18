@@ -38,6 +38,7 @@ public class WaterRippleAnim extends AppCompatTextView {
     private Drawable mWaveBitmap;
     private BitmapShader mBitmapShader;
     private int offsetY;
+    private int mWaveW;
 
     public WaterRippleAnim(Context context) {
         super(context);
@@ -137,15 +138,15 @@ public class WaterRippleAnim extends AppCompatTextView {
             mWaveBitmap.setTint(Color.RED);
         }
 
-        int waveW = mWaveBitmap.getIntrinsicWidth();
+        mWaveW = mWaveBitmap.getIntrinsicWidth();
         int waveH = mWaveBitmap.getIntrinsicHeight();
 
-        Bitmap b = Bitmap.createBitmap(waveW, waveH, Bitmap.Config.ARGB_8888);
+        Bitmap b = Bitmap.createBitmap(mWaveW, waveH, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(b);
 
         c.drawColor(getCurrentTextColor());
 
-        mWaveBitmap.setBounds(0, 0, waveW, waveH);
+        mWaveBitmap.setBounds(0, 0, mWaveW, waveH);
         mWaveBitmap.draw(c);
 
         mBitmapShader = new BitmapShader(b, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
@@ -161,7 +162,7 @@ public class WaterRippleAnim extends AppCompatTextView {
 
             setSinking(true);
 
-            ObjectAnimator maskXAnimator = ObjectAnimator.ofFloat(WaterRippleAnim.this, "maskX", 0, 160);
+            ObjectAnimator maskXAnimator = ObjectAnimator.ofFloat(WaterRippleAnim.this, "maskX", 0, mWaveW);
             maskXAnimator.setRepeatCount(ValueAnimator.INFINITE);
             maskXAnimator.setDuration(1000);
             maskXAnimator.setStartDelay(0);
