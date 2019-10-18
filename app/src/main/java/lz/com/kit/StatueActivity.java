@@ -4,6 +4,7 @@ package lz.com.kit;
 import android.view.View;
 import android.view.ViewGroup;
 
+import lz.com.kit.view.BolangAnim;
 import lz.com.status.StatusConfigBuild;
 import lz.com.status.StatusView;
 import lz.com.tools.inject.InjectLayout;
@@ -11,7 +12,6 @@ import lz.com.tools.widget.WaterRippleAnim;
 
 @InjectLayout(layoutId = R.layout.activity_statue, titleName = "状态加载控件")
 public class StatueActivity extends BaseKitActivity {
-
 
     @Override
     protected void initData() {
@@ -113,9 +113,7 @@ public class StatueActivity extends BaseKitActivity {
     private void initBaseStatue() {
         View childAt = ((ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0)).getChildAt(1);
         final StatusView init = StatusView.init(childAt);
-        WaterRippleAnim animView = new WaterRippleAnim(this);
-        animView.setText("loading");
-        animView.setTextSize(50);
+        BolangAnim animView = new BolangAnim(this);
         init.config(new StatusConfigBuild()
                 .setShowloadTitle(false)
                 .setErrorTitle("加载失败")

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+
+    android:orientation="vertical">
+
+    <lz.com.tools.view.ShadowLayout
+        android:id="@+id/ShadowLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        app:sl_cornerRadius="29dp"
+        app:sl_offsetX="0dp"
+        app:sl_offsetY="5dp"
+        app:sl_backgroundColor="#ff0000"
+        app:sl_shadowBlur="10dp"
+        app:sl_shadowColor="#55ff0000"
+        app:sl_nomalStrokeColor="#0000ff">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="阴影"
+            android:textColor="#000" />
+    </lz.com.tools.view.ShadowLayout>
+
+    <lz.com.tools.view.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        android:padding="10dp"
+        app:sl_cornerRadius="29dp"
+        app:sl_offsetX="0dp"
+        app:sl_offsetY="5dp"
+        app:sl_backgroundColor="#ff0000"
+        app:sl_shadowBlur="10dp"
+        app:sl_shadowColor="#55ff0000"
+        app:sl_nomalShadowColor="#0000ff"
+        app:sl_nomalStrokeColor="#550000ff">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="阴影"
+            android:textColor="#000" />
+    </lz.com.tools.view.ShadowLayout>
+
+    <lz.com.tools.view.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        android:padding="10dp"
+        app:sl_cornerRadius="29dp"
+        app:sl_offsetX="0dp"
+        app:sl_offsetY="5dp"
+        app:sl_backgroundColor="#ff0000"
+        app:sl_shadowBlur="10dp"
+        app:sl_shadowColor="#55ff0000"
+        app:sl_nomalBackgroundColor="#0000ff"
+        app:sl_nomalShadowColor="#550000ff">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="阴影"
+            android:textColor="#fff" />
+    </lz.com.tools.view.ShadowLayout>
+
+    <lz.com.tools.view.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        android:padding="10dp"
+        app:sl_cornerRadius="29dp"
+        app:sl_offsetX="0dp"
+        app:sl_offsetY="5dp"
+        app:sl_backgroundColor="#ff0000"
+        app:sl_shadowBlur="10dp"
+        app:sl_shadowColor="#55ff0000"
+        app:sl_nomalShadowColor="#992590fd">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@mipmap/bolang"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#000" />
+    </lz.com.tools.view.ShadowLayout>
+
+    <lz.com.tools.view.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        app:sl_cornerRadius="29dp"
+        app:sl_offsetX="0dp"
+        app:sl_offsetY="5dp"
+        app:sl_shadowBlur="10dp"
+        app:sl_nomalBackgroundColor="#ff0000"
+        app:sl_nomalShadowColor="#55ff0000">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="阴影"
+            android:textColor="#000" />
+    </lz.com.tools.view.ShadowLayout>
+
+    <lz.com.tools.view.ShadowTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="TextView"
+        android:textSize="25dp"
+        app:sl_cornerRadius="29dp"
+        app:sl_offsetX="0dp"
+        app:sl_offsetY="5dp"
+        app:sl_backgroundColor="#ff0000"
+        app:sl_shadowBlur="10dp"
+        app:sl_shadowColor="#55ff0000"
+        app:sl_nomalShadowColor="#5500ff00"
+        app:sl_nomalStrokeColor="#00ff00" />
+
+
+</LinearLayout>
