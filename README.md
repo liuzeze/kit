@@ -31,6 +31,11 @@
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/8.jpg" width="280" height="450"/></td>
          <td><img src="https://github.com/liuzeze/kit/blob/master/doc/9.jpg" width="280" height="450"/></td>
     </tr>
+     <tr align="center">
+           <td><img src="https://user-gold-cdn.xitu.io/2019/10/18/16dde32e8644100a?w=291&h=518&f=png&s=35208" width="280" height="450"/></td>
+        
+    </tr>
+
   
 </table>
 
